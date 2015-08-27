@@ -1,0 +1,128 @@
+<!doctype html> <html lang="en"><head><meta http-equiv="Content-Type" content="text/html" charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>Overview | Marko</title><link rel="alternate" type="application/rss+xml" title="RSS" href="/rss.xml"><meta name="description"><link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png"><link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png"><link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png"><link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png"><link rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png"><link rel="apple-touch-icon" sizes="120x120" href="/apple-icon-120x120.png"><link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png"><link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png"><link rel="icon" type="image/png" sizes="192x192" href="/android-icon-192x192.png"><link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"><link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png"><link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="manifest" href="/manifest.json"><meta name="msapplication-TileColor" content="#ffffff"><meta name="msapplication-TileImage" content="/ms-icon-144x144.png"><meta name="theme-color" content="#ffffff"><meta name="HandheldFriendly" content="True"><meta name="MobileOptimized" content="320"><meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width"><link rel="stylesheet" type="text/css" href="/static/docs-page-b46f4da7.css">
+<link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css"></head><body><header id="header"><div id="logo"><a href="/"><img src="/images/logo-dark-bg.png" width="80" height="67" alt="Marko"></a></div><div class="container"> <nav role="navigation" id="nav"><ul class="main-navigation"><li><a href="/">Home</a></li><li><a href="/docs/" class="active">Docs</a></li><li><a href="/community/">Community</a></li><li><a href="/blog/">Blog</a></li><li><a href="/github/">Github</a></li><li><form action="https://google.com/search" method="get" class="search-form"><fieldset role="search"><input type="hidden" name="q" value="site:markojs.com"><input type="text" name="q" results="0" placeholder="Search" class="search-input"></fieldset></form></li></ul></nav></div><div style="clear: both"></div></header><div class="container"><aside class="docs-nav"><section><h1>Marko</h1><ul><li><a href="/docs/" class="active">Overview</a></li><li><a href="/docs/marko/get-started/">Get Started</a></li><li><a href="/docs/marko/javascript-api/">JavaScript API</a></li><li><a href="/docs/marko/language-guide/">Language Guide</a></li><li><a href="/docs/marko/custom-taglibs/">Custom Taglibs</a></li><li><a href="/docs/marko/faq/">FAQ</a></li><li><a href="/docs/marko/additional-resources/">Additional Resources</a></li></ul></section><section><h1>Marko Widgets</h1><ul><li><a href="/docs/marko-widgets/">Overview</a></li><li><a href="/docs/marko-widgets/get-started/">Get Started</a></li><li><a href="/docs/marko-widgets/javascript-api/">JavaScript API</a></li><li><a href="/docs/marko-widgets/faq/">FAQ</a></li><li><a href="/docs/marko-widgets/additional-resources/">Additional Resources</a></li></ul></section></aside><main><h1 class="page-title">Overview <span class="subtitle">// Marko</span></h1><p>Marko is an eBay open source HTML-based templating engine that can be used to render templates on the server (Node.js) or in the web browser. It is <a href="https://github.com/marko-js/templating-benchmarks">extremely fast</a> and lightweight (~3.75KB gzipped) while also supporting streaming and asynchronous rendering. Developers can extend the HTML grammar with custom tags and custom attributes to introduce new and reusable building blocks. The Marko compiler produces Node.js-compatible JavaScript modules that are <a href="https://gist.github.com/patrick-steele-idem/0514b480219d1c9ed8d4#file-template-marko-js">easy to read</a>, understand and debug. In contrast to other templating engines, Marko avoids <a href="http://archive.oreilly.com/pub/a/javascript/excerpts/javascript-good-parts/awful-parts.html">evil global variables</a> and global helpers.</p>
+<p>Marko was founded on the philosophy that an HTML-based templating language is more natural and intuitive for generating HTML. Because the Marko compiler understands the structure of the HTML document, the directives in template files are less obtrusive and more powerful. Marko also retains the full power and flexibility of JavaScript by allowing JavaScript expressions inside templates.</p>
+<p>Marko supports <a href="http://www.ebaytechblog.com/2014/12/08/async-fragments-rediscovering-progressive-html-rendering-with-marko/">progressive HTML rendering</a> by writing directly to an output stream so that HTML can be sent over the wire sooner. Marko automatically flushes around asynchronous fragments so that the HTML is delivered in the optimized number of chunks. Because Marko is an asynchronous templating language, additional data can be asynchronously fetched even after rendering has begun. These characteristics make Marko an excellent choice for creating high performance websites.</p>
+<p>For building rich UI components with client-side behavior please check out the <a href="https://github.com/marko-js/marko-widgets">marko-widgets</a> project.</p>
+<p><strong><a href="http://localhost:8080/try-online/">Try Marko Online!</a></strong></p>
+<p><img src="syntax.png" alt="Marko Syntax"></p>
+<p>Improved syntax highlighting available for <a href="https://atom.io/">Atom</a> by installing the <a href="https://atom.io/packages/language-marko">language-marko</a> package and for <a href="http://www.sublimetext.com/">Sublime Text</a> by installing the <a href="https://github.com/merwan7/sublime-marko">marko-sublime</a> package.</p>
+<h2 id="sample-code"><a name="sample-code" class="anchor" href="#sample-code"><span class="header-link"></span></a>Sample Code</h2><p>A basic template with text replacement, looping and conditionals is shown below:</p>
+<p><em>hello-world.marko:</em></p>
+<pre><code class="lang-xml">Hello ${data.name}!
+
+<span class="hljs-tag">&lt;<span class="hljs-title">ul</span> <span class="hljs-attribute">if</span>=<span class="hljs-value">"notEmpty(data.colors)"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">li</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">"color: $color"</span> <span class="hljs-attribute">for</span>=<span class="hljs-value">"color in data.colors"</span>&gt;</span>
+        $color
+    <span class="hljs-tag">&lt;/<span class="hljs-title">li</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">ul</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">else</span>&gt;</span>
+    No colors!
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+</code></pre>
+<p>The template can then be rendered as shown in the following sample code:</p>
+<pre><code class="lang-javascript"><span class="hljs-built_in">require</span>(<span class="hljs-string">'marko/node-require'</span>).install();
+
+<span class="hljs-keyword">var</span> template = <span class="hljs-built_in">require</span>(<span class="hljs-string">'./hello-world.marko'</span>);
+
+template.render({
+        name: <span class="hljs-string">'World'</span>,
+        colors: [<span class="hljs-string">"red"</span>, <span class="hljs-string">"green"</span>, <span class="hljs-string">"blue"</span>]
+    },
+    <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err, output</span>) </span>{
+        <span class="hljs-built_in">console</span>.log(output);
+    });
+</code></pre>
+<p>The output of running the above program will be the following (formatted for readability):</p>
+<pre><code class="lang-xml">Hello World!
+<span class="hljs-tag">&lt;<span class="hljs-title">ul</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">li</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">"color: red"</span>&gt;</span>red<span class="hljs-tag">&lt;/<span class="hljs-title">li</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">li</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">"color: green"</span>&gt;</span>green<span class="hljs-tag">&lt;/<span class="hljs-title">li</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">li</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">"color: blue"</span>&gt;</span>blue<span class="hljs-tag">&lt;/<span class="hljs-title">li</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">ul</span>&gt;</span>
+</code></pre>
+<p>For comparison, given the following data consisting of an empty array of colors:</p>
+<pre><code class="lang-javascript">{
+    name: <span class="hljs-string">'World'</span>,
+    colors: []
+}
+</code></pre>
+<p>The output would be the following:</p>
+<pre><code class="lang-xml">Hello World!
+<span class="hljs-tag">&lt;<span class="hljs-title">div</span>&gt;</span>
+    No colors!
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+</code></pre>
+<p>The streaming API can be used to stream the output to an HTTP response stream or any other writable stream. For example, with Express:</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> template = <span class="hljs-built_in">require</span>(<span class="hljs-string">'./user-profile.marko'</span>);
+
+app.get(<span class="hljs-string">'/profile'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">req, res</span>) </span>{
+    <span class="hljs-comment">// Render directly to the writable HTTP output stream:</span>
+    template.render({
+            name: <span class="hljs-string">'Frank'</span>
+        }, res);
+});
+</code></pre>
+<h2 id="another-templating-language"><a name="another-templating-language" class="anchor" href="#another-templating-language"><span class="header-link"></span></a>Another Templating Language?</h2><p>Most front-end developers are familiar with, and comfortable with, templating languages such as <a href="https://github.com/wycats/handlebars.js">Handlebars</a>, <a href="https://github.com/linkedin/dustjs">Dust</a> or <a href="http://mustache.github.io/">Mustache</a> so why was Marko introduced?</p>
+<p>What makes Marko different is that it is an HTML-based templating language that does not rely on a custom language grammar. Any HTML file is a valid Marko template and vice-versa, and the Marko compiler uses an <a href="https://github.com/fb55/htmlparser2">off-the-shelf HTML parser</a>. Because Marko understands the HTML structure of the templates, it can do more powerful things that would not be possible in a text-based templating languages such as Handlerbars, Dust or Mustache. Marko allows developers to <em>extend the HTML language</em> by introducing custom HTML elements and attributes. On top of that, utilizing the HTML structure for applying templating directives makes templates more readable and allows data templates to more closely resemble the final HTML structure.</p>
+<p>Let&#39;s compare Marko with Handlebars (a text-based templating language):</p>
+<p><strong>Handlebars:</strong></p>
+<pre><code class="lang-xml">Hello {{name}}!
+
+{{#if colors}}
+<span class="hljs-tag">&lt;<span class="hljs-title">ul</span>&gt;</span>
+    {{#each colors}}
+    <span class="hljs-tag">&lt;<span class="hljs-title">li</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"color"</span>&gt;</span>
+        {{this}}
+    <span class="hljs-tag">&lt;/<span class="hljs-title">li</span>&gt;</span>
+    {{/each}}
+<span class="hljs-tag">&lt;/<span class="hljs-title">ul</span>&gt;</span>
+{{else}}
+<span class="hljs-tag">&lt;<span class="hljs-title">div</span>&gt;</span>
+    No colors!
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+{{/if}}
+</code></pre>
+<p><strong>Marko:</strong></p>
+<pre><code class="lang-xml">Hello ${data.name}!
+
+<span class="hljs-tag">&lt;<span class="hljs-title">ul</span> <span class="hljs-attribute">if</span>=<span class="hljs-value">"notEmpty(data.colors)"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">li</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"color"</span> <span class="hljs-attribute">for</span>=<span class="hljs-value">"color in data.colors"</span>&gt;</span>
+        ${color}
+    <span class="hljs-tag">&lt;/<span class="hljs-title">li</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">ul</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">else</span>&gt;</span>
+    No colors!
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+</code></pre>
+<p>A few things to note for the Marko template:</p>
+<ul>
+<li>Less lines of code</li>
+<li>Less lines are &quot;touched&quot; to make the template dynamic</li>
+<li>Only opening tags are modified for conditionals and looping</li>
+</ul>
+<p>Beyond Marko being an HTML-based templating language, it was also designed with extreme performance and extensibility in mind. The Marko compiler gives developers full control over how templates are compiled to JavaScript and the runtime was designed to be as efficient as possible. Marko fully embraces the JavaScript language for better performance and flexibility (e.g. favoring JavaScript expressions over a custom expression language).</p>
+<p>Finally, another distinguishing feature of Marko is that it supports <em>asynchronous template rendering</em>. This powerful feature allows portions of the template to be rendered asynchronously. Instead of waiting for all data to come back from remote services before beginning to render the template, you can now immediately start rendering the template and the portions of the template that depend on asynchronous data will render as soon as the asynchronous data becomes available. The Marko rendering engine ensures that the final HTML will be streamed out in the correct order.</p>
+<h2 id="design-philosophy"><a name="design-philosophy" class="anchor" href="#design-philosophy"><span class="header-link"></span></a>Design Philosophy</h2><ul>
+<li><strong>Readable:</strong> Templates should be as close to the output HTML as possible to keep templates readable. Cryptic syntax and symbols should be avoided.</li>
+<li><strong>Simple:</strong> The number of new concepts should be minimized and complexity should be avoided.</li>
+<li><strong>Extensible:</strong> The template engine should be easily extensible at both compile-time and runtime.</li>
+<li><strong>High Performance:</strong> Runtime and compiled output should be optimized for low CPU and memory usage and have a small footprint. All expressions should be native JavaScript to avoid runtime interpretation.</li>
+<li><strong>Not Restrictive:</strong> Whether or not to go less logic or more logic in templates is up to the developer.</li>
+<li><strong>Asynchronous and Streaming Output:</strong> It should be possible to render HTML out-of-order, but the output HTML should be streamed out in the correct order. This minimizes idle time and reduces the time to first byte.</li>
+<li><strong>Intuitive:</strong> The templating engine should introduce as few surprises as possible.</li>
+<li><strong>Browser and Server Compatibility:</strong> Templates should compile down to JavaScript that can be executed on both the server and the client.</li>
+<li><strong>Debuggable:</strong> Compiled JavaScript should be debuggable and readable.</li>
+<li><strong>Compile-Time Checks:</strong> Syntax, custom tags and custom attributes should be validated at compile-time.</li>
+<li><strong>Tools Support:</strong> Tools should be enabled to offer auto-completion and validation for improved productivity and safety.</li>
+<li><strong>Modular:</strong> Runtime and compiled templates should be based on CommonJS modules for improved dependency management. Template dependencies (such as custom tags) should be resolved based on a template&#39;s file system path instead of relying on a global registry.</li>
+</ul>
+</main></div><footer id="footer"><div class="container"><section id="footer-message">© 2015 eBay, Inc</section></div></footer><script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-50307227-1', 'markojs.com');
+  ga('send', 'pageview');
+
+</script></body></html>

@@ -1,0 +1,150 @@
+<!doctype html> <html lang="en"><head><meta http-equiv="Content-Type" content="text/html" charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>JavaScript API | Marko Widgets</title><link rel="alternate" type="application/rss+xml" title="RSS" href="/rss.xml"><meta name="description"><link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png"><link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png"><link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png"><link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png"><link rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png"><link rel="apple-touch-icon" sizes="120x120" href="/apple-icon-120x120.png"><link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png"><link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png"><link rel="icon" type="image/png" sizes="192x192" href="/android-icon-192x192.png"><link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"><link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png"><link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="manifest" href="/manifest.json"><meta name="msapplication-TileColor" content="#ffffff"><meta name="msapplication-TileImage" content="/ms-icon-144x144.png"><meta name="theme-color" content="#ffffff"><meta name="HandheldFriendly" content="True"><meta name="MobileOptimized" content="320"><meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width"><link rel="stylesheet" type="text/css" href="/static/docs-page-b46f4da7.css">
+<link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css"></head><body><header id="header"><div id="logo"><a href="/"><img src="/images/logo-dark-bg.png" width="80" height="67" alt="Marko"></a></div><div class="container"> <nav role="navigation" id="nav"><ul class="main-navigation"><li><a href="/">Home</a></li><li><a href="/docs/" class="active">Docs</a></li><li><a href="/community/">Community</a></li><li><a href="/blog/">Blog</a></li><li><a href="/github/">Github</a></li><li><form action="https://google.com/search" method="get" class="search-form"><fieldset role="search"><input type="hidden" name="q" value="site:markojs.com"><input type="text" name="q" results="0" placeholder="Search" class="search-input"></fieldset></form></li></ul></nav></div><div style="clear: both"></div></header><div class="container"><aside class="docs-nav"><section><h1>Marko</h1><ul><li><a href="/docs/">Overview</a></li><li><a href="/docs/marko/get-started/">Get Started</a></li><li><a href="/docs/marko/javascript-api/">JavaScript API</a></li><li><a href="/docs/marko/language-guide/">Language Guide</a></li><li><a href="/docs/marko/custom-taglibs/">Custom Taglibs</a></li><li><a href="/docs/marko/faq/">FAQ</a></li><li><a href="/docs/marko/additional-resources/">Additional Resources</a></li></ul></section><section><h1>Marko Widgets</h1><ul><li><a href="/docs/marko-widgets/">Overview</a></li><li><a href="/docs/marko-widgets/get-started/">Get Started</a></li><li><a href="/docs/marko-widgets/javascript-api/" class="active">JavaScript API</a></li><li><a href="/docs/marko-widgets/faq/">FAQ</a></li><li><a href="/docs/marko-widgets/additional-resources/">Additional Resources</a></li></ul></section></aside><main><h1 class="page-title">JavaScript API <span class="subtitle">// Marko Widgets</span></h1><h2 id="marko-widgets-exports"><a name="marko-widgets-exports" class="anchor" href="#marko-widgets-exports"><span class="header-link"></span></a>marko-widgets exports</h2><h3 id="definecomponentdef"><a name="definecomponentdef" class="anchor" href="#definecomponentdef"><span class="header-link"></span></a>defineComponent(def)</h3><p>Used to define a UI component that includes both the renderer <em>and</em> the widget (i.e., the client-side behavior). If a UI component is to only be rendered on the server then you might benefit from defining the renderer independently of the widget using the <code>defineRenderer(def)</code> and <code>defineWidget(def)</code> functions, respectively.</p>
+<p>The return value of <code>defineComponent(def)</code> will be a <code>Widget</code> constructor function with static <code>renderer(input, out)</code> and <code>render(input)</code> methods.</p>
+<p>Example usage for defining a stateless UI component:</p>
+<pre><code class="lang-javascript"><span class="hljs-built_in">module</span>.exports = <span class="hljs-built_in">require</span>(<span class="hljs-string">'marko-widgets'</span>).defineComponent({
+    template: <span class="hljs-built_in">require</span>(<span class="hljs-string">'./template.marko'</span>),
+
+    getTemplateData: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">state, input</span>) </span>{
+        <span class="hljs-keyword">return</span> {
+            name: input.name
+        };
+    },
+
+    handleClick: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+        <span class="hljs-keyword">this</span>.el.style.backgroundColor = <span class="hljs-string">'yellow'</span>;
+    }
+});
+</code></pre>
+<h3 id="definerendererdef"><a name="definerendererdef" class="anchor" href="#definerendererdef"><span class="header-link"></span></a>defineRenderer(def)</h3><p>The <code>defineRenderer(def)</code> function can be used to define a UI component renderer independently from an associated widget. This can be beneficial when a UI component needs to only be rendered on the server and it is desirable to avoid sending down the template and rendering logic to the browser. For UI components that are only rendered on the server, only the client-side behavior really needs to be be sent to the browser.</p>
+<p>The return value of <code>defineRenderer(def)</code> will be a <code>renderer(input, out)</code> function with a static <code>render(input)</code> method.</p>
+<p>See the [Split Ren]</p>
+<h3 id="definewidgetdef"><a name="definewidgetdef" class="anchor" href="#definewidgetdef"><span class="header-link"></span></a>defineWidget(def)</h3><p>The <code>defineWidget(def)</code> function can be used to define a UI component&#39;s client-side behavior independent of the code to render the UI component. This can be beneficial when a UI component needs to only be rendered on the server and it is desirable to avoid sending down the template and rendering logic to the browser. For UI components that are only rendered on the server, only the client-side behavior really needs to be be sent to the browser.</p>
+<p>The return value of <code>defineRenderer(def)</code> will be a <code>renderer(input, out)</code> function with a static <code>render(input)</code> method.</p>
+<h3 id="getwidgetforelel"><a name="getwidgetforelel" class="anchor" href="#getwidgetforelel"><span class="header-link"></span></a>getWidgetForEl(el)</h3><p>The <code>getWidgetForEl(el)</code> function can be used to retrieve a widget object outside of its nested context.</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> myToggle = <span class="hljs-built_in">require</span>(<span class="hljs-string">'marko-widgets'</span>).getWidgetForEl(<span class="hljs-string">'w0-myToggle'</span>);
+myToggle.setSelected(<span class="hljs-literal">true</span>);
+</code></pre>
+<p>It is also possible to get a widget handle using the widget el:</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> el = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'w0-myToggle'</span>);
+<span class="hljs-keyword">var</span> myToggle = <span class="hljs-built_in">require</span>(<span class="hljs-string">'marko-widgets'</span>).getWidgetForEl(el);
+myToggle.setSelected(<span class="hljs-literal">true</span>);
+</code></pre>
+<h2 id="widget"><a name="widget" class="anchor" href="#widget"><span class="header-link"></span></a>Widget</h2><h3 id="methods"><a name="methods" class="anchor" href="#methods"><span class="header-link"></span></a>Methods</h3><h4 id="$queryselector"><a name="$queryselector" class="anchor" href="#$queryselector"><span class="header-link"></span></a>$(querySelector)</h4><p>This is a convenience method for accessing a widget&#39;s DOM elements when jQuery is available. This mixin method serves as a proxy to jQuery to ease building queries based on widget element IDs.</p>
+<p>Internally, this jQuery proxy method will resolve widget element IDs to their actual DOM element ID by prefixing widget element IDs with the widget ID. For example, where this is a widget with an ID of <code>w123</code>:</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">this</span>.$() ➡ $(<span class="hljs-string">"#w123"</span>)
+<span class="hljs-keyword">this</span>.$(<span class="hljs-string">"#myEl"</span>) ➡ $(<span class="hljs-string">"#w123-myEl"</span>)
+</code></pre>
+<p>The usage of this mixin method is described below:</p>
+<p><strong><code>$()</code></strong></p>
+<p>Convenience usage to access the root widget DOM element wrapped as a jQuery object. All of the following are equivalent:</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">this</span>.$()
+$(<span class="hljs-keyword">this</span>.el)
+$(<span class="hljs-string">"#"</span> + <span class="hljs-keyword">this</span>.id)
+</code></pre>
+<p><strong><code>$(&#39;#&lt;widget-el-id&gt;&#39;)</code></strong></p>
+<p>Convenience usage to access a nested widget DOM element wrapped as a jQuery object. All of the following are equivalent:</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">this</span>.$(<span class="hljs-string">"#myEl"</span>)
+$(<span class="hljs-keyword">this</span>.getEl(<span class="hljs-string">"myEl"</span>))
+$(<span class="hljs-string">"#"</span> + <span class="hljs-keyword">this</span>.getElId(<span class="hljs-string">"myEl"</span>))
+</code></pre>
+<p><strong><code>$(&#39;&lt;selector&gt;&#39;)</code></strong></p>
+<p>Convenience usage to query nested DOM elements scoped to the root widget DOM element. All of the following are equivalent:</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">this</span>.$(<span class="hljs-string">"ul &gt; li"</span>)
+$(<span class="hljs-string">"ul &gt; li"</span>, <span class="hljs-keyword">this</span>.el)
+$(<span class="hljs-string">"#"</span> + <span class="hljs-keyword">this</span>.id + <span class="hljs-string">" ul &gt; li"</span>)
+</code></pre>
+<p><strong><code>$(&#39;&lt;selector&gt;&#39;, &#39;&lt;widget-el-id&gt;&#39;)</code></strong></p>
+<p>Convenience usage to query nested DOM elements scoped to a nested widget DOM element. All of the following are equivalent:</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">this</span>.$(<span class="hljs-string">"li.color"</span>, <span class="hljs-string">"colorsUL"</span>)
+<span class="hljs-keyword">this</span>.$(<span class="hljs-string">"#colorsUL li.color"</span>)
+$(<span class="hljs-string">"li.color"</span>, <span class="hljs-keyword">this</span>.getEl(<span class="hljs-string">"colorsUL"</span>))
+$(<span class="hljs-string">"#"</span> + <span class="hljs-keyword">this</span>.getElId(<span class="hljs-string">"colorsUL"</span>) + <span class="hljs-string">" li.color"</span>)
+</code></pre>
+<p><strong><code>$(&#39;#&lt;widget-el-id&gt; &lt;selector&gt;&#39;)</code></strong></p>
+<p>Convenience usage to query nested DOM elements scoped to a nested widget DOM element. All of the following are equivalent:</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">this</span>.$(<span class="hljs-string">"#colorsUL li.color"</span>)
+<span class="hljs-keyword">this</span>.$(<span class="hljs-string">"li.color"</span>, <span class="hljs-string">"colorsUL"</span>)
+$(<span class="hljs-string">"li.color"</span>, <span class="hljs-keyword">this</span>.getEl(<span class="hljs-string">"colorsUL"</span>))
+$(<span class="hljs-string">"#"</span> + <span class="hljs-keyword">this</span>.getElId(<span class="hljs-string">"colorsUL"</span>) + <span class="hljs-string">" li.color"</span>)
+</code></pre>
+<p><strong><code>$(callbackFunction)</code></strong></p>
+<p>Convenience usage to add a listener for the &quot;on DOM ready&quot; event and have the this object for the provided callback function be the current widget instance. All of the following are equivalent:</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">this</span>.$(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{ <span class="hljs-comment">/*...*/</span> });
+$(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{ <span class="hljs-comment">/*...*/</span> }.bind(<span class="hljs-keyword">this</span>));      <span class="hljs-comment">// Using Function.prototype.bind</span>
+$($.proxy(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{ <span class="hljs-comment">/*...*/</span> }, <span class="hljs-keyword">this</span>));
+</code></pre>
+<h4 id="addeventlistenereventtype-listener"><a name="addeventlistenereventtype-listener" class="anchor" href="#addeventlistenereventtype-listener"><span class="header-link"></span></a>addEventListener(eventType, listener)</h4><h4 id="appendtotargetel"><a name="appendtotargetel" class="anchor" href="#appendtotargetel"><span class="header-link"></span></a>appendTo(targetEl)</h4><p>Moves the widget&#39;s root DOM node from the current parent element to a new parent element. For example:</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">this</span>.appendTo(<span class="hljs-built_in">document</span>.body);
+</code></pre>
+<h4 id="destroy"><a name="destroy" class="anchor" href="#destroy"><span class="header-link"></span></a>destroy()</h4><p>Destroys the widget by unsubscribing from all listeners made using the <code>subscribeTo</code> method and then detaching the widget&#39;s root element from the DOM. All nested widgets (discovered by querying the DOM) are also destroyed.</p>
+<p>Destroy takes 2 optional parameters:</p>
+<pre><code class="lang-javascript">widget.destroy({
+    removeNode: <span class="hljs-literal">true</span>, <span class="hljs-comment">//true by default</span>
+    recursive: <span class="hljs-literal">true</span> <span class="hljs-comment">//true by default</span>
+})
+</code></pre>
+<p>Setting <code>removeNode</code> parameter to <code>false</code> will keep the widget on the DOM while still unsubscribing all events from it.
+Setting <code>recursive</code> to <code>false</code> will prevent children widgets from being destroyed.</p>
+<h4 id="detach"><a name="detach" class="anchor" href="#detach"><span class="header-link"></span></a>detach()</h4><p>Detaches the widget&#39;s root element from the DOM by removing the node from its parent node.</p>
+<h4 id="doupdatestatechanges-oldstate"><a name="doupdatestatechanges-oldstate" class="anchor" href="#doupdatestatechanges-oldstate"><span class="header-link"></span></a>doUpdate(stateChanges, oldState)</h4><h4 id="emiteventtype-arg1-arg2-"><a name="emiteventtype-arg1-arg2-" class="anchor" href="#emiteventtype-arg1-arg2-"><span class="header-link"></span></a>emit(eventType, arg1, arg2, ...)</h4><p>Emits an event. This method is inherited from EventEmitter (see <a href="http://nodejs.org/api/events.html#events_class_events_eventemitter">Node.js Events: EventsEmitter</a></p>
+<h4 id="getbodyel"><a name="getbodyel" class="anchor" href="#getbodyel"><span class="header-link"></span></a>getBodyEl()</h4><h4 id="getelwidgetelid"><a name="getelwidgetelid" class="anchor" href="#getelwidgetelid"><span class="header-link"></span></a>getEl(widgetElId)</h4><p>Returns a nested DOM element by prefixing the provided <code>widgetElId</code> with the widget&#39;s ID. For Marko, nested DOM elements should be assigned an ID using the <code>w-id</code> custom attribute.  Returns <code>this.el</code> if no <code>widgetElId</code> is provided.</p>
+<h4 id="getelsid"><a name="getelsid" class="anchor" href="#getelsid"><span class="header-link"></span></a>getEls(id)</h4><p>Returns an Array of <em>repeated</em> <code>DOM</code> elements for the given ID. Repeated DOM elements must have a value for the <code>w-id</code> attribute that ends with <code>[]</code> (e.g., <code>w-id=&quot;myDivs[]&quot;</code>)</p>
+<h4 id="getelidwidgetelid"><a name="getelidwidgetelid" class="anchor" href="#getelidwidgetelid"><span class="header-link"></span></a>getElId(widgetElId)</h4><p>Similar to <code>getEl</code>, but only returns the String ID of the nested DOM element instead of the actual DOM element.</p>
+<h4 id="getwidgetid-index"><a name="getwidgetid-index" class="anchor" href="#getwidgetid-index"><span class="header-link"></span></a>getWidget(id[, index])</h4><p>Returns a reference to a nested <code>Widget</code> for the given ID. If an <code>index</code> is provided and the target widget is a repeated widget (e.g. <code>w-id=&quot;myWidget[]&quot;</code>) then the widget at the given index will be returned.</p>
+<h4 id="getwidgetsid"><a name="getwidgetsid" class="anchor" href="#getwidgetsid"><span class="header-link"></span></a>getWidgets(id)</h4><p>Returns an Array of <em>repeated</em> <code>Widget</code> instances for the given ID. Repeated widgets must have a value for the <code>w-id</code> attribute that ends with <code>[]</code> (e.g., <code>w-id=&quot;myWidget[]&quot;</code>)</p>
+<h4 id="insertaftertargetel"><a name="insertaftertargetel" class="anchor" href="#insertaftertargetel"><span class="header-link"></span></a>insertAfter(targetEl)</h4><h4 id="insertbeforetargetel"><a name="insertbeforetargetel" class="anchor" href="#insertbeforetargetel"><span class="header-link"></span></a>insertBefore(targetEl)</h4><h4 id="isdestroyed"><a name="isdestroyed" class="anchor" href="#isdestroyed"><span class="header-link"></span></a>isDestroyed()</h4><h4 id="isdirty"><a name="isdirty" class="anchor" href="#isdirty"><span class="header-link"></span></a>isDirty()</h4><h4 id="oneventtype-listener"><a name="oneventtype-listener" class="anchor" href="#oneventtype-listener"><span class="header-link"></span></a>on(eventType, listener)</h4><h4 id="prependtotargetel"><a name="prependtotargetel" class="anchor" href="#prependtotargetel"><span class="header-link"></span></a>prependTo(targetEl)</h4><h4 id="readycallback"><a name="readycallback" class="anchor" href="#readycallback"><span class="header-link"></span></a>ready(callback)</h4><h4 id="replacetargetel"><a name="replacetargetel" class="anchor" href="#replacetargetel"><span class="header-link"></span></a>replace(targetEl)</h4><h4 id="replacechildrenoftargetel"><a name="replacechildrenoftargetel" class="anchor" href="#replacechildrenoftargetel"><span class="header-link"></span></a>replaceChildrenOf(targetEl)</h4><h4 id="replacestatenewstate"><a name="replacestatenewstate" class="anchor" href="#replacestatenewstate"><span class="header-link"></span></a>replaceState(newState)</h4><p>Replaces the state with an entirely new state. If any of the state properties changed then the widget&#39;s view will automatically be updated.</p>
+<h4 id="rerenderdata-callback"><a name="rerenderdata-callback" class="anchor" href="#rerenderdata-callback"><span class="header-link"></span></a>rerender(data, callback)</h4><h4 id="setstatename-value"><a name="setstatename-value" class="anchor" href="#setstatename-value"><span class="header-link"></span></a>setState(name, value)</h4><p>Used to change the value of a single state property. For example:</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">this</span>.setState(<span class="hljs-string">'disabled'</span>, <span class="hljs-literal">true</span>);
+</code></pre>
+<h4 id="setstatenewstate"><a name="setstatenewstate" class="anchor" href="#setstatenewstate"><span class="header-link"></span></a>setState(newState)</h4><p>Used to change the value of multiple state properties. For example:</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">this</span>.setState({
+    disabled: <span class="hljs-literal">true</span>,
+    size: <span class="hljs-string">'large'</span>
+});
+</code></pre>
+<h4 id="setstatedirtyname-value"><a name="setstatedirtyname-value" class="anchor" href="#setstatedirtyname-value"><span class="header-link"></span></a>setStateDirty(name, value)</h4><p>Force a state property to be changed even if the value is equal to the old value. This helpful in cases where a change occurs to a complex object that would not be detected by a shallow compare.</p>
+<p>Example:</p>
+<pre><code class="lang-javascript"><span class="hljs-comment">// Add a new item to an array without going through `this.setState(...)`</span>
+<span class="hljs-keyword">this</span>.state.colors.push(<span class="hljs-string">'red'</span>);
+
+<span class="hljs-comment">// Force that particular state property to be considered dirty so</span>
+<span class="hljs-comment">// that it will trigger the widget's view to be updated.</span>
+<span class="hljs-keyword">this</span>.setStateDirty(<span class="hljs-string">'colors'</span>);
+</code></pre>
+<h4 id="setpropsnewprops"><a name="setpropsnewprops" class="anchor" href="#setpropsnewprops"><span class="header-link"></span></a>setProps(newProps)</h4><p>For stateless widgets, setting a widgets properties will result in the widget being re-rendered using the new input. For stateful widgets, setting a widgets properties will result in <code>getInitialState(newProps)</code> being called again to determine the new state and the widget state will be updated to use the new state.</p>
+<h4 id="subscribetotargeteventemitter"><a name="subscribetotargeteventemitter" class="anchor" href="#subscribetotargeteventemitter"><span class="header-link"></span></a>subscribeTo(targetEventEmitter)</h4><h4 id="update"><a name="update" class="anchor" href="#update"><span class="header-link"></span></a>update()</h4><p>Force the DOM to update immediately, rather than following the normal queued update mechanism for rendering.</p>
+<pre><code class="lang-js"><span class="hljs-keyword">this</span>.setState(<span class="hljs-string">'foo'</span>, <span class="hljs-string">'bar'</span>);
+<span class="hljs-keyword">this</span>.update(); <span class="hljs-comment">// Force the DOM to update</span>
+<span class="hljs-keyword">this</span>.setState(<span class="hljs-string">'hello'</span>, <span class="hljs-string">'world'</span>);
+<span class="hljs-keyword">this</span>.update(); <span class="hljs-comment">// Force the DOM to update</span>
+</code></pre>
+<h3 id="properties"><a name="properties" class="anchor" href="#properties"><span class="header-link"></span></a>Properties</h3><h4 id="thisel"><a name="thisel" class="anchor" href="#thisel"><span class="header-link"></span></a>this.el</h4><p>The root <a href="https://developer.mozilla.org/en-US/docs/Web/API/element">HTML element</a> that the widget is bound to.</p>
+<h4 id="thisid"><a name="thisid" class="anchor" href="#thisid"><span class="header-link"></span></a>this.id</h4><p>The String ID of the root <a href="https://developer.mozilla.org/en-US/docs/Web/API/element">HTML element</a> that the widget is bound to.</p>
+<h4 id="thisstate"><a name="thisstate" class="anchor" href="#thisstate"><span class="header-link"></span></a>this.state</h4><p>The current state for the widget. For example:</p>
+<pre><code class="lang-javascript"><span class="hljs-built_in">module</span>.exports = <span class="hljs-built_in">require</span>(<span class="hljs-string">'marko-widgets'</span>).defineComponent({
+    template: <span class="hljs-built_in">require</span>(<span class="hljs-string">'./template.marko'</span>),
+
+    getInitialState: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">input</span>) </span>{
+        <span class="hljs-keyword">return</span> {
+            disabled: <span class="hljs-literal">false</span>
+        }
+    },
+
+    init: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>.state.disabled); <span class="hljs-comment">// Output: false</span>
+        <span class="hljs-keyword">this</span>.setState(<span class="hljs-string">'disabled'</span>, <span class="hljs-literal">true</span>);
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>.state.disabled); <span class="hljs-comment">// Output: true</span>
+    }
+});
+</code></pre>
+</main></div><footer id="footer"><div class="container"><section id="footer-message">© 2015 eBay, Inc</section></div></footer><script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-50307227-1', 'markojs.com');
+  ga('send', 'pageview');
+
+</script></body></html>

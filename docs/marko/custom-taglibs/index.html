@@ -1,0 +1,279 @@
+<!doctype html> <html lang="en"><head><meta http-equiv="Content-Type" content="text/html" charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>Custom Taglibs | Marko</title><link rel="alternate" type="application/rss+xml" title="RSS" href="/rss.xml"><meta name="description"><link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png"><link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png"><link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png"><link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png"><link rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png"><link rel="apple-touch-icon" sizes="120x120" href="/apple-icon-120x120.png"><link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png"><link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png"><link rel="icon" type="image/png" sizes="192x192" href="/android-icon-192x192.png"><link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"><link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png"><link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="manifest" href="/manifest.json"><meta name="msapplication-TileColor" content="#ffffff"><meta name="msapplication-TileImage" content="/ms-icon-144x144.png"><meta name="theme-color" content="#ffffff"><meta name="HandheldFriendly" content="True"><meta name="MobileOptimized" content="320"><meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width"><link rel="stylesheet" type="text/css" href="/static/docs-page-b46f4da7.css">
+<link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css"></head><body><header id="header"><div id="logo"><a href="/"><img src="/images/logo-dark-bg.png" width="80" height="67" alt="Marko"></a></div><div class="container"> <nav role="navigation" id="nav"><ul class="main-navigation"><li><a href="/">Home</a></li><li><a href="/docs/" class="active">Docs</a></li><li><a href="/community/">Community</a></li><li><a href="/blog/">Blog</a></li><li><a href="/github/">Github</a></li><li><form action="https://google.com/search" method="get" class="search-form"><fieldset role="search"><input type="hidden" name="q" value="site:markojs.com"><input type="text" name="q" results="0" placeholder="Search" class="search-input"></fieldset></form></li></ul></nav></div><div style="clear: both"></div></header><div class="container"><aside class="docs-nav"><section><h1>Marko</h1><ul><li><a href="/docs/">Overview</a></li><li><a href="/docs/marko/get-started/">Get Started</a></li><li><a href="/docs/marko/javascript-api/">JavaScript API</a></li><li><a href="/docs/marko/language-guide/">Language Guide</a></li><li><a href="/docs/marko/custom-taglibs/" class="active">Custom Taglibs</a></li><li><a href="/docs/marko/faq/">FAQ</a></li><li><a href="/docs/marko/additional-resources/">Additional Resources</a></li></ul></section><section><h1>Marko Widgets</h1><ul><li><a href="/docs/marko-widgets/">Overview</a></li><li><a href="/docs/marko-widgets/get-started/">Get Started</a></li><li><a href="/docs/marko-widgets/javascript-api/">JavaScript API</a></li><li><a href="/docs/marko-widgets/faq/">FAQ</a></li><li><a href="/docs/marko-widgets/additional-resources/">Additional Resources</a></li></ul></section></aside><main><h1 class="page-title">Custom Taglibs <span class="subtitle">// Marko</span></h1><h2 id="tag-renderer"><a name="tag-renderer" class="anchor" href="#tag-renderer"><span class="header-link"></span></a>Tag Renderer</h2><p>Every tag should be mapped to an object with a <code>render(input, out)</code> function. The render function is just a function that takes two arguments: <code>input</code> and <code>out</code>. The <code>input</code> argument is an arbitrary object that contains the input data for the renderer. The <code>out</code> argument is an <a href="https://github.com/marko-js/async-writer">asynchronous writer</a> that wraps an output stream. Output can be produced using <code>out.write(someString)</code> There is no class hierarchy or tie-ins to Marko when implementing a tag renderer. A simple tag renderer is shown below:</p>
+<pre><code class="lang-javascript">exports.render = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">input, out</span>) </span>{
+    out.write(<span class="hljs-string">'Hello '</span> + input.name + <span class="hljs-string">'!'</span>);
+}
+</code></pre>
+<p>If, and only if, a tag has nested content, then a special <code>renderBody</code> method will be added to the <code>input</code> object. If a renderer wants to render the nested body content then it must call the <code>renderBody</code> method. For example:</p>
+<pre><code class="lang-javascript">exports.render = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">input, out</span>) </span>{
+    out.write(<span class="hljs-string">'BEFORE BODY'</span>);
+    <span class="hljs-keyword">if</span> (input.renderBody) {
+        input.renderBody(out);
+    }
+    out.write(<span class="hljs-string">'AFTER BODY'</span>);
+}
+</code></pre>
+<p>For users of Marko Widgets: Invoking <code>input.renderBody</code> is equivalent to using the <code>w-body</code> attribute for tags (in conjunction with the <code>getInitialBody()</code> lifecycle method; see <a href="https://github.com/marko-js/marko-widgets#getinitialbodyinput-out">getInitialBody()</a>).</p>
+<p>A tag renderer should be mapped to a custom tag by creating a <code>marko-taglib.json</code> as shown in the next few sections.</p>
+<h2 id="marko-taglibjson"><a name="marko-taglibjson" class="anchor" href="#marko-taglibjson"><span class="header-link"></span></a>marko-taglib.json</h2><h3 id="sample-taglib"><a name="sample-taglib" class="anchor" href="#sample-taglib"><span class="header-link"></span></a>Sample Taglib</h3><pre><code class="lang-json">{
+    "<span class="hljs-attribute">tags</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">my-hello</span>": <span class="hljs-value">{
+            "<span class="hljs-attribute">renderer</span>": <span class="hljs-value"><span class="hljs-string">"./hello-renderer"</span></span>,
+            "<span class="hljs-attribute">attributes</span>": <span class="hljs-value">{
+                "<span class="hljs-attribute">name</span>": <span class="hljs-value"><span class="hljs-string">"string"</span>
+            </span>}
+        </span>}
+    </span>}
+</span>}
+</code></pre>
+<p>Marko also supports a short-hand for declaring tags and attributes. The following <code>marko-taglib.json</code> is equivalent to the <code>marko-taglib.json</code> above:</p>
+<pre><code class="lang-json">{
+    "<span class="hljs-attribute">&lt;my-hello&gt;</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">renderer</span>": <span class="hljs-value"><span class="hljs-string">"./hello-renderer"</span></span>,
+        "<span class="hljs-attribute">@name</span>": <span class="hljs-value"><span class="hljs-string">"string"</span>
+    </span>}
+</span>}
+</code></pre>
+<p>The short-hand will be used for the remaining of this documentation.</p>
+<h2 id="defining-tags"><a name="defining-tags" class="anchor" href="#defining-tags"><span class="header-link"></span></a>Defining Tags</h2><p>Tags can be defined by adding <code>&quot;&lt;tag_name&gt;&quot;: &lt;tag_def&gt;</code> properties to your <code>marko-taglib.json</code>:</p>
+<pre><code class="lang-json">{
+    "<span class="hljs-attribute">&lt;my-hello&gt;</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">renderer</span>": <span class="hljs-value"><span class="hljs-string">"./hello-renderer"</span></span>,
+        "<span class="hljs-attribute">@name</span>": <span class="hljs-value"><span class="hljs-string">"string"</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">&lt;my-foo&gt;</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">renderer</span>": <span class="hljs-value"><span class="hljs-string">"./foo-renderer"</span></span>,
+        "<span class="hljs-attribute">@*</span>": <span class="hljs-value"><span class="hljs-string">"string"</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">&lt;my-bar&gt;</span>": <span class="hljs-value"><span class="hljs-string">"./path/to/my-bar/marko-tag.json"</span></span>,
+    "<span class="hljs-attribute">&lt;my-baz&gt;</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">template</span>": <span class="hljs-value"><span class="hljs-string">"./baz-template.marko"</span>
+    </span>}</span>,
+}
+</code></pre>
+<p>Every tag should be associated with a renderer or a template. When a custom tag is used in a template, the renderer (or template) will be invoked at render time to produce the HTML/output. If a <code>String</code> path to a <code>marko-tag.json</code> for a custom tag then the target <code>marko-tag.json</code> is loaded to define the tag.</p>
+<h2 id="defining-attributes"><a name="defining-attributes" class="anchor" href="#defining-attributes"><span class="header-link"></span></a>Defining Attributes</h2><p>If you provide attributes then the Marko compiler will do validation to make sure only the supported attributes are provided. A wildcard attribute (<code>&quot;@*&quot;</code>) allows any attribute to be passed in. Below are sample attribute definitions:</p>
+<p><em>Multiple attributes:</em></p>
+<pre><code class="lang-javascript">{
+    <span class="hljs-string">"@message"</span>: <span class="hljs-string">"string"</span>,     <span class="hljs-comment">// String</span>
+    <span class="hljs-string">"@my-data"</span>: <span class="hljs-string">"expression"</span>, <span class="hljs-comment">// JavaScript expression</span>
+    <span class="hljs-string">"@*"</span>: <span class="hljs-string">"string"</span>            <span class="hljs-comment">// Everything else will be added to a special "*" property</span>
+}
+</code></pre>
+<h2 id="scanning-for-tags"><a name="scanning-for-tags" class="anchor" href="#scanning-for-tags"><span class="header-link"></span></a>Scanning for Tags</h2><p>Marko supports a directory scanner to make it easier to maintain a taglib by introducing a few conventions:</p>
+<ul>
+<li>The name of the tag directory will be the name of the tag</li>
+<li>One tag per directory</li>
+<li>All tag directories should be direct children of a parent directory</li>
+<li>Every tag directory must contain a <code>renderer.js</code> that is used as the tag renderer or, alternatively, a <code>template.marko</code></li>
+<li>Each tag directory may contain a <code>marko-tag.json</code> file or the tag definition can be embedded into <code>renderer.js</code></li>
+</ul>
+<p>With this approach, <code>marko-taglib.json</code> will be much simpler:</p>
+<pre><code class="lang-json">{
+    "<span class="hljs-attribute">tags-dir</span>": <span class="hljs-value"><span class="hljs-string">"./components"</span>
+</span>}
+</code></pre>
+<p>Given the following directory structure:</p>
+<ul>
+<li><strong>components/</strong><ul>
+<li><strong>my-hello/</strong><ul>
+<li>renderer.js</li>
+</ul>
+</li>
+<li><strong>my-foo/</strong><ul>
+<li>template.marko</li>
+</ul>
+</li>
+<li><strong>my-bar/</strong><ul>
+<li>renderer.js</li>
+<li>marko-tag.json</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>marko-taglib.json</li>
+</ul>
+<p>The following three tags will be exported:</p>
+<ul>
+<li><code>&lt;my-hello&gt;</code></li>
+<li><code>&lt;my-foo&gt;</code></li>
+<li><code>&lt;my-bar&gt;</code></li>
+</ul>
+<p>Directory scanning only supports one tag per directory and it will only look at directories one level deep. The tag definition can be embedded into the <code>renderer.js</code> file or it can be put into a separate <code>marko-tag.json</code>. For example:</p>
+<p><em>In <code>renderer.js</code>:</em></p>
+<pre><code class="lang-javascript">exports.tag = {
+    <span class="hljs-string">"@name"</span>: <span class="hljs-string">"string"</span>
+}
+</code></pre>
+<p><em>In <code>marko-tag.json</code>:</em></p>
+<pre><code class="lang-javascript">{
+    <span class="hljs-string">"@name"</span>: <span class="hljs-string">"string"</span>
+}
+</code></pre>
+<p><em>NOTE: It is not necessary to declare the <code>renderer</code> since the scanner will automatically use <code>renderer.js</code> as the renderer.</em></p>
+<p><code>tags-dir</code> also accepts an array if you have taglibs organized in multiple folders.</p>
+<pre><code class="lang-json">{
+    "<span class="hljs-attribute">tags-dir</span>": <span class="hljs-value">[<span class="hljs-string">"./components"</span>, <span class="hljs-string">"./modules"</span>]
+</span>}
+</code></pre>
+<h2 id="nested-tags"><a name="nested-tags" class="anchor" href="#nested-tags"><span class="header-link"></span></a>Nested Tags</h2><p>It is often necessary for tags to have a parent/child or ancestor/descendent relationship. For example:</p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-title">ui-tabs</span> <span class="hljs-attribute">orientation</span>=<span class="hljs-value">"horizontal"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">ui-tabs.tab</span> <span class="hljs-attribute">title</span>=<span class="hljs-value">"Home"</span>&gt;</span>
+        Content for Home
+    <span class="hljs-tag">&lt;/<span class="hljs-title">ui-tabs.tab</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">ui-tabs.tab</span> <span class="hljs-attribute">title</span>=<span class="hljs-value">"Profile"</span>&gt;</span>
+        Content for Profile
+    <span class="hljs-tag">&lt;/<span class="hljs-title">ui-tabs.tab</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">ui-tabs.tab</span> <span class="hljs-attribute">title</span>=<span class="hljs-value">"Messages"</span>&gt;</span>
+        Content for Messages
+    <span class="hljs-tag">&lt;/<span class="hljs-title">ui-tabs.tab</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">ui-tabs</span>&gt;</span>
+</code></pre>
+<p>Nested tags can be declared in the parent tag&#39;s <code>marko-tag.json</code> as shown below:</p>
+<p><strong><em>ui-tabs/marko-tag.json</em></strong></p>
+<pre><code class="lang-json">{
+    "<span class="hljs-attribute">@orientation</span>": <span class="hljs-value"><span class="hljs-string">"string"</span></span>,
+    "<span class="hljs-attribute">@tabs &lt;tab&gt;[]</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">@title</span>": <span class="hljs-value"><span class="hljs-string">"string"</span>
+    </span>}
+</span>}
+</code></pre>
+<p>This allows a <code>tabs</code> to be provided using nested <code>&lt;ui-tabs.tab&gt;</code> tags or the tabs can be provided as a <code>tabs</code> attribute (e.g. <code>&lt;ui-tabs tabs=&quot;[tab1, tab2, tab3]&quot;</code>). The nested <code>&lt;ui-tabs.tab&gt;</code> tags will be made available to the renderer as part of the <code>tabs</code> property for the parent <code>&lt;ui-tabs&gt;</code>. Because of the <code>[]</code> suffix on <code>&lt;tab&gt;[]</code> the tabs property will be of type <code>Array</code> and not a single object. That is, the <code>[]</code> suffix is used to declare that a nested tag can be repeated. The sample renderer that accesses the nested tabs is shown below:</p>
+<p><strong><em>ui-tabs/renderer.js</em></strong></p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> template = <span class="hljs-built_in">require</span>(<span class="hljs-string">'./template.marko'</span>);
+
+exports.renderer = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">input, out</span>) </span>{
+    <span class="hljs-keyword">var</span> tabs = input.tabs;
+
+    <span class="hljs-comment">// Tabs will be in the following form:</span>
+    <span class="hljs-comment">// [</span>
+    <span class="hljs-comment">//     {</span>
+    <span class="hljs-comment">//         title: 'Home',</span>
+    <span class="hljs-comment">//         renderBody: function(out) { ... }</span>
+    <span class="hljs-comment">//     },</span>
+    <span class="hljs-comment">//     {</span>
+    <span class="hljs-comment">//         title: 'Profile',</span>
+    <span class="hljs-comment">//         renderBody: function(out) { ... }</span>
+    <span class="hljs-comment">//     },</span>
+    <span class="hljs-comment">//     {</span>
+    <span class="hljs-comment">//         title: 'Messages',</span>
+    <span class="hljs-comment">//         renderBody: function(out) { ... }</span>
+    <span class="hljs-comment">//     }</span>
+    <span class="hljs-comment">// ]</span>
+    <span class="hljs-built_in">console</span>.log(tabs.length); <span class="hljs-comment">// Output: 3</span>
+
+    template.render({
+        tabs: tabs
+    }, out);
+
+};
+</code></pre>
+<p>Finally, the template to render the <code>&lt;ui-tabs&gt;</code> component will be similar to the following:</p>
+<p><strong><em>ui-tabs/template.marko</em></strong></p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"tabs"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">ul</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"nav nav-tabs"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">li</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"tab"</span> <span class="hljs-attribute">for</span>=<span class="hljs-value">"tab in data.tabs"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"#${tab.title}"</span>&gt;</span>
+                ${tab.title}
+            <span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-title">li</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-title">ul</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"tab-content"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"tab-pane"</span> <span class="hljs-attribute">for</span>=<span class="hljs-value">"tab in data.tabs"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-title">invoke</span> <span class="hljs-attribute">function</span>=<span class="hljs-value">"tab.renderBody(out)"</span>/&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+</code></pre>
+<p>Below is an example of using nested tags that are not repeated:</p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-title">ui-overlay</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">ui-overlay.header</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"my-header"</span>&gt;</span>
+        Header content
+    <span class="hljs-tag">&lt;/<span class="hljs-title">ui-overlay.header</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-title">ui-overlay.body</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"my-body"</span>&gt;</span>
+        Body content
+    <span class="hljs-tag">&lt;/<span class="hljs-title">ui-overlay.body</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-title">ui-overlay.footer</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"my-footer"</span>&gt;</span>
+        Footer content
+    <span class="hljs-tag">&lt;/<span class="hljs-title">ui-overlay.footer</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">ui-overlay</span>&gt;</span>
+</code></pre>
+<p>The <code>marko-tag.json</code> for the <code>&lt;ui-overlay&gt;</code> tag will be similar to the following:</p>
+<p><strong><em>ui-overlay/marko-tag.json</em></strong></p>
+<pre><code class="lang-json">{
+    "<span class="hljs-attribute">@header &lt;header&gt;</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">@class</span>": <span class="hljs-value"><span class="hljs-string">"string"</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">@body &lt;body&gt;</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">@class</span>": <span class="hljs-value"><span class="hljs-string">"string"</span>
+    </span>}</span>,
+    "<span class="hljs-attribute">@footer &lt;footer&gt;</span>": <span class="hljs-value">{
+        "<span class="hljs-attribute">@class</span>": <span class="hljs-value"><span class="hljs-string">"string"</span>
+    </span>}
+</span>}
+</code></pre>
+<p>The renderer for the <code>&lt;ui-overlay&gt;</code> tag will be similar to the following:</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> template = <span class="hljs-built_in">require</span>(<span class="hljs-string">'./template.marko'</span>);
+
+exports.renderer = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">input, out</span>) </span>{
+    <span class="hljs-keyword">var</span> header = input.header;
+    <span class="hljs-keyword">var</span> body = input.body;
+    <span class="hljs-keyword">var</span> footer = input.footer;
+
+    <span class="hljs-comment">// <span class="hljs-doctag">NOTE:</span> header, body and footer will be of the following form:</span>
+    <span class="hljs-comment">//</span>
+    <span class="hljs-comment">// {</span>
+    <span class="hljs-comment">//     'class': 'my-header',</span>
+    <span class="hljs-comment">//     renderBody: function(out) { ... }</span>
+    <span class="hljs-comment">// }</span>
+
+    template.render({
+        header: header,
+        body: body,
+        footer: footer
+    }, out);
+
+};
+</code></pre>
+<p>Finally, the sample template to render the <code>&lt;ui-overlay&gt;</code> tag is shown below:</p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"overlay"</span>&gt;</span>
+    <span class="hljs-comment">&lt;!-- Header --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"overlay-header ${data.header['class']}"</span> <span class="hljs-attribute">if</span>=<span class="hljs-value">"data.header"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">invoke</span> <span class="hljs-attribute">function</span>=<span class="hljs-value">"data.header.renderBody(out)"</span>/&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+
+    <span class="hljs-comment">&lt;!-- Body --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"overlay-body ${data.body['class']}"</span> <span class="hljs-attribute">if</span>=<span class="hljs-value">"data.body"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">invoke</span> <span class="hljs-attribute">function</span>=<span class="hljs-value">"data.body.renderBody(out)"</span>/&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+
+    <span class="hljs-comment">&lt;!-- Footer --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"overlay-footer ${data.footer['class']}"</span> <span class="hljs-attribute">if</span>=<span class="hljs-value">"data.footer"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">invoke</span> <span class="hljs-attribute">function</span>=<span class="hljs-value">"data.footer.renderBody(out)"</span>/&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+</code></pre>
+<h2 id="taglib-discovery"><a name="taglib-discovery" class="anchor" href="#taglib-discovery"><span class="header-link"></span></a>Taglib Discovery</h2><p>Given a template file, the <code>marko</code> module will automatically discover all taglibs by searching relative to the template file. The taglib discoverer will search up and also look into <code>node_modules</code> to discover applicable taglibs.</p>
+<p>As an example, given a template at path <code>/my-project/src/pages/login/template.marko</code>, the search path will be the following:</p>
+<ol>
+<li><code>/my-project/src/pages/login/marko-taglib.json</code></li>
+<li><code>/my-project/src/pages/login/node_modules/*/marko-taglib.json</code></li>
+<li><code>/my-project/src/pages/marko-taglib.json</code></li>
+<li><code>/my-project/src/pages/node_modules/*/marko-taglib.json</code></li>
+<li><code>/my-project/src/marko-taglib.json</code></li>
+<li><code>/my-project/src/node_modules/*/marko-taglib.json</code></li>
+<li><code>/my-project/marko-taglib.json</code></li>
+<li><code>/my-project/node_modules/*/marko-taglib.json</code></li>
+</ol>
+</main></div><footer id="footer"><div class="container"><section id="footer-message">© 2015 eBay, Inc</section></div></footer><script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-50307227-1', 'markojs.com');
+  ga('send', 'pageview');
+
+</script></body></html>
