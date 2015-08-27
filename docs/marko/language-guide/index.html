@@ -1,0 +1,622 @@
+<!doctype html> <html lang="en"><head><meta http-equiv="Content-Type" content="text/html" charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>Language Guide | Marko</title><link rel="alternate" type="application/rss+xml" title="RSS" href="/rss.xml"><meta name="description"><link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png"><link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png"><link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png"><link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png"><link rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png"><link rel="apple-touch-icon" sizes="120x120" href="/apple-icon-120x120.png"><link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png"><link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png"><link rel="icon" type="image/png" sizes="192x192" href="/android-icon-192x192.png"><link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"><link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png"><link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="manifest" href="/manifest.json"><meta name="msapplication-TileColor" content="#ffffff"><meta name="msapplication-TileImage" content="/ms-icon-144x144.png"><meta name="theme-color" content="#ffffff"><meta name="HandheldFriendly" content="True"><meta name="MobileOptimized" content="320"><meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width"><link rel="stylesheet" type="text/css" href="/static/docs-page-b46f4da7.css">
+<link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css"></head><body><header id="header"><div id="logo"><a href="/"><img src="/images/logo-dark-bg.png" width="80" height="67" alt="Marko"></a></div><div class="container"> <nav role="navigation" id="nav"><ul class="main-navigation"><li><a href="/">Home</a></li><li><a href="/docs/" class="active">Docs</a></li><li><a href="/community/">Community</a></li><li><a href="/blog/">Blog</a></li><li><a href="/github/">Github</a></li><li><form action="https://google.com/search" method="get" class="search-form"><fieldset role="search"><input type="hidden" name="q" value="site:markojs.com"><input type="text" name="q" results="0" placeholder="Search" class="search-input"></fieldset></form></li></ul></nav></div><div style="clear: both"></div></header><div class="container"><aside class="docs-nav"><section><h1>Marko</h1><ul><li><a href="/docs/">Overview</a></li><li><a href="/docs/marko/get-started/">Get Started</a></li><li><a href="/docs/marko/javascript-api/">JavaScript API</a></li><li><a href="/docs/marko/language-guide/" class="active">Language Guide</a></li><li><a href="/docs/marko/custom-taglibs/">Custom Taglibs</a></li><li><a href="/docs/marko/faq/">FAQ</a></li><li><a href="/docs/marko/additional-resources/">Additional Resources</a></li></ul></section><section><h1>Marko Widgets</h1><ul><li><a href="/docs/marko-widgets/">Overview</a></li><li><a href="/docs/marko-widgets/get-started/">Get Started</a></li><li><a href="/docs/marko-widgets/javascript-api/">JavaScript API</a></li><li><a href="/docs/marko-widgets/faq/">FAQ</a></li><li><a href="/docs/marko-widgets/additional-resources/">Additional Resources</a></li></ul></section></aside><main><h1 class="page-title">Language Guide <span class="subtitle">// Marko</span></h1><p class="toc"><strong>Table of Contents</strong><ul class="toc-level0"><li><a href="#template-directives-overview">Template Directives Overview</a></li><li><a href="#text-replacement">Text Replacement</a></li><li><a href="#expressions">Expressions</a></li><li><a href="#includes">Includes</a></li><li><a href="#variables">Variables</a></li><li><a href="#conditionals">Conditionals</a><ul class="toc-level1"><li><a href="#ifelse-ifelse">if...else-if...else</a></li><li><a href="#shorthand-conditionals">Shorthand Conditionals</a></li><li><a href="#conditional-attributes">Conditional Attributes</a></li></ul></li><li><a href="#looping">Looping</a><ul class="toc-level1"><li><a href="#for">for</a><ul class="toc-level2"><li><a href="#loop-status-variable">Loop Status Variable</a></li><li><a href="#loop-separator">Loop Separator</a></li><li><a href="#range-looping">Range Looping</a></li><li><a href="#property-looping">Property Looping</a></li><li><a href="#custom-iterator">Custom Iterator</a></li></ul></li></ul></li><li><a href="#macros">Macros</a><ul class="toc-level1"><li><a href="#def">def</a></li><li><a href="#invoke">invoke</a></li></ul></li><li><a href="#structure-manipulation">Structure Manipulation</a><ul class="toc-level1"><li><a href="#attrs">attrs</a></li><li><a href="#body-only-if">body-only-if</a></li></ul></li><li><a href="#comments">Comments</a></li><li><a href="#whitespace">Whitespace</a></li><li><a href="#helpers">Helpers</a></li><li><a href="#global-properties">Global Properties</a></li><li><a href="#custom-tags-and-attributes">Custom Tags and Attributes</a></li><li><a href="#async-taglib">Async Taglib</a></li><li><a href="#layout-taglib">Layout Taglib</a></li></ul></p>
+<h2 id="template-directives-overview"><a name="template-directives-overview" class="anchor" href="#template-directives-overview"><span class="header-link"></span></a>Template Directives Overview</h2><p>Almost all of the Marko templating directives can be used as either an attribute or as an element. For example:</p>
+<p><em>Applying directives using attributes:</em></p>
+<pre><code class="lang-xml"><span class="hljs-comment">&lt;!-- Colors available --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">ul</span> <span class="hljs-attribute">if</span>=<span class="hljs-value">"notEmpty(colors)"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">li</span> <span class="hljs-attribute">for</span>=<span class="hljs-value">"color in colors"</span>&gt;</span>
+        $color
+    <span class="hljs-tag">&lt;/<span class="hljs-title">li</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">ul</span>&gt;</span>
+
+<span class="hljs-comment">&lt;!-- No colors available --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">if</span>=<span class="hljs-value">"empty(colors)"</span>&gt;</span>
+    No colors!
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+</code></pre>
+<p><em>Applying directives using elements:</em></p>
+<pre><code class="lang-xml"><span class="hljs-comment">&lt;!-- Colors available --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">if</span> <span class="hljs-attribute">test</span>=<span class="hljs-value">"notEmpty(colors)"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">ul</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">for</span> <span class="hljs-attribute">each</span>=<span class="hljs-value">"color in colors"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-title">li</span>&gt;</span>
+                $color
+            <span class="hljs-tag">&lt;/<span class="hljs-title">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-title">for</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-title">ul</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">if</span>&gt;</span>
+
+<span class="hljs-comment">&lt;!-- No colors available --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">if</span> <span class="hljs-attribute">test</span>=<span class="hljs-value">"empty(colors)"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">div</span>&gt;</span>
+        No colors!
+    <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">if</span>&gt;</span>
+</code></pre>
+<p>The disadvantage of using elements to control structural logic is that they change the nesting of the elements which can impact readability. For this reason it is often more suitable to apply directives as attributes.</p>
+<h2 id="text-replacement"><a name="text-replacement" class="anchor" href="#text-replacement"><span class="header-link"></span></a>Text Replacement</h2><p>Dynamic text is supported using either <code>$&lt;variable-reference&gt;</code> or <code>${&lt;javascript-expression&gt;}</code>.</p>
+<p>Examples:</p>
+<pre><code class="lang-xml">Hello $data.name!
+Hello ${data.name}!
+Hello ${data.name.toUpperCase()}!
+</code></pre>
+<p>By default, all special HTML characters will be escaped in dynamic text to prevent Cross-site Scripting (XSS) Attacks. To disable HTML escaping, you can use <code>$!</code> as shown in the following sample code:</p>
+<pre><code class="lang-xml">Hello $!{data.name}! <span class="hljs-comment">&lt;!-- Do not escape --&gt;</span>
+</code></pre>
+<p>If necessary, you can escape <code>$</code> using a forward slash to have it be treated as text instead of a placeholder token:</p>
+<pre><code class="lang-xml">Test: \${hello}
+<span class="hljs-comment">&lt;!-- Rendered Output:
+Test: ${hello}
+--&gt;</span>
+</code></pre>
+<h2 id="expressions"><a name="expressions" class="anchor" href="#expressions"><span class="header-link"></span></a>Expressions</h2><p>Wherever expressions are allowed, they are treated as JavaScript expressions and copied out to the compiled template verbatim. However, you can choose to use alternate versions of the following JavaScript operators:</p>
+<table class="markdown-table"><thead><tr>
+<th>JavaScript Operator</th>
+<th>Marko Equivalent</th>
+</tr>
+</thead><tbody><tr>
+<td><code>&amp;&amp;</code></td>
+<td><code>and</code></td>
+</tr>
+<tr>
+<td><code>&#124;&#124;</code></td>
+<td><code>or</code></td>
+</tr>
+<tr>
+<td><code>===</code></td>
+<td><code>eq</code></td>
+</tr>
+<tr>
+<td><code>!==</code></td>
+<td><code>ne</code></td>
+</tr>
+<tr>
+<td><code>&lt;</code></td>
+<td><code>lt</code></td>
+</tr>
+<tr>
+<td><code>&gt;</code></td>
+<td><code>gt</code></td>
+</tr>
+<tr>
+<td><code>&lt;=</code></td>
+<td><code>le</code></td>
+</tr>
+<tr>
+<td><code>&gt;=</code></td>
+<td><code>ge</code></td>
+</tr>
+</tbody></table><p>For example, both of the following are valid and equivalent:</p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">if</span>=<span class="hljs-value">"searchResults.length &gt; 100"</span>&gt;</span>
+    Show More
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+</code></pre>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">if</span>=<span class="hljs-value">"searchResults.length gt 100"</span>&gt;</span>
+    Show More
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+</code></pre>
+<h2 id="includes"><a name="includes" class="anchor" href="#includes"><span class="header-link"></span></a>Includes</h2><p>Marko supports includes/partials. Other Marko files can be included using the <code>&lt;include&gt;</code> tag and a relative path. For example:</p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-title">include</span> <span class="hljs-attribute">template</span>=<span class="hljs-value">"./greeting.marko"</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">"Frank"</span> <span class="hljs-attribute">count</span>=<span class="hljs-value">"30"</span>/&gt;</span>
+</code></pre>
+<p>Alternatively, you can pass the template data using the <code>template-data</code> attribute whose value should be a JavaScript expression that resolves to the template data as shown below:</p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-title">include</span> <span class="hljs-attribute">template</span>=<span class="hljs-value">"./greeting.marko"</span> <span class="hljs-attribute">template-data</span>=<span class="hljs-value">"{ name: 'Frank', count: 30 }"</span>/&gt;</span>
+</code></pre>
+<p>The value of the <code>template</code> attribute can also be a dynamic JavaScript expression that resolves to a loaded template as shown below:</p>
+<p>In your JavaScript controller:</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> myIncludeTarget = <span class="hljs-built_in">require</span>(<span class="hljs-string">'./my-include-target.marko'</span>);
+<span class="hljs-keyword">var</span> anotherIncludeTarget = <span class="hljs-built_in">require</span>(<span class="hljs-string">'./another-include-target.marko'</span>);
+
+
+template.render({
+        myIncludeTarget: myIncludeTarget,
+        anotherIncludeTarget: anotherIncludeTarget
+    },
+    ...);
+</code></pre>
+<p>And then in your template:</p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-title">include</span> <span class="hljs-attribute">template</span>=<span class="hljs-value">"${data.myIncludeTarget}"</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">"Frank"</span> <span class="hljs-attribute">count</span>=<span class="hljs-value">"30"</span>/&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">include</span> <span class="hljs-attribute">template</span>=<span class="hljs-value">"${data.anotherIncludeTarget}"</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">"Frank"</span> <span class="hljs-attribute">count</span>=<span class="hljs-value">"30"</span>/&gt;</span>
+</code></pre>
+<p>You can also choose to load the include target within the calling template as shown below:</p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-title">require</span> <span class="hljs-attribute">module</span>=<span class="hljs-value">"./my-include-target.marko"</span> <span class="hljs-attribute">var</span>=<span class="hljs-value">"myIncludeTarget"</span> /&gt;</span>
+...
+<span class="hljs-tag">&lt;<span class="hljs-title">include</span> <span class="hljs-attribute">template</span>=<span class="hljs-value">"${data.myIncludeTarget}"</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">"Frank"</span> <span class="hljs-attribute">count</span>=<span class="hljs-value">"30"</span>/&gt;</span>
+</code></pre>
+<h2 id="variables"><a name="variables" class="anchor" href="#variables"><span class="header-link"></span></a>Variables</h2><p>Input data passed to a template is made available using a special <code>data</code> variable. It&#39;s possible to declare your own variables as shown in the following sample code:</p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-title">var</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">"name"</span> <span class="hljs-attribute">value</span>=<span class="hljs-value">"data.name.toUpperCase()"</span> /&gt;</span>
+</code></pre>
+<p>To assign a new value to an existing variable the <code>&lt;assign&gt;</code> tag can be used as shown in the following sample code:</p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-title">assign</span> <span class="hljs-attribute">var</span>=<span class="hljs-value">"name"</span> <span class="hljs-attribute">value</span>=<span class="hljs-value">"data.name.toLowerCase()"</span> /&gt;</span>
+</code></pre>
+<p>The <code>&lt;with&gt;</code> directive can be used to create scoped variables as shown in the following sample code:</p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-title">with</span> <span class="hljs-attribute">vars</span>=<span class="hljs-value">"nameUpper=data.name.toUpperCase(); nameLower=data.name.toLowerCase()"</span>&gt;</span>
+    Hello $nameUpper!
+    Hello $nameLower!
+<span class="hljs-tag">&lt;/<span class="hljs-title">with</span>&gt;</span>
+</code></pre>
+<h2 id="conditionals"><a name="conditionals" class="anchor" href="#conditionals"><span class="header-link"></span></a>Conditionals</h2><h3 id="ifelse-ifelse"><a name="ifelse-ifelse" class="anchor" href="#ifelse-ifelse"><span class="header-link"></span></a>if...else-if...else</h3><p>Any element or fragment of HTML can be made conditional using the <code>if</code>, <code>else-if</code> or <code>else</code> directive.</p>
+<p><em>Applied as attributes:</em></p>
+<pre><code class="lang-xml"><span class="hljs-comment">&lt;!--Simple if--&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">if</span>=<span class="hljs-value">"someCondition"</span>&gt;</span>
+    Hello World
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+
+<span class="hljs-comment">&lt;!--Complex if--&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">if</span>=<span class="hljs-value">"test === 'a'"</span>&gt;</span>
+    A
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">else-if</span>=<span class="hljs-value">"test === 'b'"</span>&gt;</span>
+    B
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">else-if</span>=<span class="hljs-value">"test === 'c'"</span>&gt;</span>
+    C
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">else</span>&gt;</span>
+    Something else
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+</code></pre>
+<p><em>Applied as elements:</em></p>
+<pre><code class="lang-xml"><span class="hljs-comment">&lt;!-- Colors available --&gt;</span>
+<span class="hljs-comment">&lt;!--Simple if--&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">if</span> <span class="hljs-attribute">test</span>=<span class="hljs-value">"someCondition"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">div</span>&gt;</span>
+        Hello World
+    <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">if</span>&gt;</span>
+
+<span class="hljs-comment">&lt;!--Complex if--&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">if</span> <span class="hljs-attribute">test</span>=<span class="hljs-value">"test === 'a'"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">div</span>&gt;</span>
+        A
+    <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">if</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">else-if</span> <span class="hljs-attribute">test</span>=<span class="hljs-value">"test === 'b'"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">div</span>&gt;</span>
+        B
+    <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">else-if</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">else-if</span> <span class="hljs-attribute">test</span>=<span class="hljs-value">"test === 'c'"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">div</span>&gt;</span>
+        C
+    <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">else-if</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">else</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">div</span>&gt;</span>
+        Something else
+    <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">else</span>&gt;</span>
+</code></pre>
+<h3 id="shorthand-conditionals"><a name="shorthand-conditionals" class="anchor" href="#shorthand-conditionals"><span class="header-link"></span></a>Shorthand Conditionals</h3><p>Shorthand conditionals allow for conditional values inside attributes or wherever expressions are allowed. Shorthand conditionals are of the following form:
+<code>{?&lt;expression&gt;;&lt;true-template&gt;[;&lt;false-template&gt;]}</code></p>
+<p>For example:</p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"{?active;tab-active}"</span>&gt;</span>Hello<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+</code></pre>
+<p>With a value of <code>true</code> for <code>active</code>, the output would be the following:</p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"tab-active"</span>&gt;</span>Hello<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+</code></pre>
+<p>With a value of <code>false</code> for <code>active</code>, the output would be the following:</p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-title">div</span>&gt;</span>Hello<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+</code></pre>
+<p><em>NOTE: If the expression inside an attribute evaluates to <code>null</code> or an empty string then the attribute is not included in the output.</em></p>
+<p>As shown in the previous example, the &quot;else&quot; block for shorthand conditionals is optional. The usage of an else block is shown below:</p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"{?active;tab-active;tab-inactive}"</span>&gt;</span>Hello<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+</code></pre>
+<p>With a value of <code>false</code> for <code>active</code>, the output would be the following:</p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"tab-inactive"</span>&gt;</span>Hello<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+</code></pre>
+<h3 id="conditional-attributes"><a name="conditional-attributes" class="anchor" href="#conditional-attributes"><span class="header-link"></span></a>Conditional Attributes</h3><p>Marko supports conditional attributes when the value of an attribute is an expression. Marko also supports <a href="https://html.spec.whatwg.org/#boolean-attributes">HTML <code>boolean</code> attributes</a> (e.g., <code>&lt;input type=&quot;checkbox&quot; checked&gt;</code>)  If an attribute value resolves to <code>null</code>, <code>undefined</code>, <code>false</code>  or an empty string then the attribute will not be rendered. If an attribute value resolves to <code>true</code> then only the attribute name will rendered.</p>
+<p>For example, given the following data:</p>
+<pre><code class="lang-javascript">{
+    title: <span class="hljs-string">''</span>,
+    active: <span class="hljs-literal">true</span>,
+    checked: <span class="hljs-literal">false</span>,
+    disabled: <span class="hljs-literal">true</span>
+}
+</code></pre>
+<p>And the following template:</p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-title">img</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">"foo.png"</span> <span class="hljs-attribute">alt</span>=<span class="hljs-value">"${data.title}"</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"{?data.active;tab-active}"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-title">input</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"checkbox"</span>
+    <span class="hljs-attribute">checked</span>=<span class="hljs-value">"${data.checked}"</span>
+    <span class="hljs-attribute">disabled</span>=<span class="hljs-value">"${data.disabled}"</span>&gt;</span>
+</code></pre>
+<p>The output HTML will be the following:</p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-title">img</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">"foo.png"</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-title">div</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-title">input</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"checkbox"</span> <span class="hljs-attribute">disabled</span>&gt;</span>
+</code></pre>
+<h2 id="looping"><a name="looping" class="anchor" href="#looping"><span class="header-link"></span></a>Looping</h2><h3 id="for"><a name="for" class="anchor" href="#for"><span class="header-link"></span></a>for</h3><p>Any element can be repeated for every item in an array using the <code>for</code> directive. The directive can be applied as an element or as an attribute.</p>
+<p><em>Applied as an attribute:</em></p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-title">ul</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">li</span> <span class="hljs-attribute">for</span>=<span class="hljs-value">"item in items"</span>&gt;</span>${item}<span class="hljs-tag">&lt;/<span class="hljs-title">li</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">ul</span>&gt;</span>
+</code></pre>
+<p><em>Applied as an element:</em></p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-title">ul</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">for</span> <span class="hljs-attribute">each</span>=<span class="hljs-value">"item in items"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">li</span>&gt;</span>${item}<span class="hljs-tag">&lt;/<span class="hljs-title">li</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-title">for</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">ul</span>&gt;</span>
+</code></pre>
+<p>Given the following value for items:</p>
+<pre><code class="lang-javascript">[<span class="hljs-string">"red"</span>, <span class="hljs-string">"green"</span>, <span class="hljs-string">"blue"</span>]
+</code></pre>
+<p>The output would be the following:</p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-title">ul</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">li</span>&gt;</span>red<span class="hljs-tag">&lt;/<span class="hljs-title">li</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">li</span>&gt;</span>green<span class="hljs-tag">&lt;/<span class="hljs-title">li</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">li</span>&gt;</span>blue<span class="hljs-tag">&lt;/<span class="hljs-title">li</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">ul</span>&gt;</span>
+</code></pre>
+<h4 id="loop-status-variable"><a name="loop-status-variable" class="anchor" href="#loop-status-variable"><span class="header-link"></span></a>Loop Status Variable</h4><p>The <code>for</code> directive also supports a loop status variable in case you need to know the current loop index. For example:</p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-title">ul</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">li</span> <span class="hljs-attribute">for</span>=<span class="hljs-value">"color in colors; status-var=loop"</span>&gt;</span>
+        $color
+        ${loop.getIndex()+1}) of ${loop.getLength()}
+        <span class="hljs-tag">&lt;<span class="hljs-title">if</span> <span class="hljs-attribute">test</span>=<span class="hljs-value">"loop.isFirst()"</span>&gt;</span> - FIRST<span class="hljs-tag">&lt;/<span class="hljs-title">if</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">if</span> <span class="hljs-attribute">test</span>=<span class="hljs-value">"loop.isLast()"</span>&gt;</span> - LAST<span class="hljs-tag">&lt;/<span class="hljs-title">if</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-title">li</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">ul</span>&gt;</span>
+</code></pre>
+<h4 id="loop-separator"><a name="loop-separator" class="anchor" href="#loop-separator"><span class="header-link"></span></a>Loop Separator</h4><pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-title">for</span> <span class="hljs-attribute">each</span>=<span class="hljs-value">"color in colors"</span> <span class="hljs-attribute">separator</span>=<span class="hljs-value">", "</span>&gt;</span>$color<span class="hljs-tag">&lt;/<span class="hljs-title">for</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-title">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">span</span> <span class="hljs-attribute">for</span>=<span class="hljs-value">"color in colors; separator=', '"</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">"color: $color"</span>&gt;</span>$color<span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+</code></pre>
+<h4 id="range-looping"><a name="range-looping" class="anchor" href="#range-looping"><span class="header-link"></span></a>Range Looping</h4><p>A range can be provided in the following format; <code>&lt;var-name&gt; from &lt;from&gt; to &lt;to&gt;[ step &lt;step&gt;]</code>.</p>
+<p>The <code>from</code>, <code>to</code> and <code>step</code> values must be numerical expressions. If not specified, step defaults to 1.</p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-title">ul</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">li</span> <span class="hljs-attribute">for</span>=<span class="hljs-value">"i from 0 to 10"</span>&gt;</span>
+        $i
+    <span class="hljs-tag">&lt;/<span class="hljs-title">li</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">ul</span>&gt;</span>
+</code></pre>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-title">ul</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">li</span> <span class="hljs-attribute">for</span>=<span class="hljs-value">"i from 0 to 10 step 2"</span>&gt;</span>
+        $i
+    <span class="hljs-tag">&lt;/<span class="hljs-title">li</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">ul</span>&gt;</span>
+</code></pre>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-title">ul</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">li</span> <span class="hljs-attribute">for</span>=<span class="hljs-value">"i from 0 to myArray.length-1"</span>&gt;</span>
+        ${myArray[i]}
+    <span class="hljs-tag">&lt;/<span class="hljs-title">li</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">ul</span>&gt;</span>
+</code></pre>
+<h4 id="property-looping"><a name="property-looping" class="anchor" href="#property-looping"><span class="header-link"></span></a>Property Looping</h4><pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-title">ul</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">li</span> <span class="hljs-attribute">for</span>=<span class="hljs-value">"(name,value) in settings"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">b</span>&gt;</span>$name<span class="hljs-tag">&lt;/<span class="hljs-title">b</span>&gt;</span>:
+        $value
+    <span class="hljs-tag">&lt;/<span class="hljs-title">li</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">ul</span>&gt;</span>
+</code></pre>
+<h4 id="custom-iterator"><a name="custom-iterator" class="anchor" href="#custom-iterator"><span class="header-link"></span></a>Custom Iterator</h4><p>A custom iterator function can be passed as part of the view model to the template to control looping over data.</p>
+<p>A sample custom iterator function that loops over an array in reverse is shown below:</p>
+<pre><code class="lang-javascript">{
+    reverseIterator: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">arrayList, callback</span>) </span>{
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> i=arrayList.length-<span class="hljs-number">1</span>; i&gt;=<span class="hljs-number">0</span>; i--){
+            callback(arrayList[i]);
+        }
+    }
+}
+</code></pre>
+<p>The custom iterator can then be used in a template as shown below:</p>
+<p><em>Applied as part of a <code>for</code> attribute:</em></p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">for</span>=<span class="hljs-value">"item in ['a', 'b', 'c']; iterator=data.reverseIterator"</span>&gt;</span>
+    $item
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-comment">&lt;!--
+Output:
+&lt;div&gt;c&lt;/div&gt;&lt;div&gt;b&lt;/div&gt;&lt;div&gt;a&lt;/div&gt;
+--&gt;</span>
+</code></pre>
+<p><em>Applied as part of a <code>&lt;for&gt;</code> element:</em></p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-title">for</span> <span class="hljs-attribute">each</span>=<span class="hljs-value">"item in ['a', 'b', 'c']"</span> <span class="hljs-attribute">iterator</span>=<span class="hljs-value">"data.reverseIterator"</span>&gt;</span>
+    $item
+<span class="hljs-tag">&lt;/<span class="hljs-title">for</span>&gt;</span>
+<span class="hljs-comment">&lt;!--
+Output:
+cba
+--&gt;</span>
+</code></pre>
+<p>Custom iterators also support providing a custom status object for each loop iteration:</p>
+<pre><code class="lang-javascript">{
+    reverseIterator: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">arrayList, callback</span>)</span>{
+        <span class="hljs-keyword">var</span> statusVar = {first: <span class="hljs-number">0</span>, last: arrayList.length-<span class="hljs-number">1</span>};
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> i=arrayList.length-<span class="hljs-number">1</span>; i&gt;=<span class="hljs-number">0</span>; i--){
+            statusVar.index = i;
+            callback(arrayList[i], statusVar);
+        }
+    }
+}
+</code></pre>
+<p><em>Applied as part of a <code>for</code> attribute:</em></p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">for</span>=<span class="hljs-value">"item in ['a', 'b', 'c']; iterator=data.reverseIterator; status-var=status"</span>&gt;</span>
+    ${status.index}$item
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-comment">&lt;!--
+Output:
+&lt;div&gt;2c&lt;/div&gt;&lt;div&gt;1b&lt;/div&gt;&lt;div&gt;0a&lt;/div&gt;
+--&gt;</span>
+</code></pre>
+<p><em>Applied as part of a <code>&lt;for&gt;</code> element:</em></p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-title">for</span> <span class="hljs-attribute">each</span>=<span class="hljs-value">"item in ['a', 'b', 'c']"</span> <span class="hljs-attribute">iterator</span>=<span class="hljs-value">"data.reverseIterator"</span> <span class="hljs-attribute">status-var</span>=<span class="hljs-value">"status"</span>&gt;</span>
+    ${status.index}$item
+<span class="hljs-tag">&lt;/<span class="hljs-title">for</span>&gt;</span>
+<span class="hljs-comment">&lt;!--
+Output:
+2c1b0a
+--&gt;</span>
+</code></pre>
+<h2 id="macros"><a name="macros" class="anchor" href="#macros"><span class="header-link"></span></a>Macros</h2><p>Parameterized macros allow for reusable fragments within an HTML template. A macro can be defined using the <code>&lt;def&gt;</code> directive.</p>
+<h3 id="def"><a name="def" class="anchor" href="#def"><span class="header-link"></span></a>def</h3><p>The <code>&lt;def&gt;</code> directive can be used to define a reusable function within a template.</p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-title">def</span> <span class="hljs-attribute">function</span>=<span class="hljs-value">"greeting(name, count)"</span>&gt;</span>
+    Hello $name! You have $count new messages.
+<span class="hljs-tag">&lt;/<span class="hljs-title">def</span>&gt;</span>
+</code></pre>
+<p>The above macro can then be invoked as part of any expression. Alternatively, the <a href="#invoke"><code>&lt;invoke&gt;</code></a> directive can be used invoke a macro function using named attributes. The following sample template shows how to use macro functions inside expressions:</p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-title">def</span> <span class="hljs-attribute">function</span>=<span class="hljs-value">"greeting(name, count)"</span>&gt;</span>
+    Hello $name! You have $count new messages.
+<span class="hljs-tag">&lt;/<span class="hljs-title">def</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>
+    ${greeting("John", 10)}
+<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>
+    ${greeting("Frank", 20)}
+<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
+</code></pre>
+<h3 id="invoke"><a name="invoke" class="anchor" href="#invoke"><span class="header-link"></span></a>invoke</h3><p>The <code>&lt;invoke&gt;</code> directive can be used to invoke a function defined using the <code>&lt;def&gt;</code> directive or a function that is part of the input data to a template. The <code>&lt;invoke&gt;</code> directive allows arguments to be passed using element attributes, but that format is only supported for functions that were previously defined using the <code>&lt;def&gt;</code> directive.</p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-title">def</span> <span class="hljs-attribute">function</span>=<span class="hljs-value">"greeting(name, count)"</span>&gt;</span>
+    Hello ${name}! You have ${count} new messages.
+<span class="hljs-tag">&lt;/<span class="hljs-title">def</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-title">invoke</span> <span class="hljs-attribute">function</span>=<span class="hljs-value">"greeting"</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">"John"</span> <span class="hljs-attribute">count</span>=<span class="hljs-value">"${10}"</span>/&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">invoke</span> <span class="hljs-attribute">function</span>=<span class="hljs-value">"greeting('Frank', 20)"</span>/&gt;</span>
+</code></pre>
+<p>The output for the above template would be the following:</p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>
+    Hello John! You have 10 new messages.
+<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>
+    Hello Frank! You have 20 new messages.
+<span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
+</code></pre>
+<p><em>NOTE:</em> By default, the arguments will be of type &quot;string&quot; when using <code>&lt;invoke&gt;.</code> However, argument attributes support JavaScript expressions which allow for other types of arguments. Example:</p>
+<pre><code class="lang-xml">count="10" <span class="hljs-comment">&lt;!-- string argument --&gt;</span>
+count="${10}"  <span class="hljs-comment">&lt;!-- number argument --&gt;</span>
+</code></pre>
+<h2 id="structure-manipulation"><a name="structure-manipulation" class="anchor" href="#structure-manipulation"><span class="header-link"></span></a>Structure Manipulation</h2><h3 id="attrs"><a name="attrs" class="anchor" href="#attrs"><span class="header-link"></span></a>attrs</h3><p>The <code>attrs</code> attribute allows attributes to be dynamically added to an element at runtime. The value of the attrs attribute should be an expression that resolves to an object with properties that correspond to the dynamic attributes. For example:</p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">attrs</span>=<span class="hljs-value">"myAttrs"</span>&gt;</span>
+    Hello World!
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+</code></pre>
+<p>Given the following value for the <code>myAttrs</code> variable:</p>
+<pre><code class="lang-javascript">{style: <span class="hljs-string">"background-color: #FF0000;"</span>, <span class="hljs-string">"class"</span>: <span class="hljs-string">"my-div"</span>}
+</code></pre>
+<p>The output would then be the following:</p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">"background-color: #FF0000;"</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"my-div"</span>&gt;</span>
+    Hello World!
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+</code></pre>
+<h3 id="body-only-if"><a name="body-only-if" class="anchor" href="#body-only-if"><span class="header-link"></span></a>body-only-if</h3><p>If you find that you have a wrapper element that is conditional, but whose body should always be rendered then you can use the <code>body-only-if</code> attribute to handle this use case. For example, to only render a wrapping <code>&lt;a&gt;</code> tag if there is a valid URL then you could do the following:</p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"${data.linkUrl}"</span> <span class="hljs-attribute">body-only-if</span>=<span class="hljs-value">"!data.linkUrl"</span>&gt;</span>
+    Some body content
+<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>
+</code></pre>
+<p>Given a value of <code>&quot;http://localhost/&quot;</code> for the <code>data.linkUrl</code> variable: , the output would be the following:</p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-title">a</span> <span class="hljs-attribute">href</span>=<span class="hljs-value">"http://localhost/"</span>&gt;</span>
+    Some body content
+<span class="hljs-tag">&lt;/<span class="hljs-title">a</span>&gt;</span>
+</code></pre>
+<p>Given a value of <code>undefined</code> for the <code>data.linkUrl</code> variable: , the output would be the following:</p>
+<pre><code class="lang-xml">Some body content
+</code></pre>
+<h2 id="comments"><a name="comments" class="anchor" href="#comments"><span class="header-link"></span></a>Comments</h2><p>Standard HTML comments can be used to add comments to your template. The HTML comments will not show up in the rendered HTML.</p>
+<p>Example comments:</p>
+<pre><code class="lang-xml"><span class="hljs-comment">&lt;!-- This is a comment that will not be rendered --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">h1</span>&gt;</span>Hello<span class="hljs-tag">&lt;/<span class="hljs-title">h1</span>&gt;</span>
+</code></pre>
+<p>If you would like for your HTML comment to show up in the final output then you can use the custom <code>html-comment</code> tag:</p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-title">html-comment</span>&gt;</span>This is a comment that *will* be rendered<span class="hljs-tag">&lt;/<span class="hljs-title">html-comment</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">h1</span>&gt;</span>Hello<span class="hljs-tag">&lt;/<span class="hljs-title">h1</span>&gt;</span>
+</code></pre>
+<p>Output:</p>
+<pre><code class="lang-xml"><span class="hljs-comment">&lt;!--This is a comment that *will* be rendered--&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">h1</span>&gt;</span>Hello<span class="hljs-tag">&lt;/<span class="hljs-title">h1</span>&gt;</span>
+</code></pre>
+<h2 id="whitespace"><a name="whitespace" class="anchor" href="#whitespace"><span class="header-link"></span></a>Whitespace</h2><p>The Marko compiler will remove unnecessary whitespace based on some builtin rules, by default. These rules are partially based on the rules that browser&#39;s use to normalize whitespace and partially based on the goal of allowing nicely indented markup with minified output. These rules are as follows:</p>
+<ul>
+<li>For text before the first child element: <code>text.replace(/^\n\s*/g, &#39;&#39;)</code></li>
+<li>For text after the last child element: <code>text.replace(/\n\s*$/g, &#39;&#39;)</code></li>
+<li>For text between child elements: <code>text.replace(/^\n\s*$/g, &#39;&#39;)</code></li>
+<li>Any contiguous sequence of whitespace characters is collapsed into a single space character</li>
+</ul>
+<p>In addition, whitespace within the following tags is preserved by default:</p>
+<ul>
+<li><code>&lt;pre&gt;</code></li>
+<li><code>&lt;textarea&gt;</code></li>
+<li><code>&lt;script&gt;</code></li>
+</ul>
+<p>Example template:</p>
+<pre><code class="lang-xml">&lt;div&gt;
+    &lt;a href="/home"&gt;
+        Home
+    &lt;/a&gt;
+    &lt;a href="/Profile"&gt;
+        My   Profile
+    &lt;/a&gt;
+    &lt;textarea&gt;
+Hello
+World&lt;/textarea
+&lt;/div&gt;
+</code></pre>
+<p>Example output:</p>
+<pre><code class="lang-xml">&lt;div&gt;&lt;a href="/home"&gt;Home&lt;/a&gt;&lt;a href="/Profile"&gt;My Profile&lt;/a&gt;&lt;textarea&gt;
+Hello
+World&lt;/textarea&lt;/div&gt;
+</code></pre>
+<p>The following options are available to control whitespace removal:</p>
+<p><strong>Option 1)</strong> Disable whitespace removal using the <code>compiler-options</code> tag:</p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-title">compiler-options</span> <span class="hljs-attribute">whitespace</span>=<span class="hljs-value">"preserve"</span> /&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">img</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">"foo.jpg"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">img</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">"foo.jpg"</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+</code></pre>
+<p><strong>Option 2)</strong> Disable whitespace removal using the <code>c-whitespace</code> attribute:</p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">c-whitespace</span>=<span class="hljs-value">"preserve"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">img</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">"foo.jpg"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">img</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">"foo.jpg"</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+</code></pre>
+<p><strong>Option 3)</strong> Disable <em>all</em> whitespace removal by changing a compiler option</p>
+<pre><code class="lang-javascript"><span class="hljs-built_in">require</span>(<span class="hljs-string">'marko/compiler'</span>).defaultOptions.preserveWhitespace = <span class="hljs-literal">true</span>;
+</code></pre>
+<p><strong>Option 4)</strong> Control whitespace removal for specific tags</p>
+<pre><code class="lang-javascript"><span class="hljs-built_in">require</span>(<span class="hljs-string">'marko/compiler'</span>).defaultOptions.preserveWhitespace = {
+    <span class="hljs-string">'pre'</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-string">'textarea'</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-string">'script'</span>: <span class="hljs-literal">true</span>
+};
+</code></pre>
+<p><strong>Option 5)</strong> Configured a custom tag to preserve whitespace</p>
+<p>Adding the <code>&quot;preserve-whitespace&quot;: true</code> property to a tag definition will result in the Marko compiler preserving whitespace wherever that tag is encountered in a template.</p>
+<h2 id="helpers"><a name="helpers" class="anchor" href="#helpers"><span class="header-link"></span></a>Helpers</h2><p>Since Marko template files compile into CommonJS modules, any Node.js module can be &quot;imported&quot; into a template for use as a helper module. For example, given the following helper module:</p>
+<p><em>src/util.js</em>:</p>
+<pre><code class="lang-javascript">exports.reverse = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">str</span>) </span>{
+    <span class="hljs-keyword">var</span> out = <span class="hljs-string">""</span>;
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i=str.length-<span class="hljs-number">1</span>; i&gt;=<span class="hljs-number">0</span>; i--) {
+        out += str.charAt(i);
+    }
+    <span class="hljs-keyword">return</span> out;
+};
+</code></pre>
+<p>The above module can then be imported into a template as shown in the following sample template:</p>
+<p><em>src/template.marko</em>:</p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-title">require</span> <span class="hljs-attribute">module</span>=<span class="hljs-value">"./util"</span> <span class="hljs-attribute">var</span>=<span class="hljs-value">"util"</span> /&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-title">div</span>&gt;</span>${util.reverse('reverse test')}<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+</code></pre>
+<p>It&#39;s also possible to pass helper functions to a template as part of the view model:</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> template = <span class="hljs-built_in">require</span>(<span class="hljs-string">'./template.marko'</span>);
+
+template.render({
+        reverse: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">str</span>) </span>{
+            <span class="hljs-keyword">var</span> out = <span class="hljs-string">""</span>;
+            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i=str.length-<span class="hljs-number">1</span>; i&gt;=<span class="hljs-number">0</span>; i--) {
+                out += str.charAt(i);
+            }
+            <span class="hljs-keyword">return</span> out;
+        }
+    },
+    <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err, html</span>) </span>{ ... });
+</code></pre>
+<p>Usage inside template:</p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-title">div</span>&gt;</span>${data.reverse('reverse test')}<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+</code></pre>
+<p>Aside from custom helpers that can be built per-project, Marko has some built-in helpers with support for common tasks.</p>
+<p><strong>empty()/notEmpty()</strong></p>
+<p>To deal with &quot;empty&quot; data, Marko provides the empty() and notEmpty() helpers. Both helpers can be used to check for empty objects (objects, that are set to null), arrays of length zero or empty strings; empty() returns true for these cases exclusively. Therefore, not all &quot;falsy&quot; JavaScript values are reported as &quot;empty&quot; - e.g.: a boolean value that is set to &quot;false&quot; is not empty, hence notEmpty() would return &quot;true&quot;. As their name already suggests, both helpers are contrary to each other.</p>
+<h2 id="global-properties"><a name="global-properties" class="anchor" href="#global-properties"><span class="header-link"></span></a>Global Properties</h2><p>The <code>$global</code> property is used to add data that is available to all templates encountered during rendering by having the data hang off the wrapped writer.</p>
+<pre><code class="lang-javascript">template.render({
+    $global: {
+        name: <span class="hljs-string">'Frank'</span>
+    }
+}, res);
+</code></pre>
+<p>Given the following template:</p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-title">div</span>&gt;</span>
+    Hello ${out.global.name}!
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+</code></pre>
+<p>The output would be the following:</p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-title">div</span>&gt;</span>
+    Hello Frank
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+</code></pre>
+<h2 id="custom-tags-and-attributes"><a name="custom-tags-and-attributes" class="anchor" href="#custom-tags-and-attributes"><span class="header-link"></span></a>Custom Tags and Attributes</h2><p>Marko supports extending the language with custom tags and attributes. A custom tag or a custom attribute <strong>must have at least one dash</strong> to indicate that is not part of the standard HTML grammar.</p>
+<p>Below illustrates how to use a simple custom tag:</p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-title">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">my-hello</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">"World"</span>/&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+</code></pre>
+<p>The output of the above template might be the following:</p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-title">div</span>&gt;</span>
+    Hello World!
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+</code></pre>
+<p>For information on how to use and create taglibs, please see the <a href="#custom-taglibs">Custom Taglibs</a> section below.</p>
+<h2 id="async-taglib"><a name="async-taglib" class="anchor" href="#async-taglib"><span class="header-link"></span></a>Async Taglib</h2><p>The async taglib allows portions of your template to be rendered asynchronously. An asynchronous fragment can be bound to a function that accepts an &quot;args&quot; objects and callback argument. When the data provider function completes and invokes the callback with the resulting data, the body of the async fragment is then rendered with the asynchronous data assigned to the specified variable. As an additional feature, asynchronous fragments allow parts of your page to render out-of-order while still providing the final HTML in the correct order allowing to have very reactive websites with almost instant visual feedback. Features like out-of-order rendering, that are based on client-reordering, require the use of JavaScript. Websites that have to render completely without JavaScript should avoid using this additional feature (they can still use asynchronous fragments though).</p>
+<p>Example:</p>
+<pre><code class="lang-javascript">template.render({
+        userProfileDataProvider: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">arg, callback</span>) </span>{
+            <span class="hljs-keyword">var</span> userId = arg.userId;
+            userProfileService.getUserProfile(userId, callback);
+        }
+    }, ...);
+</code></pre>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-title">async-fragment</span> <span class="hljs-attribute">data-provider</span>=<span class="hljs-value">"data.userProfileDataProvider"</span>
+    <span class="hljs-attribute">var</span>=<span class="hljs-value">"userProfile"</span>
+    <span class="hljs-attribute">arg-userId</span>=<span class="hljs-value">"${data.userId}"</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-title">ul</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">li</span>&gt;</span>
+            First name: ${userProfile.firstName}
+        <span class="hljs-tag">&lt;/<span class="hljs-title">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">li</span>&gt;</span>
+            Last name: ${userProfile.lastName}
+        <span class="hljs-tag">&lt;/<span class="hljs-title">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">li</span>&gt;</span>
+            Email address: ${userProfile.email}
+        <span class="hljs-tag">&lt;/<span class="hljs-title">li</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-title">ul</span>&gt;</span>
+
+<span class="hljs-tag">&lt;/<span class="hljs-title">async-fragment</span>&gt;</span>
+</code></pre>
+<p>For more details, please see <a href="https://github.com/marko-js/marko-async">https://github.com/marko-js/marko-async</a>.</p>
+<h2 id="layout-taglib"><a name="layout-taglib" class="anchor" href="#layout-taglib"><span class="header-link"></span></a>Layout Taglib</h2><p>Marko provides a <code>layout</code> taglib to support separating out layout from content. The usage of of the <code>layout</code> taglib is shown in the sample code below:</p>
+<p><em>default-layout.marko:</em></p>
+<pre><code class="lang-xml"><span class="hljs-doctype">&lt;!doctype html&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">html</span> <span class="hljs-attribute">lang</span>=<span class="hljs-value">"en"</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">meta</span> <span class="hljs-attribute">charset</span>=<span class="hljs-value">"UTF-8"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">title</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-title">layout-placeholder</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">"title"</span>/&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">title</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">head</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">h1</span> <span class="hljs-attribute">if</span>=<span class="hljs-value">"data.showHeader !== false"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">layout-placeholder</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">"title"</span>/&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-title">h1</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">layout-placeholder</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">"body"</span>/&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">layout-placeholder</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">"footer"</span>&gt;</span>
+            Default Footer
+        <span class="hljs-tag">&lt;/<span class="hljs-title">layout-placeholder</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">html</span>&gt;</span>
+</code></pre>
+<p><em>Usage of <code>default-layout.marko</code>:</em></p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-title">layout-use</span> <span class="hljs-attribute">template</span>=<span class="hljs-value">"./default-layout.marko"</span> <span class="hljs-attribute">show-header</span>=<span class="hljs-value">"$true"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">layout-put</span> <span class="hljs-attribute">into</span>=<span class="hljs-value">"title"</span>&gt;</span>My Page<span class="hljs-tag">&lt;/<span class="hljs-title">layout-put</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">layout-put</span> <span class="hljs-attribute">into</span>=<span class="hljs-value">"body"</span>&gt;</span>BODY CONTENT<span class="hljs-tag">&lt;/<span class="hljs-title">layout-put</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">layout-use</span>&gt;</span>
+</code></pre>
+<p>For more details, please see <a href="https://github.com/marko-js/marko-layout">https://github.com/marko-js/marko-layout</a>.</p>
+</main></div><footer id="footer"><div class="container"><section id="footer-message">© 2015 eBay, Inc</section></div></footer><script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-50307227-1', 'markojs.com');
+  ga('send', 'pageview');
+
+</script></body></html>

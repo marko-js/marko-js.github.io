@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <title>Marko</title>
+    <link>http://markojs.com/</link>
+    <updated>2015-08-27T16:57:32Z</updated>
+    <author>
+        <uri>function link() { [native code] }</uri>
+    </author>
+    <link rel="alternate" href="http://markojs.com/"/>
+    <rights>© 2015 eBay, Inc</rights>
+    <generator>Feed for Node.js</generator>
+    <entry>
+        <title type="html"><![CDATA[Introduction]]></title>
+        <id>http://markojs.com/intro/</id>
+        <link href="http://markojs.com/intro/">
+        </link>
+        <updated>2015-08-26T06:00:00Z</updated>
+        <summary type="html"><![CDATA[<p>First post</p>
+<p><a href="http://markojs.com/intro/">Continue Reading on http://markojs.com/ &raquo;</a></p>]]></summary>
+        <author>
+            <name>Patrick Steele-Idem</name>
+            <email>pnidem@gmail.com</email>
+        </author>
+    </entry>
+</feed>

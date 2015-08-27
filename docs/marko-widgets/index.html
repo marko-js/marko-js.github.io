@@ -1,0 +1,344 @@
+<!doctype html> <html lang="en"><head><meta http-equiv="Content-Type" content="text/html" charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title>Overview | Marko Widgets</title><link rel="alternate" type="application/rss+xml" title="RSS" href="/rss.xml"><meta name="description"><link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png"><link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png"><link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png"><link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png"><link rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png"><link rel="apple-touch-icon" sizes="120x120" href="/apple-icon-120x120.png"><link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png"><link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png"><link rel="icon" type="image/png" sizes="192x192" href="/android-icon-192x192.png"><link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"><link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png"><link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="manifest" href="/manifest.json"><meta name="msapplication-TileColor" content="#ffffff"><meta name="msapplication-TileImage" content="/ms-icon-144x144.png"><meta name="theme-color" content="#ffffff"><meta name="HandheldFriendly" content="True"><meta name="MobileOptimized" content="320"><meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width"><link rel="stylesheet" type="text/css" href="/static/docs-page-b46f4da7.css">
+<link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css"></head><body><header id="header"><div id="logo"><a href="/"><img src="/images/logo-dark-bg.png" width="80" height="67" alt="Marko"></a></div><div class="container"> <nav role="navigation" id="nav"><ul class="main-navigation"><li><a href="/">Home</a></li><li><a href="/docs/" class="active">Docs</a></li><li><a href="/community/">Community</a></li><li><a href="/blog/">Blog</a></li><li><a href="/github/">Github</a></li><li><form action="https://google.com/search" method="get" class="search-form"><fieldset role="search"><input type="hidden" name="q" value="site:markojs.com"><input type="text" name="q" results="0" placeholder="Search" class="search-input"></fieldset></form></li></ul></nav></div><div style="clear: both"></div></header><div class="container"><aside class="docs-nav"><section><h1>Marko</h1><ul><li><a href="/docs/">Overview</a></li><li><a href="/docs/marko/get-started/">Get Started</a></li><li><a href="/docs/marko/javascript-api/">JavaScript API</a></li><li><a href="/docs/marko/language-guide/">Language Guide</a></li><li><a href="/docs/marko/custom-taglibs/">Custom Taglibs</a></li><li><a href="/docs/marko/faq/">FAQ</a></li><li><a href="/docs/marko/additional-resources/">Additional Resources</a></li></ul></section><section><h1>Marko Widgets</h1><ul><li><a href="/docs/marko-widgets/" class="active">Overview</a></li><li><a href="/docs/marko-widgets/get-started/">Get Started</a></li><li><a href="/docs/marko-widgets/javascript-api/">JavaScript API</a></li><li><a href="/docs/marko-widgets/faq/">FAQ</a></li><li><a href="/docs/marko-widgets/additional-resources/">Additional Resources</a></li></ul></section></aside><main><h1 class="page-title">Overview <span class="subtitle">// Marko Widgets</span></h1><p>Marko Widgets extends the <a href="https://github.com/marko-js/marko">Marko templating engine</a> to provide a simple and efficient mechanism for binding behavior to UI components rendered on either the server or in the browser. In addition, changing a widgets state or properties will result in the DOM automatically being updated without writing extra code. Marko Widgets has adopted many of the good design principles promoted by the <a href="https://facebook.github.io/react/index.html">React</a> team, but aims to be much lighter and often faster (especially on the server). When updating the view for a widget, Marko Widgets uses DOM diffing to make the minimum number of changes to the DOM through the use of the <a href="https://github.com/patrick-steele-idem/morphdom">morphdom</a> module.</p>
+<h2 id="features"><a name="features" class="anchor" href="#features"><span class="header-link"></span></a>Features</h2><ul>
+<li>Simple<ul>
+<li>Clean JavaScript syntax for defining widgets</li>
+<li>Utilizes <a href="https://github.com/marko-js/marko">Marko templates</a> (an HTML-based templating language) for the view</li>
+<li>Supports stateful and stateless widgets</li>
+<li>No complex class hierarchy</li>
+<li>Simple, declarative event binding for both native DOM events and custom events</li>
+<li>Lifecycle management for widgets (easily destroy and create widgets)</li>
+<li>Events bubble up and view state changes trickle down</li>
+<li>Only need to understand a few concepts to get started</li>
+</ul>
+</li>
+<li>High performance<ul>
+<li>Lightning fast performance on the server and in the browser (see <a href="https://github.com/patrick-steele-idem/marko-vs-react">Marko vs React: Performance Benchmark</a>)</li>
+<li>Supports streaming and asynchronous rendering</li>
+<li>Efficient binding of behavior of UI components rendered on the server and in the browser</li>
+<li>Efficient updating of the DOM via the following tricks:<ul>
+<li>DOM diffing is used to make the minimum number of changes to the DOM using the <a href="https://github.com/patrick-steele-idem/morphdom">morphdom</a> module.</li>
+<li>Batched updates</li>
+<li>When re-rendering a widget, nested widgets are reused</li>
+<li>Only widgets whose state changed are re-rendered</li>
+<li>Full re-rendering of a widget can be short circuited if state transition handlers are provided</li>
+<li>For container components, nested body DOM nodes are automatically preserved</li>
+<li>Entire DOM subtrees can be preserved between rendering</li>
+<li>Smart template compilers to offload as much work to compile time</li>
+</ul>
+</li>
+<li>Very efficient event delegation</li>
+</ul>
+</li>
+<li>Lightweight<ul>
+<li>Extremely small JavaScript runtime (~6.3 KB gzipped)</li>
+<li>No dependencies on any other JavaScript library such as jQuery</li>
+<li>Focused exclusively on the UI view (easily mix and match with other libraries/frameworks)</li>
+</ul>
+</li>
+</ul>
+<h2 id="design-philosophy"><a name="design-philosophy" class="anchor" href="#design-philosophy"><span class="header-link"></span></a>Design Philosophy</h2><ul>
+<li>A UI component should encapsulate view, behavior and styling</li>
+<li>A complex page should be decomposed into modular UI components</li>
+<li>UI components should be used as building blocks</li>
+<li>A component&#39;s view should be driven by a pure function that accepts an input state and produces output HTML</li>
+<li>A UI component should be independently testable</li>
+<li>A UI component should not leak its internal implementation</li>
+<li>A UI component should be installable via npm</li>
+<li>A UI component should play nice with other frameworks and libraries</li>
+<li>UI components should be easily composable</li>
+<li>Developers should not need to manually manipulate the DOM</li>
+</ul>
+<h2 id="sample-code"><a name="sample-code" class="anchor" href="#sample-code"><span class="header-link"></span></a>Sample Code</h2><p>Marko Widgets allows you to declaratively bind behavior to an HTML element inside a Marko template. The widget provides the client-side behavior for your UI component.</p>
+<h3 id="stateless-widget"><a name="stateless-widget" class="anchor" href="#stateless-widget"><span class="header-link"></span></a>Stateless Widget</h3><p><strong>src/components/app-hello/template.marko</strong></p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">w-bind</span>&gt;</span>
+    Hello ${data.name}!
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+</code></pre>
+<p><strong>src/components/app-hello/index.js</strong></p>
+<pre><code class="lang-javascript"><span class="hljs-built_in">module</span>.exports = <span class="hljs-built_in">require</span>(<span class="hljs-string">'marko-widgets'</span>).defineComponent({
+    template: <span class="hljs-built_in">require</span>(<span class="hljs-string">'./template.marko'</span>),
+
+    getTemplateData: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">state, input</span>) </span>{
+        <span class="hljs-keyword">return</span> {
+            name: input.name
+        };
+    },
+
+    init: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+        <span class="hljs-keyword">var</span> el = <span class="hljs-keyword">this</span>.el; <span class="hljs-comment">// The root DOM element that the widget is bound to</span>
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Initializing widget: '</span> + el.id);
+    }
+});
+</code></pre>
+<p>Congratulations, you just built a reusable UI component! Your UI component can be embedded in other Marko template files:</p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-title">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">app-hello</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">"Frank"</span>/&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+</code></pre>
+<p>In addition, your UI can be rendered and added to the DOM using the JavaScript API:</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> widget = <span class="hljs-built_in">require</span>(<span class="hljs-string">'./app-hello'</span>)
+    .render({
+        name: <span class="hljs-string">'John'</span>
+    })
+    .appendTo(<span class="hljs-built_in">document</span>.body)
+    .getWidget();
+
+<span class="hljs-comment">// Changing the props will trigger the widget to re-render</span>
+<span class="hljs-comment">// with the new props and for the DOM to be updated:</span>
+widget.setProps({
+    name: <span class="hljs-string">'Jane'</span>
+});
+</code></pre>
+<h3 id="stateless-widget-with-behavior"><a name="stateless-widget-with-behavior" class="anchor" href="#stateless-widget-with-behavior"><span class="header-link"></span></a>Stateless Widget with Behavior</h3><p><strong>src/components/app-hello/template.marko</strong></p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">w-bind</span>
+     <span class="hljs-attribute">w-onClick</span>=<span class="hljs-value">"handleClick"</span>&gt;</span>
+
+    Hello ${data.name}!
+
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+</code></pre>
+<p><strong>src/components/app-hello/index.js</strong></p>
+<pre><code class="lang-javascript"><span class="hljs-built_in">module</span>.exports = <span class="hljs-built_in">require</span>(<span class="hljs-string">'marko-widgets'</span>).defineComponent({
+    template: <span class="hljs-built_in">require</span>(<span class="hljs-string">'./template.marko'</span>),
+
+    getTemplateData: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">state, input</span>) </span>{
+        <span class="hljs-keyword">return</span> {
+            name: input.name
+        };
+    },
+
+    handleClick: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+        <span class="hljs-keyword">this</span>.setSelected(<span class="hljs-literal">true</span>);
+    },
+
+    setSelected: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">selected</span>) </span>{
+        <span class="hljs-keyword">if</span> (selected) {
+            <span class="hljs-keyword">this</span>.el.style.backgroundColor = <span class="hljs-string">'yellow'</span>;
+        } <span class="hljs-keyword">else</span> {
+            <span class="hljs-keyword">this</span>.el.style.backgroundColor = <span class="hljs-literal">null</span>;
+        }
+    }
+});
+</code></pre>
+<h3 id="stateful-widget"><a name="stateful-widget" class="anchor" href="#stateful-widget"><span class="header-link"></span></a>Stateful Widget</h3><p>Let&#39;s create a stateful widget that changes to yellow when you click on it:</p>
+<p><strong>src/components/app-hello/template.marko</strong></p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">w-bind</span>
+     <span class="hljs-attribute">w-onClick</span>=<span class="hljs-value">"handleClick"</span>
+     <span class="hljs-attribute">style</span>=<span class="hljs-value">"background-color: ${data.color}"</span>&gt;</span>
+
+    Hello ${data.name}!
+
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+</code></pre>
+<p><strong>src/components/app-hello/index.js</strong></p>
+<pre><code class="lang-javascript"><span class="hljs-built_in">module</span>.exports = <span class="hljs-built_in">require</span>(<span class="hljs-string">'marko-widgets'</span>).defineComponent({
+    template: <span class="hljs-built_in">require</span>(<span class="hljs-string">'./template.marko'</span>),
+
+    getInitialState: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">input</span>) </span>{
+        <span class="hljs-keyword">return</span> {
+            name: input.name,
+            selected: input.selected || <span class="hljs-literal">false</span>;
+        }
+    },
+
+    getTemplateData: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">state, input</span>) </span>{
+        <span class="hljs-keyword">var</span> style = ;
+
+        <span class="hljs-keyword">return</span> {
+            name: state.name,
+            color: state.selected ? <span class="hljs-string">'yellow'</span> : <span class="hljs-string">'transparent'</span>
+        };
+    },
+
+    handleClick: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+        <span class="hljs-keyword">this</span>.setState(<span class="hljs-string">'selected'</span>, <span class="hljs-literal">true</span>);
+    },
+
+    isSelected: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.state.selected;
+    }
+});
+</code></pre>
+<h3 id="stateful-widget-with-update-handlers"><a name="stateful-widget-with-update-handlers" class="anchor" href="#stateful-widget-with-update-handlers"><span class="header-link"></span></a>Stateful Widget with Update Handlers</h3><p>If you want to avoid re-rendering a widget for a particular state property change then simply provide your own method to handle the state change as shown below:</p>
+<p><strong>src/components/app-hello/template.marko</strong></p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">w-bind</span>
+     <span class="hljs-attribute">w-onClick</span>=<span class="hljs-value">"handleClick"</span>
+     <span class="hljs-attribute">style</span>=<span class="hljs-value">"background-color: ${data.color}"</span>&gt;</span>
+
+    Hello ${data.name}!
+
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+</code></pre>
+<p><strong>src/components/app-hello/index.js</strong></p>
+<pre><code class="lang-javascript"><span class="hljs-built_in">module</span>.exports = <span class="hljs-built_in">require</span>(<span class="hljs-string">'marko-widgets'</span>).defineComponent({
+    template: <span class="hljs-built_in">require</span>(<span class="hljs-string">'./template.marko'</span>),
+
+    getInitialState: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">input</span>) </span>{
+        <span class="hljs-keyword">return</span> {
+            name: input.name,
+            selected: input.selected || <span class="hljs-literal">false</span>;
+        }
+    },
+
+    getTemplateData: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">state, input</span>) </span>{
+        <span class="hljs-keyword">var</span> style = ;
+
+        <span class="hljs-keyword">return</span> {
+            name: state.name,
+            color: state.selected ? <span class="hljs-string">'yellow'</span> : <span class="hljs-string">'transparent'</span>
+        };
+    },
+
+    handleClick: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+        <span class="hljs-keyword">this</span>.setState(<span class="hljs-string">'selected'</span>, <span class="hljs-literal">true</span>);
+    },
+
+    isSelected: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.state.selected;
+    },
+
+    update_selected: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">newSelected</span>) </span>{
+        <span class="hljs-comment">// Manually update the DOM to reflect the new "selected"</span>
+        <span class="hljs-comment">// state" to avoid re-rendering the entire widget.</span>
+        <span class="hljs-keyword">if</span> (newSelected) {
+            <span class="hljs-keyword">this</span>.el.style.backgroundColor = <span class="hljs-string">'yellow'</span>;
+        } <span class="hljs-keyword">else</span> {
+            <span class="hljs-keyword">this</span>.el.style.backgroundColor = <span class="hljs-literal">null</span>;
+        }
+    }
+});
+</code></pre>
+<h3 id="complex-widget"><a name="complex-widget" class="anchor" href="#complex-widget"><span class="header-link"></span></a>Complex Widget</h3><pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">w-bind</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">app-overlay</span> <span class="hljs-attribute">title</span>=<span class="hljs-value">"My Overlay"</span>
+        <span class="hljs-attribute">w-id</span>=<span class="hljs-value">"overlay"</span>
+        <span class="hljs-attribute">w-onBeforeHide</span>=<span class="hljs-value">"handleOverlayBeforeHide"</span>&gt;</span>
+        Body content for overlay.
+    <span class="hljs-tag">&lt;/<span class="hljs-title">app-overlay</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"button"</span>
+        <span class="hljs-attribute">w-onClick</span>=<span class="hljs-value">"handleShowButtonClick"</span>&gt;</span>
+        Show Overlay
+    <span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"button"</span>
+        <span class="hljs-attribute">w-onClick</span>=<span class="hljs-value">"handleHideButtonClick"</span>&gt;</span>
+        Hide Overlay
+    <span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+</code></pre>
+<p>Below is the content of <code>index.js</code> where the widget type is defined:</p>
+<pre><code class="lang-javascript"><span class="hljs-built_in">module</span>.exports = <span class="hljs-built_in">require</span>(<span class="hljs-string">'marko-widgets'</span>).defineComponent({
+    template: <span class="hljs-built_in">require</span>(<span class="hljs-string">'./template.marko'</span>),
+
+    init: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+        <span class="hljs-comment">// this.el will be the raw DOM element the widget instance</span>
+        <span class="hljs-comment">// is bound to:</span>
+        <span class="hljs-keyword">var</span> el = <span class="hljs-keyword">this</span>.el;
+    },
+
+    handleShowButtonClick: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">event</span>) </span>{
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Showing overlay...'</span>);
+        <span class="hljs-keyword">this</span>.getWidget(<span class="hljs-string">'overlay'</span>).show();
+    },
+
+    handleHideButtonClick: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">event</span>) </span>{
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Hiding overlay...'</span>);
+        <span class="hljs-keyword">this</span>.getWidget(<span class="hljs-string">'overlay'</span>).hide();
+    },
+
+    handleOverlayBeforeHide: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">event</span>) </span>{
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'The overlay is about to be hidden!'</span>);
+    }
+})
+</code></pre>
+<h3 id="container-widget"><a name="container-widget" class="anchor" href="#container-widget"><span class="header-link"></span></a>Container Widget</h3><p>A container widget supports nested content. When the container widget is re-rendered, the nested content is automatically preserved.</p>
+<p><strong>src/components/app-alert/template.marko</strong></p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"alert alert-${data.type}"</span> <span class="hljs-attribute">w-bind</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">i</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"alert-icon"</span>/&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">span</span> <span class="hljs-attribute">w-body</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+</code></pre>
+<p><strong>src/components/app-alert/index.js</strong></p>
+<pre><code class="lang-javascript"><span class="hljs-built_in">module</span>.exports = <span class="hljs-built_in">require</span>(<span class="hljs-string">'marko-widgets'</span>).defineComponent({
+    template: <span class="hljs-built_in">require</span>(<span class="hljs-string">'./template.marko'</span>),
+
+    init: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+        <span class="hljs-comment">// this.el will be the raw DOM element the widget instance</span>
+        <span class="hljs-comment">// is bound to:</span>
+        <span class="hljs-keyword">var</span> el = <span class="hljs-keyword">this</span>.el;
+    },
+
+    getInitialState: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">input</span>) </span>{
+        <span class="hljs-keyword">return</span> {
+            type: input.type || <span class="hljs-string">'success'</span>
+        }
+    },
+
+    getTemplateData: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">state, input</span>) </span>{
+        <span class="hljs-keyword">return</span> {
+            type: state.type
+        };
+    },
+
+    getInitialBody: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">input</span>) </span>{
+        <span class="hljs-keyword">return</span> input.message || input.renderBody;
+    },
+
+    setType: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">type</span>) </span>{
+        <span class="hljs-keyword">this</span>.setState(<span class="hljs-string">'type'</span>, type);
+    }
+})
+</code></pre>
+<p>The widget can then be used as shown below:</p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-title">app-alert</span> <span class="hljs-attribute">message</span>=<span class="hljs-value">"This is a success alert"</span>/&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-title">app-alert</span>&gt;</span>
+    This is a success alert
+<span class="hljs-tag">&lt;/<span class="hljs-title">app-alert</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-title">app-alert</span> <span class="hljs-attribute">message</span>=<span class="hljs-value">"This is a failure alert"</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"failure"</span>/&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-title">app-alert</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"failure"</span>&gt;</span>
+    This is a failure alert
+<span class="hljs-tag">&lt;/<span class="hljs-title">app-alert</span>&gt;</span>
+</code></pre>
+<h3 id="preserving-dom-nodes-during-re-render"><a name="preserving-dom-nodes-during-re-render" class="anchor" href="#preserving-dom-nodes-during-re-render"><span class="header-link"></span></a>Preserving DOM Nodes during Re-render</h3><p>Sometimes it is important to <em>not</em> re-render a DOM subtree. This may due to either of the following reasons:</p>
+<ul>
+<li>Improved performance</li>
+<li>DOM nodes contains externally provided content</li>
+<li>DOM nodes have internal state that needs to be maintained</li>
+</ul>
+<p>Marko Widgets allows DOM nodes to be preserved by putting a special <code>w-preserve</code>, <code>w-preserve-if=&quot;&lt;condition&gt;&quot;</code>, <code>w-preserve-body</code> or <code>w-preserve-body-if=&quot;&lt;condition&gt;&quot;</code> attribute on the HTML tags that should be preserved. Preserved DOM nodes will be reused and re-inserted into a widget&#39;s newly rendered DOM automatically.</p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">w-bind</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-title">span</span> <span class="hljs-attribute">w-preserve</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>
+            The root span and all its children will never
+            be re-rendered.
+        <span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">p</span>&gt;</span>
+            Rendered at ${Date.now()}.
+        <span class="hljs-tag">&lt;/<span class="hljs-title">p</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">w-preserve-body</span>&gt;</span>
+        Only the children of the div will preserved and
+        the outer HTML div tag will be re-rendered.
+    <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+
+    Don't rerender the search results if no search results
+    are provided.
+    <span class="hljs-tag">&lt;<span class="hljs-title">app-search-results</span> <span class="hljs-attribute">items</span>=<span class="hljs-value">"data.searchResults"</span>
+        <span class="hljs-attribute">w-preserve-if</span>=<span class="hljs-value">"data.searchResults == null"</span>/&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+</code></pre>
+</main></div><footer id="footer"><div class="container"><section id="footer-message">© 2015 eBay, Inc</section></div></footer><script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-50307227-1', 'markojs.com');
+  ga('send', 'pageview');
+
+</script></body></html>
