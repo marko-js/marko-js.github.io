@@ -1,1 +1,0 @@
-$rmod.def("/src/components/app-try-marko/test-taglib/marko-taglib",{tags:{"test-button":{renderer:"./button-renderer.js",attributes:{label:"string",color:"string",disabled:"boolean"}},"test-tabs":{renderer:"./tabs-renderer","body-function":"getTabs(__tabsHelper)"},"test-tab":{renderer:"./tab-renderer","import-var":{tabs:"__tabsHelper"},attributes:{title:"string"}}}});
