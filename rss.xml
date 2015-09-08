@@ -4,14 +4,14 @@
         <title>Marko</title>
         <description></description>
         <link>http://markojs.com/</link>
-        <lastBuildDate>Tue, 08 Sep 2015 17:37:28 GMT</lastBuildDate>
+        <lastBuildDate>Tue, 08 Sep 2015 18:06:13 GMT</lastBuildDate>
         <docs>http://blogs.law.harvard.edu/tech/rss</docs>
         <copyright>© 2015 eBay, Inc</copyright>
         <generator>Feed for Node.js</generator>
         <item>
             <title><![CDATA[A Closer Look at Marko Widgets]]></title>
-            <link>http://markojs.com/a-closer-look-at-marko-widgets/</link>
-            <guid>http://markojs.com/a-closer-look-at-marko-widgets/</guid>
+            <link>http://markojs.com/blog/a-closer-look-at-marko-widgets/</link>
+            <guid>http://markojs.com/blog/a-closer-look-at-marko-widgets/</guid>
             <pubDate>Sat, 05 Sep 2015 06:00:00 GMT</pubDate>
             <description><![CDATA[<p>Marko Widgets is a minimalist library for building UI components with the help of the <a href="/docs/">Marko templating engine</a>. Marko is a <a href="https://github.com/marko-js/templating-benchmarks">fast</a> and lightweight (~4 KB gzipped) HTML-based templating engine that compiles templates to <a href="https://gist.github.com/patrick-steele-idem/0514b480219d1c9ed8d4#file-template-marko-js">readable CommonJS modules</a> and supports <a href="http://www.ebaytechblog.com/2014/12/08/async-fragments-rediscovering-progressive-html-rendering-with-marko/">streaming</a>, async rendering and custom tags. Marko is used for rendering the HTML for UI components, while Marko Widgets is used to add client-side behavior. Client-side behavior includes the following:</p>
 <ul>
@@ -98,7 +98,7 @@ clickCount.render({ <span class="hljs-comment">/* input props */</span> })
 <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
 </code></pre>
 <p>The above template with the embedded <code>&lt;click-count&gt;</code> tag can be rendered on the server or in the browser giving web applications an isomorphic character. For more examples and to try out UI components in a live editor, please check out the <a href="/marko-widgets/try-online" target="_blank">Try Marko Widgets Online</a> page.</p>
-<p><a href="http://markojs.com/a-closer-look-at-marko-widgets/">Continue Reading on http://markojs.com/ &raquo;</a></p>]]></description>
+<p><a href="http://markojs.com/blog/a-closer-look-at-marko-widgets/">Continue Reading on http://markojs.com/ &raquo;</a></p>]]></description>
             <content:encoded/>
             <author>
                 <name>Patrick Steele-Idem</name>
@@ -107,8 +107,8 @@ clickCount.render({ <span class="hljs-comment">/* input props */</span> })
         </item>
         <item>
             <title><![CDATA[Announcing Marko Widgets v5]]></title>
-            <link>http://markojs.com/marko-widgets-v50-announcement/</link>
-            <guid>http://markojs.com/marko-widgets-v50-announcement/</guid>
+            <link>http://markojs.com/blog/marko-widgets-v50-announcement/</link>
+            <guid>http://markojs.com/blog/marko-widgets-v50-announcement/</guid>
             <pubDate>Sat, 05 Sep 2015 06:00:00 GMT</pubDate>
             <description><![CDATA[<p>The release of Marko Widgets v5 introduces some exciting new features that improve how the DOM is updated. The highlight of this release is that Marko Widgets now uses DOM diffing/patching to update the DOM by integrating the <a href="https://github.com/patrick-steele-idem/morphdom">morphdom</a> module. We intentionally omitted the &quot;virtual&quot; part because <code>morphdom</code> does diffing between <em>real</em> DOM nodes. We found it beneficial to not go the &quot;virtual&quot; route for the following reasons:</p>
 <ul>
@@ -119,7 +119,7 @@ clickCount.render({ <span class="hljs-comment">/* input props */</span> })
 <li>Creating and rendering a virtual DOM tree on the server is much slower than rendering HTML on the server (Our <a href="https://github.com/patrick-steele-idem/marko-vs-react">Marko vs React</a> and <a href="https://github.com/patrick-steele-idem/morphdom#benchmarks">morphdom » Benchmarks</a> benchmark showed that Marko Widgets is 10x faster than React in rendering a page of 100 search results on the server)</li>
 <li>Also, by using the real DOM, UI components can manually manipulate the DOM and diffing/patching will still work.</li>
 </ul>
-<p><a href="http://markojs.com/marko-widgets-v50-announcement/">Continue Reading on http://markojs.com/ &raquo;</a></p>]]></description>
+<p><a href="http://markojs.com/blog/marko-widgets-v50-announcement/">Continue Reading on http://markojs.com/ &raquo;</a></p>]]></description>
             <content:encoded/>
             <author>
                 <name>Patrick Steele-Idem</name>
