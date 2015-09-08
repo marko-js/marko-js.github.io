@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <title>Marko</title>
     <link>http://markojs.com/</link>
-    <updated>2015-09-03T06:16:21Z</updated>
+    <updated>2015-09-08T17:26:12Z</updated>
     <author>
         <uri>function link() { [native code] }</uri>
     </author>
@@ -10,13 +10,118 @@
     <rights>© 2015 eBay, Inc</rights>
     <generator>Feed for Node.js</generator>
     <entry>
-        <title type="html"><![CDATA[Introduction]]></title>
-        <id>http://markojs.com/intro/</id>
-        <link href="http://markojs.com/intro/">
+        <title type="html"><![CDATA[A Closer Look at Marko Widgets]]></title>
+        <id>http://markojs.com/a-closer-look-at-marko-widgets/</id>
+        <link href="http://markojs.com/a-closer-look-at-marko-widgets/">
         </link>
-        <updated>2015-08-26T06:00:00Z</updated>
-        <summary type="html"><![CDATA[<p>First post</p>
-<p><a href="http://markojs.com/intro/">Continue Reading on http://markojs.com/ &raquo;</a></p>]]></summary>
+        <updated>2015-09-05T06:00:00Z</updated>
+        <summary type="html"><![CDATA[<p>Marko Widgets is a minimalist library for building UI components with the help of the <a href="/docs/">Marko templating engine</a>. Marko is a <a href="https://github.com/marko-js/templating-benchmarks">fast</a> and lightweight (~4 KB gzipped) HTML-based templating engine that compiles templates to <a href="https://gist.github.com/patrick-steele-idem/0514b480219d1c9ed8d4#file-template-marko-js">readable CommonJS modules</a> and supports <a href="http://www.ebaytechblog.com/2014/12/08/async-fragments-rediscovering-progressive-html-rendering-with-marko/">streaming</a>, async rendering and custom tags. Marko is used for rendering the HTML for UI components, while Marko Widgets is used to add client-side behavior. Client-side behavior includes the following:</p>
+<ul>
+<li>Handling DOM events</li>
+<li>Emitting custom events</li>
+<li>Handling custom events emitted by other widgets</li>
+<li>Manipulating and updating the DOM</li>
+</ul>
+<p>We call the client-side behavior of a UI component the <em>widget</em>.</p>
+<p>Applications can use the Marko templating engine as a general purpose HTML templating engine. In places where client-side behavior is needed, a developer can easily bind a <em>widget</em> to an HTML element. When a rendered UI component is mounted to the DOM, Marko Widgets will take care of creating a widget instance and binding it to the root HTML element of the UI component. The <code>w-bind</code> attribute is used to associate an HTML element with a JavaScript module that exports the widget functionality as shown below:</p>
+<p><em>src/components/click-count/template.marko</em></p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">w-bind</span>=<span class="hljs-value">"./index.js"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">div</span>&gt;</span>
+        You clicked the button ${data.clickCount} ${data.timesMessage}.
+    <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"button"</span> <span class="hljs-attribute">w-onClick</span>=<span class="hljs-value">"handleButtonClick"</span>&gt;</span>
+        Click Me
+    <span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+</code></pre>
+<p>The Marko template serves as the <em>view</em> for the UI component whereas the behavior and rendering logic are placed in a separate JavaScript module file as shown below:</p>
+<p><em>src/components/click-count/index.js</em></p>
+<pre><code class="lang-javascript"><span class="hljs-built_in">module</span>.exports = <span class="hljs-built_in">require</span>(<span class="hljs-string">'marko-widgets'</span>).defineComponent({
+    <span class="hljs-comment">/**
+     * The template to use as the view
+     */</span>
+    template: <span class="hljs-built_in">require</span>(<span class="hljs-string">'./template.marko'</span>),
+
+    <span class="hljs-comment">/**
+     * Return the initial state for the UI component based on
+     * the input properties that were provided.
+     */</span>
+    getInitialState: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">input</span>) </span>{
+        <span class="hljs-keyword">return</span> {
+            clickCount: <span class="hljs-number">0</span>
+        };
+    },
+
+    <span class="hljs-comment">/**
+     * Return an object that is used as the template data. The
+     * template data should be based on the current widget state
+     * that is passed in as the first argument
+     */</span>
+    getTemplateData: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">state</span>) </span>{
+        <span class="hljs-keyword">var</span> clickCount = state.clickCount;
+        <span class="hljs-keyword">var</span> timesMessage = clickCount === <span class="hljs-number">1</span> ? <span class="hljs-string">'time'</span> : <span class="hljs-string">'times'</span>;
+
+        <span class="hljs-keyword">return</span> {
+            clickCount: clickCount,
+            timesMessage: timesMessage
+        };
+    },
+
+    <span class="hljs-comment">/**
+     * This is the constructor for the widget. Called once when the UI
+     * component is first mounted to the DOM.
+     */</span>
+    init: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+        <span class="hljs-keyword">var</span> el = <span class="hljs-keyword">this</span>.el;
+        <span class="hljs-comment">// "el" will be reference the raw HTML element that this</span>
+        <span class="hljs-comment">// widget is bound to. You can do whatever you want with it...</span>
+    },
+
+    <span class="hljs-comment">/**
+     * Handler method for the button "click" event. This method name
+     * matches the name of the `w-onClick` attribute in the earlier
+     * template.
+     */</span>
+    handleButtonClick: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">event, el</span>) </span>{
+        <span class="hljs-keyword">this</span>.setState(<span class="hljs-string">'clickCount'</span>, <span class="hljs-keyword">this</span>.state.clickCount + <span class="hljs-number">1</span>);
+    }
+});
+</code></pre>
+<p>The <code>require(&#39;marko-widgets&#39;).defineComponent(def)</code> function is used to define a UI component that includes both client-side behavior (i.e., the <em>widget</em>) and rendering logic (i.e., the <em>renderer</em>). That function returns a widget constructor function that also includes a static <code>render(input)</code> method. The returned function will also have a static <code>renderer(input, out)</code> method that can be used as a <a href="/docs/marko/custom-taglibs/#tag-renderer">Marko custom tag renderer</a>.</p>
+<p>The above UI component can be rendered in the browser and added to the DOM using code similar to the following:</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> clickCount = <span class="hljs-built_in">require</span>(<span class="hljs-string">'./src/components/click-count'</span>);
+clickCount.render({ <span class="hljs-comment">/* input props */</span> })
+    .appendTo(<span class="hljs-built_in">document</span>.body);
+</code></pre>
+<p>After the UI component is rendered and after the HTML output (based on the given template) is inserted into the DOM, a new instance of the widget is created and bound to the corresponding html element. The <code>init()</code> method is the first method called when a widget has been created and mounted to the DOM. The <code>this.el</code> property can be used to get access to the raw DOM element that a widget is bound to.</p>
+<p>Instead of rendering the component using the JavaScript API, the same UI component can also be embedded in a Marko template using a custom tag as shown below:</p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"my-app"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">click-count</span> /&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+</code></pre>
+<p>The above template with the embedded <code>&lt;click-count&gt;</code> tag can be rendered on the server or in the browser giving web applications an isomorphic character. For more examples and to try out UI components in a live editor, please check out the <a href="/marko-widgets/try-online" target="_blank">Try Marko Widgets Online</a> page.</p>
+<p><a href="http://markojs.com/a-closer-look-at-marko-widgets/">Continue Reading on http://markojs.com/ &raquo;</a></p>]]></summary>
+        <author>
+            <name>Patrick Steele-Idem</name>
+            <email>pnidem@gmail.com</email>
+        </author>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Announcing Marko Widgets v5]]></title>
+        <id>http://markojs.com/marko-widgets-v50-announcement/</id>
+        <link href="http://markojs.com/marko-widgets-v50-announcement/">
+        </link>
+        <updated>2015-09-05T06:00:00Z</updated>
+        <summary type="html"><![CDATA[<p>The release of Marko Widgets v5 introduces some exciting new features that improve how the DOM is updated. The highlight of this release is that Marko Widgets now uses DOM diffing/patching to update the DOM by integrating the <a href="https://github.com/patrick-steele-idem/morphdom">morphdom</a> module. We intentionally omitted the &quot;virtual&quot; part because <code>morphdom</code> does diffing between <em>real</em> DOM nodes. We found it beneficial to not go the &quot;virtual&quot; route for the following reasons:</p>
+<ul>
+<li>The real DOM is the source of truth so there is no need to have a persistent copy of the actual DOM in memory at all times</li>
+<li>Our benchmarks  showed that using the real DOM is plenty fast (for example, &lt;0.5ms to update Todo MVC view, see <a href="https://github.com/patrick-steele-idem/marko-vs-react">Marko vs React</a> and <a href="https://github.com/patrick-steele-idem/morphdom#benchmarks">morphdom » Benchmarks</a>)</li>
+<li>Less layers of abstraction</li>
+<li>A virtual DOM solution can only be used with code/templates that produce a virtual DOM tree and...</li>
+<li>Creating and rendering a virtual DOM tree on the server is much slower than rendering HTML on the server (Our <a href="https://github.com/patrick-steele-idem/marko-vs-react">Marko vs React</a> and <a href="https://github.com/patrick-steele-idem/morphdom#benchmarks">morphdom » Benchmarks</a> benchmark showed that Marko Widgets is 10x faster than React in rendering a page of 100 search results on the server)</li>
+<li>Also, by using the real DOM, UI components can manually manipulate the DOM and diffing/patching will still work.</li>
+</ul>
+<p><a href="http://markojs.com/marko-widgets-v50-announcement/">Continue Reading on http://markojs.com/ &raquo;</a></p>]]></summary>
         <author>
             <name>Patrick Steele-Idem</name>
             <email>pnidem@gmail.com</email>

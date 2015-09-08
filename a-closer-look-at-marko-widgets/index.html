@@ -1,0 +1,252 @@
+<!doctype html> <html lang="en"><head><meta http-equiv="Content-Type" content="text/html" charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><title> | Marko</title><link rel="alternate" type="application/rss+xml" title="RSS" href="/rss.xml"><meta name="description"><link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png"><link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png"><link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png"><link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png"><link rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png"><link rel="apple-touch-icon" sizes="120x120" href="/apple-icon-120x120.png"><link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png"><link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png"><link rel="icon" type="image/png" sizes="192x192" href="/android-icon-192x192.png"><link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"><link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png"><link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="manifest" href="/manifest.json"><meta name="msapplication-TileColor" content="#ffffff"><meta name="msapplication-TileImage" content="/ms-icon-144x144.png"><meta name="theme-color" content="#ffffff"><meta name="HandheldFriendly" content="True"><meta name="MobileOptimized" content="320"><meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width"><link rel="stylesheet" type="text/css" href="/static/post-536788fb.css">
+<link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css"></head><body><header id="header" data-widget="/src/components/app-header"><div class="container"><div id="logo"><a href="/"><img src="/images/logo-header.png" alt="Marko"></a></div><nav role="navigation" id="nav" class="mobile-hidden"><ul class="main-navigation"><li><a href="/docs/">Docs</a></li><li><a href="/community/">Community</a></li><li><a href="/blog/" class="active">Blog</a></li><li><a href="/github/">Github</a></li><li class="nav-search"><i class="fa fa-search" data-w-onclick="handleToggleSearchClick|header"></i><form action="https://google.com/search" method="get" class="search-form"><input type="hidden" name="q" value="site:markojs.com"><input type="text" name="q" results="0" placeholder class="search-input"></form></li></ul></nav><div style="clear: both"></div></div></header><div class="container"><main class="main"><article class="hentry" role="article"><h1 class="post-title">A Closer Look at Marko Widgets</h1><div class="post-meta"><span class="byline author vcard">Posted by <span class="fn">Patrick Steele-Idem</span></span> on <time data-updated="true" pubdate datetime="2015-09-05">Saturday, Sep 5th, 2015</time><span class="categories">&nbsp; <i class="fa fa-tags"></i> <a href="/category/javascript/" class="category">JavaScript</a>, <a href="/category/ui-components/" class="category">UI Components</a>, <a href="/category/marko-widgets/" class="category">Marko Widgets</a>, <a href="/category/node-js/" class="category">Node.js</a>, <a href="/category/marko/" class="category">Marko</a></span></div><div class="post-body"><p>Marko Widgets is a minimalist library for building UI components with the help of the <a href="/docs/">Marko templating engine</a>. Marko is a <a href="https://github.com/marko-js/templating-benchmarks">fast</a> and lightweight (~4 KB gzipped) HTML-based templating engine that compiles templates to <a href="https://gist.github.com/patrick-steele-idem/0514b480219d1c9ed8d4#file-template-marko-js">readable CommonJS modules</a> and supports <a href="http://www.ebaytechblog.com/2014/12/08/async-fragments-rediscovering-progressive-html-rendering-with-marko/">streaming</a>, async rendering and custom tags. Marko is used for rendering the HTML for UI components, while Marko Widgets is used to add client-side behavior. Client-side behavior includes the following:</p>
+<ul>
+<li>Handling DOM events</li>
+<li>Emitting custom events</li>
+<li>Handling custom events emitted by other widgets</li>
+<li>Manipulating and updating the DOM</li>
+</ul>
+<p>We call the client-side behavior of a UI component the <em>widget</em>.</p>
+<p>Applications can use the Marko templating engine as a general purpose HTML templating engine. In places where client-side behavior is needed, a developer can easily bind a <em>widget</em> to an HTML element. When a rendered UI component is mounted to the DOM, Marko Widgets will take care of creating a widget instance and binding it to the root HTML element of the UI component. The <code>w-bind</code> attribute is used to associate an HTML element with a JavaScript module that exports the widget functionality as shown below:</p>
+<p><em>src/components/click-count/template.marko</em></p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">w-bind</span>=<span class="hljs-value">"./index.js"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">div</span>&gt;</span>
+        You clicked the button ${data.clickCount} ${data.timesMessage}.
+    <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"button"</span> <span class="hljs-attribute">w-onClick</span>=<span class="hljs-value">"handleButtonClick"</span>&gt;</span>
+        Click Me
+    <span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+</code></pre>
+<p>The Marko template serves as the <em>view</em> for the UI component whereas the behavior and rendering logic are placed in a separate JavaScript module file as shown below:</p>
+<p><em>src/components/click-count/index.js</em></p>
+<pre><code class="lang-javascript"><span class="hljs-built_in">module</span>.exports = <span class="hljs-built_in">require</span>(<span class="hljs-string">'marko-widgets'</span>).defineComponent({
+    <span class="hljs-comment">/**
+     * The template to use as the view
+     */</span>
+    template: <span class="hljs-built_in">require</span>(<span class="hljs-string">'./template.marko'</span>),
+
+    <span class="hljs-comment">/**
+     * Return the initial state for the UI component based on
+     * the input properties that were provided.
+     */</span>
+    getInitialState: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">input</span>) </span>{
+        <span class="hljs-keyword">return</span> {
+            clickCount: <span class="hljs-number">0</span>
+        };
+    },
+
+    <span class="hljs-comment">/**
+     * Return an object that is used as the template data. The
+     * template data should be based on the current widget state
+     * that is passed in as the first argument
+     */</span>
+    getTemplateData: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">state</span>) </span>{
+        <span class="hljs-keyword">var</span> clickCount = state.clickCount;
+        <span class="hljs-keyword">var</span> timesMessage = clickCount === <span class="hljs-number">1</span> ? <span class="hljs-string">'time'</span> : <span class="hljs-string">'times'</span>;
+
+        <span class="hljs-keyword">return</span> {
+            clickCount: clickCount,
+            timesMessage: timesMessage
+        };
+    },
+
+    <span class="hljs-comment">/**
+     * This is the constructor for the widget. Called once when the UI
+     * component is first mounted to the DOM.
+     */</span>
+    init: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+        <span class="hljs-keyword">var</span> el = <span class="hljs-keyword">this</span>.el;
+        <span class="hljs-comment">// "el" will be reference the raw HTML element that this</span>
+        <span class="hljs-comment">// widget is bound to. You can do whatever you want with it...</span>
+    },
+
+    <span class="hljs-comment">/**
+     * Handler method for the button "click" event. This method name
+     * matches the name of the `w-onClick` attribute in the earlier
+     * template.
+     */</span>
+    handleButtonClick: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">event, el</span>) </span>{
+        <span class="hljs-keyword">this</span>.setState(<span class="hljs-string">'clickCount'</span>, <span class="hljs-keyword">this</span>.state.clickCount + <span class="hljs-number">1</span>);
+    }
+});
+</code></pre>
+<p>The <code>require(&#39;marko-widgets&#39;).defineComponent(def)</code> function is used to define a UI component that includes both client-side behavior (i.e., the <em>widget</em>) and rendering logic (i.e., the <em>renderer</em>). That function returns a widget constructor function that also includes a static <code>render(input)</code> method. The returned function will also have a static <code>renderer(input, out)</code> method that can be used as a <a href="/docs/marko/custom-taglibs/#tag-renderer">Marko custom tag renderer</a>.</p>
+<p>The above UI component can be rendered in the browser and added to the DOM using code similar to the following:</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> clickCount = <span class="hljs-built_in">require</span>(<span class="hljs-string">'./src/components/click-count'</span>);
+clickCount.render({ <span class="hljs-comment">/* input props */</span> })
+    .appendTo(<span class="hljs-built_in">document</span>.body);
+</code></pre>
+<p>After the UI component is rendered and after the HTML output (based on the given template) is inserted into the DOM, a new instance of the widget is created and bound to the corresponding html element. The <code>init()</code> method is the first method called when a widget has been created and mounted to the DOM. The <code>this.el</code> property can be used to get access to the raw DOM element that a widget is bound to.</p>
+<p>Instead of rendering the component using the JavaScript API, the same UI component can also be embedded in a Marko template using a custom tag as shown below:</p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"my-app"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">click-count</span> /&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+</code></pre>
+<p>The above template with the embedded <code>&lt;click-count&gt;</code> tag can be rendered on the server or in the browser giving web applications an isomorphic character. For more examples and to try out UI components in a live editor, please check out the <a href="/marko-widgets/try-online" target="_blank">Try Marko Widgets Online</a> page.</p>
+<h2 id="why-did-we-build-marko-widgets"><a name="why-did-we-build-marko-widgets" class="anchor" href="#why-did-we-build-marko-widgets"><span class="header-link"></span></a>Why did we build Marko Widgets?</h2><p>Marko Widgets started out with the simple goal of facilitating the automatic binding of behavior to UI components rendered on the server or in the browser. During rendering, Marko Widgets keeps track of all of the rendered UI components and this information is used to efficiently create widget instances when the rendered HTML is added to the DOM. In addition, Marko Widgets provides a simple mechanism for referencing nested widgets and nested DOM elements. Over time we improved Marko Widgets to support features such as declarative event binding, efficient event delegation, stateful widgets, batched updates and DOM diffing/patching. A lot of the later improvements were inspired by some of the great work done by the <a href="http://facebook.github.io/react/">React</a> team. Marko Widgets offers much of the functionality found in React, but with a much lighter package and with substantially better performance on the server (and very similar performance in the browser). Our <a href="https://github.com/patrick-steele-idem/marko-vs-react">Marko vs React: Performance Benchmark</a> showed that Marko Widgets was able to render a page of 100 search results on the server over 10x faster than React while offering a very similar UI component-based approach.</p>
+<p>Marko Widgets aims to be a simple, minimalist library that is focused solely on helping developers build a web-based UI. It does not provide any functionality associated with data management, routing, etc. (those are things best handled by other modules). It does, however, provide support for things such as updating the DOM, listening to DOM events, referencing nested widgets and nested DOM elements, and rendering UI components. In addition, Marko Widgets was built with the goal of being fast and extremely lightweight (~10 KB gzipped). Because of the simpler internals, Marko Widgets is easier to learn and fully understand compared to more complicated and heavy weight libraries.</p>
+<h2 id="understanding-marko-widgets"><a name="understanding-marko-widgets" class="anchor" href="#understanding-marko-widgets"><span class="header-link"></span></a>Understanding Marko Widgets</h2><p>We believe that to properly use a tool, you need to be able to fully understand its inner workings (no developer likes &quot;magic&quot;).  While Marko Widgets is not trivial, we hope that you will be able to fully understand the inner workings within a week. Please read on to learn about the architecture of Marko Widgets.</p>
+<h3 id="how-does-server-side-rendering-work"><a name="how-does-server-side-rendering-work" class="anchor" href="#how-does-server-side-rendering-work"><span class="header-link"></span></a>How does server-side rendering work?</h3><p>When rendered on the server, all UI components are rendered using their associated Marko template. All HTML output is written to the HTTP response stream and the output HTML will include some <em>extra information</em> used by Marko Widgets in the browser. The extra information is added by the Marko Widgets taglib and it is used to efficiently create widgets when the DOM is ready. That information is encoded in HTML elements using <code>data-*</code> attributes and there is one extra DOM element that encodes the IDs of all of the rendered UI components as shown in the sample HTML output below:</p>
+<pre><code class="lang-html"><span class="hljs-doctype">&lt;!DOCTYPE html&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">html</span> <span class="hljs-attribute">lang</span>=<span class="hljs-value">"en"</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">title</span>&gt;</span>Marko Widgets Demo<span class="hljs-tag">&lt;/<span class="hljs-title">title</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">head</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">"w0"</span>
+        <span class="hljs-attribute">data-widget</span>=<span class="hljs-value">"/src/components/click-count"</span>
+        <span class="hljs-attribute">data-w-state</span>=<span class="hljs-value">"{'greetingName':'Frank','clickCount':0}"</span>&gt;</span>
+        Hello Frank!
+        <span class="hljs-tag">&lt;<span class="hljs-title">div</span>&gt;</span>
+            You clicked the button 0 times.
+        <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"button"</span> <span class="hljs-attribute">data-w-onclick</span>=<span class="hljs-value">"handleButtonClick|w0"</span>&gt;</span>
+            Click Me
+        <span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">"w1"</span>
+        <span class="hljs-attribute">data-widget</span>=<span class="hljs-value">"/src/components/foo-bar"</span>&gt;</span>
+        Foobar
+    <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">span</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">"markoWidgets"</span> <span class="hljs-attribute">data-ids</span>=<span class="hljs-value">"w0,w1"</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">"display:none;"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">span</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">script</span> <span class="hljs-attribute">src</span>=<span class="hljs-value">"/static/bundle.js"</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-title">script</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">html</span>&gt;</span>
+</code></pre>
+<p>Initializing widgets associated with UI components rendered on the server is handled by looking up the <code>#markoWidgets</code> element and reading the <code>data-ids</code> attribute to get the list of DOM element IDs for all of the UI components rendered on the server. The client-side code for Marko Widgets simply loops over each DOM element ID and looks up the corresponding DOM element using <code>document.getElementById()</code> and then it reads the extra information encoded in the <code>data-*</code> attributes to create widget instances. When a widget instance is created, it is given a reference to the HTML element that it is bound to.</p>
+<h3 id="how-does-browser-side-rendering-work"><a name="how-does-browser-side-rendering-work" class="anchor" href="#how-does-browser-side-rendering-work"><span class="header-link"></span></a>How does browser-side rendering work?</h3><p>If rendered in the browser, the list of rendered UI components is kept in memory and as soon as the rendered HTML is added to the DOM, the widgets are created. There is no need to encode information in <code>data-*</code> attributes for UI components rendered in the browser. The <code>data-*</code> attributes are <em>only</em> used to pass down information about UI components rendered on the server.</p>
+<h3 id="how-does-marko-widgets-keep-track-of-rendered-ui-components"><a name="how-does-marko-widgets-keep-track-of-rendered-ui-components" class="anchor" href="#how-does-marko-widgets-keep-track-of-rendered-ui-components"><span class="header-link"></span></a>How does Marko Widgets keep track of rendered UI components?</h3><p>When rendering a page or UI component using Marko, a single &quot;rendering context&quot; is created and that rendering context wraps an output stream. That rendering context is passed to all UI components that are encountered during rendering. In Marko and Marko Widgets, the rendering context object is the <code>out</code> variable and it is an instance of <a href="https://github.com/marko-js/async-writer">AsyncWriter</a>. The <code>out</code> object also has an <code>out.global</code> property which is just a vanilla JavaScript object that code can use at render time to store information during rendering. Marko Widgets introduces an <code>out.global.widgets</code> property which is used to track anything related to rendered UI components. The <code>out.global.widgets</code> value is an instance of <a href="https://github.com/marko-js/marko-widgets/blob/master/lib/WidgetsContext.js">WidgetsContext</a> and that object provides methods for registering widget information as UI components are rendered.</p>
+<h3 id="how-does-marko-widgets-integrate-with-marko"><a name="how-does-marko-widgets-integrate-with-marko" class="anchor" href="#how-does-marko-widgets-integrate-with-marko"><span class="header-link"></span></a>How does Marko Widgets integrate with Marko?</h3><p>The Marko templating engine supports custom HTML tags and custom HTML attributes. During compilation, the Marko template compiler builds an <a href="https://en.wikipedia.org/wiki/Abstract_syntax_tree">Abstract Syntax Tree (AST)</a>. Each HTML element in the template becomes a node in the AST. Compile-time transformers can manipulate the AST (add new nodes, remove nodes, rearrange nodes, modify nodes, etc.) to control how the template compiles to JavaScript. Marko Widgets introduces a compile-time template transformer that processes custom attributes such as <code>w-bind</code>, <code>w-id</code>, and <code>w-on*</code>. For example, when a <code>w-bind</code> attribute is found during compilation, the Marko Widgets compile-time transformer will update the AST to automatically assign an &quot;id&quot; attribute to the HTML element (if not already provided by the developer) and add code that is used at render time to associate the rendered ID with a widget type. Marko Widgets does as much work at compilation time as possible to minimize the work that needs to be done at render time so that rendering is extremely fast.</p>
+<h3 id="how-is-component-state-managed"><a name="how-is-component-state-managed" class="anchor" href="#how-is-component-state-managed"><span class="header-link"></span></a>How is component state managed?</h3><p>A developer can optionally choose to make a UI component stateful by implementing a <code>getInitialState(input)</code> method. The JavaScript object returned by the <code>getInitialState(input)</code> method will be persisted with the widget as the <code>this.state</code> property. The benefit of making a widget stateful is that Marko Widgets will automatically rerender a widget if its internal state changes and the current state will be made available to the UI component renderer.</p>
+<p>Widget state is stored in the <code>this.state</code> property of a widget and that property will be a plain JavaScript object. While it is safe to read state properties using <code>this.state.someProperty</code>, all writes to state should go through <code>this.setState(&#39;someProperty&#39;, someNewValue)</code>. The <code>setState()</code> function will compare the old value of the property to the new value and if the new value is different then the widget&#39;s DOM will be updated.</p>
+<p>Marko Widgets only does a shallow compare on state properties. As a developer, you must treat complex objects stored in the state as immutable objects, or you must explicitly call <code>this.setStateDirty(&#39;someProperty&#39;)</code> to force an update.</p>
+<p>Calling <code>this.setState(...)</code> is one way to trigger a widget to rerender. Another way to trigger a widget to rerender is to call <code>this.setProps(newProps)</code>. For stateful widgets, calling <code>this.setProps(newProps)</code> will cause <code>this.getInitialState(newProps)</code> to be called to get the new state and if the state changes then the UI component will be rerendered using the new state. If a widget is not stateful then the new properties will be used to rerender the UI component based on the new input properties.</p>
+<h3 id="how-is-the-dom-updated"><a name="how-is-the-dom-updated" class="anchor" href="#how-is-the-dom-updated"><span class="header-link"></span></a>How is the DOM updated?</h3><p>As a UI component developer you are in control of how the DOM is updated for a UI component. You can choose to write or use code that manually manipulates the DOM. Or, better yet, you can choose to trigger a rerender of a UI component by providing new input properties using <code>this.setProps(newInput)</code> or changing the widget state using <code>this.setState(name, value)</code>. When rerendering a UI component, Marko Widgets will invoke the Marko template associated with the widget to produce a new DOM tree. The newly rendered DOM tree will then be compared to the old DOM tree and the old DOM tree will be transformed to match the newly rendered DOM using a diffing/patching algorithm that operates on <em>real</em> DOM nodes and makes the minimum number of changes to the DOM. The diffing and patching is handled by the separate and independent <a href="https://github.com/patrick-steele-idem/morphdom">morphdom</a> module.</p>
+<p>Rerendering a UI component is the recommended way to update the DOM for a UI component. By rerendering, a UI component&#39;s template is always used to produce the <em>view</em>. Writing code to manually manipulate the DOM makes it harder to test UI components and it typically results in code that is more difficult to maintain.</p>
+<h3 id="why-does-marko-and-marko-widgets-perform-so-well-on-the-server"><a name="why-does-marko-and-marko-widgets-perform-so-well-on-the-server" class="anchor" href="#why-does-marko-and-marko-widgets-perform-so-well-on-the-server"><span class="header-link"></span></a>Why does Marko and Marko Widgets perform so well on the server?</h3><p>When considering performance, Marko Widgets excels on the server largely due to the fact that Marko is arguably the fastest templating engine for Node.js that supports streaming and asynchronous rendering. Marko compiles templates into efficient JavaScript functions that render HTML strings in a single pass. In contrast to virtual DOM-based solutions, there is no intermediate tree representation.</p>
+<p>For example, server-side rendering using React happens in two phases:</p>
+<ul>
+<li><strong>PHASE 1) Build the tree</strong> - Render the top-level UI component and all nested UI components to get back a complete intermediate tree-representation of the final output</li>
+<li><strong>PHASE 2) Serialize the tree</strong> - Traverse the entire tree to build the final HTML string</li>
+</ul>
+<p>On a related note, in order to bind behavior to React UI components rendered on the server, the entire UI must be rendered <em>again</em> in the browser. In contrast, Marko Widgets does not require an additional client-side rendering to bind behavior to UI components rendered on the server.</p>
+<h3 id="how-does-event-delegation-work"><a name="how-does-event-delegation-work" class="anchor" href="#how-does-event-delegation-work"><span class="header-link"></span></a>How does event delegation work?</h3><p>If you are building a UI component you will likely need to write code to handle various DOM events (<code>click</code>, <code>submit</code>, etc.). It is common for developers to write code that adds DOM event listeners using <code>el.addEventListener(...)</code> or using a library such as jQuery. You can still do that when building UI components using Marko Widgets, but there is overhead in attaching listeners when lots of widgets are being initialized. Instead, Marko Widgets recommends using declarative event binding as shown below:</p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"button"</span> <span class="hljs-attribute">w-onClick</span>=<span class="hljs-value">"handleClick"</span> <span class="hljs-attribute">w-bind</span>&gt;</span>
+    Click Me
+<span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+</code></pre>
+<p>When using declarative event binding, no DOM event listeners are actually attached for events that bubble. Instead, Marko Widgets attaches a single listener on the root DOM element of the page for each DOM event that bubbles (done at startup). When Marko Widgets receives an event at the root it handles delegating the event to the appropriate widgets that are interested in that event. This is done by looking at the <code>event.target</code> property to see where the event originated and then walking up the tree to find widgets that need to be notified. As a result, there is slightly more work that is done when a DOM event is captured at the root, but this approach uses much less memory and reduces the amount of work that is done during initialization. The extra overhead of delegating events to widgets will not be noticeable (unless maybe if the DOM tree is hundreds of levels deep) so it is a very beneficial optimization.</p>
+<p>The signature for an event handler method is <code>function(event, el)</code>. The first argument will be the original DOM event that was fired by the browser (in older browsers the event will be patched to be standards compliant). The second argument will be the HTML element that the event handler method was declaratively bound to (which may be different from <code>event.target</code>).</p>
+<p>Another side benefit of having Marko Widgets do the event delegation is that the <code>this</code> variable will be the widget instance in the handler functions as shown below:</p>
+<pre><code class="lang-javascript"><span class="hljs-built_in">module</span>.exports = <span class="hljs-built_in">require</span>(<span class="hljs-string">'marko-widgets'</span>).defineComponent({
+    <span class="hljs-comment">// ...</span>
+
+    init: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+        <span class="hljs-comment">// Using jQuery to attach event listeners...</span>
+        <span class="hljs-keyword">var</span> self = <span class="hljs-keyword">this</span>;
+        $(<span class="hljs-keyword">this</span>.el).click(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+            <span class="hljs-comment">// "this" is not the widget instance...</span>
+            <span class="hljs-comment">// Must use "self" variable that is part of the parent closure</span>
+            self.doSomething();            
+        });
+
+        <span class="hljs-comment">// Using the native DOM API...</span>
+        <span class="hljs-keyword">this</span>.el.addEventListener(<span class="hljs-string">'click'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+            <span class="hljs-comment">// "this" is not the widget instance...</span>
+            <span class="hljs-comment">// Must use "self" variable that is part of the parent closure</span>
+            self.doSomething();            
+        });
+    },
+
+    handleClick: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">event, el</span>) </span>{
+        <span class="hljs-comment">// "this" will always be the widget instance</span>
+        <span class="hljs-keyword">this</span>.doSomething();
+    }
+});
+</code></pre>
+<h3 id="how-does-batching-work"><a name="how-does-batching-work" class="anchor" href="#how-does-batching-work"><span class="header-link"></span></a>How does batching work?</h3><p>Batching is used to defer updates to the DOM until all of the changes have been made. That is, changes to a widget state will <em>not</em> trigger an immediate update of the DOM. Batching prevents DOM thrashing from happening in cases where there are a lot of intermediate updates to widgets. For example, given the following code:</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">this</span>.setState(<span class="hljs-string">'foo'</span>, <span class="hljs-string">'bar'</span>);
+<span class="hljs-keyword">this</span>.setState(<span class="hljs-string">'foo'</span>, <span class="hljs-string">'baz'</span>);
+</code></pre>
+<p>The widget will only be rendered once after the above code runs and it will be based on the final state (with <code>this.state.foo</code> set to <code>&#39;baz&#39;</code>). When a widget&#39;s state changes, Marko Widgets will mark the widget as &quot;dirty&quot; and queue it up to be updated with the next batch.</p>
+<p>During event delegation, Marko Widgets will automatically create a new batch so that after all user code runs to handle the DOM event the DOM will then be updated. In situations where a widget&#39;s DOM is queued to be updated outside of event delegation, Marko Widgets will create a new batch and schedule the DOM updates using  <code>process.nextTick()</code>. A widget can implement the <a href="/docs/marko-widgets/component-lifecycle/#onupdate">onUpdate</a> method to be notified when its DOM has updated.</p>
+<h3 id="how-are-references-to-nested-widgets-and-nested-dom-elements-handled"><a name="how-are-references-to-nested-widgets-and-nested-dom-elements-handled" class="anchor" href="#how-are-references-to-nested-widgets-and-nested-dom-elements-handled"><span class="header-link"></span></a>How are references to nested widgets and nested DOM elements handled?</h3><p>Marko Widgets allows a <em>scoped</em> ID to be assigned to nested DOM elements and nested widgets using the <code>w-id</code> attribute as shown below:</p>
+<pre><code class="lang-xml"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"my-app"</span> <span class="hljs-attribute">w-bind</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"button"</span> <span class="hljs-attribute">w-onClick</span>=<span class="hljs-value">"handleButtonClick"</span>&gt;</span>
+        Click Me
+    <span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-title">alert-overlay</span> <span class="hljs-attribute">visible</span>=<span class="hljs-value">"false"</span> <span class="hljs-attribute">w-id</span>=<span class="hljs-value">"alert"</span>&gt;</span>
+        This is a test alert.
+    <span class="hljs-tag">&lt;/<span class="hljs-title">alert-overlay</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">w-id</span>=<span class="hljs-value">"clickMessage"</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">"display: none;"</span>&gt;</span>
+        You clicked the button!
+    <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+</code></pre>
+<p>The <code>w-id</code> attributes allows the parent widget to reference nested widgets and nested DOM elements as shown below:</p>
+<pre><code class="lang-javascript"><span class="hljs-built_in">module</span>.exports = <span class="hljs-built_in">require</span>(<span class="hljs-string">'marko-widgets'</span>).defineComponent({
+
+    <span class="hljs-comment">// ...</span>
+
+    handleButtonClick: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">event, el</span>) </span>{
+        <span class="hljs-keyword">var</span> alertWidget = <span class="hljs-keyword">this</span>.getWidget(<span class="hljs-string">'alert'</span>);
+
+        <span class="hljs-comment">// Call the `show()` function implemented by the alert widget:</span>
+        alertWidget.show();
+
+        <span class="hljs-keyword">var</span> clickMessageEl = <span class="hljs-keyword">this</span>.getEl(<span class="hljs-string">'clickMessage'</span>);
+        clickMessageEl.style.display = <span class="hljs-string">'block'</span>;
+    }
+});
+</code></pre>
+<p>The value of the <code>w-id</code> attribute is used to assign a unique DOM ID to the nested widget or nested DOM element by prefixing the provided ID with the ID of the parent widget. For example, if the ID of the parent widget is <code>myParent</code> then the produced HTML will be similar to the following:</p>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"click-count"</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">"myParent"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">button</span> <span class="hljs-attribute">type</span>=<span class="hljs-value">"button"</span> <span class="hljs-attribute">data-w-onclick</span>=<span class="hljs-value">"handleButtonClick|myParent"</span>&gt;</span>
+        Click Me
+    <span class="hljs-tag">&lt;/<span class="hljs-title">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">class</span>=<span class="hljs-value">"alert"</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">"myParent-alert"</span>&gt;</span>
+        This is a test alert.
+    <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-title">div</span> <span class="hljs-attribute">style</span>=<span class="hljs-value">"display: none;"</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">"myParent-clickMessage"</span>&gt;</span>
+        You clicked the button!
+    <span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-title">div</span>&gt;</span>
+</code></pre>
+<p>For this example, calling <code>this.getEl(&#39;clickMessage&#39;)</code> is the equivalent of doing the following:</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> clickMessageEl = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-keyword">this</span>.id + <span class="hljs-string">'-clickMessage'</span>);
+</code></pre>
+<p>Calling <code>this.getWidget(&#39;alert&#39;)</code> is the equivalent of doing the following:</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> markoWidgets = <span class="hljs-built_in">require</span>(<span class="hljs-string">'marko-widgets'</span>);
+<span class="hljs-keyword">var</span> alertEl = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-keyword">this</span>.id + <span class="hljs-string">'-alert'</span>);
+<span class="hljs-keyword">var</span> alertWidget = markoWidgets.getWidgetForEl(alertEl);
+</code></pre>
+<h2 id="looking-forward"><a name="looking-forward" class="anchor" href="#looking-forward"><span class="header-link"></span></a>Looking Forward</h2><p>We see Marko Widgets as a great foundation for building web applications with a UI component-based approach. UI components built using Marko Widgets export a simple JavaScript API that allows them to be utilized in any web application.</p>
+<p>With Marko Widgets developers are able to adopt many of the best practices for building modern web applications with a UI component-based approach and those applications will perform very well due to the many optimizations found in Marko and Marko Widgets. The recent release of Marko Widgets v5 introduced some internal changes to improve how the DOM was updated by integrating a DOM diffing/patching library. We will continue to explore performance improvements and API simplifications, but we will resist adding unnecessary bloat.</p>
+<p>eBay is using Marko and Marko Widgets on the server (Node.js) and in the browser for both the desktop and mobile website. For eBay, performance of the website is extremely important (especially on mobile devices) and this has impacted how Marko and Marko Widgets were designed. A lot of focus has been placed on keeping the library small and fast. At the same time, we want Marko Widgets to have a minimal learning curve so we have kept the API small and we have provided lots of documentation and <a href="https://github.com/marko-js-samples">sample apps</a>.</p>
+<p>We would like to see developer tools be created for Marko Widgets that allow developers to inspect widgets and events on the page. Marko Widgets already exposes a <code>getWidgetForEl(el)</code> method to get a reference to a widget instance associated with an element and the <code>this.state</code> property is freely inspectable.</p>
+<p> We welcome outside contributions and strive to have a healthy (and growing) community. If you have a question, find a bug or have a suggestion on how to improve Marko Widgets please don&#39;t hesitate to reach out to us by <a href="https://github.com/marko-js/marko-widgets/issues">opening a Github issue</a>, <a href="https://gitter.im/marko-js/marko-widgets">chatting with us on Gitter</a> or tweeting to <a href="https://twitter.com/MarkoDevTeam">@MarkoDevTeam</a>. We enjoy getting feedback from the community so please share your thoughts on Twitter using the <a href="https://twitter.com/search?src=typd&amp;q=%23MarkoJS">#MarkoJS</a> hashtag.</p>
+<p> Check out the <a href="/marko-widgets/try-online/">Try Marko Widgets Online!</a> feature to experience building UI components in your browser. To learn more, head on over to the <a href="/docs/marko-widgets/">Marko Widgets Documentation</a>.</p>
+</div><div class="post-footer"><div class="sharing"><a href="https://twitter.com/share" class="twitter-share-button" data-via="psteeleidem">Tweet</a><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script></div><div class="post-nav"><span class="post-older"><a title="Older Post: Announcing Marko Widgets v5" href="/marko-widgets-v50-announcement/" class="post-older"><i class="fa fa-arrow-left"></i> Older: Announcing Marko Widgets v5</a></span><br></div></div></article><section><h1>Comments</h1><div id="disqus_thread"></div><script type="text/javascript">
+    var disqus_shortname = "markojs";var disqus_identifier = "a-closer-look-at-marko-widgets";var disqus_title = "A Closer Look at Marko Widgets";
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a></section></main></div><footer id="footer"><section id="footer-message">© 2015 eBay, Inc</section></footer><script type="text/javascript" src="/static/post-579648b0.js"></script>
+<script type="text/javascript" src="/static/marko-widgets-586d139e.js"></script>
+<script type="text/javascript" src="/static/marko-cee15cc8.js"></script>
+<script type="text/javascript">$rmod.ready();</script><span id="markoWidgets" data-ids="header" style="display:none;"></span><script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-66854919-1', 'markojs.com');
+  ga('send', 'pageview');
+
+</script></body></html>
