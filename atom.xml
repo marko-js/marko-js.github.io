@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <title>Marko</title>
     <link>http://markojs.com/</link>
-    <updated>2015-09-17T04:18:52Z</updated>
+    <updated>2015-09-18T23:15:45Z</updated>
     <author>
         <uri>function link() { [native code] }</uri>
     </author>
@@ -14,7 +14,7 @@
         <id>http://markojs.com/blog/a-closer-look-at-marko-widgets/</id>
         <link href="http://markojs.com/blog/a-closer-look-at-marko-widgets/">
         </link>
-        <updated>2015-09-05T07:00:00Z</updated>
+        <updated>2015-09-05T06:00:00Z</updated>
         <summary type="html"><![CDATA[<p>Marko Widgets is a minimalist library for building UI components with the help of the <a href="/docs/">Marko templating engine</a>. Marko is a <a href="https://github.com/marko-js/templating-benchmarks">fast</a> and lightweight (~4 KB gzipped) HTML-based templating engine that compiles templates to <a href="https://gist.github.com/patrick-steele-idem/0514b480219d1c9ed8d4#file-template-marko-js">readable CommonJS modules</a> and supports <a href="http://www.ebaytechblog.com/2014/12/08/async-fragments-rediscovering-progressive-html-rendering-with-marko/">streaming</a>, async rendering and custom tags. Marko is used for rendering the HTML for UI components, while Marko Widgets is used to add client-side behavior. Client-side behavior includes the following:</p>
 <ul>
 <li>Handling DOM events</li>
@@ -111,7 +111,7 @@ clickCount.render({ <span class="hljs-comment">/* input props */</span> })
         <id>http://markojs.com/blog/marko-widgets-v50-announcement/</id>
         <link href="http://markojs.com/blog/marko-widgets-v50-announcement/">
         </link>
-        <updated>2015-09-05T07:00:00Z</updated>
+        <updated>2015-09-05T06:00:00Z</updated>
         <summary type="html"><![CDATA[<p>The release of Marko Widgets v5 introduces some exciting new features that improve how the DOM is updated. The highlight of this release is that Marko Widgets now uses DOM diffing/patching to update the DOM by integrating the <a href="https://github.com/patrick-steele-idem/morphdom">morphdom</a> module. We intentionally omitted the &quot;virtual&quot; part because <code>morphdom</code> does diffing between <em>real</em> DOM nodes. We found it beneficial to not go the &quot;virtual&quot; route for the following reasons:</p>
 <ul>
 <li>The real DOM is the source of truth so there is no need to have a persistent copy of the actual DOM in memory at all times</li>
