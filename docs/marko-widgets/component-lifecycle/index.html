@@ -35,7 +35,27 @@
 <h4 id="getwidgetconfiginput-out"><a name="getwidgetconfiginput-out" class="anchor" href="#getwidgetconfiginput-out"><span class="header-link"></span></a>getWidgetConfig(input, out)</h4><p>This optional method is used to determine is passed to the widget constructor when the widget is initialized in the browser. If the UI component is rendered on the server then the widget config data will be serialized to a JSON-like data structure and stored in a special <code>data-w-config</code> attribute in the DOM.</p>
 <h4 id="getinitialbodyinput-out"><a name="getinitialbodyinput-out" class="anchor" href="#getinitialbodyinput-out"><span class="header-link"></span></a>getInitialBody(input, out)</h4><p>This optional method is used to determine the nested external content that is to be injected into the body of the UI component (to support transclusion). The actual injection point is determined by the <code>w-body</code> attribute.</p>
 <h2 id="widget-lifecycle"><a name="widget-lifecycle" class="anchor" href="#widget-lifecycle"><span class="header-link"></span></a>Widget Lifecycle</h2><p>After a UI component&#39;s DOM nodes have been added to the DOM a widget instance will be created and bounded to the corresponding DOM node.</p>
-<h3 id="widget-lifecycle-methods"><a name="widget-lifecycle-methods" class="anchor" href="#widget-lifecycle-methods"><span class="header-link"></span></a>Widget Lifecycle Methods</h3><p><code>this</code> can be used in these methods as the widget instance.</p>
+<h3 id="widget-lifecycle-methods"><a name="widget-lifecycle-methods" class="anchor" href="#widget-lifecycle-methods"><span class="header-link"></span></a>Widget Lifecycle Methods</h3><p><code>this</code> can be used in these methods as the widget instance. Widget lifecycle methods are optional methods, that if implemented will be invoked by the Marko Widgets runtime in response to widget lifecycle events. For example:</p>
+<pre><code class="lang-javascript"><span class="hljs-built_in">module</span>.exports = <span class="hljs-built_in">require</span>(<span class="hljs-string">'marko-widgets'</span>).defineComponent({
+    <span class="hljs-comment">// ...</span>
+    <span class="hljs-comment">//</span>
+    init: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'The UI component has been mounted to the DOM.'</span>, <span class="hljs-keyword">this</span>.id);
+    },
+
+    onBeforeUpdate: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'The DOM is about to be updated...'</span>, <span class="hljs-keyword">this</span>.id);
+    },
+
+    onBeforeUpdate: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'The DOM has been updated.'</span>, <span class="hljs-keyword">this</span>.id);
+    },
+
+    onDestroy: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'The UI component is being removed from the DOM :('</span>, <span class="hljs-keyword">this</span>.id);
+    }
+});
+</code></pre>
 <h4 id="initwidgetconfig"><a name="initwidgetconfig" class="anchor" href="#initwidgetconfig"><span class="header-link"></span></a>init(widgetConfig)</h4><p>The <code>init(widgetConfig)</code> constructor method is called once in the browser when the widget is first created and after the widget has been mounted in the DOM. The <code>init(widgetConfig)</code> method is only called once for a given widget.</p>
 <h4 id="onbeforeupdate"><a name="onbeforeupdate" class="anchor" href="#onbeforeupdate"><span class="header-link"></span></a>onBeforeUpdate()</h4><p>The <code>onBeforeUpdate()</code> method is called when a widget&#39;s view is about to be updated due to either new properties or a state change.</p>
 <h4 id="onupdate"><a name="onupdate" class="anchor" href="#onupdate"><span class="header-link"></span></a>onUpdate()</h4><p>The <code>onUpdate()</code> method is called when a widget&#39;s view has been updated due to either new properties or a state change. The DOM nodes have been updated accordingly by time this method has been called.</p>
