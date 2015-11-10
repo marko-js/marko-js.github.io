@@ -35,7 +35,7 @@
     <span class="hljs-keyword">var</span> newColors = <span class="hljs-keyword">this</span>.state.colors.concat([newColor]);
 
     <span class="hljs-comment">// Set the colors state with the new Array:</span>
-    <span class="hljs-keyword">this</span>.setState(<span class="hljs-string">'colors'</span>, <span class="hljs-keyword">this</span>.state.colors.concat[newColor]);
+    <span class="hljs-keyword">this</span>.setState(<span class="hljs-string">'colors'</span>, newColors);
 }
 </code></pre>
 <p><strong><em>Using setStateDirty:</em></strong></p>
@@ -48,9 +48,9 @@
 }
 </code></pre>
 <p>Unlike React, Marko Widgets does not try to maintain a virtual DOM tree. This allows the Marko Widgets runtime to be much smaller. Marko Widgets makes the assumption that rerendering directly to the DOM is usually fast enough. In the cases where performance is a concern, developers have the option to provide custom state update handlers to manually update the DOM. In addition, Marko Widgets allows developers to mark entire subtrees of the DOM as &quot;preserved&quot; so that portions of the DOM are never rerendered and will continue be used across rerendering.</p>
-</main></div><footer id="footer"><section id="footer-message" class="container">© 2015 eBay, Inc</section></footer><script type="text/javascript" src="/static/docs-page-e9fb7e38.js"></script>
-<script type="text/javascript" src="/static/marko-widgets-2c3d3492.js"></script>
-<script type="text/javascript" src="/static/marko-7aac30ba.js"></script>
+</main></div><footer id="footer"><section id="footer-message" class="container">© 2015 eBay, Inc</section></footer><script type="text/javascript" src="/static/docs-page-e7e5d5e3.js"></script>
+<script type="text/javascript" src="/static/marko-widgets-1e718521.js"></script>
+<script type="text/javascript" src="/static/marko-62ed63a9.js"></script>
 <script type="text/javascript">$rmod.ready();</script><span id="markoWidgets" data-ids="header" style="display:none;"></span><script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
