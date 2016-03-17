@@ -1,4 +1,4 @@
-$rmod.main("/marko@3.0.0/compiler","index");
+$rmod.main("/marko@3.0.2/compiler","index");
 $rmod.def("/marko@3.0.0/compiler/ast/ArrayContainer", function(require, exports, module, __filename, __dirname) { 'use strict';
 
 var ok = require('assert'/*'assert'*/).ok;
@@ -1503,7 +1503,7 @@ class AttributePlaceholder extends Node {
 
 module.exports = AttributePlaceholder;
 });
-$rmod.def("/marko@3.0.0/compiler/Parser", function(require, exports, module, __filename, __dirname) { 'use strict';
+$rmod.def("/marko@3.0.2/compiler/Parser", function(require, exports, module, __filename, __dirname) { 'use strict';
 var ok = require('assert'/*'assert'*/).ok;
 var AttributePlaceholder = require('./ast/AttributePlaceholder');
 
@@ -1722,8 +1722,13 @@ class Parser {
         var node;
 
         if (raw) {
+
             node = builder.htmlElement(elDef);
             node.pos = elDef.pos;
+
+            let taglibLookup = this.context.taglibLookup;
+            let tagDef = taglibLookup.getTag(tagName);
+            node.tagDef = tagDef;
         } else {
             node = this.context.createNodeForEl(elDef);
         }
@@ -1735,8 +1740,6 @@ class Parser {
             });
         }
 
-
-        // TODO Retain the shorthand class names and IDs in raw mode
         if (raw) {
             if (el.shorthandId) {
                 let parsed = builder.parseExpression(el.shorthandId.value);
@@ -5931,7 +5934,7 @@ Builder.DEFAULT_BUILDER = DEFAULT_BUILDER;
 module.exports = Builder;
 
 });
-$rmod.remap("/marko@3.0.0/compiler/util/deresolve","deresolve-browser");
+$rmod.remap("/marko@3.0.2/compiler/util/deresolve","deresolve-browser");
 $rmod.def("/marko@3.0.0/compiler/util/deresolve-browser",function(r,e,o,n,t){o.exports=function(r,e){return r}});
 $rmod.def("/marko@3.0.0/compiler/util/safeVarName",function(e,r,n,t,a){function o(e){var r=e.split(/[\\/]/);return r.length>=2&&(e=r.slice(-2).join("_")),e.replace(/[^A-Za-z0-9_]/g,"_").replace(/^[0-9]+/,function(e){for(var r="",n=0;n<e.length;n++)r+="_";return r})}n.exports=o});
 $rmod.def("/marko@3.0.0/compiler/util/UniqueVars", function(require, exports, module, __filename, __dirname) { 'use strict';
@@ -6569,8 +6572,8 @@ CompileContext.prototype.util = {
 
 module.exports = CompileContext;
 });
-$rmod.main("/marko@3.0.0/compiler/taglib-lookup","index");
-$rmod.main("/marko@3.0.0/compiler/taglib-loader/Taglib","index");
+$rmod.main("/marko@3.0.2/compiler/taglib-lookup","index");
+$rmod.main("/marko@3.0.2/compiler/taglib-loader/Taglib","index");
 $rmod.def("/marko@3.0.0/compiler/util/removeDashes",function(e,r,o,n,t){o.exports=function(e){return e.replace(/-([a-z])/g,function(e,r){return r.toUpperCase()})}});
 $rmod.def("/marko@3.0.0/compiler/ast/CustomTag", function(require, exports, module, __filename, __dirname) { 'use strict';
 
@@ -7761,21 +7764,21 @@ class TaglibLookup {
 module.exports = TaglibLookup;
 });
 $rmod.def("/marko@3.0.0/compiler/taglib-lookup/index",function(i,r,a,e,o){"use strict";function t(i,r){if(r.imports)for(var a=0;a<r.imports.length;a++){var e=r.imports[a];i.hasTaglib(e)||i.addTaglib(e)}}function n(i){var a=s.find(i,r.registeredTaglibs),e=a.map(function(i){return i.id}).join(","),o=u[e];if(void 0===o){o=new f;for(var n=0;n<a.length;n++){var l=a[n];o.addTaglib(l),t(o,l)}u[e]=o}return o}function l(i){"string"==typeof i&&(i=d.load(i)),r.registeredTaglibs.push(i)}function g(){u={}}r.registerTaglib=l,r.buildLookup=n,r.clearCache=g;var d=i("../taglib-loader"),s=i("../taglib-finder"),f=i("./TaglibLookup");r.registeredTaglibs=[];var u={}});
-$rmod.main("/marko@3.0.0/compiler/taglib-loader","index");
+$rmod.main("/marko@3.0.2/compiler/taglib-loader","index");
 $rmod.def("/marko@3.0.0/compiler/taglib-loader/handleAttributes",function(t,r,a,o,e){var i=t("assert").ok,d=t("/$/marko/$/raptor-util/forEachEntry"),u=t("./loader");a.exports=function(t,r,a){i(r),d(t,function(t,o){var e=u.attributeLoader.loadAttribute(t,o,'"'+t+'" attribute as part of '+a);r.addAttribute(e)})}});
-$rmod.remap("/marko@3.0.0/compiler/taglib-loader/scanTagsDir","scanTagsDir-browser");
+$rmod.remap("/marko@3.0.2/compiler/taglib-loader/scanTagsDir","scanTagsDir-browser");
 $rmod.def("/marko@3.0.0/compiler/taglib-loader/scanTagsDir-browser",function(o,r,a,e,i){a.exports=function(){}});
-$rmod.remap("/marko@3.0.0/compiler/util/resolve","resolve-browser");
+$rmod.remap("/marko@3.0.2/compiler/util/resolve","resolve-browser");
 $rmod.def("/marko@3.0.0/compiler/util/resolve-browser",function(r,o,e,i,n){var t=r("path-browserify");e.exports=function(r,o){return t.join(o,r)}});
-$rmod.remap("/marko@3.0.0/compiler/taglib-loader/taglib-reader","taglib-reader-browser");
+$rmod.remap("/marko@3.0.2/compiler/taglib-loader/taglib-reader","taglib-reader-browser");
 $rmod.def("/marko@3.0.0/compiler/taglib-loader/taglib-reader-browser",function(r,a,t,e,o){a.readTaglib=function(a){var t;try{t=r(a)}catch(e){throw new Error('Unable to parse taglib JSON at path "'+a+'". Exception: '+e)}return t}});
 $rmod.def("/marko@3.0.0/compiler/taglib-loader/loader-taglib",function(t,a,r,i,e){function n(a){try{return t.resolve(a),!0}catch(r){return!1}}function o(a,r,i){var e=a.taglib,o=a.dirname;d(i,'Invalid tag definition for "'+r+'"');var s,f;if("string"==typeof i){if(i=h.resolve(o,i),e.addInputFile(i),f=h.dirname(i),!n(i))throw new Error('Tag at path "'+i+'" does not exist. Taglib: '+e.path);try{s=t(i)}catch(l){throw new Error('Unable to parse tag JSON for tag at path "'+i+'"')}}else f=o,s=i,i="<"+r+"> tag in "+e.path;var g=b.tagLoader.loadTag(s,i,e,f);void 0===g.name&&(g.name=r),e.addTag(g)}function s(t,a){d(t),d(a),this.taglib=t,this.path=a,this.dirname=h.dirname(a)}var d=t("assert").ok,h=t("path-browserify"),f=t("./handleAttributes"),l=t("./scanTagsDir"),g=t("../util/resolve"),p=t("/$/marko/$/property-handlers"),u=t("./Taglib"),v=t("./taglib-reader"),b=t("./loader"),c=t("/$/marko/$/try-require"),m=c("resolve-from",t);s.prototype={attributes:function(t){var a=this.taglib,r=this.path;f(t,a,r)},tags:function(t){for(var a in t)t.hasOwnProperty(a)&&o(this,a,t[a])},tagsDir:function(t){var a=this.taglib,r=this.path,i=this.dirname;if(Array.isArray(t))for(var e=0;e<t.length;e++)l(r,i,t[e],a);else l(r,i,t,a)},taglibImports:function(a){if(m){var r,i=this.taglib,e=this.dirname;if(a&&Array.isArray(a))for(var n=0;n<a.length;n++){var o=a[n];if("string"==typeof o){var s=h.basename(o);if("package.json"===s){var d=g(o,e),f=t(d),l=f.dependencies;if(l)for(var p=Object.keys(l),u=0;u<p.length;u++){var v=p[u];try{r=m(e,v+"/marko.json")}catch(b){}r&&i.addImport(r)}}else r=m(e,o),i.addImport(r)}}}},textTransformer:function(t){var a=this.taglib,r=this.path,i=this.dirname,e=new u.Transformer;"string"==typeof t&&(t={path:t}),p(t,{path:function(t){var a=g(t,i);e.path=a}},"text-transformer in "+r),d(e.path,'"path" is required for transformer'),a.addInputFile(e.path),a.addTextTransformer(e)},taglibId:function(t){var a=this.taglib;a.id=t}},a.loadTaglib=function(a,r){var i=v.readTaglib(a);r=r||new u(a),r.addInputFile(a);var e=new s(r,a);if(e["*"]=function(t,a){var r=this.taglib,i=this.path;if(t.startsWith("<"))o(this,t.slice(1,-1),a);else{if(!t.startsWith("@"))return!1;var e=t.substring(1),n=b.attributeLoader.loadAttribute(e,a,'"'+e+'" attribute as part of '+i);r.addAttribute(n)}},p(i,e,a),r.path=a,!r.id){var n=h.dirname(a),d=h.join(n,"package.json");try{var f=t(d);r.id=f.name}catch(l){}r.id||(r.id=a)}return r}});
 $rmod.def("/marko@3.0.0/compiler/taglib-loader/loader-tag",function(t,r,e,a,i){function n(r){try{return t.resolve(r),!0}catch(e){return!1}}function o(t){return t.replace(/-([a-z])/g,function(t,r){return r.toUpperCase()})}function s(t,r,e){var a;if("string"==typeof r)a={name:r};else if(a={},l(r,{name:function(t){a.name=t},nameFromAttribute:function(t){a.nameFromAttribute=t}},e),!a.name&&!a.nameFromAttribute)throw new Error('The "name" or "name-from-attribute" attribute is required for a nested variable');t.addNestedVariable(a)}function p(t,r,e,a){if(this.tag=t,this.dirname=r,this.path=e,this.taglib=a,!a)throw new Error("taglib expected")}function f(t){if(null!=t.attributes)return!0;for(var r in t)if(t.hasOwnProperty(r)&&r.startsWith("@"))return!0;return!1}function u(t,r,e,a){h(t),h("string"==typeof r),h(e),h("string"==typeof a);var i=new d.Tag(e);f(t)||(t.attributes={"*":{type:"string",targetProperty:null}});var n=new p(i,a,r,e);return n["*"]=function(t,n){var s,p,f=t.split(/\s+|\s+[,]\s+/),h=!1,d=!1,l=null;for(s=0;s<f.length;s++)if(p=f[s],p.startsWith("@"))d=!0,0===s&&(l=p.substring(1));else{if(!p.startsWith("<"))return!1;h=!0}var g,m={},y={};if(null!=n&&"object"==typeof n){for(g in n)if(n.hasOwnProperty(g))if(g.startsWith("@")||g.startsWith("<"))y[g]=n[g],delete n[g];else{var v=o(g);E.tagLoader.isSupportedProperty(v)&&E.attributeLoader.isSupportedProperty(v)?(y[g]=n[g],m[g]=n[g],delete n[g]):E.tagLoader.isSupportedProperty(v)?(y[g]=n[g],delete n[g]):E.attributeLoader.isSupportedProperty(v)&&(m[g]=n[g],delete n[g])}if(!c(n))throw new Error("Unsupported properties of ["+Object.keys(n).join(", ")+'] for "'+t+'" in "'+r+'"');var b=m.type;!b&&d&&h&&(m.type="expression")}else"string"==typeof n&&(h&&d?y=m={type:n}:h?y={type:n}:m={type:n});for(s=0;s<f.length;s++)if(p=f[s],p.startsWith("@")){var w=p.substring(1),P=E.attributeLoader.loadAttribute(w,m,'"'+w+'" attribute as part of '+r);i.addAttribute(P)}else{if(!p.startsWith("<"))return!1;var $=u(y,t+" of "+r,e,a),T=!1;p.endsWith("[]")&&(T=!0,p=p.slice(0,-2));var x=p.substring(1,p.length-1);$.name=x,$.isRepeated=T,$.targetProperty=m.targetProperty||l,i.addNestedTag($)}},l(t,n,r),i}t("/$/marko/$/raptor-polyfill/string/startsWith");var h=t("assert").ok,d=t("./Taglib"),l=t("/$/marko/$/property-handlers"),c=t("/$/marko/$/raptor-util/isObjectEmpty"),g=t("path-browserify"),m=t("../util/resolve"),h=t("assert").ok,y=/^([A-Za-z_$][A-Za-z0-9_]*)(?:\(([^)]*)\))?$/,v=/^[A-Za-z_$][A-Za-z0-9_]*$/,b=t("./handleAttributes"),d=t("./Taglib"),l=t("/$/marko/$/property-handlers"),w=t("/$/marko/$/raptor-util").forEachEntry,E=t("./loader"),P=t("../");p.prototype={name:function(t){var r=this.tag;r.name=t},renderer:function(t){var r=this.tag,e=this.dirname,a=m(t,e);this.taglib.addInputFile(a),r.renderer=a},template:function(t){var r=this.tag,e=this.dirname,a=g.resolve(e,t);if(!n(a))throw new Error('Template at path "'+a+'" does not exist.');this.taglib.addInputFile(a),r.template=a},attributes:function(t){var r=this.tag,e=this.path;b(t,r,e)},codeGenerator:function(t){var r=this.tag,e=this.dirname,a=m(t,e);r.codeGeneratorModulePath=a,this.taglib.addInputFile(a)},nodeFactory:function(t){var r=this.tag,e=this.dirname,a=m(t,e);r.nodeFactoryPath=a,this.taglib.addInputFile(a)},preserveWhitespace:function(t){var r=this.tag;r.preserveWhitespace=!!t},transformer:function(t){var r=this.tag,e=this.dirname,a=this.path,i=this.taglib,n=new d.Transformer;"string"==typeof t&&(t={path:t}),l(t,{path:function(t){var r=m(t,e);n.path=r,i.addInputFile(r)},priority:function(t){n.priority=t},name:function(t){n.name=t},properties:function(t){var r=n.properties||(n.properties={});for(var e in t)t.hasOwnProperty(e)&&(r[e]=t[e])}},"transformer in "+a),h(n.path,'"path" is required for transformer'),r.addTransformer(n)},"var":function(t){s(this.tag,t,'"var" in tag '+this.path)},vars:function(t){var r=this.tag,e=this;t&&t.forEach(function(t,a){s(r,t,'"vars"['+a+"] in tag "+e.path)})},bodyFunction:function(t){var r=this.tag,e=y.exec(t);if(!e)throw new Error('Invalid value of "'+t+'" for "body-function". Expected value to be of the following form: <function-name>([param1, param2, ...])');var a=e[1],i=e[2];if(i){i=i.trim().split(/\s*,\s*/);for(var n=0;n<i.length;n++){if(0===i[n].length)throw new Error('Invalid parameters for body-function with value of "'+t+'"');if(!v.test(i[n]))throw new Error('Invalid parameter name of "'+i[n]+'" for body-function with value of "'+t+'"')}}else i=[];r.setBodyFunction(a,i)},importVar:function(r){var e=this.tag;w(r,function(r,a){var i={targetProperty:r},n=a;if(n?"object"==typeof n&&(n=n.expression):n=r,!n)throw new Error('Invalid "import-var": '+t("util").inspect(a));i.expression=P.builder.parseExpression(n),e.addImportedVariable(i)})},type:function(t){var r=this.tag;r.type=t},nestedTags:function(t){var r=this.path,e=this.taglib,a=this.dirname,i=this.tag;w(t,function(t,n){var o=u(n,t+" of "+r,e,a);o.name=t,i.addNestedTag(o)})},escapeXmlBody:function(t){t===!1&&(this.tag.escapeXmlBody=!1)},body:function(t){if("static-text"!==t&&"parsed-text"!==t&&"html"!==t)throw new Error('Invalid value for "body". Allowed: "static-text", "parsed-text" or "html"');this.tag.body=t},openTagOnly:function(t){this.tag.openTagOnly=t}},r.isSupportedProperty=function(t){return p.prototype.hasOwnProperty(t)},r.loadTag=u});
 $rmod.def("/marko@3.0.0/compiler/taglib-loader/loader-attribute",function(t,r,e,a,n){function o(t){i.ok(t),i.equal(typeof t,"object"),this.attr=t}var i=t("assert"),s=t("/$/marko/$/raptor-regexp"),p=t("/$/marko/$/property-handlers"),u=t("./Taglib");o.prototype={type:function(t){var r=this.attr;r.type=t},targetProperty:function(t){var r=this.attr;r.targetProperty=t},defaultValue:function(t){var r=this.attr;r.defaultValue=t},pattern:function(t){var r=this.attr;if(t===!0){var e=s.simple(r.name);r.pattern=e}},allowExpressions:function(t){var r=this.attr;r.allowExpressions=t},preserveName:function(t){var r=this.attr;r.preserveName=t},required:function(t){var r=this.attr;r.required=t===!0},removeDashes:function(t){var r=this.attr;r.removeDashes=t===!0},description:function(){},setFlag:function(t){var r=this.attr;r.setFlag=t},ignore:function(t){var r=this.attr;t===!0&&(r.ignore=!0)}},r.isSupportedProperty=function(t){return o.prototype.hasOwnProperty(t)},r.loadAttribute=function(t,r,e){var a=new u.Attribute(t);null==r?r={type:"string"}:"string"==typeof r&&(r={type:r});var n=new o(a);return p(r,n,e),a}});
 $rmod.def("/marko@3.0.0/compiler/taglib-loader/loader",function(a,r,e,o,t){r.taglibLoader=a("./loader-taglib"),r.tagLoader=a("./loader-tag"),r.attributeLoader=a("./loader-attribute")});
 $rmod.def("/marko@3.0.0/compiler/taglib-loader/index",function(a,r,e,o,i){function l(a){if(t[a])return t[a];var r=t[a]=new d(a);return n.taglibLoader.loadTaglib(a,r),t[a]=r,r}var n=a("./loader"),d=a("./Taglib"),t={};r.clearCache=function(){t={}},r.load=l});
-$rmod.main("/marko@3.0.0/compiler/taglib-finder","index");
-$rmod.remap("/marko@3.0.0/compiler/taglib-finder/index","index-browser");
+$rmod.main("/marko@3.0.2/compiler/taglib-finder","index");
+$rmod.remap("/marko@3.0.2/compiler/taglib-finder/index","index-browser");
 $rmod.def("/marko@3.0.0/compiler/taglib-finder/index-browser",function(n,e,i,r,c){function o(n,e){return e||[]}function f(n){}function d(){}e.find=o,e.excludeDir=f,e.clearCache=d});
 $rmod.def("/marko@3.0.0/compiler/index", function(require, exports, module, __filename, __dirname) { 'use strict';var process=require("process"); 
 
@@ -7787,6 +7790,7 @@ var Builder = require('./Builder');
 var extend = require('/$/marko/$/raptor-util/extend'/*'raptor-util/extend'*/);
 var CompileContext = require('./CompileContext');
 var NODE_ENV = process.env.NODE_ENV;
+
 var defaultParser = new Parser(new HtmlJsParser());
 var rawParser = new Parser(
     new HtmlJsParser({
@@ -7806,7 +7810,7 @@ var defaultOptions = {
          * If false, the template will always be recompiled. If `writeToDisk` is false
          * then this option will be ignored.
          */
-        checkUpToDate: true,
+        checkUpToDate: process.env.MARKO_CLEAN ? false : true,
         /**
          * If true (the default) then compiled templates will be written to disk. If false,
          * compiled templates will not be written to disk (i.e., no `.marko.js` file will
@@ -7817,7 +7821,7 @@ var defaultOptions = {
         /**
          * If true, then the compiled template on disk will assumed to be up-to-date if it exists.
          */
-        assumeUpToDate: NODE_ENV == null ? false : (NODE_ENV !== 'development' && NODE_ENV !== 'dev')
+        assumeUpToDate: process.env.MARKO_CLEAN != null || NODE_ENV == null ? false : (NODE_ENV !== 'development' && NODE_ENV !== 'dev')
     };
 
 function configure(config) {

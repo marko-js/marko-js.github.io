@@ -1,92 +1,18 @@
 !function(){function r(r,n){var t=new Error('Cannot find module "'+r+'"'+(n?' from "'+n+'"':""));return t.code="MODULE_NOT_FOUND",t}function n(r){this.id=this.filename=r[0],this.loaded=!1}function t(r,n,t){var i=t&&t.globals;if($[r]=n,i)for(var e=b||global,o=0;o<i.length;o++){var u=i[o];F[r]=e[u]=h(r,r)}}function i(r,n){k[r]=n}function e(r,n){D[r]=n}function o(r,n,t,i){if(n===!1)return void(j[r+"/$/"+i]=null);var e="."===n.charAt(0)?r+n.substring(1):r+"/$/"+n;j[e]=[t],void 0!==i&&(j[r+"/$/"+i]=[t,n,e])}function u(r){var n,t=0,i=r.length;for(n=0;i>n;n++){var e=r[n];"."===e||(".."===e?t--:(r[t]=e,t++))}return 1===t?"/":(t>2&&0===r[t-1].length&&t--,r.length=t,r.join("/"))}function a(r,n){var t=n.split("/"),i="/"==r?[""]:r.split("/");return u(i.concat(t))}function f(r){var n,t=r.lastIndexOf(".");return-1===t||-1!==(n=r.lastIndexOf("/"))&&n>t?null:r.substring(0,t)}function s(r,n){return r.substring(0,r.length-n)}function v(r,n,t,i){var e=i&&"/"+n+"@"+i+t;return r+=t,[r,e,void 0]}function d(r,n){var t=r.lastIndexOf("$");if(-1===t)return[r,r,void 0];t+=2;var i,e,o,u=r.indexOf("/",t+3);-1===u?(i=r,e="",o=r.substring(t)):("@"===r.charAt(t)&&(u=r.indexOf("/",u+1)),i=r.substring(0,u),e=r.substring(u),o=r.substring(t,u));var a=j[i];return void 0===a?void 0:null===a?[]:v(a[2]||i,a[1]||o,e,a[0])}function l(r,n){"/"===r.charAt(r.length-1)&&(r=r.slice(0,-1));for(var t=m.length,i=0;t>i;i++){var e=m[i]+r,o=c(e,n);if(o)return o}var u,a,f=r.indexOf("/");-1!==f&&"@"===r.charAt(0)&&(f=r.indexOf("/",f+1)),-1===f?(u=r,a=""):(u=r.substring(0,f),a=r.substring(f));var s=n+"/$/"+u,d=j[s];if(void 0!==d)return null===d?[]:v(d[2]||s,d[1]||u,a,d[0]);for(var l=n.lastIndexOf("/");-1!==l;){var h=-1;if(l>0&&(h=n.lastIndexOf("/",l-1),-1!==h&&l-h===2&&"$"===n.charAt(h+1)))l=h;else{if(s=n.substring(0,l)+"/$/"+u,d=j[s],void 0!==d)return null===d?[]:v(d[2]||s,d[1]||u,a,d[0]);if(-1===h)break;l=h}}return void 0}function c(r,n){var t,i;if("."===r.charAt(0))t=d(a(n,r),r);else if("/"===r.charAt(0))t=d(u(r.split("/")));else{if(i=D[r])return c(i);t=l(r,n)}if(!t)return void 0;var e=t[0],o=t[1];if(void 0===e)return["$","$",{}];if(!o)return c(e);var v;void 0!==(v=k[o])&&(e=a(e,v),o=a(o,v)),i=D[o],void 0!==i&&(e=a(e+"/..",i),o=a(o+"/..",i));var h=$[o];if(void 0===h){var g;if(null===(g=f(o))||void 0===(h=$[g]))return void 0;e=s(e,o.length-g.length),o=g}return t[0]=e,t[1]=o,t[2]=h,t}function h(t,i){if(!t)throw r("");var e=c(t,i);if(!e)throw r(t,i);var o=e[0],u=y[o];if(void 0!==u)return u.exports;var a=e[1];if(F.hasOwnProperty(a))return F[a];var f=e[2];return u=new n(e),y[o]=u,u.load(f),u.exports}function g(r,n){var t=!n||n.wait!==!1;return t&&!A?I.push([r,n]):void h(r,"/")}function p(){A=!0;for(var r;r=I.length;){var n=I;I=[];for(var t=0;r>t;t++){var i=n[t];g(i[0],i[1])}if(!A)break}}function x(r){m.push(r)}var b="undefined"==typeof window?null:window;if(!b||!b.$rmod){var O,w,$={},m=[],A=!1,I=[],y={},j={},k={},D={},E={},F={};n.cache=y,w=n.prototype,w.load=function(n){var t=this.id;if(n&&n.constructor===Function){var i=t.lastIndexOf("/"),e=t.substring(0,i),o=t,u=E[e]||(E[e]={}),a=function(r){return u[r]||(u[r]=h(r,e))};a.resolve=function(n){if(!n)throw r("");var t=c(n,e);if(!t)throw r(n,e);return t[0]},a.cache=y,a.runtime=O,this.exports={},n.call(this,a,this.exports,this,o,e)}else this.exports=n;this.loaded=!0};var N=0,P=function(){N--,N||p()};O={def:t,dep:o,run:g,main:i,remap:e,require:h,resolve:c,join:a,ready:p,addSearchPath:x,pending:function(){return A=!1,N++,{done:P}}},b?b.$rmod=O:module.exports=O}}();
-$rmod.main("/src/components/app-try-marko-app","index");
-$rmod.main("/change-case@2.3.1","change-case");
-$rmod.dep("","change-case","2.3.1");
-$rmod.main("/dot-case@1.1.2","dot-case");
-$rmod.dep("/$/change-case","dot-case","1.1.2");
-$rmod.def("/dot-case@1.1.2/dot-case",function(e,c,n,t,a){var o=e("/$/change-case/$/sentence-case");n.exports=function(e,c){return o(e,c,".")}});
-$rmod.main("/swap-case@1.1.2","swap-case");
-$rmod.dep("/$/change-case","swap-case","1.1.2");
-$rmod.def("/swap-case@1.1.2/swap-case",function(e,a,r,c,n){var s=e("/$/change-case/$/upper-case"),o=e("/$/change-case/$/lower-case");r.exports=function(e,a){if(null==e)return"";for(var r="",c=0;c<e.length;c++){var n=e[c],t=s(n,a);r+=t===n?o(n,a):t}return r}});
-$rmod.main("/path-case@1.1.2","path-case");
-$rmod.dep("/$/change-case","path-case","1.1.2");
-$rmod.def("/path-case@1.1.2/path-case",function(e,a,c,n,t){var s=e("/$/change-case/$/sentence-case");c.exports=function(e,a){return s(e,a,"/")}});
-$rmod.main("/upper-case@1.1.3","upper-case");
-$rmod.dep("/$/change-case","upper-case","1.1.3");
-$rmod.def("/upper-case@1.1.3/upper-case",function(e,u,r,p,a){var i={tr:{regexp:/[\u0069]/g,map:{i:"İ"}},az:{regexp:/[\u0069]/g,map:{i:"İ"}},lt:{regexp:/[\u0069\u006A\u012F]\u0307|\u0069\u0307[\u0300\u0301\u0303]/g,map:{"i̇":"I","j̇":"J","į̇":"Į","i̇̀":"Ì","i̇́":"Í","i̇̃":"Ĩ"}}};r.exports=function(e,u){var r=i[u];return e=null==e?"":String(e),r&&(e=e.replace(r.regexp,function(e){return r.map[e]})),e.toUpperCase()}});
-$rmod.main("/lower-case@1.1.3","lower-case");
-$rmod.dep("/$/change-case","lower-case","1.1.3");
-$rmod.def("/lower-case@1.1.3/lower-case",function(e,r,u,i,a){var n={tr:{regexp:/\u0130|\u0049|\u0049\u0307/g,map:{"İ":"i",I:"ı","İ":"i"}},az:{regexp:/[\u0130]/g,map:{"İ":"i",I:"ı","İ":"i"}},lt:{regexp:/[\u0049\u004A\u012E\u00CC\u00CD\u0128]/g,map:{I:"i̇",J:"j̇","Į":"į̇","Ì":"i̇̀","Í":"i̇́","Ĩ":"i̇̃"}}};u.exports=function(e,r){var u=n[r];return e=null==e?"":String(e),u&&(e=e.replace(u.regexp,function(e){return u.map[e]})),e.toLowerCase()}});
-$rmod.main("/camel-case@1.2.2","camel-case");
-$rmod.dep("/$/change-case","camel-case","1.2.2");
-$rmod.def("/camel-case@1.2.2/camel-case",function(e,c,a,n,r){var s=e("/$/change-case/$/upper-case"),t=e("/$/change-case/$/sentence-case");a.exports=function(e,c,a){var n=t(e,c);return a||(n=n.replace(/(\d) (?=\d)/g,"$1_")),n.replace(/ (.)/g,function(e,a){return s(a,c)})}});
-$rmod.main("/snake-case@1.1.2","snake-case");
-$rmod.dep("/$/change-case","snake-case","1.1.2");
-$rmod.def("/snake-case@1.1.2/snake-case",function(e,n,a,c,s){var r=e("/$/change-case/$/sentence-case");a.exports=function(e,n){return r(e,n,"_")}});
-$rmod.main("/title-case@1.1.2","title-case");
-$rmod.dep("/$/change-case","title-case","1.1.2");
-$rmod.def("/title-case@1.1.2/title-case",function(e,c,n,t,a){var r=e("/$/change-case/$/upper-case"),s=e("/$/change-case/$/sentence-case");n.exports=function(e,c){return s(e,c).replace(/^.| ./g,function(e){return r(e,c)})}});
-$rmod.main("/param-case@1.1.2","param-case");
-$rmod.dep("/$/change-case","param-case","1.1.2");
-$rmod.def("/param-case@1.1.2/param-case",function(e,a,c,n,r){var s=e("/$/change-case/$/sentence-case");c.exports=function(e,a){return s(e,a,"-")}});
-$rmod.main("/pascal-case@1.1.2","pascal-case");
-$rmod.dep("/$/change-case","pascal-case","1.1.2");
-$rmod.def("/pascal-case@1.1.2/pascal-case",function(a,c,e,s,n){var r=a("/$/change-case/$/camel-case"),p=a("/$/change-case/$/upper-case-first");e.exports=function(a,c){return p(r(a,c),c)}});
-$rmod.main("/constant-case@1.1.2","constant-case");
-$rmod.dep("/$/change-case","constant-case","1.1.2");
-$rmod.def("/constant-case@1.1.2/constant-case",function(e,a,c,n,s){var t=e("/$/change-case/$/upper-case"),o=e("/$/change-case/$/snake-case");c.exports=function(e,a){return t(o(e,a),a)}});
-$rmod.main("/sentence-case@1.1.3","sentence-case");
-$rmod.dep("/$/change-case","sentence-case","1.1.3");
-$rmod.def("/sentence-case@1.1.3/vendor/non-word-regexp",function(u,A,F,B,C){F.exports=/[^\u0041-\u005A\u0061-\u007A\u00AA\u00B5\u00BA\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u02C1\u02C6-\u02D1\u02E0-\u02E4\u02EC\u02EE\u0370-\u0374\u0376\u0377\u037A-\u037D\u0386\u0388-\u038A\u038C\u038E-\u03A1\u03A3-\u03F5\u03F7-\u0481\u048A-\u0527\u0531-\u0556\u0559\u0561-\u0587\u05D0-\u05EA\u05F0-\u05F2\u0620-\u064A\u066E\u066F\u0671-\u06D3\u06D5\u06E5\u06E6\u06EE\u06EF\u06FA-\u06FC\u06FF\u0710\u0712-\u072F\u074D-\u07A5\u07B1\u07CA-\u07EA\u07F4\u07F5\u07FA\u0800-\u0815\u081A\u0824\u0828\u0840-\u0858\u08A0\u08A2-\u08AC\u0904-\u0939\u093D\u0950\u0958-\u0961\u0971-\u0977\u0979-\u097F\u0985-\u098C\u098F\u0990\u0993-\u09A8\u09AA-\u09B0\u09B2\u09B6-\u09B9\u09BD\u09CE\u09DC\u09DD\u09DF-\u09E1\u09F0\u09F1\u0A05-\u0A0A\u0A0F\u0A10\u0A13-\u0A28\u0A2A-\u0A30\u0A32\u0A33\u0A35\u0A36\u0A38\u0A39\u0A59-\u0A5C\u0A5E\u0A72-\u0A74\u0A85-\u0A8D\u0A8F-\u0A91\u0A93-\u0AA8\u0AAA-\u0AB0\u0AB2\u0AB3\u0AB5-\u0AB9\u0ABD\u0AD0\u0AE0\u0AE1\u0B05-\u0B0C\u0B0F\u0B10\u0B13-\u0B28\u0B2A-\u0B30\u0B32\u0B33\u0B35-\u0B39\u0B3D\u0B5C\u0B5D\u0B5F-\u0B61\u0B71\u0B83\u0B85-\u0B8A\u0B8E-\u0B90\u0B92-\u0B95\u0B99\u0B9A\u0B9C\u0B9E\u0B9F\u0BA3\u0BA4\u0BA8-\u0BAA\u0BAE-\u0BB9\u0BD0\u0C05-\u0C0C\u0C0E-\u0C10\u0C12-\u0C28\u0C2A-\u0C33\u0C35-\u0C39\u0C3D\u0C58\u0C59\u0C60\u0C61\u0C85-\u0C8C\u0C8E-\u0C90\u0C92-\u0CA8\u0CAA-\u0CB3\u0CB5-\u0CB9\u0CBD\u0CDE\u0CE0\u0CE1\u0CF1\u0CF2\u0D05-\u0D0C\u0D0E-\u0D10\u0D12-\u0D3A\u0D3D\u0D4E\u0D60\u0D61\u0D7A-\u0D7F\u0D85-\u0D96\u0D9A-\u0DB1\u0DB3-\u0DBB\u0DBD\u0DC0-\u0DC6\u0E01-\u0E30\u0E32\u0E33\u0E40-\u0E46\u0E81\u0E82\u0E84\u0E87\u0E88\u0E8A\u0E8D\u0E94-\u0E97\u0E99-\u0E9F\u0EA1-\u0EA3\u0EA5\u0EA7\u0EAA\u0EAB\u0EAD-\u0EB0\u0EB2\u0EB3\u0EBD\u0EC0-\u0EC4\u0EC6\u0EDC-\u0EDF\u0F00\u0F40-\u0F47\u0F49-\u0F6C\u0F88-\u0F8C\u1000-\u102A\u103F\u1050-\u1055\u105A-\u105D\u1061\u1065\u1066\u106E-\u1070\u1075-\u1081\u108E\u10A0-\u10C5\u10C7\u10CD\u10D0-\u10FA\u10FC-\u1248\u124A-\u124D\u1250-\u1256\u1258\u125A-\u125D\u1260-\u1288\u128A-\u128D\u1290-\u12B0\u12B2-\u12B5\u12B8-\u12BE\u12C0\u12C2-\u12C5\u12C8-\u12D6\u12D8-\u1310\u1312-\u1315\u1318-\u135A\u1380-\u138F\u13A0-\u13F4\u1401-\u166C\u166F-\u167F\u1681-\u169A\u16A0-\u16EA\u1700-\u170C\u170E-\u1711\u1720-\u1731\u1740-\u1751\u1760-\u176C\u176E-\u1770\u1780-\u17B3\u17D7\u17DC\u1820-\u1877\u1880-\u18A8\u18AA\u18B0-\u18F5\u1900-\u191C\u1950-\u196D\u1970-\u1974\u1980-\u19AB\u19C1-\u19C7\u1A00-\u1A16\u1A20-\u1A54\u1AA7\u1B05-\u1B33\u1B45-\u1B4B\u1B83-\u1BA0\u1BAE\u1BAF\u1BBA-\u1BE5\u1C00-\u1C23\u1C4D-\u1C4F\u1C5A-\u1C7D\u1CE9-\u1CEC\u1CEE-\u1CF1\u1CF5\u1CF6\u1D00-\u1DBF\u1E00-\u1F15\u1F18-\u1F1D\u1F20-\u1F45\u1F48-\u1F4D\u1F50-\u1F57\u1F59\u1F5B\u1F5D\u1F5F-\u1F7D\u1F80-\u1FB4\u1FB6-\u1FBC\u1FBE\u1FC2-\u1FC4\u1FC6-\u1FCC\u1FD0-\u1FD3\u1FD6-\u1FDB\u1FE0-\u1FEC\u1FF2-\u1FF4\u1FF6-\u1FFC\u2071\u207F\u2090-\u209C\u2102\u2107\u210A-\u2113\u2115\u2119-\u211D\u2124\u2126\u2128\u212A-\u212D\u212F-\u2139\u213C-\u213F\u2145-\u2149\u214E\u2183\u2184\u2C00-\u2C2E\u2C30-\u2C5E\u2C60-\u2CE4\u2CEB-\u2CEE\u2CF2\u2CF3\u2D00-\u2D25\u2D27\u2D2D\u2D30-\u2D67\u2D6F\u2D80-\u2D96\u2DA0-\u2DA6\u2DA8-\u2DAE\u2DB0-\u2DB6\u2DB8-\u2DBE\u2DC0-\u2DC6\u2DC8-\u2DCE\u2DD0-\u2DD6\u2DD8-\u2DDE\u2E2F\u3005\u3006\u3031-\u3035\u303B\u303C\u3041-\u3096\u309D-\u309F\u30A1-\u30FA\u30FC-\u30FF\u3105-\u312D\u3131-\u318E\u31A0-\u31BA\u31F0-\u31FF\u3400-\u4DB5\u4E00-\u9FCC\uA000-\uA48C\uA4D0-\uA4FD\uA500-\uA60C\uA610-\uA61F\uA62A\uA62B\uA640-\uA66E\uA67F-\uA697\uA6A0-\uA6E5\uA717-\uA71F\uA722-\uA788\uA78B-\uA78E\uA790-\uA793\uA7A0-\uA7AA\uA7F8-\uA801\uA803-\uA805\uA807-\uA80A\uA80C-\uA822\uA840-\uA873\uA882-\uA8B3\uA8F2-\uA8F7\uA8FB\uA90A-\uA925\uA930-\uA946\uA960-\uA97C\uA984-\uA9B2\uA9CF\uAA00-\uAA28\uAA40-\uAA42\uAA44-\uAA4B\uAA60-\uAA76\uAA7A\uAA80-\uAAAF\uAAB1\uAAB5\uAAB6\uAAB9-\uAABD\uAAC0\uAAC2\uAADB-\uAADD\uAAE0-\uAAEA\uAAF2-\uAAF4\uAB01-\uAB06\uAB09-\uAB0E\uAB11-\uAB16\uAB20-\uAB26\uAB28-\uAB2E\uABC0-\uABE2\uAC00-\uD7A3\uD7B0-\uD7C6\uD7CB-\uD7FB\uF900-\uFA6D\uFA70-\uFAD9\uFB00-\uFB06\uFB13-\uFB17\uFB1D\uFB1F-\uFB28\uFB2A-\uFB36\uFB38-\uFB3C\uFB3E\uFB40\uFB41\uFB43\uFB44\uFB46-\uFBB1\uFBD3-\uFD3D\uFD50-\uFD8F\uFD92-\uFDC7\uFDF0-\uFDFB\uFE70-\uFE74\uFE76-\uFEFC\uFF21-\uFF3A\uFF41-\uFF5A\uFF66-\uFFBE\uFFC2-\uFFC7\uFFCA-\uFFCF\uFFD2-\uFFD7\uFFDA-\uFFDC\u0030-\u0039\u00B2\u00B3\u00B9\u00BC-\u00BE\u0660-\u0669\u06F0-\u06F9\u07C0-\u07C9\u0966-\u096F\u09E6-\u09EF\u09F4-\u09F9\u0A66-\u0A6F\u0AE6-\u0AEF\u0B66-\u0B6F\u0B72-\u0B77\u0BE6-\u0BF2\u0C66-\u0C6F\u0C78-\u0C7E\u0CE6-\u0CEF\u0D66-\u0D75\u0E50-\u0E59\u0ED0-\u0ED9\u0F20-\u0F33\u1040-\u1049\u1090-\u1099\u1369-\u137C\u16EE-\u16F0\u17E0-\u17E9\u17F0-\u17F9\u1810-\u1819\u1946-\u194F\u19D0-\u19DA\u1A80-\u1A89\u1A90-\u1A99\u1B50-\u1B59\u1BB0-\u1BB9\u1C40-\u1C49\u1C50-\u1C59\u2070\u2074-\u2079\u2080-\u2089\u2150-\u2182\u2185-\u2189\u2460-\u249B\u24EA-\u24FF\u2776-\u2793\u2CFD\u3007\u3021-\u3029\u3038-\u303A\u3192-\u3195\u3220-\u3229\u3248-\u324F\u3251-\u325F\u3280-\u3289\u32B1-\u32BF\uA620-\uA629\uA6E6-\uA6EF\uA830-\uA835\uA8D0-\uA8D9\uA900-\uA909\uA9D0-\uA9D9\uAA50-\uAA59\uABF0-\uABF9\uFF10-\uFF19]+/g});
-$rmod.def("/sentence-case@1.1.3/vendor/camel-case-regexp",function(u,E,A,C,F){A.exports=/([\u0061-\u007A\u00B5\u00DF-\u00F6\u00F8-\u00FF\u0101\u0103\u0105\u0107\u0109\u010B\u010D\u010F\u0111\u0113\u0115\u0117\u0119\u011B\u011D\u011F\u0121\u0123\u0125\u0127\u0129\u012B\u012D\u012F\u0131\u0133\u0135\u0137\u0138\u013A\u013C\u013E\u0140\u0142\u0144\u0146\u0148\u0149\u014B\u014D\u014F\u0151\u0153\u0155\u0157\u0159\u015B\u015D\u015F\u0161\u0163\u0165\u0167\u0169\u016B\u016D\u016F\u0171\u0173\u0175\u0177\u017A\u017C\u017E-\u0180\u0183\u0185\u0188\u018C\u018D\u0192\u0195\u0199-\u019B\u019E\u01A1\u01A3\u01A5\u01A8\u01AA\u01AB\u01AD\u01B0\u01B4\u01B6\u01B9\u01BA\u01BD-\u01BF\u01C6\u01C9\u01CC\u01CE\u01D0\u01D2\u01D4\u01D6\u01D8\u01DA\u01DC\u01DD\u01DF\u01E1\u01E3\u01E5\u01E7\u01E9\u01EB\u01ED\u01EF\u01F0\u01F3\u01F5\u01F9\u01FB\u01FD\u01FF\u0201\u0203\u0205\u0207\u0209\u020B\u020D\u020F\u0211\u0213\u0215\u0217\u0219\u021B\u021D\u021F\u0221\u0223\u0225\u0227\u0229\u022B\u022D\u022F\u0231\u0233-\u0239\u023C\u023F\u0240\u0242\u0247\u0249\u024B\u024D\u024F-\u0293\u0295-\u02AF\u0371\u0373\u0377\u037B-\u037D\u0390\u03AC-\u03CE\u03D0\u03D1\u03D5-\u03D7\u03D9\u03DB\u03DD\u03DF\u03E1\u03E3\u03E5\u03E7\u03E9\u03EB\u03ED\u03EF-\u03F3\u03F5\u03F8\u03FB\u03FC\u0430-\u045F\u0461\u0463\u0465\u0467\u0469\u046B\u046D\u046F\u0471\u0473\u0475\u0477\u0479\u047B\u047D\u047F\u0481\u048B\u048D\u048F\u0491\u0493\u0495\u0497\u0499\u049B\u049D\u049F\u04A1\u04A3\u04A5\u04A7\u04A9\u04AB\u04AD\u04AF\u04B1\u04B3\u04B5\u04B7\u04B9\u04BB\u04BD\u04BF\u04C2\u04C4\u04C6\u04C8\u04CA\u04CC\u04CE\u04CF\u04D1\u04D3\u04D5\u04D7\u04D9\u04DB\u04DD\u04DF\u04E1\u04E3\u04E5\u04E7\u04E9\u04EB\u04ED\u04EF\u04F1\u04F3\u04F5\u04F7\u04F9\u04FB\u04FD\u04FF\u0501\u0503\u0505\u0507\u0509\u050B\u050D\u050F\u0511\u0513\u0515\u0517\u0519\u051B\u051D\u051F\u0521\u0523\u0525\u0527\u0561-\u0587\u1D00-\u1D2B\u1D6B-\u1D77\u1D79-\u1D9A\u1E01\u1E03\u1E05\u1E07\u1E09\u1E0B\u1E0D\u1E0F\u1E11\u1E13\u1E15\u1E17\u1E19\u1E1B\u1E1D\u1E1F\u1E21\u1E23\u1E25\u1E27\u1E29\u1E2B\u1E2D\u1E2F\u1E31\u1E33\u1E35\u1E37\u1E39\u1E3B\u1E3D\u1E3F\u1E41\u1E43\u1E45\u1E47\u1E49\u1E4B\u1E4D\u1E4F\u1E51\u1E53\u1E55\u1E57\u1E59\u1E5B\u1E5D\u1E5F\u1E61\u1E63\u1E65\u1E67\u1E69\u1E6B\u1E6D\u1E6F\u1E71\u1E73\u1E75\u1E77\u1E79\u1E7B\u1E7D\u1E7F\u1E81\u1E83\u1E85\u1E87\u1E89\u1E8B\u1E8D\u1E8F\u1E91\u1E93\u1E95-\u1E9D\u1E9F\u1EA1\u1EA3\u1EA5\u1EA7\u1EA9\u1EAB\u1EAD\u1EAF\u1EB1\u1EB3\u1EB5\u1EB7\u1EB9\u1EBB\u1EBD\u1EBF\u1EC1\u1EC3\u1EC5\u1EC7\u1EC9\u1ECB\u1ECD\u1ECF\u1ED1\u1ED3\u1ED5\u1ED7\u1ED9\u1EDB\u1EDD\u1EDF\u1EE1\u1EE3\u1EE5\u1EE7\u1EE9\u1EEB\u1EED\u1EEF\u1EF1\u1EF3\u1EF5\u1EF7\u1EF9\u1EFB\u1EFD\u1EFF-\u1F07\u1F10-\u1F15\u1F20-\u1F27\u1F30-\u1F37\u1F40-\u1F45\u1F50-\u1F57\u1F60-\u1F67\u1F70-\u1F7D\u1F80-\u1F87\u1F90-\u1F97\u1FA0-\u1FA7\u1FB0-\u1FB4\u1FB6\u1FB7\u1FBE\u1FC2-\u1FC4\u1FC6\u1FC7\u1FD0-\u1FD3\u1FD6\u1FD7\u1FE0-\u1FE7\u1FF2-\u1FF4\u1FF6\u1FF7\u210A\u210E\u210F\u2113\u212F\u2134\u2139\u213C\u213D\u2146-\u2149\u214E\u2184\u2C30-\u2C5E\u2C61\u2C65\u2C66\u2C68\u2C6A\u2C6C\u2C71\u2C73\u2C74\u2C76-\u2C7B\u2C81\u2C83\u2C85\u2C87\u2C89\u2C8B\u2C8D\u2C8F\u2C91\u2C93\u2C95\u2C97\u2C99\u2C9B\u2C9D\u2C9F\u2CA1\u2CA3\u2CA5\u2CA7\u2CA9\u2CAB\u2CAD\u2CAF\u2CB1\u2CB3\u2CB5\u2CB7\u2CB9\u2CBB\u2CBD\u2CBF\u2CC1\u2CC3\u2CC5\u2CC7\u2CC9\u2CCB\u2CCD\u2CCF\u2CD1\u2CD3\u2CD5\u2CD7\u2CD9\u2CDB\u2CDD\u2CDF\u2CE1\u2CE3\u2CE4\u2CEC\u2CEE\u2CF3\u2D00-\u2D25\u2D27\u2D2D\uA641\uA643\uA645\uA647\uA649\uA64B\uA64D\uA64F\uA651\uA653\uA655\uA657\uA659\uA65B\uA65D\uA65F\uA661\uA663\uA665\uA667\uA669\uA66B\uA66D\uA681\uA683\uA685\uA687\uA689\uA68B\uA68D\uA68F\uA691\uA693\uA695\uA697\uA723\uA725\uA727\uA729\uA72B\uA72D\uA72F-\uA731\uA733\uA735\uA737\uA739\uA73B\uA73D\uA73F\uA741\uA743\uA745\uA747\uA749\uA74B\uA74D\uA74F\uA751\uA753\uA755\uA757\uA759\uA75B\uA75D\uA75F\uA761\uA763\uA765\uA767\uA769\uA76B\uA76D\uA76F\uA771-\uA778\uA77A\uA77C\uA77F\uA781\uA783\uA785\uA787\uA78C\uA78E\uA791\uA793\uA7A1\uA7A3\uA7A5\uA7A7\uA7A9\uA7FA\uFB00-\uFB06\uFB13-\uFB17\uFF41-\uFF5A])([\u0041-\u005A\u00C0-\u00D6\u00D8-\u00DE\u0100\u0102\u0104\u0106\u0108\u010A\u010C\u010E\u0110\u0112\u0114\u0116\u0118\u011A\u011C\u011E\u0120\u0122\u0124\u0126\u0128\u012A\u012C\u012E\u0130\u0132\u0134\u0136\u0139\u013B\u013D\u013F\u0141\u0143\u0145\u0147\u014A\u014C\u014E\u0150\u0152\u0154\u0156\u0158\u015A\u015C\u015E\u0160\u0162\u0164\u0166\u0168\u016A\u016C\u016E\u0170\u0172\u0174\u0176\u0178\u0179\u017B\u017D\u0181\u0182\u0184\u0186\u0187\u0189-\u018B\u018E-\u0191\u0193\u0194\u0196-\u0198\u019C\u019D\u019F\u01A0\u01A2\u01A4\u01A6\u01A7\u01A9\u01AC\u01AE\u01AF\u01B1-\u01B3\u01B5\u01B7\u01B8\u01BC\u01C4\u01C7\u01CA\u01CD\u01CF\u01D1\u01D3\u01D5\u01D7\u01D9\u01DB\u01DE\u01E0\u01E2\u01E4\u01E6\u01E8\u01EA\u01EC\u01EE\u01F1\u01F4\u01F6-\u01F8\u01FA\u01FC\u01FE\u0200\u0202\u0204\u0206\u0208\u020A\u020C\u020E\u0210\u0212\u0214\u0216\u0218\u021A\u021C\u021E\u0220\u0222\u0224\u0226\u0228\u022A\u022C\u022E\u0230\u0232\u023A\u023B\u023D\u023E\u0241\u0243-\u0246\u0248\u024A\u024C\u024E\u0370\u0372\u0376\u0386\u0388-\u038A\u038C\u038E\u038F\u0391-\u03A1\u03A3-\u03AB\u03CF\u03D2-\u03D4\u03D8\u03DA\u03DC\u03DE\u03E0\u03E2\u03E4\u03E6\u03E8\u03EA\u03EC\u03EE\u03F4\u03F7\u03F9\u03FA\u03FD-\u042F\u0460\u0462\u0464\u0466\u0468\u046A\u046C\u046E\u0470\u0472\u0474\u0476\u0478\u047A\u047C\u047E\u0480\u048A\u048C\u048E\u0490\u0492\u0494\u0496\u0498\u049A\u049C\u049E\u04A0\u04A2\u04A4\u04A6\u04A8\u04AA\u04AC\u04AE\u04B0\u04B2\u04B4\u04B6\u04B8\u04BA\u04BC\u04BE\u04C0\u04C1\u04C3\u04C5\u04C7\u04C9\u04CB\u04CD\u04D0\u04D2\u04D4\u04D6\u04D8\u04DA\u04DC\u04DE\u04E0\u04E2\u04E4\u04E6\u04E8\u04EA\u04EC\u04EE\u04F0\u04F2\u04F4\u04F6\u04F8\u04FA\u04FC\u04FE\u0500\u0502\u0504\u0506\u0508\u050A\u050C\u050E\u0510\u0512\u0514\u0516\u0518\u051A\u051C\u051E\u0520\u0522\u0524\u0526\u0531-\u0556\u10A0-\u10C5\u10C7\u10CD\u1E00\u1E02\u1E04\u1E06\u1E08\u1E0A\u1E0C\u1E0E\u1E10\u1E12\u1E14\u1E16\u1E18\u1E1A\u1E1C\u1E1E\u1E20\u1E22\u1E24\u1E26\u1E28\u1E2A\u1E2C\u1E2E\u1E30\u1E32\u1E34\u1E36\u1E38\u1E3A\u1E3C\u1E3E\u1E40\u1E42\u1E44\u1E46\u1E48\u1E4A\u1E4C\u1E4E\u1E50\u1E52\u1E54\u1E56\u1E58\u1E5A\u1E5C\u1E5E\u1E60\u1E62\u1E64\u1E66\u1E68\u1E6A\u1E6C\u1E6E\u1E70\u1E72\u1E74\u1E76\u1E78\u1E7A\u1E7C\u1E7E\u1E80\u1E82\u1E84\u1E86\u1E88\u1E8A\u1E8C\u1E8E\u1E90\u1E92\u1E94\u1E9E\u1EA0\u1EA2\u1EA4\u1EA6\u1EA8\u1EAA\u1EAC\u1EAE\u1EB0\u1EB2\u1EB4\u1EB6\u1EB8\u1EBA\u1EBC\u1EBE\u1EC0\u1EC2\u1EC4\u1EC6\u1EC8\u1ECA\u1ECC\u1ECE\u1ED0\u1ED2\u1ED4\u1ED6\u1ED8\u1EDA\u1EDC\u1EDE\u1EE0\u1EE2\u1EE4\u1EE6\u1EE8\u1EEA\u1EEC\u1EEE\u1EF0\u1EF2\u1EF4\u1EF6\u1EF8\u1EFA\u1EFC\u1EFE\u1F08-\u1F0F\u1F18-\u1F1D\u1F28-\u1F2F\u1F38-\u1F3F\u1F48-\u1F4D\u1F59\u1F5B\u1F5D\u1F5F\u1F68-\u1F6F\u1FB8-\u1FBB\u1FC8-\u1FCB\u1FD8-\u1FDB\u1FE8-\u1FEC\u1FF8-\u1FFB\u2102\u2107\u210B-\u210D\u2110-\u2112\u2115\u2119-\u211D\u2124\u2126\u2128\u212A-\u212D\u2130-\u2133\u213E\u213F\u2145\u2183\u2C00-\u2C2E\u2C60\u2C62-\u2C64\u2C67\u2C69\u2C6B\u2C6D-\u2C70\u2C72\u2C75\u2C7E-\u2C80\u2C82\u2C84\u2C86\u2C88\u2C8A\u2C8C\u2C8E\u2C90\u2C92\u2C94\u2C96\u2C98\u2C9A\u2C9C\u2C9E\u2CA0\u2CA2\u2CA4\u2CA6\u2CA8\u2CAA\u2CAC\u2CAE\u2CB0\u2CB2\u2CB4\u2CB6\u2CB8\u2CBA\u2CBC\u2CBE\u2CC0\u2CC2\u2CC4\u2CC6\u2CC8\u2CCA\u2CCC\u2CCE\u2CD0\u2CD2\u2CD4\u2CD6\u2CD8\u2CDA\u2CDC\u2CDE\u2CE0\u2CE2\u2CEB\u2CED\u2CF2\uA640\uA642\uA644\uA646\uA648\uA64A\uA64C\uA64E\uA650\uA652\uA654\uA656\uA658\uA65A\uA65C\uA65E\uA660\uA662\uA664\uA666\uA668\uA66A\uA66C\uA680\uA682\uA684\uA686\uA688\uA68A\uA68C\uA68E\uA690\uA692\uA694\uA696\uA722\uA724\uA726\uA728\uA72A\uA72C\uA72E\uA732\uA734\uA736\uA738\uA73A\uA73C\uA73E\uA740\uA742\uA744\uA746\uA748\uA74A\uA74C\uA74E\uA750\uA752\uA754\uA756\uA758\uA75A\uA75C\uA75E\uA760\uA762\uA764\uA766\uA768\uA76A\uA76C\uA76E\uA779\uA77B\uA77D\uA77E\uA780\uA782\uA784\uA786\uA78B\uA78D\uA790\uA792\uA7A0\uA7A2\uA7A4\uA7A6\uA7A8\uA7AA\uFF21-\uFF3A\u0030-\u0039\u00B2\u00B3\u00B9\u00BC-\u00BE\u0660-\u0669\u06F0-\u06F9\u07C0-\u07C9\u0966-\u096F\u09E6-\u09EF\u09F4-\u09F9\u0A66-\u0A6F\u0AE6-\u0AEF\u0B66-\u0B6F\u0B72-\u0B77\u0BE6-\u0BF2\u0C66-\u0C6F\u0C78-\u0C7E\u0CE6-\u0CEF\u0D66-\u0D75\u0E50-\u0E59\u0ED0-\u0ED9\u0F20-\u0F33\u1040-\u1049\u1090-\u1099\u1369-\u137C\u16EE-\u16F0\u17E0-\u17E9\u17F0-\u17F9\u1810-\u1819\u1946-\u194F\u19D0-\u19DA\u1A80-\u1A89\u1A90-\u1A99\u1B50-\u1B59\u1BB0-\u1BB9\u1C40-\u1C49\u1C50-\u1C59\u2070\u2074-\u2079\u2080-\u2089\u2150-\u2182\u2185-\u2189\u2460-\u249B\u24EA-\u24FF\u2776-\u2793\u2CFD\u3007\u3021-\u3029\u3038-\u303A\u3192-\u3195\u3220-\u3229\u3248-\u324F\u3251-\u325F\u3280-\u3289\u32B1-\u32BF\uA620-\uA629\uA6E6-\uA6EF\uA830-\uA835\uA8D0-\uA8D9\uA900-\uA909\uA9D0-\uA9D9\uAA50-\uAA59\uABF0-\uABF9\uFF10-\uFF19])/g});
-$rmod.def("/sentence-case@1.1.3/vendor/trailing-digit-regexp",function(u,F,A,B,E){A.exports=/([\u0030-\u0039\u00B2\u00B3\u00B9\u00BC-\u00BE\u0660-\u0669\u06F0-\u06F9\u07C0-\u07C9\u0966-\u096F\u09E6-\u09EF\u09F4-\u09F9\u0A66-\u0A6F\u0AE6-\u0AEF\u0B66-\u0B6F\u0B72-\u0B77\u0BE6-\u0BF2\u0C66-\u0C6F\u0C78-\u0C7E\u0CE6-\u0CEF\u0D66-\u0D75\u0E50-\u0E59\u0ED0-\u0ED9\u0F20-\u0F33\u1040-\u1049\u1090-\u1099\u1369-\u137C\u16EE-\u16F0\u17E0-\u17E9\u17F0-\u17F9\u1810-\u1819\u1946-\u194F\u19D0-\u19DA\u1A80-\u1A89\u1A90-\u1A99\u1B50-\u1B59\u1BB0-\u1BB9\u1C40-\u1C49\u1C50-\u1C59\u2070\u2074-\u2079\u2080-\u2089\u2150-\u2182\u2185-\u2189\u2460-\u249B\u24EA-\u24FF\u2776-\u2793\u2CFD\u3007\u3021-\u3029\u3038-\u303A\u3192-\u3195\u3220-\u3229\u3248-\u324F\u3251-\u325F\u3280-\u3289\u32B1-\u32BF\uA620-\uA629\uA6E6-\uA6EF\uA830-\uA835\uA8D0-\uA8D9\uA900-\uA909\uA9D0-\uA9D9\uAA50-\uAA59\uABF0-\uABF9\uFF10-\uFF19])([^\u0030-\u0039\u00B2\u00B3\u00B9\u00BC-\u00BE\u0660-\u0669\u06F0-\u06F9\u07C0-\u07C9\u0966-\u096F\u09E6-\u09EF\u09F4-\u09F9\u0A66-\u0A6F\u0AE6-\u0AEF\u0B66-\u0B6F\u0B72-\u0B77\u0BE6-\u0BF2\u0C66-\u0C6F\u0C78-\u0C7E\u0CE6-\u0CEF\u0D66-\u0D75\u0E50-\u0E59\u0ED0-\u0ED9\u0F20-\u0F33\u1040-\u1049\u1090-\u1099\u1369-\u137C\u16EE-\u16F0\u17E0-\u17E9\u17F0-\u17F9\u1810-\u1819\u1946-\u194F\u19D0-\u19DA\u1A80-\u1A89\u1A90-\u1A99\u1B50-\u1B59\u1BB0-\u1BB9\u1C40-\u1C49\u1C50-\u1C59\u2070\u2074-\u2079\u2080-\u2089\u2150-\u2182\u2185-\u2189\u2460-\u249B\u24EA-\u24FF\u2776-\u2793\u2CFD\u3007\u3021-\u3029\u3038-\u303A\u3192-\u3195\u3220-\u3229\u3248-\u324F\u3251-\u325F\u3280-\u3289\u32B1-\u32BF\uA620-\uA629\uA6E6-\uA6EF\uA830-\uA835\uA8D0-\uA8D9\uA900-\uA909\uA9D0-\uA9D9\uAA50-\uAA59\uABF0-\uABF9\uFF10-\uFF19])/g});
-$rmod.def("/sentence-case@1.1.3/sentence-case",function(e,n,r,c,t){var a=e("/$/change-case/$/lower-case"),o=e("./vendor/non-word-regexp"),l=e("./vendor/camel-case-regexp"),g=e("./vendor/trailing-digit-regexp");r.exports=function(e,n,r){function c(e,n,c){return 0===n||n===c.length-e.length?"":r}return null==e?"":(r=r||" ",e=String(e).replace(l,"$1 $2").replace(g,"$1 $2").replace(o,c),a(e,n))}});
-$rmod.main("/is-upper-case@1.1.2","is-upper-case");
-$rmod.dep("/$/change-case","is-upper-case","1.1.2");
-$rmod.def("/is-upper-case@1.1.2/is-upper-case",function(e,r,c,p,s){var a=e("/$/change-case/$/upper-case");c.exports=function(e,r){return a(e,r)===e}});
-$rmod.main("/is-lower-case@1.1.3","is-lower-case");
-$rmod.dep("/$/change-case","is-lower-case","1.1.3");
-$rmod.def("/is-lower-case@1.1.3/is-lower-case",function(e,r,c,o,s){var a=e("/$/change-case/$/lower-case");c.exports=function(e,r){return a(e,r)===e}});
-$rmod.main("/upper-case-first@1.1.2","upper-case-first");
-$rmod.dep("/$/change-case","upper-case-first","1.1.2");
-$rmod.def("/upper-case-first@1.1.2/upper-case-first",function(r,e,s,t,c){var n=r("/$/change-case/$/upper-case");s.exports=function(r,e){return null==r?"":(r=String(r),n(r.charAt(0),e)+r.substr(1))}});
-$rmod.main("/lower-case-first@1.0.2","lower-case-first");
-$rmod.dep("/$/change-case","lower-case-first","1.0.2");
-$rmod.def("/lower-case-first@1.0.2/lower-case-first",function(r,e,s,t,c){var n=r("/$/change-case/$/lower-case");s.exports=function(r,e){return null==r?"":(r=String(r),n(r.charAt(0),e)+r.substr(1))}});
-$rmod.def("/change-case@2.3.1/change-case",function(e,a,s,c,n){a.dot=a.dotCase=e("/$/change-case/$/dot-case"),a.swap=a.swapCase=e("/$/change-case/$/swap-case"),a.path=a.pathCase=e("/$/change-case/$/path-case"),a.upper=a.upperCase=e("/$/change-case/$/upper-case"),a.lower=a.lowerCase=e("/$/change-case/$/lower-case"),a.camel=a.camelCase=e("/$/change-case/$/camel-case"),a.snake=a.snakeCase=e("/$/change-case/$/snake-case"),a.title=a.titleCase=e("/$/change-case/$/title-case"),a.param=a.paramCase=e("/$/change-case/$/param-case"),a.pascal=a.pascalCase=e("/$/change-case/$/pascal-case"),a.constant=a.constantCase=e("/$/change-case/$/constant-case"),a.sentence=a.sentenceCase=e("/$/change-case/$/sentence-case"),a.isUpper=a.isUpperCase=e("/$/change-case/$/is-upper-case"),a.isLower=a.isLowerCase=e("/$/change-case/$/is-lower-case"),a.ucFirst=a.upperCaseFirst=e("/$/change-case/$/upper-case-first"),a.lcFirst=a.lowerCaseFirst=e("/$/change-case/$/lower-case-first")});
+$rmod.main("/src/components/app-try-marko-widgets-app","index");
 $rmod.main("/dom-classes@0.0.1","index");
 $rmod.dep("","dom-classes","0.0.1");
 $rmod.main("/indexof@0.0.1","index");
 $rmod.dep("/$/dom-classes","indexof","0.0.1");
 $rmod.def("/indexof@0.0.1/index",function(n,r,e,f,i){var t=[].indexOf;e.exports=function(n,r){if(t)return n.indexOf(r);for(var e=0;e<n.length;++e)if(n[e]===r)return e;return-1}});
 $rmod.def("/dom-classes@0.0.1/index",function(s,t,e,o,r){function i(s){if(s.classList)return s.classList;var t=s.className.replace(/^\s+|\s+$/g,""),e=t.split(u);return""===e[0]&&e.shift(),e}function a(s,t){if(s.classList)return void s.classList.add(t);var e=i(s),o=f(e,t);~o||e.push(t),s.className=e.join(" ")}function c(s,t){return s.classList?s.classList.contains(t):!!~f(i(s),t)}function n(s,t){if("[object RegExp]"==d.call(t))return l(s,t);if(s.classList)return void s.classList.remove(t);var e=i(s),o=f(e,t);~o&&e.splice(o,1),s.className=e.join(" ")}function l(s,t,e){for(var o=Array.prototype.slice.call(i(s)),r=0;r<o.length;r++)t.test(o[r])&&n(s,o[r])}function p(s,t){return s.classList?s.classList.toggle(t):void(c(s,t)?n(s,t):a(s,t))}var f=s("/$/dom-classes/$/indexof"),u=/\s+/,d=Object.prototype.toString;e.exports=i,e.exports.add=a,e.exports.contains=c,e.exports.has=c,e.exports.toggle=p,e.exports.remove=n,e.exports.removeMatching=l});
-$rmod.remap("/src/components/app-try-marko-app/samples-loader","samples-loader-browser");
-$rmod.def("/src/components/app-try-marko-app/samples-loader-browser",function(o,r,a,n,p){r.load=function(){}});
-$rmod.main("/async-writer@1.4.1","lib/async-writer");
-$rmod.dep("/$/marko","async-writer","1.4.1");
-$rmod.main("/process@0.6.0","index");
-$rmod.dep("","process","0.6.0");
-$rmod.remap("/process@0.6.0/index","browser");
-$rmod.def("/process@0.6.0/browser",function(n,e,o,t,r){function i(){}var s=o.exports={};s.nextTick=function(){var n="undefined"!=typeof window&&window.setImmediate,e="undefined"!=typeof window&&window.postMessage&&window.addEventListener;if(n)return function(n){return window.setImmediate(n)};if(e){var o=[];return window.addEventListener("message",function(n){var e=n.source;if((e===window||null===e)&&"process-tick"===n.data&&(n.stopPropagation(),o.length>0)){var t=o.shift();t()}},!0),function(n){o.push(n),window.postMessage("process-tick","*")}}return function(n){setTimeout(n,0)}}(),s.title="browser",s.browser=!0,s.env={},s.argv=[],s.on=i,s.once=i,s.off=i,s.emit=i,s.binding=function(n){throw new Error("process.binding is not supported")},s.cwd=function(){return"/"},s.chdir=function(n){throw new Error("process.chdir is not supported")}});
-$rmod.main("/events@1.1.0","events");
-$rmod.dep("/$/marko","events","1.1.0");
-$rmod.def("/events@1.1.0/events",function(e,t,s,n,r){function i(){this._events=this._events||{},this._maxListeners=this._maxListeners||void 0}function o(e){return"function"==typeof e}function h(e){return"number"==typeof e}function v(e){return"object"==typeof e&&null!==e}function l(e){return void 0===e}s.exports=i,i.EventEmitter=i,i.prototype._events=void 0,i.prototype._maxListeners=void 0,i.defaultMaxListeners=10,i.prototype.setMaxListeners=function(e){if(!h(e)||0>e||isNaN(e))throw TypeError("n must be a positive number");return this._maxListeners=e,this},i.prototype.emit=function(e){var t,s,n,r,i,h;if(this._events||(this._events={}),"error"===e&&(!this._events.error||v(this._events.error)&&!this._events.error.length)){if(t=arguments[1],t instanceof Error)throw t;throw TypeError('Uncaught, unspecified "error" event.')}if(s=this._events[e],l(s))return!1;if(o(s))switch(arguments.length){case 1:s.call(this);break;case 2:s.call(this,arguments[1]);break;case 3:s.call(this,arguments[1],arguments[2]);break;default:r=Array.prototype.slice.call(arguments,1),s.apply(this,r)}else if(v(s))for(r=Array.prototype.slice.call(arguments,1),h=s.slice(),n=h.length,i=0;n>i;i++)h[i].apply(this,r);return!0},i.prototype.addListener=function(e,t){var s;if(!o(t))throw TypeError("listener must be a function");return this._events||(this._events={}),this._events.newListener&&this.emit("newListener",e,o(t.listener)?t.listener:t),this._events[e]?v(this._events[e])?this._events[e].push(t):this._events[e]=[this._events[e],t]:this._events[e]=t,v(this._events[e])&&!this._events[e].warned&&(s=l(this._maxListeners)?i.defaultMaxListeners:this._maxListeners,s&&s>0&&this._events[e].length>s&&(this._events[e].warned=!0,console.error("(node) warning: possible EventEmitter memory leak detected. %d listeners added. Use emitter.setMaxListeners() to increase limit.",this._events[e].length),"function"==typeof console.trace&&console.trace())),this},i.prototype.on=i.prototype.addListener,i.prototype.once=function(e,t){function s(){this.removeListener(e,s),n||(n=!0,t.apply(this,arguments))}if(!o(t))throw TypeError("listener must be a function");var n=!1;return s.listener=t,this.on(e,s),this},i.prototype.removeListener=function(e,t){var s,n,r,i;if(!o(t))throw TypeError("listener must be a function");if(!this._events||!this._events[e])return this;if(s=this._events[e],r=s.length,n=-1,s===t||o(s.listener)&&s.listener===t)delete this._events[e],this._events.removeListener&&this.emit("removeListener",e,t);else if(v(s)){for(i=r;i-->0;)if(s[i]===t||s[i].listener&&s[i].listener===t){n=i;break}if(0>n)return this;1===s.length?(s.length=0,delete this._events[e]):s.splice(n,1),this._events.removeListener&&this.emit("removeListener",e,t)}return this},i.prototype.removeAllListeners=function(e){var t,s;if(!this._events)return this;if(!this._events.removeListener)return 0===arguments.length?this._events={}:this._events[e]&&delete this._events[e],this;if(0===arguments.length){for(t in this._events)"removeListener"!==t&&this.removeAllListeners(t);return this.removeAllListeners("removeListener"),this._events={},this}if(s=this._events[e],o(s))this.removeListener(e,s);else if(s)for(;s.length;)this.removeListener(e,s[s.length-1]);return delete this._events[e],this},i.prototype.listeners=function(e){var t;return t=this._events&&this._events[e]?o(this._events[e])?[this._events[e]]:this._events[e].slice():[]},i.prototype.listenerCount=function(e){if(this._events){var t=this._events[e];if(o(t))return 1;if(t)return t.length}return 0},i.listenerCount=function(e,t){return e.listenerCount(t)}});
-$rmod.def("/async-writer@1.4.1/lib/AsyncWriter",function(t,i,e,n,s){"use strict";function r(t){this.str="",this.events=t,this.finished=!1}function h(t){this._buffer="",this._wrapped=t}function a(t){this.asyncWriter=t,this.writer=t.writer,this.finished=!1,this.flushed=!1,this.next=null,this.ready=!0}function u(t,i){var e=t.next;e&&(e.ready=!0,e.writer=e.asyncWriter.writer=i,e.flush())}function f(t,i){a.call(this,t),this.buffer=i}function o(t){a.call(this,t)}function c(t,i,e,n){this.data={},this.global=this.attributes=i||(i={}),this._af=this._prevAF=this._parentAF=null,this._isSync=!1,this._last=null,i.events||(i.events=t&&t.on?t:new d),this._events=i.events,e?this._async=e:this._async=i.async||(i.async={remaining:0,ended:!1,last:0,finished:!1});var s;t?n&&(s=t,t=new h(t)):t=new r(this._events),this.stream=s||t,this.writer=this._stream=t}var l=t("process");r.prototype={end:function(){this.finished=!0,this.events&&this.events.emit("finish")},write:function(t){return this.str+=t,this},toString:function(){return this.str}},h.prototype={write:function(t){this._buffer+=t},flush:function(){0!==this._buffer.length&&(this._wrapped.write(this._buffer),this._buffer="",this._wrapped.flush&&this._wrapped.flush())},end:function(){this.flush(),this._wrapped.isTTY||this._wrapped.end()},on:function(t,i){return this._wrapped.on(t,i)},once:function(t,i){return this._wrapped.once(t,i)},clear:function(){this._buffer=""}};var d=t("/$/marko/$/events").EventEmitter,_="undefined"!=typeof l&&"development"===l.env.NODE_ENV,p={write:function(){}};f.prototype={flush:function(){var t=this.writer,i=this.buffer.toString();0!==i.length&&t.write(i),this.flushed=!0,u(this,t)}},o.prototype={end:function(){this.finished||(this.finished=!0,this.ready&&this.flush())},flush:function(){if(this.finished){this.flushed=!0;var t=this.writer;this.writer=this.asyncWriter.writer=p,u(this,t)}}},c.DEFAULT_TIMEOUT=1e4,c.prototype={constructor:c,isAsyncWriter:c,sync:function(){this._isSync=!0},getAttributes:function(){return this.global},getAttribute:function(t){return this.global[t]},write:function(t){return null!=t&&this.writer.write(t.toString()),this},getOutput:function(){return this.writer.toString()},captureString:function(t,i){var e=new r;return this.swapWriter(e,t,i),e.toString()},swapWriter:function(t,i,e){var n=this.writer;this.writer=t,i.call(e),this.writer=n},createNestedWriter:function(t){var i=this,e=new c(t,i.global);return e._stream=i._stream,e.stream=i.stream,e},beginAsync:function(t){if(this._isSync)throw new Error("beginAsync() not allowed when using renderSync()");var i=!0,e=this.createNestedWriter(this.writer),n=this.writer=new r,s=new o(e),h=new f(this,n);s.next=h,e._af=s,e._parentAF=s;var a=this._prevAF||this._parentAF;return a&&(h.next=a.next,a.next=s,a.flushed||(i=!1)),s.ready=i,this._prevAF=h,e.handleBeginAsync(t,this),e},handleBeginAsync:function(t,i){var e,n,s=this,r=s._async;r.remaining++,null!=t&&("number"==typeof t?e=t:(e=t.timeout,t.last===!0&&(null==e&&(e=0),r.last++),n=t.name)),null==e&&(e=c.DEFAULT_TIMEOUT),s.stack=_?(new Error).stack:null,s.name=n,e>0&&(s._timeoutId=setTimeout(function(){s.error(new Error("Async fragment "+(n?"("+n+") ":"")+"timed out after "+e+"ms"))},e)),this._events.emit("beginAsync",{writer:this,parentWriter:i})},on:function(t,i){return"finish"===t&&this.writer.finished?(i(),this):(this._events.on(t,i),this)},once:function(t,i){return"finish"===t&&this.writer.finished?(i(),this):(this._events.once(t,i),this)},onLast:function(t){var i=this._last;if(!i){i=this._last=[];var e=0,n=function s(){if(e!==i.length){var t=i[e++];t(s)}};this.once("last",function(){n()})}i.push(t)},emit:function(t){var i=this._events;switch(arguments.length){case 0:i.emit();break;case 1:i.emit(t);break;default:i.emit.apply(i,arguments)}return this},removeListener:function(){var t=this._events;return t.removeListener.apply(t,arguments),this},pipe:function(t){return this._stream.pipe(t),this},error:function(t){try{var i=this.stack,e=this.name;t=new Error("Async fragment failed"+(e?" ("+e+")":"")+". Exception: "+(t.stack||t)+(i?"\nCreation stack trace: "+i:"")),this.emit("error",t)}finally{this.end()}},end:function(t){t&&this.write(t);var i=this._af;return i?(i.end(),this.handleEnd(!0)):this.handleEnd(!1),this},handleEnd:function(t){var i=this._async;if(!i.finished){var e;if(t){var n=this._timeoutId;n&&clearTimeout(n),e=--i.remaining}else e=i.remaining,i.ended=!0;i.ended&&(i.lastFired||i.remaining-i.last!==0||(i.lastFired=!0,i.last=0,this._events.emit("last")),0===e&&(i.finished=!0,this._finish()))}},_finish:function(){this._stream.end?this._stream.end():this._events.emit("finish")},flush:function(){if(!this._async.finished){var t=this._stream;t&&t.flush&&t.flush()}}},c.prototype.w=c.prototype.write,c.enableAsyncStackTrace=function(){_=!0},e.exports=c});
-$rmod.def("/async-writer@1.4.1/lib/async-writer",function(r,n,e,t,a){"use strict";var c=r("./AsyncWriter");n.create=function(r,n){var e,t;n&&(e=n.global,t=n.buffer===!0);var a=new c(r,null,null,t);return e&&(a.global=a.attributes=e),a},n.enableAsyncStackTrace=function(){c.INCLUDE_STACK=!0},n.AsyncWriter=c});
-$rmod.dep("/$/marko","raptor-util","1.0.10");
-$rmod.def("/raptor-util@1.0.10/escapeXml",function(t,n,r,e,o){function u(t){return g[t]}function i(t){return"string"==typeof t?p.test(t)?t.replace(a,u):t:null==t?"":t.toString()}function l(t){return"string"==typeof t?c.test(t)?t.replace(f,u):t:null==t?"":t.toString()}var p=/[&<]/,a=/[&<]/g,c=/[&<>\"\'\n]/,f=/[&<>\"\'\n]/g,g={"<":"&lt;",">":"&gt;","&":"&amp;",'"':"&quot;","'":"&#39;","\n":"&#10;"};r.exports=i,i.attr=l});
-$rmod.def("/raptor-util@1.0.10/attr",function(r,t,e,n,u){var a=r("./escapeXml").attr;e.exports=function(r,t,e){if(t===!0)t="";else{if(null==t||""===t||t===!1)return"";t='="'+(e===!1?t:a(t))+'"'}return" "+r+t}});
-$rmod.def("/raptor-util@1.0.10/extend",function(r,n,t,o,e){t.exports=function(r,n){if(r||(r={}),n)for(var t in n)n.hasOwnProperty(t)&&(r[t]=n[t]);return r}});
-$rmod.def("/raptor-util@1.0.10/inherit",function(t,o,r,e,n){function p(t,o,r){var e=t.prototype,n=function(){};return n.prototype=o.prototype,t.prototype=new n,t.$super=o,r!==!1&&u(t.prototype,e),t.prototype.constructor=t,t}function i(t,o){return p(t,o,!0)}var u=t("./extend");r.exports=i,i._inherit=p});
-$rmod.def("/src/components/app-try-marko-app/include-target.marko",function(e,n,o,r,a){function t(e){var n=(e.s,e.e,e.ne,e.x);return function(e,o){o.w("Hello "+n(e.name)+" You have "+n(e.count)+" new messages!")}}(o.exports=e("/$/marko").c(r)).c(t)});
-$rmod.def("/marko@3.0.0/taglibs/layout/put-tag",function(t,a,o,u,n){o.exports=function(t,a){var o=t.layout,u=o.handlePutTag;u(t)}});
-$rmod.def("/marko@3.0.0/taglibs/layout/use-tag-transformer",function(t,e,a,r,u){"use strict";a.exports=function(t,e){var a=t.argument;if(!a)return void e.addError(t,"Invalid <layout-use> tag. Expected: <layout-use(template[, data]) ...>");var r=e.builder,u=r.parseJavaScriptArgs(a),l=u[0];"Literal"===l.type&&(l=e.importTemplate(l.value)),u[1]&&t.setAttributeValue("__data",u[1]),t.argument=null,t.setAttributeValue("__template",l)}});
-$rmod.def("/marko@3.0.0/taglibs/layout/use-tag",function(t,n,a,e,o){a.exports=function(t,n){var a={};t.getContent&&t.getContent({handlePutTag:function(t){a[t.into]=t}});var e=t.__data,o=t["*"]||{};if(e)for(var r in e)e.hasOwnProperty(r)&&!o.hasOwnProperty(r)&&(o[r]=e[r]);o.layoutContent=a,t.__template.render(o,n)}});
-$rmod.def("/marko@3.0.0/taglibs/layout/placeholder-tag",function(e,r,n,o,d){n.exports=function(e,r){var n=e.content,o=n?n[e.name]:null;o?o.value?r.write(o.value):o.renderBody&&o.renderBody(r):e.renderBody&&e.renderBody(r)}});
-$rmod.def("/src/components/app-try-marko-app/layout-use-target.marko",function(t,n,o,e,a){function r(n){var o=(n.s,n.e,n.ne,n.x,n.t),e=o(t("/$/marko/taglibs/layout/placeholder-tag"));return function(t,n){n.w('<div class="notification"><h1>'),e({name:"title",content:t.layoutContent,renderBody:function(t){t.w("DEFAULT TITLE")}},n),n.w("</h1><div>"),e({name:"body",content:t.layoutContent,renderBody:function(t){t.w("DEFAULT BODY")}},n),n.w("</div></div>")}}(o.exports=t("/$/marko").c(e)).c(r)});
+$rmod.remap("/src/components/app-try-marko-widgets-app/samples-loader","samples-loader-browser");
+$rmod.def("/src/components/app-try-marko-widgets-app/samples-loader-browser",function(o,r,a,e,n){r.load=function(){}});
 $rmod.main("/raptor-pubsub@1.0.5","lib/index");
 $rmod.dep("/$/marko-widgets","raptor-pubsub","1.0.5");
+$rmod.main("/events@1.1.0","events");
 $rmod.dep("/$/marko-widgets","events","1.1.0");
+$rmod.def("/events@1.1.0/events",function(e,t,s,n,r){function i(){this._events=this._events||{},this._maxListeners=this._maxListeners||void 0}function o(e){return"function"==typeof e}function h(e){return"number"==typeof e}function v(e){return"object"==typeof e&&null!==e}function l(e){return void 0===e}s.exports=i,i.EventEmitter=i,i.prototype._events=void 0,i.prototype._maxListeners=void 0,i.defaultMaxListeners=10,i.prototype.setMaxListeners=function(e){if(!h(e)||0>e||isNaN(e))throw TypeError("n must be a positive number");return this._maxListeners=e,this},i.prototype.emit=function(e){var t,s,n,r,i,h;if(this._events||(this._events={}),"error"===e&&(!this._events.error||v(this._events.error)&&!this._events.error.length)){if(t=arguments[1],t instanceof Error)throw t;throw TypeError('Uncaught, unspecified "error" event.')}if(s=this._events[e],l(s))return!1;if(o(s))switch(arguments.length){case 1:s.call(this);break;case 2:s.call(this,arguments[1]);break;case 3:s.call(this,arguments[1],arguments[2]);break;default:r=Array.prototype.slice.call(arguments,1),s.apply(this,r)}else if(v(s))for(r=Array.prototype.slice.call(arguments,1),h=s.slice(),n=h.length,i=0;n>i;i++)h[i].apply(this,r);return!0},i.prototype.addListener=function(e,t){var s;if(!o(t))throw TypeError("listener must be a function");return this._events||(this._events={}),this._events.newListener&&this.emit("newListener",e,o(t.listener)?t.listener:t),this._events[e]?v(this._events[e])?this._events[e].push(t):this._events[e]=[this._events[e],t]:this._events[e]=t,v(this._events[e])&&!this._events[e].warned&&(s=l(this._maxListeners)?i.defaultMaxListeners:this._maxListeners,s&&s>0&&this._events[e].length>s&&(this._events[e].warned=!0,console.error("(node) warning: possible EventEmitter memory leak detected. %d listeners added. Use emitter.setMaxListeners() to increase limit.",this._events[e].length),"function"==typeof console.trace&&console.trace())),this},i.prototype.on=i.prototype.addListener,i.prototype.once=function(e,t){function s(){this.removeListener(e,s),n||(n=!0,t.apply(this,arguments))}if(!o(t))throw TypeError("listener must be a function");var n=!1;return s.listener=t,this.on(e,s),this},i.prototype.removeListener=function(e,t){var s,n,r,i;if(!o(t))throw TypeError("listener must be a function");if(!this._events||!this._events[e])return this;if(s=this._events[e],r=s.length,n=-1,s===t||o(s.listener)&&s.listener===t)delete this._events[e],this._events.removeListener&&this.emit("removeListener",e,t);else if(v(s)){for(i=r;i-->0;)if(s[i]===t||s[i].listener&&s[i].listener===t){n=i;break}if(0>n)return this;1===s.length?(s.length=0,delete this._events[e]):s.splice(n,1),this._events.removeListener&&this.emit("removeListener",e,t)}return this},i.prototype.removeAllListeners=function(e){var t,s;if(!this._events)return this;if(!this._events.removeListener)return 0===arguments.length?this._events={}:this._events[e]&&delete this._events[e],this;if(0===arguments.length){for(t in this._events)"removeListener"!==t&&this.removeAllListeners(t);return this.removeAllListeners("removeListener"),this._events={},this}if(s=this._events[e],o(s))this.removeListener(e,s);else if(s)for(;s.length;)this.removeListener(e,s[s.length-1]);return delete this._events[e],this},i.prototype.listeners=function(e){var t;return t=this._events&&this._events[e]?o(this._events[e])?[this._events[e]]:this._events[e].slice():[]},i.prototype.listenerCount=function(e){if(this._events){var t=this._events[e];if(o(t))return 1;if(t)return t.length}return 0},i.listenerCount=function(e,t){return e.listenerCount(t)}});
 $rmod.def("/raptor-pubsub@1.0.5/lib/raptor-pubsub",function(e,n,r,t,o){var u=e("/$/marko-widgets/$/events").EventEmitter,a={},i=new u;i.channel=function(e){var n;return n=e?a[e]||(a[e]=new u):new u},i.removeChannel=function(e){delete a[e]},r.exports=i});
 $rmod.def("/raptor-pubsub@1.0.5/lib/index",function(o,d,n,r,b){var e="undefined"==typeof window?global:window;n.exports=e.__RAPTOR_PUBSUB||(e.__RAPTOR_PUBSUB=o("./raptor-pubsub"))});
 $rmod.main("/raptor-dom@1.1.1","raptor-dom-server");
@@ -95,10 +21,12 @@ $rmod.def("/raptor-dom@1.1.1/ready",function(e,t,n,o,a){function d(){for(var e=0
 $rmod.remap("/raptor-dom@1.1.1/raptor-dom-server","raptor-dom-client");
 $rmod.def("/raptor-dom@1.1.1/raptor-dom-client",function(e,n,r,o,t){function i(e){if("string"==typeof e){var n=e;if(e=document.getElementById(n),!e)throw new Error('Target element not found: "'+n+'"')}return e}function d(e){f&&f.emit("dom/beforeRemove",{el:e})}var f=e("/$/marko-widgets/$/raptor-pubsub"),a={forEachChildEl:function(e,n,r){a.forEachChild(e,n,r,1)},forEachChild:function(e,n,r,o){if(e)for(var t=0,i=e.childNodes,d=i.length;d>t;t++){var f=i[t];!f||null!=o&&o!=f.nodeType||n.call(r,f)}},detach:function(e){e=i(e),e.parentNode.removeChild(e)},appendTo:function(e,n){i(n).appendChild(i(e))},remove:function(e){e=i(e),d(e),e.parentNode&&e.parentNode.removeChild(e)},removeChildren:function(e){e=i(e);for(var n=0,r=e.childNodes,o=r.length;o>n;n++){var t=r[n];t&&1===t.nodeType&&d(t)}e.innerHTML=""},replace:function(e,n){n=i(n),d(n),n.parentNode.replaceChild(i(e),n)},replaceChildrenOf:function(e,n){n=i(n),a.forEachChildEl(n,function(e){d(e)}),n.innerHTML="",n.appendChild(i(e))},insertBefore:function(e,n){n=i(n),n.parentNode.insertBefore(i(e),n)},insertAfter:function(e,n){n=i(n),e=i(e);var r=n.nextSibling,o=n.parentNode;r?o.insertBefore(e,r):o.appendChild(e)},prependTo:function(e,n){n=i(n),n.insertBefore(i(e),n.firstChild||null)}};a.ready=e("./ready"),r.exports=a});
 $rmod.dep("/$/marko-widgets","raptor-util","1.0.10");
+$rmod.def("/raptor-util@1.0.10/inherit",function(t,o,r,e,n){function p(t,o,r){var e=t.prototype,n=function(){};return n.prototype=o.prototype,t.prototype=new n,t.$super=o,r!==!1&&u(t.prototype,e),t.prototype.constructor=t,t}function i(t,o){return p(t,o,!0)}var u=t("./extend");r.exports=i,i._inherit=p});
 $rmod.main("/listener-tracker@1.0.5","lib/listener-tracker");
 $rmod.dep("/$/marko-widgets","listener-tracker","1.0.5");
 $rmod.def("/listener-tracker@1.0.5/lib/listener-tracker",function(e,t,r,n,i){function s(e){this._target=e,this._listeners=[],this._subscribeTo=null}function o(){this._subscribeToList=[]}var u=0,l=1,h=2;s.prototype={_onProxy:function(e,t,r){return this._target[e](t,r),this._listeners.push([t,r]),this},_remove:function(e,t){var r=this._target,n=this._listeners;this._listeners=n.filter(function(n){var i=n[u],s=n[l],o=n[h];if(t){if(o&&e(i,o))return r.removeListener(i,o),!1}else if(e(i,s))return r.removeListener(i,o||s),!1;return!0});var i=this._subscribeTo;if(0===this._listeners.length&&i){var s=this,o=i._subscribeToList;i._subscribeToList=o.filter(function(e){return e!==s})}},on:function(e,t){return this._onProxy("on",e,t)},once:function(e,t){var r=this,n=function(){r._remove(function(e,t){return n===t},!0),t.apply(this,arguments)};return this._target.once(e,n),this._listeners.push([e,t,n]),this},removeListener:function(e,t){return"function"==typeof e&&(t=e,e=null),t&&e?this._remove(function(r,n){return e===r&&t===n}):t?this._remove(function(e,r){return t===r}):e&&this.removeAllListeners(e),this},removeAllListeners:function(e){var t=this._listeners,r=this._target;if(e)this._remove(function(t,r){return e===t});else{for(var n=t.length-1;n>=0;n--){var i=t[n];r.removeListener(i[u],i[l])}this._listeners.length=0}return this}},s.prototype.addListener=s.prototype.on,o.prototype={subscribeTo:function(e,t){for(var r,n=!t||t.addDestroyListener!==!1,i=this._subscribeToList,o=0,u=i.length;u>o;o++){var l=i[o];if(l._target===e){r=l;break}}return r||(r=new s(e),n&&r.once("destroy",function(){r.removeAllListeners();for(var t=i.length-1;t>=0;t--)if(i[t]._target===e){i.splice(t,1);break}}),r._subscribeTo=this,i.push(r)),r},removeAllListeners:function(e,t){var r,n=this._subscribeToList;if(e)for(r=n.length-1;r>=0;r--){var i=n[r];if(i._target===e){i.removeAllListeners(t),i._listeners.length||n.splice(r,1);break}}else{for(r=n.length-1;r>=0;r--)n[r].removeAllListeners();n.length=0}}},t.wrap=function(e){var t=new s(e);return e.once("destroy",function(){t._listeners.length=0}),t},t.createTracker=function(){return new o}});
 $rmod.def("/raptor-util@1.0.10/arrayFromArguments",function(r,t,l,n,a){var e=[].slice;l.exports=function(r,t){return r?t?t<r.length?e.call(r,t):[]:e.call(r):[]}});
+$rmod.def("/raptor-util@1.0.10/extend",function(r,n,t,o,e){t.exports=function(r,n){if(r||(r={}),n)for(var t in n)n.hasOwnProperty(t)&&(r[t]=n[t]);return r}});
 $rmod.main("/morphdom@1.1.2","lib/index");
 $rmod.dep("/$/marko-widgets","morphdom","1.1.2");
 $rmod.def("/morphdom@1.1.2/lib/index",function(e,t,n,r,i){function a(e){for(var t in e)if(e.hasOwnProperty(t))return!1;return!0}function o(e){!v&&document.createRange&&(v=document.createRange(),v.selectNode(document.body));var t;return v&&v.createContextualFragment?t=v.createContextualFragment(e):(t=document.createElement("body"),t.innerHTML=e),t.childNodes[0]}function d(){}function u(e,t){var n,r,i,a,o=t.attributes,d={};for(n=o.length-1;n>=0;n--)r=o[n],r.specified!==!1&&(i=r.name,a=r.value,d[i]=!0,e.getAttribute(i)!==a&&e.setAttribute(i,a));for(o=e.attributes,n=o.length-1;n>=0;n--)r=o[n],r.specified!==!1&&(i=r.name,d.hasOwnProperty(i)||e.removeAttribute(i))}function f(e,t){for(var n=e.firstChild;n;){var r=n.nextSibling;t.appendChild(n),n=r}return t}function l(e){return e.id}function c(e,t,n){function r(e,t){var n=p(e);if(n?h[n]=e:t||g(e),1===e.nodeType)for(var i=e.firstChild;i;)r(i,t||n),i=i.nextSibling}function i(e){if(1===e.nodeType)for(var t=e.firstChild;t;)p(t)||(g(t),i(t)),t=t.nextSibling}function c(e,t,n){y(e)!==!1&&(t.removeChild(e),n?p(e)||(g(e),i(e)):r(e))}function v(e,t,n,r){var i=p(t);if(i&&delete h[i],!r){if(b(e,t)===!1)return;if(u(e,t),N(e,t)===!1)return}if("TEXTAREA"!=e.tagName){var a,o,d,f,l,g=t.firstChild,y=e.firstChild;e:for(;g;){for(d=g.nextSibling,a=p(g);y;){var C=p(y);if(o=y.nextSibling,!n&&C&&(l=s[C]))l.parentNode.replaceChild(y,l),v(y,l,n),y=o;else{var A=y.nodeType;if(A===g.nodeType){var x=!1;if(1===A?(y.tagName===g.tagName&&(C||a?a===C&&(x=!0):x=!0),x&&v(y,g,n)):3===A&&(x=!0,y.nodeValue=g.nodeValue),x){g=d,y=o;continue e}}c(y,e,n),y=o}}a&&((f=h[a])?(v(f,g,!0),g=f):s[a]=g),e.appendChild(g),1===g.nodeType&&(a||g.firstChild)&&T.push(g),g=d,y=o}for(;y;)o=y.nextSibling,c(y,e,n),y=o}var E=m[e.tagName];E&&E(e,t)}n||(n={}),"string"==typeof t&&(t=o(t));var h={},s={},p=n.getNodeKey||l,g=n.onNodeDiscarded||d,b=n.onBeforeMorphEl||d,N=n.onBeforeMorphElChildren||d,y=n.onBeforeNodeDiscarded||d,C=n.childrenOnly===!0,T=[],A=e,x=A.nodeType,E=t.nodeType;if(!C)if(1===x)1===E?e.tagName!==t.tagName&&(g(e),A=f(e,document.createElement(t.tagName))):A=t;else if(3===x){if(3===E)return A.nodeValue=t.nodeValue,A;A=t}if(A===t)g(e);else{v(A,t,!1,C);var S=function(e){for(var t=e.firstChild;t;){var n=t.nextSibling,r=p(t);if(r){var i=h[r];if(i&&t.tagName===i.tagName){if(t.parentNode.replaceChild(i,t),v(i,t,!0),t=n,a(h))return!1;continue}}1===t.nodeType&&S(t),t=n}};if(!a(h))e:for(;T.length;){var O=T;T=[];for(var k=0;k<O.length;k++)if(S(O[k])===!1)break e}for(var P in h)if(h.hasOwnProperty(P)){var V=h[P];g(V),i(V)}}return!C&&A!==e&&e.parentNode&&e.parentNode.replaceChild(A,e),A}var v,h,s="undefined"!=typeof document?document.body||document.createElement("div"):{};h=s.hasAttribute?function(e,t){return e.hasAttribute(t)}:function(e,t){return e.getAttributeNode(t)};var m={OPTION:function(e,t){(e.selected=t.selected)?e.setAttribute("selected",""):e.removeAttribute("selected","")},INPUT:function(e,t){e.checked=t.checked,e.value!=t.value&&(e.value=t.value),h(t,"checked")||e.removeAttribute("checked"),h(t,"value")||e.removeAttribute("value")},TEXTAREA:function(e,t){var n=t.value;e.value!=n&&(e.value=n),e.firstChild&&(e.firstChild.nodeValue=n)}};n.exports=c});
@@ -108,6 +36,10 @@ $rmod.def("/raptor-polyfill@1.0.2/array/forEach",function(r,o,t,f,a){if(!Array.p
 $rmod.def("/raptor-polyfill@1.0.2/string/endsWith",function(t,n,i,r,e){String.prototype.endsWith||(String.prototype.endsWith=function(t,n){var i=this;return n&&(i=i.substring(n)),i.length<t.length?!1:i.slice(0-t.length)==t})});
 $rmod.main("/raptor-logging@1.0.8","lib/index");
 $rmod.dep("/$/marko-widgets","raptor-logging","1.0.8");
+$rmod.main("/process@0.6.0","index");
+$rmod.dep("","process","0.6.0");
+$rmod.remap("/process@0.6.0/index","browser");
+$rmod.def("/process@0.6.0/browser",function(n,e,o,t,r){function i(){}var s=o.exports={};s.nextTick=function(){var n="undefined"!=typeof window&&window.setImmediate,e="undefined"!=typeof window&&window.postMessage&&window.addEventListener;if(n)return function(n){return window.setImmediate(n)};if(e){var o=[];return window.addEventListener("message",function(n){var e=n.source;if((e===window||null===e)&&"process-tick"===n.data&&(n.stopPropagation(),o.length>0)){var t=o.shift();t()}},!0),function(n){o.push(n),window.postMessage("process-tick","*")}}return function(n){setTimeout(n,0)}}(),s.title="browser",s.browser=!0,s.env={},s.argv=[],s.on=i,s.once=i,s.off=i,s.emit=i,s.binding=function(n){throw new Error("process.binding is not supported")},s.cwd=function(){return"/"},s.chdir=function(n){throw new Error("process.chdir is not supported")}});
 $rmod.def("/raptor-polyfill@1.0.2/string/startsWith",function(t,r,n,i,s){String.prototype.startsWith||(String.prototype.startsWith=function(t,r){var n=this;return r&&(n=n.substring(r)),n.length<t.length?!1:n.substring(0,t.length)==t})});
 $rmod.def("/raptor-logging@1.0.8/lib/Logger",function(e,t,i,n,l){function s(e,t,i){this.logger=e,this.logLevel=t,this.args=a.call(i)}function o(e,t,i){this._loggingModifiedFlag=g._modifiedFlag,this._loggerName=t,this._level=e.logLevel.level,this._appenders=i}var g,r,a=[].slice;s.prototype.getLoggerName=function(){return this.logger._loggerName},o.setLogging=function(e){g=e},o.setLogLevel=function(e){r=e},o.prototype={_loggerName:void 0,_level:void 0,_appenders:void 0,_update:function(){this._loggingModifiedFlag!==g._modifiedFlag&&o.call(this,g.getLoggerConfig(this._loggerName),this._loggerName,g.getAppenders())},getLogLevel:function(){return r.toLogLevel(this._level)},getLevel:function(){return this._update(),this._level},isTraceEnabled:function(){return this._update(),0===this._level},isDebugEnabled:function(){return this._update(),this._level<=1},isInfoEnabled:function(){return this._update(),this._level<=2},isWarnEnabled:function(){return this._update(),this._level<=3},isErrorEnabled:function(){return this._update(),this._level<=4},isFatalEnabled:function(){return this._update(),this._level<=5},dump:function(e,t,i){if(this._update(),!(this._level>1))for(var n=0,l=this._appenders.length;l>n;n++){var s=this._appenders[n];s&&s.dump&&s.dump(e,t,i)}},trace:function(){this._update(),this._level>0||this._log(new s(this,r.TRACE,arguments))},debug:function(){this._update(),this._level>1||this._log(new s(this,r.DEBUG,arguments))},info:function(){this._update(),this._level>2||this._log(new s(this,r.INFO,arguments))},warn:function(){this._update(),this._level>3||this._log(new s(this,r.WARN,arguments))},error:function(){this._update(),this._level>4||this._log(new s(this,r.ERROR,arguments))},fatal:function(){this._update(),this._level>5||this._log(new s(this,r.FATAL,arguments))},_log:function(e){for(var t=0,i=this._appenders.length;i>t;t++)this._appenders[t].log(e)}},i.exports=o});
 $rmod.main("/raptor-stacktraces@1.0.1","lib/raptor-stacktraces");
@@ -121,21 +53,26 @@ $rmod.def("/raptor-logging@1.0.8/lib/raptor-logging",function(r,e,n,o,a){var i=r
 $rmod.def("/raptor-logging@1.0.8/lib/index",function(o,n,i,d,g){var r="undefined"==typeof window?global:window;i.exports=r.__RAPTOR_LOGGING||(r.__RAPTOR_LOGGING=o("./raptor-logging"))});
 $rmod.main("/raptor-renderer@1.4.4","lib/raptor-renderer");
 $rmod.dep("/$/marko-widgets","raptor-renderer","1.4.4");
+$rmod.main("/async-writer@1.4.1","lib/async-writer");
 $rmod.dep("/$/marko-widgets/$/raptor-renderer","async-writer","1.4.1");
+$rmod.def("/async-writer@1.4.1/lib/AsyncWriter",function(t,i,e,n,s){"use strict";function r(t){this.str="",this.events=t,this.finished=!1}function h(t){this._buffer="",this._wrapped=t}function a(t){this.asyncWriter=t,this.writer=t.writer,this.finished=!1,this.flushed=!1,this.next=null,this.ready=!0}function u(t,i){var e=t.next;e&&(e.ready=!0,e.writer=e.asyncWriter.writer=i,e.flush())}function f(t,i){a.call(this,t),this.buffer=i}function o(t){a.call(this,t)}function c(t,i,e,n){this.data={},this.global=this.attributes=i||(i={}),this._af=this._prevAF=this._parentAF=null,this._isSync=!1,this._last=null,i.events||(i.events=t&&t.on?t:new d),this._events=i.events,e?this._async=e:this._async=i.async||(i.async={remaining:0,ended:!1,last:0,finished:!1});var s;t?n&&(s=t,t=new h(t)):t=new r(this._events),this.stream=s||t,this.writer=this._stream=t}var l=t("process");r.prototype={end:function(){this.finished=!0,this.events&&this.events.emit("finish")},write:function(t){return this.str+=t,this},toString:function(){return this.str}},h.prototype={write:function(t){this._buffer+=t},flush:function(){0!==this._buffer.length&&(this._wrapped.write(this._buffer),this._buffer="",this._wrapped.flush&&this._wrapped.flush())},end:function(){this.flush(),this._wrapped.isTTY||this._wrapped.end()},on:function(t,i){return this._wrapped.on(t,i)},once:function(t,i){return this._wrapped.once(t,i)},clear:function(){this._buffer=""}};var d=t("/$/marko-widgets/$/events").EventEmitter,w="undefined"!=typeof l&&"development"===l.env.NODE_ENV,_={write:function(){}};f.prototype={flush:function(){var t=this.writer,i=this.buffer.toString();0!==i.length&&t.write(i),this.flushed=!0,u(this,t)}},o.prototype={end:function(){this.finished||(this.finished=!0,this.ready&&this.flush())},flush:function(){if(this.finished){this.flushed=!0;var t=this.writer;this.writer=this.asyncWriter.writer=_,u(this,t)}}},c.DEFAULT_TIMEOUT=1e4,c.prototype={constructor:c,isAsyncWriter:c,sync:function(){this._isSync=!0},getAttributes:function(){return this.global},getAttribute:function(t){return this.global[t]},write:function(t){return null!=t&&this.writer.write(t.toString()),this},getOutput:function(){return this.writer.toString()},captureString:function(t,i){var e=new r;return this.swapWriter(e,t,i),e.toString()},swapWriter:function(t,i,e){var n=this.writer;this.writer=t,i.call(e),this.writer=n},createNestedWriter:function(t){var i=this,e=new c(t,i.global);return e._stream=i._stream,e.stream=i.stream,e},beginAsync:function(t){if(this._isSync)throw new Error("beginAsync() not allowed when using renderSync()");var i=!0,e=this.createNestedWriter(this.writer),n=this.writer=new r,s=new o(e),h=new f(this,n);s.next=h,e._af=s,e._parentAF=s;var a=this._prevAF||this._parentAF;return a&&(h.next=a.next,a.next=s,a.flushed||(i=!1)),s.ready=i,this._prevAF=h,e.handleBeginAsync(t,this),e},handleBeginAsync:function(t,i){var e,n,s=this,r=s._async;r.remaining++,null!=t&&("number"==typeof t?e=t:(e=t.timeout,t.last===!0&&(null==e&&(e=0),r.last++),n=t.name)),null==e&&(e=c.DEFAULT_TIMEOUT),s.stack=w?(new Error).stack:null,s.name=n,e>0&&(s._timeoutId=setTimeout(function(){s.error(new Error("Async fragment "+(n?"("+n+") ":"")+"timed out after "+e+"ms"))},e)),this._events.emit("beginAsync",{writer:this,parentWriter:i})},on:function(t,i){return"finish"===t&&this.writer.finished?(i(),this):(this._events.on(t,i),this)},once:function(t,i){return"finish"===t&&this.writer.finished?(i(),this):(this._events.once(t,i),this)},onLast:function(t){var i=this._last;if(!i){i=this._last=[];var e=0,n=function s(){if(e!==i.length){var t=i[e++];t(s)}};this.once("last",function(){n()})}i.push(t)},emit:function(t){var i=this._events;switch(arguments.length){case 0:i.emit();break;case 1:i.emit(t);break;default:i.emit.apply(i,arguments)}return this},removeListener:function(){var t=this._events;return t.removeListener.apply(t,arguments),this},pipe:function(t){return this._stream.pipe(t),this},error:function(t){try{var i=this.stack,e=this.name;t=new Error("Async fragment failed"+(e?" ("+e+")":"")+". Exception: "+(t.stack||t)+(i?"\nCreation stack trace: "+i:"")),this.emit("error",t)}finally{this.end()}},end:function(t){t&&this.write(t);var i=this._af;return i?(i.end(),this.handleEnd(!0)):this.handleEnd(!1),this},handleEnd:function(t){var i=this._async;if(!i.finished){var e;if(t){var n=this._timeoutId;n&&clearTimeout(n),e=--i.remaining}else e=i.remaining,i.ended=!0;i.ended&&(i.lastFired||i.remaining-i.last!==0||(i.lastFired=!0,i.last=0,this._events.emit("last")),0===e&&(i.finished=!0,this._finish()))}},_finish:function(){this._stream.end?this._stream.end():this._events.emit("finish")},flush:function(){if(!this._async.finished){var t=this._stream;t&&t.flush&&t.flush()}}},c.prototype.w=c.prototype.write,c.enableAsyncStackTrace=function(){w=!0},e.exports=c});
+$rmod.def("/async-writer@1.4.1/lib/async-writer",function(r,n,e,t,a){"use strict";var c=r("./AsyncWriter");n.create=function(r,n){var e,t;n&&(e=n.global,t=n.buffer===!0);var a=new c(r,null,null,t);return e&&(a.global=a.attributes=e),a},n.enableAsyncStackTrace=function(){c.INCLUDE_STACK=!0},n.AsyncWriter=c});
 $rmod.remap("/raptor-renderer@1.4.4/lib/RenderResult","RenderResult-browser");
 $rmod.def("/raptor-renderer@1.4.4/lib/RenderResult-browser",function(e,t,r,n,i){"use strict";function o(e,t){if(!e._added)throw new Error("Cannot call "+t+"() until after HTML fragment is added to DOM.")}function d(e,t){this.html=e,this.out=t,this._node=void 0;var r=t.global.widgets;this._widgetDefs=r?r.widgets:null}var s=e("/$/marko-widgets/$/raptor-dom"),h=e("/$/marko-widgets/$/raptor-pubsub");d.prototype={getWidget:function(){o(this,"getWidget");var e=this.out.__rerenderWidget;if(e)return e;var t=this._widgetDefs;if(!t)throw new Error("No widget rendered");return t.length?t[0].widget:void 0},getWidgets:function(e){o(this,"getWidgets");var t=this._widgetDefs;if(!t)throw new Error("No widget rendered");var r,n;if(e)for(r=[],n=0;n<t.length;n++){var i=t[n].widget;e(i)&&r.push(i)}else for(r=new Array(t.length),n=0;n<t.length;n++)r[n]=t[n].widget;return r},afterInsert:function(e){var t=this.getNode(e);return this._added=!0,h.emit("raptor-renderer/renderedToDOM",{node:t,context:this.out,out:this.out,document:t.ownerDocument}),this},appendTo:function(e){return s.appendTo(this.getNode(e.ownerDocument),e),this.afterInsert()},replace:function(e){return s.replace(this.getNode(e.ownerDocument),e),this.afterInsert()},replaceChildrenOf:function(e){return s.replaceChildrenOf(this.getNode(e.ownerDocument),e),this.afterInsert()},insertBefore:function(e){return s.insertBefore(this.getNode(e.ownerDocument),e),this.afterInsert()},insertAfter:function(e){return s.insertAfter(this.getNode(e.ownerDocument),e),this.afterInsert()},prependTo:function(e){return s.prependTo(this.getNode(e.ownerDocument),e),this.afterInsert()},getNode:function(e){var t,r,n=this._node;if(e=e||window.document,void 0===n){if(this.html)if(r=e.createElement("body"),r.innerHTML=this.html,1==r.childNodes.length)n=r.childNodes[0];else for(n=e.createDocumentFragment();t=r.firstChild;)n.appendChild(t);else n=e.createDocumentFragment();this._node=n}return n},toString:function(){return this.html}},r.exports=d});
 $rmod.def("/raptor-renderer@1.4.4/lib/raptor-renderer",function(e,r,n,t,o){"use strict";function a(e){return function(n,t,o){switch(arguments.length){case 0:return r.render(e);case 1:return r.render(e,n);case 2:return r.render(e,n,t);case 3:return r.render(e,n,t,o);default:throw new Error("Illegal arguments")}}}var u=(e("process"),e("/$/marko-widgets/$/raptor-renderer/$/async-writer")),d=e("./RenderResult"),l=e("/$/marko-widgets/$/raptor-util/extend");r.render=function(e,r,n){var t,o=arguments.length;o>1&&(t=arguments[o-1]);var a=n,c=r||{};"function"==typeof t?3===o&&(a=u.create()):(t=null,a||(a=u.create()));var i=c.$global;if(i&&(l(a.global,i),delete c.$global),"function"!=typeof e){var s=e.renderer||e.render||e.process;if("function"!=typeof s)throw new Error("Invalid renderer");s.call(e,c,a)}else e(c,a);return t?(a.on("finish",function(){t(null,new d(a.getOutput(),a))}).on("error",t),void a.end()):(a.end(),new d(a.getOutput(),a))},r.renderable=function(e,r){e.renderer=r,e.render=a(r)},r.createRenderFunc=a});
 $rmod.dep("/$/marko-widgets","raptor-async","1.1.2");
 $rmod.def("/raptor-async@1.1.2/AsyncValue",function(t,i,s,e,o){function a(t){this.data=void 0,this.error=void 0,this._callbacks=void 0,this._state=d,this._timestamp=void 0,t&&(this._loader=t.loader,this._scope=t.scope,this._ttl=t.ttl||void 0)}function n(t,i,s){var e=t._callbacks;if(void 0!==e){t._callbacks=void 0;for(var o=0;o<e.length;o++){var a=e[o];a.callback.call(a.scope,i,s)}}}function r(t){t._state=u,t._loader.call(t._scope||t,function(i,s){i?t.reject(i):t.resolve(s)})}function c(t,i,s){void 0===t._callbacks&&(t._callbacks=[]),t._callbacks.push({callback:i,scope:s||t._scope||t})}function l(t){var i=t._ttl;return void 0!==i&&f()-t._timestamp>i?(t.unsettle(),!0):!1}var h=t("process"),d=0,u=1,_=2,v=3,f=Date.now||function(){return(new Date).getTime()};a.prototype={isResolved:function(){return this._state===_&&!l(this)},isRejected:function(){return this._state===v&&!l(this)},isLoading:function(){return this._state===u},isSettled:function(){return this._state>u&&!l(this)},load:function(t,i){if(!this._loader)throw new Error("Cannot call load when loader is not configured");return this.isSettled()&&this.unsettle(),t&&c(this,t,i),this._state!==u&&r(this),this.data},done:function(t,i){if(!t||t.constructor!==Function)throw new Error("Invalid callback: "+t);return this.isSettled()?t.call(i||this._scope||this,this.error,this.data):(h.domain&&(t=h.domain.bind(t)),c(this,t,i),void(this._loader&&this._state!==u&&r(this)))},reject:function(t){this.error=t,this.data=void 0,void 0!==this._ttl&&(this._timestamp=f()),this._state=this._loader?d:v,n(this,t,null)},resolve:function(t){this.error=void 0,this.data=t,void 0!==this._ttl&&(this._timestamp=f()),this._state=_,n(this,null,t)},reset:function(){this.unsettle(),this.callbacks=void 0},unsettle:function(){this._state=d,this.error=void 0,this.data=void 0,this._timestamp=void 0}},a.create=function(t){return new a(t)},s.exports=a});
-$rmod.dep("/$/marko-widgets","marko","3.0.0");
+$rmod.dep("/$/marko-widgets","marko","3.0.2");
 $rmod.dep("/$/marko-widgets/$/marko","async-writer","1.4.1");
 $rmod.dep("/$/marko-widgets/$/marko","events","1.1.0");
 $rmod.dep("/$/marko-widgets/$/marko","raptor-util","1.0.10");
+$rmod.def("/raptor-util@1.0.10/escapeXml",function(t,n,r,e,o){function u(t){return g[t]}function i(t){return"string"==typeof t?p.test(t)?t.replace(a,u):t:null==t?"":t.toString()}function l(t){return"string"==typeof t?c.test(t)?t.replace(f,u):t:null==t?"":t.toString()}var p=/[&<]/,a=/[&<]/g,c=/[&<>\"\'\n]/,f=/[&<>\"\'\n]/g,g={"<":"&lt;",">":"&gt;","&":"&amp;",'"':"&quot;","'":"&#39;","\n":"&#10;"};r.exports=i,i.attr=l});
+$rmod.def("/raptor-util@1.0.10/attr",function(r,t,e,n,u){var a=r("./escapeXml").attr;e.exports=function(r,t,e){if(t===!0)t="";else{if(null==t||""===t||t===!1)return"";t='="'+(e===!1?t:a(t))+'"'}return" "+r+t}});
 $rmod.def("/marko-widgets@6.0.0/taglib/helpers/widgetArgs",function(e,t,n,d,i){var g=e("/$/marko-widgets/$/raptor-util/extend"),o=n.exports=function(e,t,n,d,i,o,a){var r,s=e.data,x=s.widgetArgs;x||(null!=n&&(r=n.toString()),x=s.widgetArgs={out:e,id:r,scope:t,customEvents:d}),i&&(x.extend?x.extend.push(i):x.extend=[i]),o&&(x.extendConfig=x.extendConfig?g(o,x.extendConfig):o),a&&(x.extendState=x.extendState?g(a,x.extendState):a)};o.cleanup=function(e){delete e.data.widgetArgs}});
 $rmod.def("/marko-widgets@6.0.0/lib/widget-args-id",function(r,i,t,e,d){var n=r("../lib/repeated-id");t.exports=function(r){var i=r.id;if(i){var t=r.out,e=r.scope;if("#"===i.charAt(0))return i.substring(1);var d;return d=i.endsWith("[]")?n.nextId(t,e,i):e+"-"+i}}});
 $rmod.def("/marko-widgets@6.0.0/taglib/helpers/widgetBody",function(e,t,d,i,o){var n=e("../../"),r=e("/$/marko-widgets/$/raptor-util/escapeXml"),f="undefined"!=typeof window;d.exports=function(e,t,d,i){if(null!=t&&null==d){if(f){var o=document.getElementById(t);if(o){var l=n.getWidgetsContext(e);l.addPreservedDOMNode(o,!0)}}}else"function"==typeof d?d(e,i):("string"==typeof d&&(d=r(d)),e.write(d))}});
 $rmod.def("/marko-widgets@6.0.0/taglib/widget-tag",function(e,t,d,r,i){"use strict";function n(e,t){var d,r=document.getElementById(e);return r&&(d=r.__widget)&&d.__type===t?d:null}function a(e){e.registered||(e.registered=!0,s.registerWidget(e))}function g(e,t,d,r){var i=e.el.tagName;t.write("<"+i+' id="'+e.id+'">');var n=!1;r&&e.bodyEl&&(n=!0,l(t,e.bodyEl.id,r,e)),t.write("</"+i+">"),e._reset(),d.addPreservedDOMNode(e.el,null,n)}var s=e("../"),o=e("/$/marko-widgets/$/raptor-util/extend"),c=e("../lib/widget-args-id"),l=e("./helpers/widgetBody"),w={elId:function(){}};d.exports=function(e,t){var d=t.global;d.__widgetsBeginAsyncAdded||(d.__widgetsBeginAsyncAdded=!0,t.on("beginAsync",function(e){var r,i=e.parentWriter,n=e.writer,a=d.widgets;if(a&&(r=a.widgetStack).length){var g=new s.WidgetsContext(t);g.widgetStack=[r[r.length-1]],n.data.widgets=g}n.data.widgetArgs=i.data.widgetArgs}));var r,i,l,f,v,_=e.type,u=e.config||e._cfg,p=e.state||e._state,y=e.props||e._props,m=t.data.widgetArgs,E=e.body,b=e._body,W=_&&_.name,x=e.id,A=e.hasDomEvents;m&&(delete t.data.widgetArgs,l=m.scope,x=x||c(m),r=m.extend,i=m.customEvents,r&&(r=r.map(function(e){return a(e),e.name})),(f=m.extendState)&&(p?o(p,f):p=f),(v=m.extendConfig)&&(u?o(u,v):u=v));var h=d.__rerenderWidget,B=d.__rerender===!0,D=s.getWidgetsContext(t);if(!x){var I=D.getCurrentWidget();I&&(x=I.nextId())}var k;if(h?(k=h,x=h.id,delete d.__rerenderWidget):B&&(k=n(x,W)),!x&&e.hasOwnProperty("id"))throw new Error('Invalid widget ID for "'+W+'"');if(W){a(_);var C=!0;if(k&&!h){if(p&&(k._replaceState(p),k._processUpdateHandlers()===!0))return C=!1,void g(k,t,D,b);if(!k.isDirty()&&!k.shouldUpdate(y,p))return C=!1,void g(k,t,D,b)}k&&k._emitLifecycleEvent("beforeUpdate");var S=D.beginWidget({type:W,id:x,config:u,state:p,hasDomEvents:A,customEvents:i,scope:l,createWidget:e.createWidget,extend:r,existingWidget:k,bodyElId:E});C&&(e.renderBody(t,S),s.writeDomEventsEl(S,t)),S.end()}else e.renderBody(t,w)}});
-$rmod.main("/src/components/app-try-marko","index");
+$rmod.main("/src/components/app-try-marko-widgets","index");
 $rmod.main("/src/components/app-codemirror","index");
 $rmod.main("/html@0.0.10","lib/html");
 $rmod.dep("","html","0.0.10");
@@ -161,10 +98,6 @@ $rmod.def("/event-kit@2.0.0/lib/composite-disposable",function(s,t,e,o,i){(funct
 $rmod.def("/event-kit@2.0.0/lib/event-kit",function(e,i,t,o,s){(function(){i.Emitter=e("./emitter"),i.Disposable=e("./disposable"),i.CompositeDisposable=e("./composite-disposable")}).call(this)});
 $rmod.def("/first-mate@5.1.1/lib/null-grammar",function(r,t,o,n,e){(function(){var t,n,e={}.hasOwnProperty,a=function(r,t){function o(){this.constructor=r}for(var n in t)e.call(t,n)&&(r[n]=t[n]);return o.prototype=t.prototype,r.prototype=new o,r.__super__=t.prototype,r};t=r("./grammar"),o.exports=n=function(r){function t(r){var o,n;o="Null Grammar",n="text.plain.null-grammar",t.__super__.constructor.call(this,r,{name:o,scopeName:n})}return a(t,r),t.prototype.getScore=function(){return 0},t}(t)}).call(this)});
 $rmod.def("/first-mate@5.1.1/lib/grammar-registry",function(r,e,t,o,a){(function(){var e,o,a,n,i,m,s,p;s=r("/$/codemirror-atom-modes/$/first-mate/$/underscore-plus"),e=null,p=r("/$/codemirror-atom-modes/$/first-mate/$/event-kit"),a=p.Emitter,o=p.Disposable,n=r("./grammar"),m=r("./null-grammar"),t.exports=i=function(){function r(r){var e;null==r&&(r={}),this.maxTokensPerLine=null!=(e=r.maxTokensPerLine)?e:1/0,this.nullGrammar=new m(this),this.clear()}return r.prototype.clear=function(){return this.emitter=new a,this.grammars=[],this.grammarsByScopeName={},this.injectionGrammars=[],this.grammarOverridesByPath={},this.scopeIdCounter=-1,this.idsByScope={},this.scopesById={},this.addGrammar(this.nullGrammar)},r.prototype.onDidAddGrammar=function(r){return this.emitter.on("did-add-grammar",r)},r.prototype.onDidUpdateGrammar=function(r){return this.emitter.on("did-update-grammar",r)},r.prototype.getGrammars=function(){return s.clone(this.grammars)},r.prototype.grammarForScopeName=function(r){return this.grammarsByScopeName[r]},r.prototype.addGrammar=function(r){return this.grammars.push(r),this.grammarsByScopeName[r.scopeName]=r,null!=r.injectionSelector&&this.injectionGrammars.push(r),this.grammarUpdated(r.scopeName),n.includeDeprecatedAPIs&&this.emit("grammar-added",r),this.emitter.emit("did-add-grammar",r),new o(function(e){return function(){return e.removeGrammar(r)}}(this))},r.prototype.removeGrammar=function(r){return s.remove(this.grammars,r),delete this.grammarsByScopeName[r.scopeName],s.remove(this.injectionGrammars,r),void this.grammarUpdated(r.scopeName)},r.prototype.removeGrammarForScopeName=function(r){var e;return e=this.grammarForScopeName(r),null!=e&&this.removeGrammar(e),e},r.prototype.readGrammarSync=function(r){var t,o;if(t=null!=(o=e.readFileSync(r))?o:{},"string"==typeof t.scopeName&&t.scopeName.length>0)return this.createGrammar(r,t);throw new Error("Grammar missing required scopeName property: "+r)},r.prototype.readGrammar=function(r,t){return void e.readFile(r,function(e){return function(o,a){return null==a&&(a={}),null!=o?"function"==typeof t?t(o):void 0:"string"==typeof a.scopeName&&a.scopeName.length>0?"function"==typeof t?t(null,e.createGrammar(r,a)):void 0:"function"==typeof t?t(new Error("Grammar missing required scopeName property: "+r)):void 0}}(this))},r.prototype.loadGrammarSync=function(r){var e;return e=this.readGrammarSync(r),this.addGrammar(e),e},r.prototype.loadGrammar=function(r,e){return void this.readGrammar(r,function(r){return function(t,o){return null!=t?"function"==typeof e?e(t):void 0:(r.addGrammar(o),"function"==typeof e?e(null,o):void 0)}}(this))},r.prototype.startIdForScope=function(r){var e;return(e=this.idsByScope[r])||(e=this.scopeIdCounter,this.scopeIdCounter-=2,this.idsByScope[r]=e,this.scopesById[e]=r),e},r.prototype.endIdForScope=function(r){return this.startIdForScope(r)-1},r.prototype.scopeForId=function(r){return r%2===-1?this.scopesById[r]:this.scopesById[r+1]},r.prototype.grammarUpdated=function(r){var e,t,o,a;for(a=this.grammars,t=0,o=a.length;o>t;t++)e=a[t],e.scopeName!==r&&e.grammarUpdated(r)&&(n.includeDeprecatedAPIs&&this.emit("grammar-updated",e),this.emitter.emit("did-update-grammar",e))},r.prototype.createGrammar=function(r,e){var t;return null==e.maxTokensPerLine&&(e.maxTokensPerLine=this.maxTokensPerLine),t=new n(this,e),t.path=r,t},r.prototype.decodeTokens=function(r,e,t,o){var a,n,i,m,s,p,c,u,d,h;for(null==t&&(t=[]),i=0,s=t.map(function(r){return function(e){return r.scopeForId(e)}}(this)),u=[],n=d=0,h=e.length;h>d;n=++d)if(p=e[n],p>=0)c={value:r.substring(i,i+p),scopes:s.slice()},null!=o&&(c=o(c,n)),u.push(c),i+=p;else if(p%2===-1)t.push(p),s.push(this.scopeForId(p));else if(t.pop(),a=this.scopeForId(p+1),m=s.pop(),m!==a)throw new Error("Expected popped scope to be "+a+", but it was "+m);return u},r}()}).call(this)});
-$rmod.main("/path-browserify@0.0.0","index");
-$rmod.dep("","path-browserify","0.0.0","path");
-$rmod.dep("/$/lasso/$/lasso-require","path-browserify","0.0.0");
-$rmod.def("/path-browserify@0.0.0/index",function(r,t,n,e,i){function s(r,t){for(var n=0,e=r.length-1;e>=0;e--){var i=r[e];"."===i?r.splice(e,1):".."===i?(r.splice(e,1),n++):n&&(r.splice(e,1),n--)}if(t)for(;n--;n)r.unshift("..");return r}function u(r,t){if(r.filter)return r.filter(t);for(var n=[],e=0;e<r.length;e++)t(r[e],e,r)&&n.push(r[e]);return n}var o=r("process"),f=/^(\/?|)([\s\S]*?)((?:\.{1,2}|[^\/]+?|)(\.[^.\/]*|))(?:[\/]*)$/,l=function(r){return f.exec(r).slice(1)};t.resolve=function(){for(var r="",t=!1,n=arguments.length-1;n>=-1&&!t;n--){var e=n>=0?arguments[n]:o.cwd();if("string"!=typeof e)throw new TypeError("Arguments to path.resolve must be strings");e&&(r=e+"/"+r,t="/"===e.charAt(0))}return r=s(u(r.split("/"),function(r){return!!r}),!t).join("/"),(t?"/":"")+r||"."},t.normalize=function(r){var n=t.isAbsolute(r),e="/"===a(r,-1);return r=s(u(r.split("/"),function(r){return!!r}),!n).join("/"),r||n||(r="."),r&&e&&(r+="/"),(n?"/":"")+r},t.isAbsolute=function(r){return"/"===r.charAt(0)},t.join=function(){var r=Array.prototype.slice.call(arguments,0);return t.normalize(u(r,function(r,t){if("string"!=typeof r)throw new TypeError("Arguments to path.join must be strings");return r}).join("/"))},t.relative=function(r,n){function e(r){for(var t=0;t<r.length&&""===r[t];t++);for(var n=r.length-1;n>=0&&""===r[n];n--);return t>n?[]:r.slice(t,n-t+1)}r=t.resolve(r).substr(1),n=t.resolve(n).substr(1);for(var i=e(r.split("/")),s=e(n.split("/")),u=Math.min(i.length,s.length),o=u,f=0;u>f;f++)if(i[f]!==s[f]){o=f;break}for(var l=[],f=o;f<i.length;f++)l.push("..");return l=l.concat(s.slice(o)),l.join("/")},t.sep="/",t.delimiter=":",t.dirname=function(r){var t=l(r),n=t[0],e=t[1];return n||e?(e&&(e=e.substr(0,e.length-1)),n+e):"."},t.basename=function(r,t){var n=l(r)[2];return t&&n.substr(-1*t.length)===t&&(n=n.substr(0,n.length-t.length)),n},t.extname=function(r){return l(r)[3]};var a="b"==="ab".substr(-1)?function(r,t,n){return r.substr(t,n)}:function(r,t,n){return 0>t&&(t=r.length+t),r.substr(t,n)}});
 $rmod.main("/onigurumajs@1.0.0","index");
 $rmod.dep("/$/codemirror-atom-modes/$/first-mate","onigurumajs","1.0.0","oniguruma");
 $rmod.main("/lodash@3.10.1","index");
@@ -204,959 +137,13 @@ $rmod.def("/codemirror@5.12.0/mode/xml/xml",function(t,e,n,r,o){!function(r){"ob
 $rmod.def("/codemirror@5.12.0/mode/css/css",function(e,t,r,o,a){!function(o){"object"==typeof t&&"object"==typeof r?o(e("../../lib/codemirror")):"function"==typeof define&&define.amd?define(["../../lib/codemirror"],o):o(CodeMirror)}(function(e){"use strict";function t(e){for(var t={},r=0;r<e.length;++r)t[e[r]]=!0;return t}function r(e,t){for(var r,o=!1;null!=(r=e.next());){if(o&&"/"==r){t.tokenize=null;break}o="*"==r}return["comment","comment"]}e.defineMode("css",function(t,r){function o(e,t){return h=t,e}function a(e,t){var r=e.next();if(f[r]){var a=f[r](e,t);if(a!==!1)return a}return"@"==r?(e.eatWhile(/[\w\\\-]/),o("def",e.current())):"="==r||("~"==r||"|"==r)&&e.eat("=")?o(null,"compare"):'"'==r||"'"==r?(t.tokenize=i(r),t.tokenize(e,t)):"#"==r?(e.eatWhile(/[\w\\\-]/),o("atom","hash")):"!"==r?(e.match(/^\s*\w*/),o("keyword","important")):/\d/.test(r)||"."==r&&e.eat(/\d/)?(e.eatWhile(/[\w.%]/),o("number","unit")):"-"!==r?/[,+>*\/]/.test(r)?o(null,"select-op"):"."==r&&e.match(/^-?[_a-z][_a-z0-9-]*/i)?o("qualifier","qualifier"):/[:;{}\[\]\(\)]/.test(r)?o(null,r):"u"==r&&e.match(/rl(-prefix)?\(/)||"d"==r&&e.match("omain(")||"r"==r&&e.match("egexp(")?(e.backUp(1),t.tokenize=n,o("property","word")):/[\w\\\-]/.test(r)?(e.eatWhile(/[\w\\\-]/),o("property","word")):o(null,null):/[\d.]/.test(e.peek())?(e.eatWhile(/[\w.%]/),o("number","unit")):e.match(/^-[\w\\\-]+/)?(e.eatWhile(/[\w\\\-]/),e.match(/^\s*:/,!1)?o("variable-2","variable-definition"):o("variable-2","variable")):e.match(/^\w+-/)?o("meta","meta"):void 0}function i(e){return function(t,r){for(var a,i=!1;null!=(a=t.next());){if(a==e&&!i){")"==e&&t.backUp(1);break}i=!i&&"\\"==a}return(a==e||!i&&")"!=e)&&(r.tokenize=null),o("string","string")}}function n(e,t){return e.next(),e.match(/\s*[\"\')]/,!1)?t.tokenize=null:t.tokenize=i(")"),o(null,"(")}function l(e,t,r){this.type=e,this.indent=t,this.prev=r}function s(e,t,r,o){return e.context=new l(r,t.indentation()+(o===!1?0:b),e.context),r}function c(e){return e.context.prev&&(e.context=e.context.prev),e.context.type}function d(e,t,r){return _[r.context.type](e,t,r)}function p(e,t,r,o){for(var a=o||1;a>0;a--)r.context=r.context.prev;return d(e,t,r)}function u(e){var t=e.current().toLowerCase();g=K.hasOwnProperty(t)?"atom":q.hasOwnProperty(t)?"keyword":"variable"}var m=r.inline;r.propertyKeywords||(r=e.resolveMode("text/css"));var h,g,b=t.indentUnit,f=r.tokenHooks,y=r.documentTypes||{},w=r.mediaTypes||{},k=r.mediaFeatures||{},v=r.mediaValueKeywords||{},x=r.propertyKeywords||{},z=r.nonStandardPropertyKeywords||{},P=r.fontProperties||{},j=r.counterDescriptors||{},q=r.colorKeywords||{},K=r.valueKeywords||{},B=r.allowNested,T=r.supportsAtComponent===!0,_={};return _.top=function(e,t,r){if("{"==e)return s(r,t,"block");if("}"==e&&r.context.prev)return c(r);if(T&&/@component/.test(e))return s(r,t,"atComponentBlock");if(/^@(-moz-)?document$/.test(e))return s(r,t,"documentTypes");if(/^@(media|supports|(-moz-)?document|import)$/.test(e))return s(r,t,"atBlock");if(/^@(font-face|counter-style)/.test(e))return r.stateArg=e,"restricted_atBlock_before";if(/^@(-(moz|ms|o|webkit)-)?keyframes$/.test(e))return"keyframes";if(e&&"@"==e.charAt(0))return s(r,t,"at");if("hash"==e)g="builtin";else if("word"==e)g="tag";else{if("variable-definition"==e)return"maybeprop";if("interpolation"==e)return s(r,t,"interpolation");if(":"==e)return"pseudo";if(B&&"("==e)return s(r,t,"parens")}return r.context.type},_.block=function(e,t,r){if("word"==e){var o=t.current().toLowerCase();return x.hasOwnProperty(o)?(g="property","maybeprop"):z.hasOwnProperty(o)?(g="string-2","maybeprop"):B?(g=t.match(/^\s*:(?:\s|$)/,!1)?"property":"tag","block"):(g+=" error","maybeprop")}return"meta"==e?"block":B||"hash"!=e&&"qualifier"!=e?_.top(e,t,r):(g="error","block")},_.maybeprop=function(e,t,r){return":"==e?s(r,t,"prop"):d(e,t,r)},_.prop=function(e,t,r){if(";"==e)return c(r);if("{"==e&&B)return s(r,t,"propBlock");if("}"==e||"{"==e)return p(e,t,r);if("("==e)return s(r,t,"parens");if("hash"!=e||/^#([0-9a-fA-f]{3,4}|[0-9a-fA-f]{6}|[0-9a-fA-f]{8})$/.test(t.current())){if("word"==e)u(t);else if("interpolation"==e)return s(r,t,"interpolation")}else g+=" error";return"prop"},_.propBlock=function(e,t,r){return"}"==e?c(r):"word"==e?(g="property","maybeprop"):r.context.type},_.parens=function(e,t,r){return"{"==e||"}"==e?p(e,t,r):")"==e?c(r):"("==e?s(r,t,"parens"):"interpolation"==e?s(r,t,"interpolation"):("word"==e&&u(t),"parens")},_.pseudo=function(e,t,r){return"word"==e?(g="variable-3",r.context.type):d(e,t,r)},_.documentTypes=function(e,t,r){return"word"==e&&y.hasOwnProperty(t.current())?(g="tag",r.context.type):_.atBlock(e,t,r)},_.atBlock=function(e,t,r){if("("==e)return s(r,t,"atBlock_parens");if("}"==e||";"==e)return p(e,t,r);if("{"==e)return c(r)&&s(r,t,B?"block":"top");if("interpolation"==e)return s(r,t,"interpolation");if("word"==e){var o=t.current().toLowerCase();g="only"==o||"not"==o||"and"==o||"or"==o?"keyword":w.hasOwnProperty(o)?"attribute":k.hasOwnProperty(o)?"property":v.hasOwnProperty(o)?"keyword":x.hasOwnProperty(o)?"property":z.hasOwnProperty(o)?"string-2":K.hasOwnProperty(o)?"atom":q.hasOwnProperty(o)?"keyword":"error"}return r.context.type},_.atComponentBlock=function(e,t,r){return"}"==e?p(e,t,r):"{"==e?c(r)&&s(r,t,B?"block":"top",!1):("word"==e&&(g="error"),r.context.type)},_.atBlock_parens=function(e,t,r){return")"==e?c(r):"{"==e||"}"==e?p(e,t,r,2):_.atBlock(e,t,r)},_.restricted_atBlock_before=function(e,t,r){return"{"==e?s(r,t,"restricted_atBlock"):"word"==e&&"@counter-style"==r.stateArg?(g="variable","restricted_atBlock_before"):d(e,t,r)},_.restricted_atBlock=function(e,t,r){return"}"==e?(r.stateArg=null,c(r)):"word"==e?(g="@font-face"==r.stateArg&&!P.hasOwnProperty(t.current().toLowerCase())||"@counter-style"==r.stateArg&&!j.hasOwnProperty(t.current().toLowerCase())?"error":"property","maybeprop"):"restricted_atBlock"},_.keyframes=function(e,t,r){return"word"==e?(g="variable","keyframes"):"{"==e?s(r,t,"top"):d(e,t,r)},_.at=function(e,t,r){return";"==e?c(r):"{"==e||"}"==e?p(e,t,r):("word"==e?g="tag":"hash"==e&&(g="builtin"),"at")},_.interpolation=function(e,t,r){return"}"==e?c(r):"{"==e||";"==e?p(e,t,r):("word"==e?g="variable":"variable"!=e&&"("!=e&&")"!=e&&(g="error"),"interpolation")},{startState:function(e){return{tokenize:null,state:m?"block":"top",stateArg:null,context:new l(m?"block":"top",e||0,null)}},token:function(e,t){if(!t.tokenize&&e.eatSpace())return null;var r=(t.tokenize||a)(e,t);return r&&"object"==typeof r&&(h=r[1],r=r[0]),g=r,t.state=_[t.state](h,e,t),g},indent:function(e,t){var r=e.context,o=t&&t.charAt(0),a=r.indent;return"prop"!=r.type||"}"!=o&&")"!=o||(r=r.prev),r.prev&&("}"!=o||"block"!=r.type&&"top"!=r.type&&"interpolation"!=r.type&&"restricted_atBlock"!=r.type?(")"==o&&("parens"==r.type||"atBlock_parens"==r.type)||"{"==o&&("at"==r.type||"atBlock"==r.type))&&(a=Math.max(0,r.indent-b),r=r.prev):(r=r.prev,a=r.indent)),a},electricChars:"}",blockCommentStart:"/*",blockCommentEnd:"*/",fold:"brace"}});var o=["domain","regexp","url","url-prefix"],a=t(o),i=["all","aural","braille","handheld","print","projection","screen","tty","tv","embossed"],n=t(i),l=["width","min-width","max-width","height","min-height","max-height","device-width","min-device-width","max-device-width","device-height","min-device-height","max-device-height","aspect-ratio","min-aspect-ratio","max-aspect-ratio","device-aspect-ratio","min-device-aspect-ratio","max-device-aspect-ratio","color","min-color","max-color","color-index","min-color-index","max-color-index","monochrome","min-monochrome","max-monochrome","resolution","min-resolution","max-resolution","scan","grid","orientation","device-pixel-ratio","min-device-pixel-ratio","max-device-pixel-ratio","pointer","any-pointer","hover","any-hover"],s=t(l),c=["landscape","portrait","none","coarse","fine","on-demand","hover","interlace","progressive"],d=t(c),p=["align-content","align-items","align-self","alignment-adjust","alignment-baseline","anchor-point","animation","animation-delay","animation-direction","animation-duration","animation-fill-mode","animation-iteration-count","animation-name","animation-play-state","animation-timing-function","appearance","azimuth","backface-visibility","background","background-attachment","background-blend-mode","background-clip","background-color","background-image","background-origin","background-position","background-repeat","background-size","baseline-shift","binding","bleed","bookmark-label","bookmark-level","bookmark-state","bookmark-target","border","border-bottom","border-bottom-color","border-bottom-left-radius","border-bottom-right-radius","border-bottom-style","border-bottom-width","border-collapse","border-color","border-image","border-image-outset","border-image-repeat","border-image-slice","border-image-source","border-image-width","border-left","border-left-color","border-left-style","border-left-width","border-radius","border-right","border-right-color","border-right-style","border-right-width","border-spacing","border-style","border-top","border-top-color","border-top-left-radius","border-top-right-radius","border-top-style","border-top-width","border-width","bottom","box-decoration-break","box-shadow","box-sizing","break-after","break-before","break-inside","caption-side","clear","clip","color","color-profile","column-count","column-fill","column-gap","column-rule","column-rule-color","column-rule-style","column-rule-width","column-span","column-width","columns","content","counter-increment","counter-reset","crop","cue","cue-after","cue-before","cursor","direction","display","dominant-baseline","drop-initial-after-adjust","drop-initial-after-align","drop-initial-before-adjust","drop-initial-before-align","drop-initial-size","drop-initial-value","elevation","empty-cells","fit","fit-position","flex","flex-basis","flex-direction","flex-flow","flex-grow","flex-shrink","flex-wrap","float","float-offset","flow-from","flow-into","font","font-feature-settings","font-family","font-kerning","font-language-override","font-size","font-size-adjust","font-stretch","font-style","font-synthesis","font-variant","font-variant-alternates","font-variant-caps","font-variant-east-asian","font-variant-ligatures","font-variant-numeric","font-variant-position","font-weight","grid","grid-area","grid-auto-columns","grid-auto-flow","grid-auto-position","grid-auto-rows","grid-column","grid-column-end","grid-column-start","grid-row","grid-row-end","grid-row-start","grid-template","grid-template-areas","grid-template-columns","grid-template-rows","hanging-punctuation","height","hyphens","icon","image-orientation","image-rendering","image-resolution","inline-box-align","justify-content","left","letter-spacing","line-break","line-height","line-stacking","line-stacking-ruby","line-stacking-shift","line-stacking-strategy","list-style","list-style-image","list-style-position","list-style-type","margin","margin-bottom","margin-left","margin-right","margin-top","marker-offset","marks","marquee-direction","marquee-loop","marquee-play-count","marquee-speed","marquee-style","max-height","max-width","min-height","min-width","move-to","nav-down","nav-index","nav-left","nav-right","nav-up","object-fit","object-position","opacity","order","orphans","outline","outline-color","outline-offset","outline-style","outline-width","overflow","overflow-style","overflow-wrap","overflow-x","overflow-y","padding","padding-bottom","padding-left","padding-right","padding-top","page","page-break-after","page-break-before","page-break-inside","page-policy","pause","pause-after","pause-before","perspective","perspective-origin","pitch","pitch-range","play-during","position","presentation-level","punctuation-trim","quotes","region-break-after","region-break-before","region-break-inside","region-fragment","rendering-intent","resize","rest","rest-after","rest-before","richness","right","rotation","rotation-point","ruby-align","ruby-overhang","ruby-position","ruby-span","shape-image-threshold","shape-inside","shape-margin","shape-outside","size","speak","speak-as","speak-header","speak-numeral","speak-punctuation","speech-rate","stress","string-set","tab-size","table-layout","target","target-name","target-new","target-position","text-align","text-align-last","text-decoration","text-decoration-color","text-decoration-line","text-decoration-skip","text-decoration-style","text-emphasis","text-emphasis-color","text-emphasis-position","text-emphasis-style","text-height","text-indent","text-justify","text-outline","text-overflow","text-shadow","text-size-adjust","text-space-collapse","text-transform","text-underline-position","text-wrap","top","transform","transform-origin","transform-style","transition","transition-delay","transition-duration","transition-property","transition-timing-function","unicode-bidi","vertical-align","visibility","voice-balance","voice-duration","voice-family","voice-pitch","voice-range","voice-rate","voice-stress","voice-volume","volume","white-space","widows","width","word-break","word-spacing","word-wrap","z-index","clip-path","clip-rule","mask","enable-background","filter","flood-color","flood-opacity","lighting-color","stop-color","stop-opacity","pointer-events","color-interpolation","color-interpolation-filters","color-rendering","fill","fill-opacity","fill-rule","image-rendering","marker","marker-end","marker-mid","marker-start","shape-rendering","stroke","stroke-dasharray","stroke-dashoffset","stroke-linecap","stroke-linejoin","stroke-miterlimit","stroke-opacity","stroke-width","text-rendering","baseline-shift","dominant-baseline","glyph-orientation-horizontal","glyph-orientation-vertical","text-anchor","writing-mode"],u=t(p),m=["scrollbar-arrow-color","scrollbar-base-color","scrollbar-dark-shadow-color","scrollbar-face-color","scrollbar-highlight-color","scrollbar-shadow-color","scrollbar-3d-light-color","scrollbar-track-color","shape-inside","searchfield-cancel-button","searchfield-decoration","searchfield-results-button","searchfield-results-decoration","zoom"],h=t(m),g=["font-family","src","unicode-range","font-variant","font-feature-settings","font-stretch","font-weight","font-style"],b=t(g),f=["additive-symbols","fallback","negative","pad","prefix","range","speak-as","suffix","symbols","system"],y=t(f),w=["aliceblue","antiquewhite","aqua","aquamarine","azure","beige","bisque","black","blanchedalmond","blue","blueviolet","brown","burlywood","cadetblue","chartreuse","chocolate","coral","cornflowerblue","cornsilk","crimson","cyan","darkblue","darkcyan","darkgoldenrod","darkgray","darkgreen","darkkhaki","darkmagenta","darkolivegreen","darkorange","darkorchid","darkred","darksalmon","darkseagreen","darkslateblue","darkslategray","darkturquoise","darkviolet","deeppink","deepskyblue","dimgray","dodgerblue","firebrick","floralwhite","forestgreen","fuchsia","gainsboro","ghostwhite","gold","goldenrod","gray","grey","green","greenyellow","honeydew","hotpink","indianred","indigo","ivory","khaki","lavender","lavenderblush","lawngreen","lemonchiffon","lightblue","lightcoral","lightcyan","lightgoldenrodyellow","lightgray","lightgreen","lightpink","lightsalmon","lightseagreen","lightskyblue","lightslategray","lightsteelblue","lightyellow","lime","limegreen","linen","magenta","maroon","mediumaquamarine","mediumblue","mediumorchid","mediumpurple","mediumseagreen","mediumslateblue","mediumspringgreen","mediumturquoise","mediumvioletred","midnightblue","mintcream","mistyrose","moccasin","navajowhite","navy","oldlace","olive","olivedrab","orange","orangered","orchid","palegoldenrod","palegreen","paleturquoise","palevioletred","papayawhip","peachpuff","peru","pink","plum","powderblue","purple","rebeccapurple","red","rosybrown","royalblue","saddlebrown","salmon","sandybrown","seagreen","seashell","sienna","silver","skyblue","slateblue","slategray","snow","springgreen","steelblue","tan","teal","thistle","tomato","turquoise","violet","wheat","white","whitesmoke","yellow","yellowgreen"],k=t(w),v=["above","absolute","activeborder","additive","activecaption","afar","after-white-space","ahead","alias","all","all-scroll","alphabetic","alternate","always","amharic","amharic-abegede","antialiased","appworkspace","arabic-indic","armenian","asterisks","attr","auto","avoid","avoid-column","avoid-page","avoid-region","background","backwards","baseline","below","bidi-override","binary","bengali","blink","block","block-axis","bold","bolder","border","border-box","both","bottom","break","break-all","break-word","bullets","button","button-bevel","buttonface","buttonhighlight","buttonshadow","buttontext","calc","cambodian","capitalize","caps-lock-indicator","caption","captiontext","caret","cell","center","checkbox","circle","cjk-decimal","cjk-earthly-branch","cjk-heavenly-stem","cjk-ideographic","clear","clip","close-quote","col-resize","collapse","color","color-burn","color-dodge","column","column-reverse","compact","condensed","contain","content","content-box","context-menu","continuous","copy","counter","counters","cover","crop","cross","crosshair","currentcolor","cursive","cyclic","darken","dashed","decimal","decimal-leading-zero","default","default-button","destination-atop","destination-in","destination-out","destination-over","devanagari","difference","disc","discard","disclosure-closed","disclosure-open","document","dot-dash","dot-dot-dash","dotted","double","down","e-resize","ease","ease-in","ease-in-out","ease-out","element","ellipse","ellipsis","embed","end","ethiopic","ethiopic-abegede","ethiopic-abegede-am-et","ethiopic-abegede-gez","ethiopic-abegede-ti-er","ethiopic-abegede-ti-et","ethiopic-halehame-aa-er","ethiopic-halehame-aa-et","ethiopic-halehame-am-et","ethiopic-halehame-gez","ethiopic-halehame-om-et","ethiopic-halehame-sid-et","ethiopic-halehame-so-et","ethiopic-halehame-ti-er","ethiopic-halehame-ti-et","ethiopic-halehame-tig","ethiopic-numeric","ew-resize","exclusion","expanded","extends","extra-condensed","extra-expanded","fantasy","fast","fill","fixed","flat","flex","flex-end","flex-start","footnotes","forwards","from","geometricPrecision","georgian","graytext","groove","gujarati","gurmukhi","hand","hangul","hangul-consonant","hard-light","hebrew","help","hidden","hide","higher","highlight","highlighttext","hiragana","hiragana-iroha","horizontal","hsl","hsla","hue","icon","ignore","inactiveborder","inactivecaption","inactivecaptiontext","infinite","infobackground","infotext","inherit","initial","inline","inline-axis","inline-block","inline-flex","inline-table","inset","inside","intrinsic","invert","italic","japanese-formal","japanese-informal","justify","kannada","katakana","katakana-iroha","keep-all","khmer","korean-hangul-formal","korean-hanja-formal","korean-hanja-informal","landscape","lao","large","larger","left","level","lighter","lighten","line-through","linear","linear-gradient","lines","list-item","listbox","listitem","local","logical","loud","lower","lower-alpha","lower-armenian","lower-greek","lower-hexadecimal","lower-latin","lower-norwegian","lower-roman","lowercase","ltr","luminosity","malayalam","match","matrix","matrix3d","media-controls-background","media-current-time-display","media-fullscreen-button","media-mute-button","media-play-button","media-return-to-realtime-button","media-rewind-button","media-seek-back-button","media-seek-forward-button","media-slider","media-sliderthumb","media-time-remaining-display","media-volume-slider","media-volume-slider-container","media-volume-sliderthumb","medium","menu","menulist","menulist-button","menulist-text","menulist-textfield","menutext","message-box","middle","min-intrinsic","mix","mongolian","monospace","move","multiple","multiply","myanmar","n-resize","narrower","ne-resize","nesw-resize","no-close-quote","no-drop","no-open-quote","no-repeat","none","normal","not-allowed","nowrap","ns-resize","numbers","numeric","nw-resize","nwse-resize","oblique","octal","open-quote","optimizeLegibility","optimizeSpeed","oriya","oromo","outset","outside","outside-shape","overlay","overline","padding","padding-box","painted","page","paused","persian","perspective","plus-darker","plus-lighter","pointer","polygon","portrait","pre","pre-line","pre-wrap","preserve-3d","progress","push-button","radial-gradient","radio","read-only","read-write","read-write-plaintext-only","rectangle","region","relative","repeat","repeating-linear-gradient","repeating-radial-gradient","repeat-x","repeat-y","reset","reverse","rgb","rgba","ridge","right","rotate","rotate3d","rotateX","rotateY","rotateZ","round","row","row-resize","row-reverse","rtl","run-in","running","s-resize","sans-serif","saturation","scale","scale3d","scaleX","scaleY","scaleZ","screen","scroll","scrollbar","se-resize","searchfield","searchfield-cancel-button","searchfield-decoration","searchfield-results-button","searchfield-results-decoration","semi-condensed","semi-expanded","separate","serif","show","sidama","simp-chinese-formal","simp-chinese-informal","single","skew","skewX","skewY","skip-white-space","slide","slider-horizontal","slider-vertical","sliderthumb-horizontal","sliderthumb-vertical","slow","small","small-caps","small-caption","smaller","soft-light","solid","somali","source-atop","source-in","source-out","source-over","space","space-around","space-between","spell-out","square","square-button","start","static","status-bar","stretch","stroke","sub","subpixel-antialiased","super","sw-resize","symbolic","symbols","table","table-caption","table-cell","table-column","table-column-group","table-footer-group","table-header-group","table-row","table-row-group","tamil","telugu","text","text-bottom","text-top","textarea","textfield","thai","thick","thin","threeddarkshadow","threedface","threedhighlight","threedlightshadow","threedshadow","tibetan","tigre","tigrinya-er","tigrinya-er-abegede","tigrinya-et","tigrinya-et-abegede","to","top","trad-chinese-formal","trad-chinese-informal","translate","translate3d","translateX","translateY","translateZ","transparent","ultra-condensed","ultra-expanded","underline","up","upper-alpha","upper-armenian","upper-greek","upper-hexadecimal","upper-latin","upper-norwegian","upper-roman","uppercase","urdu","url","var","vertical","vertical-text","visible","visibleFill","visiblePainted","visibleStroke","visual","w-resize","wait","wave","wider","window","windowframe","windowtext","words","wrap","wrap-reverse","x-large","x-small","xor","xx-large","xx-small"],x=t(v),z=o.concat(i).concat(l).concat(c).concat(p).concat(m).concat(w).concat(v);e.registerHelper("hintWords","css",z),e.defineMIME("text/css",{documentTypes:a,mediaTypes:n,mediaFeatures:s,mediaValueKeywords:d,propertyKeywords:u,nonStandardPropertyKeywords:h,fontProperties:b,counterDescriptors:y,colorKeywords:k,valueKeywords:x,tokenHooks:{"/":function(e,t){return e.eat("*")?(t.tokenize=r,r(e,t)):!1}},name:"css"}),e.defineMIME("text/x-scss",{mediaTypes:n,mediaFeatures:s,mediaValueKeywords:d,propertyKeywords:u,nonStandardPropertyKeywords:h,colorKeywords:k,valueKeywords:x,fontProperties:b,allowNested:!0,tokenHooks:{"/":function(e,t){return e.eat("/")?(e.skipToEnd(),["comment","comment"]):e.eat("*")?(t.tokenize=r,r(e,t)):["operator","operator"]},":":function(e){return e.match(/\s*\{/)?[null,"{"]:!1},$:function(e){return e.match(/^[\w-]+/),e.match(/^\s*:/,!1)?["variable-2","variable-definition"]:["variable-2","variable"]},"#":function(e){return e.eat("{")?[null,"interpolation"]:!1}},name:"css",helperType:"scss"}),e.defineMIME("text/x-less",{mediaTypes:n,mediaFeatures:s,mediaValueKeywords:d,propertyKeywords:u,nonStandardPropertyKeywords:h,colorKeywords:k,valueKeywords:x,fontProperties:b,allowNested:!0,tokenHooks:{"/":function(e,t){return e.eat("/")?(e.skipToEnd(),["comment","comment"]):e.eat("*")?(t.tokenize=r,r(e,t)):["operator","operator"]},"@":function(e){return e.eat("{")?[null,"interpolation"]:e.match(/^(charset|document|font-face|import|(-(moz|ms|o|webkit)-)?keyframes|media|namespace|page|supports)\b/,!1)?!1:(e.eatWhile(/[\w\\\-]/),e.match(/^\s*:/,!1)?["variable-2","variable-definition"]:["variable-2","variable"])},"&":function(){return["atom","atom"]}},name:"css",helperType:"less"}),e.defineMIME("text/x-gss",{documentTypes:a,mediaTypes:n,mediaFeatures:s,propertyKeywords:u,nonStandardPropertyKeywords:h,fontProperties:b,counterDescriptors:y,colorKeywords:k,valueKeywords:x,supportsAtComponent:!0,tokenHooks:{"/":function(e,t){return e.eat("*")?(t.tokenize=r,r(e,t)):!1}},name:"css",helperType:"gss"})})});
 $rmod.def("/codemirror@5.12.0/mode/htmlmixed/htmlmixed",function(t,e,a,n,l){!function(n){"object"==typeof e&&"object"==typeof a?n(t("../../lib/codemirror"),t("../xml/xml"),t("../javascript/javascript"),t("../css/css")):"function"==typeof define&&define.amd?define(["../../lib/codemirror","../xml/xml","../javascript/javascript","../css/css"],n):n(CodeMirror)}(function(t){"use strict";function e(t,e,a){var n=t.current(),l=n.search(e);return l>-1?t.backUp(n.length-l):n.match(/<\/?$/)&&(t.backUp(n.length),t.match(e,!1)||t.match(n)),a}function a(t){var e=i[t];return e?e:i[t]=new RegExp("\\s+"+t+"\\s*=\\s*('|\")?([^'\"]+)('|\")?\\s*")}function n(t,e){var n=t.match(a(e));return n?n[2]:""}function l(t,e){return new RegExp((e?"^":"")+"</s*"+t+"s*>","i")}function o(t,e){for(var a in t)for(var n=e[a]||(e[a]=[]),l=t[a],o=l.length-1;o>=0;o--)n.unshift(l[o])}function r(t,e){for(var a=0;a<t.length;a++){var l=t[a];if(!l[0]||l[1].test(n(e,l[0])))return l[2]}}var c={script:[["lang",/(javascript|babel)/i,"javascript"],["type",/^(?:text|application)\/(?:x-)?(?:java|ecma)script$|^$/i,"javascript"],["type",/./,"text/plain"],[null,null,"javascript"]],style:[["lang",/^css$/i,"css"],["type",/^(text\/)?(x-)?(stylesheet|css)$/i,"css"],["type",/./,"text/plain"],[null,null,"css"]]},i={};t.defineMode("htmlmixed",function(a,n){function i(n,o){var c,m=s.token(n,o.htmlState),d=/\btag\b/.test(m);if(d&&!/[<>\s\/]/.test(n.current())&&(c=o.htmlState.tagName&&o.htmlState.tagName.toLowerCase())&&u.hasOwnProperty(c))o.inTag=c+" ";else if(o.inTag&&d&&/>$/.test(n.current())){var f=/^([\S]+) (.*)/.exec(o.inTag);o.inTag=null;var p=">"==n.current()&&r(u[f[1]],f[2]),g=t.getMode(a,p),h=l(f[1],!0),v=l(f[1],!1);o.token=function(t,a){return t.match(h,!1)?(a.token=i,a.localState=a.localMode=null,null):e(t,v,a.localMode.token(t,a.localState))},o.localMode=g,o.localState=t.startState(g,s.indent(o.htmlState,""))}else o.inTag&&(o.inTag+=n.current(),n.eol()&&(o.inTag+=" "));return m}var s=t.getMode(a,{name:"xml",htmlMode:!0,multilineTagIndentFactor:n.multilineTagIndentFactor,multilineTagIndentPastTag:n.multilineTagIndentPastTag}),u={},m=n&&n.tags,d=n&&n.scriptTypes;if(o(c,u),m&&o(m,u),d)for(var f=d.length-1;f>=0;f--)u.script.unshift(["type",d[f].matches,d[f].mode]);return{startState:function(){var t=s.startState();return{token:i,inTag:null,localMode:null,localState:null,htmlState:t}},copyState:function(e){var a;return e.localState&&(a=t.copyState(e.localMode,e.localState)),{token:e.token,inTag:e.inTag,localMode:e.localMode,localState:a,htmlState:t.copyState(s,e.htmlState)}},token:function(t,e){return e.token(t,e)},indent:function(e,a){return!e.localMode||/^\s*<\//.test(a)?s.indent(e.htmlState,a):e.localMode.indent?e.localMode.indent(e.localState,a):t.Pass},innerMode:function(t){return{state:t.localState||t.htmlState,mode:t.localMode||s}}}},"xml","javascript","css"),t.defineMIME("text/html","htmlmixed")})});
 $rmod.run("/$/codemirror/mode/htmlmixed/htmlmixed");
-$rmod.def("/src/components/app-try-marko/test-taglib/button.marko",function(t,e,n,o,r){function a(t){var e=(t.s,t.e,t.ne,t.x),n=t.a,o=t.as;return function(t,r){r.w('<button type="button"'+n("disabled",t.disabled)+o(t.attrs)+">"),t.label?r.w(e(t.label)):t.renderBody&&t.renderBody(r),r.w("</button>")}}(n.exports=t("/$/marko").c(o)).c(a)});
-$rmod.def("/src/components/app-try-marko/test-taglib/button-renderer",function(r,o,e,t,a){var d=r("./button.marko");e.exports=function(r,o){var e={};r.color&&(e.style="background-color: "+r.color+";");var t={label:r.label,attrs:e,renderBody:r.renderBody,disabled:r.disabled===!0};d.render(t,o)}});
-$rmod.def("/src/components/app-try-marko/test-taglib/tab-renderer",function(r,t,e,n,a){t.render=function(r,t){r.tabs.addTab(r)}});
-$rmod.def("/src/components/app-try-marko/test-taglib/tabs.marko",function(a,t,n,s,i){function c(a){var t=(a.s,a.e,a.ne,a.x),n=a.f,s=a.xa,i=a.a;return function(a,c){c.w('<div class="tabs"><ul class="nav nav-tabs">'),n(a.tabs,function(a){c.w('<li class="tab"><a href="#'+s(a.id)+'" data-toggle="tab">'+t(a.title)+"</a></li>")}),c.w('</ul><div class="tab-content">'),n(a.tabs,function(a){c.w("<div"+i("id",a.id)+' class="tab-pane">'),a.renderBody(c),c.w("</div>")}),c.w("</div></div>")}}(n.exports=a("/$/marko").c(s)).c(c)});
-$rmod.def("/src/components/app-try-marko/test-taglib/tabs-renderer",function(a,r,t,e,n){var o=a.resolve("./tabs.marko"),s=a("/$/marko").load(o);r.render=function(a,r){var t;a.getTabs?(t=[],a.getTabs({addTab:function(a){a.id=a.id||"tab"+t.length,t.push(a)}})):t=a.tabs||[],s.render({tabs:t},r)}});
-$rmod.dep("","raptor-async","1.1.2");
-$rmod.main("/marko-prettyprint@1.0.3","src/index");
-$rmod.dep("","marko-prettyprint","1.0.3");
-$rmod.def("/marko@3.0.0/taglibs/async/async-fragment-nested-tag-transformer",function(e,r,a,t,n){"use strict";a.exports=function(e,r){var a=e.parentNode;if("async-fragment"!==a.tagName)return void r.addError(e,"The <"+e.tagName+"> should be nested within an <async-fragment> tag.");var t;"async-fragment-error"===e.tagName?t="renderError":"async-fragment-timeout"===e.tagName?t="renderTimeout":"async-fragment-placeholder"===e.tagName&&(t="renderPlaceholder");var n=r.builder;a.setAttributeValue(t,n.renderBodyFunction(e.body)),e.detach()}});
-$rmod.def("/raptor-util@1.0.10/isObjectEmpty",function(r,t,n,e,i){n.exports=function(r){if(!r)return!0;for(var t in r)if(r.hasOwnProperty(t))return!1;return!0}});
-$rmod.def("/marko@3.0.0/taglibs/async/async-fragment-tag-transformer", function(require, exports, module, __filename, __dirname) { 'use strict';
-
-var isObjectEmpty = require('/$/marko/$/raptor-util/isObjectEmpty'/*'raptor-util/isObjectEmpty'*/);
-
-module.exports = function transform(el, context) {
-    var varName = el.getAttributeValue('var');
-    if (varName) {
-        if (varName.type !== 'Literal' || typeof varName.value !== 'string') {
-            context.addError(el, 'The "var" attribute value should be a string');
-            return;
-        }
-
-        varName = varName.value;
-
-        if (!context.util.isValidJavaScriptIdentifier(varName)) {
-            context.addError(el, 'The "var" attribute value should be a valid JavaScript identifier');
-            return;
-        }
-    } else {
-        context.addError(el, 'The "var" attribute is required');
-        return;
-    }
-
-    var attrs = el.getAttributes().concat([]);
-    var arg = {};
-    var builder = context.builder;
-
-    attrs.forEach((attr) => {
-        var attrName = attr.name;
-        if (attrName.startsWith('arg-')) {
-            let argName = attrName.substring('arg-'.length);
-            arg[argName] = attr.value;
-            el.removeAttribute(attrName);
-        }
-    });
-
-    var dataProviderAttr = el.getAttribute('data-provider');
-    if (!dataProviderAttr) {
-        context.addError(el, 'The "data-provider" attribute is required');
-        return;
-    }
-
-    if (dataProviderAttr.value == null) {
-        context.addError(el, 'A value is required for the "data-provider" attribute');
-        return;
-    }
-
-    if (dataProviderAttr.value.type == 'Literal') {
-        context.addError(el, 'The "data-provider" attribute value should not be a literal ' + (typeof dataProviderAttr.value.value));
-        return;
-    }
-
-    var name = el.getAttributeValue('name');
-    if (name == null) {
-        el.setAttributeValue('_name', builder.literal(dataProviderAttr.rawValue));
-    }
-
-    if (el.hasAttribute('arg')) {
-        if (isObjectEmpty(arg)) {
-            arg = el.getAttributeValue('arg');
-        } else {
-            let mergeVar = context.addStaticVar('__merge', '__helpers.m');
-            arg = builder.functionCall(mergeVar, [
-                builder.literal(arg), // Input props from the attributes take precedence
-                el.getAttributeValue('arg')
-            ]);
-        }
-    } else {
-        if (isObjectEmpty(arg)) {
-            arg = null;
-        } else {
-            arg = builder.literal(arg);
-        }
-    }
-
-    if (arg) {
-        el.setAttributeValue('arg', arg);
-    }
-
-    var timeoutMessage = el.getAttributeValue('timeout-message');
-    if (timeoutMessage) {
-        el.removeAttribute('timeout-message');
-        el.setAttributeValue('renderTimeout', builder.renderBodyFunction([
-            builder.text(timeoutMessage)
-        ]));
-    }
-
-    var errorMessage = el.getAttributeValue('error-message');
-    if (errorMessage) {
-        el.removeAttribute('error-message');
-        el.setAttributeValue('renderError', builder.renderBodyFunction([
-            builder.text(errorMessage)
-        ]));
-    }
-
-    var placeholder = el.getAttributeValue('placeholder');
-    if (placeholder) {
-        el.removeAttribute('placeholder');
-        el.setAttributeValue('renderPlaceholder', builder.renderBodyFunction([
-            builder.text(placeholder)
-        ]));
-    }
-};
-
-});
-$rmod.dep("/$/marko","raptor-logging","1.0.8");
-$rmod.dep("/$/marko","raptor-polyfill","1.0.2");
-$rmod.dep("/$/marko/$/raptor-logging","raptor-stacktraces","1.0.1");
-$rmod.dep("/$/marko","raptor-async","1.1.2");
-$rmod.remap("/marko@3.0.0/taglibs/async/client-reorder","client-reorder-browser");
-$rmod.def("/marko@3.0.0/taglibs/async/client-reorder-browser",function(r,e,o,d,i){e.isSupported=!1});
-$rmod.def("/marko@3.0.0/taglibs/async/async-fragment-tag",function(e,n,r,t,o){"use strict";function a(e){return e&&"function"==typeof e.then}function l(e,n,r){if(n){var t=e.then(function(e){n(null,e)});"function"==typeof e["catch"]?t=t["catch"](function(e){n(e)}):"function"==typeof e.fail&&(t=t.fail(function(e){n(e)})),t.done&&t.done()}return e}function i(e,n,r,t){if(a(e))return void l(e,r);if("function"==typeof e){var o=1===e.length?e.call(t,r):e.call(t,n,r);void 0!==o&&(a(o)?l(o,r):r(null,o))}else r(null,e)}var u=e("/$/marko/$/raptor-logging").logger(r),c=e("/$/marko/$/async-writer"),f=e("/$/marko/$/raptor-async/AsyncValue"),s=e("./client-reorder").isSupported;r.exports=function(e,n){function r(r,t,o){g&&(clearTimeout(g),g=null),d=!0;var i=a||n;l.emit("asyncFragmentBeforeRender",{clientReorder:m,out:i,name:y}),r?e.renderError?(console.error("Async fragment ("+y+") failed. Error:",r.stack||r),e.renderError(i)):i.error(r):o?o(a):e.renderBody&&e.renderBody(i,t),m||l.emit("asyncFragmentFinish",{clientReorder:!1,out:i}),a&&(a.end(),m||n.flush())}var t=e.dataProvider,o=e.arg||{};o.out=n;var a,l=n.global.events,m=s&&e.clientReorder===!0,d=!1,g=null,y=e.name||e._name,p=e.scope||this,v=e.method;if(v&&(t=t[v].bind(t)),i(t,o,r,p),!d){var h=e.timeout,b=e.renderTimeout;if(null==h?h=1e4:0>=h&&(h=null),null!=h&&(g=setTimeout(function(){var e="Async fragment ("+y+") timed out after "+h+"ms";b?(u.error(e),r(null,null,b)):r(new Error(e))},h)),m){var $=n.global.__asyncFragments||($=n.global.__asyncFragments={fragments:[],nextId:0}),F=e.name||$.nextId++;n.write('<span id="afph'+F+'">'+(e.placeholder||"")+"</span>");var k=new f;a=c.create(null,{global:n.global}),a.on("finish",function(){k.resolve(a.getOutput())}).on("error",function(e){k.reject(e)});var w={id:F,asyncValue:k,out:a,after:e.showAfter};$.fragments?$.fragments.push(w):l.emit("asyncFragmentBegin",w)}else n.flush(),a=n.beginAsync({timeout:0,name:y})}}});
-$rmod.def("/marko@3.0.0/taglibs/async/async-fragments-tag",function(e,t,n,r,a){var i=e("./client-reorder");n.exports=function(e,t){var n=t.global,r=n.events;t.flush();var a=t.beginAsync({last:!0,timeout:-1});t.onLast(function(e){function s(s){s.asyncValue.done(function(f,d){if(!c){if(f)return c=!0,a.error(f);n._afRuntime||(a.write(i.getCode()),n._afRuntime=!0),a.write('<div id="af'+s.id+'" style="display:none">'+d+'</div><script type="text/javascript">$af('+("number"==typeof s.id?s.id:'"'+s.id+'"')+(s.after?',"'+s.after+'"':"")+")</script>"),s.out.writer=a.writer,r.emit("asyncFragmentFinish",{clientReorder:!0,out:s.out}),t.flush(),0===--o&&(c=!0,a.end(),e())}})}var f=n.__asyncFragments;if(!f||!f.fragments.length)return a.end(),void e();var o=f.fragments.length,c=!1;f.fragments.forEach(s),r.on("asyncFragmentBegin",function(e){o++,s(e)}),delete f.fragments})}});
-$rmod.def("/marko@3.0.0/taglibs/async/client-reorder-runtime",function(r,e,n,i,o){});
-$rmod.def("/marko@3.0.0/taglibs/async/client-reorder-runtime.min",function(n,r,e,i,m){});
-$rmod.def("/marko@3.0.0/taglibs/core/assign-tag", function(require, exports, module, __filename, __dirname) { module.exports = function codeGenerator(elNode, generator) {
-    var attributes = elNode.attributes;
-
-    if (!attributes) {
-        generator.addError('Invalid <assign> tag. Argument is missing. Example; <assign x=123 />');
-        return elNode;
-    }
-
-    var builder = generator.builder;
-
-    return attributes.map((attr) => {
-        return builder.assignment(attr.name, attr.value);
-    });
-};
-});
-$rmod.def("/marko@3.0.0/compiler/util/removeComments", function(require, exports, module, __filename, __dirname) { 'use strict';
-var tokenizer = require('./tokenizer').create([
-    {
-        name: 'stringDouble',
-        pattern: /"(?:[^"]|\\")*"/,
-    },
-    {
-        name: 'stringSingle',
-        pattern: /'(?:[^']|\\')*'/
-    },
-    {
-        name: 'singleLineComment',
-        pattern: /\/\/.*/
-    },
-    {
-        name: 'multiLineComment',
-        pattern: /\/\*(?:[\s\S]*?)\*\//
-    }
-]);
-
-/**
- * Parses a for loop string in the following forms:
- *
- * <varName> in <expression>
- * <varName> in <expression> | status-var=<varName> separator=<expression>
- * <varName> from <expression> to <expression>
- * <varName> from <expression> to <expression> step <expression>
- * <init>; <test>; <update>
- */
-module.exports = function removeComments(str) {
-
-    var comments = [];
-
-    tokenizer.forEachToken(str, (token) => {
-        switch(token.name) {
-            case 'singleLineComment':
-            case 'multiLineComment':
-                comments.push(token);
-                break;
-        }
-    });
-
-    var len = comments.length;
-
-    if (len) {
-        for (var i=len-1; i>=0; i--) {
-            var comment = comments[i];
-            str = str.substring(0, comment.start) + str.substring(comment.end);
-        }
-    }
-
-    return str;
-};
-});
-$rmod.def("/marko@3.0.0/compiler/util/tokenizer", function(require, exports, module, __filename, __dirname) { 'use strict';
-
-function create(tokens) {
-    function getToken(matches) {
-        for (var i=0; i<tokens.length; i++) {
-            let tokenValue = matches[i + 1];
-            if (tokenValue != null) {
-                var tokenDef = tokens[i];
-                return {
-                    start: matches.index,
-                    end: matches.index + matches[0].length,
-                    name: tokenDef.name,
-                    value: tokenValue
-                };
-            }
-        }
-    }
-
-    var tokensRegExp = new RegExp(tokens
-        .map((token) => {
-            return '(' + token.pattern.source + ')';
-        })
-        .join('|'), 'g');
-
-    return {
-        forEachToken: function(value, callback, thisObj) {
-            tokensRegExp.lastIndex = 0; // Start searching from the beginning again
-            var matches;
-            while ((matches = tokensRegExp.exec(value))) {
-                let token = getToken(matches);
-                callback.call(this, token);
-            }
-        }
-    };
-}
-
-exports.create = create;
-});
-$rmod.def("/marko@3.0.0/taglibs/core/util/parseFor", function(require, exports, module, __filename, __dirname) { 'use strict';
-var removeComments = require('../../../compiler/util/removeComments');
-var compiler = require('../../../compiler');
-
-var integerRegExp = /^-?\d+$/;
-var numberRegExp = /^-?(?:\d+|\d+\.\d*|\d*\.\d+|\d+\.\d+)$/;
-
-var tokenizer = require('../../../compiler/util/tokenizer').create([
-    {
-        name: 'stringDouble',
-        pattern: /"(?:[^"]|\\")*"/,
-    },
-    {
-        name: 'stringSingle',
-        pattern: /'(?:[^']|\\')*'/
-    },
-    {
-        name: 'in',
-        pattern: /\s+in\s+/,
-    },
-    {
-        name: 'from',
-        pattern: /\s+from\s+/
-    },
-    {
-        name: 'to',
-        pattern: /\s+to\s+/,
-    },
-    {
-        name: 'step',
-        pattern: /\s+step\s+/,
-    },
-    {
-        name: 'semicolon',
-        pattern: /[;]/,
-    },
-    {
-        name: 'separator',
-        pattern: /separator=/
-    },
-    {
-        name: 'status-var',
-        pattern: /status\-var=/
-    },
-    {
-        name: 'iterator',
-        pattern: /iterator=/
-    },
-    {
-        name: 'pipe',
-        pattern: /\s+\|\s+/
-    },
-    {
-        name: 'groupOpen',
-        pattern: /[\{\(\[]/
-    },
-    {
-        name: 'groupClose',
-        pattern: /[\}\)\]]/
-    }
-]);
-
-function throwError(message) {
-    var error = new Error(message);
-    error.code = 'INVALID_FOR';
-    throw error;
-}
-
-function buildIdentifier(name, errorMessage) {
-    try {
-        return compiler.builder.identifier(name);
-    } catch(e) {
-        throwError(errorMessage + ': ' + e.message);
-    }
-}
-
-function parseExpression(str, errorMessage) {
-    try {
-        return compiler.builder.parseExpression(str);
-    } catch(e) {
-        throwError(errorMessage + ': ' + e.message);
-    }
-}
-
-function parseStatement(str, errorMessage) {
-    try {
-        return compiler.builder.parseStatement(str);
-    } catch(e) {
-        throwError(errorMessage + ': ' + e.message);
-    }
-}
-
-function createNumberExpression(str, errorMessage) {
-    if (str == null) {
-        return null;
-    }
-
-    if (integerRegExp.test(str)) {
-        return compiler.builder.literal(parseInt(str, 10));
-    } else if (numberRegExp.test(str)) {
-        return compiler.builder.literal(parseFloat(str));
-    } else {
-        return parseExpression(str, errorMessage);
-    }
-}
-
-/**
- * Parses a for loop string in the following forms:
- *
- * <varName> in <expression>
- * <varName> in <expression> | status-var=<varName> separator=<expression>
- * <varName> from <expression> to <expression>
- * <varName> from <expression> to <expression> step <expression>
- * <init>; <test>; <update>
- */
-module.exports = function(str) {
-    str = removeComments(str);
-
-    let depth = 0;
-    var prevToken;
-    var loopType;
-    var pipeFound = false;
-
-    var varName;
-    var nameVarName;
-    var valueVarName;
-    var inExpression;
-    var statusVarName;
-    var separatorExpression;
-    var fromExpression;
-    var toExpression;
-    var stepExpression;
-    var iteratorExpression;
-
-    var forInit;
-    var forTest;
-    var forUpdate;
-
-    function finishVarName(end) {
-        varName = str.substring(0, end).trim();
-    }
-
-    function finishPrevPart(end) {
-        if (!prevToken) {
-            return;
-        }
-
-        var start = prevToken.end;
-        var part = str.substring(start, end).trim();
-
-        switch(prevToken.name) {
-            case 'from':
-                fromExpression = part;
-                break;
-            case 'to':
-                toExpression = part;
-                break;
-            case 'in':
-                inExpression = part;
-                break;
-            case 'step':
-                stepExpression = part;
-                break;
-            case 'status-var':
-                statusVarName = part;
-                break;
-            case 'separator':
-                separatorExpression = part;
-                break;
-            case 'iterator':
-                iteratorExpression = part;
-                break;
-            case 'pipe':
-                if (part.length !== 0) {
-                    throwError('Unexpected input: ' + part);
-                    return;
-                }
-                break;
-        }
-    }
-
-    tokenizer.forEachToken(str, (token) => {
-        switch(token.name) {
-            case 'groupOpen':
-                depth++;
-                break;
-            case 'groupClose':
-                depth--;
-                break;
-            case 'in':
-                if (depth === 0 && !loopType) {
-                    loopType = 'ForEach';
-                    finishVarName(token.start);
-                    prevToken = token;
-                }
-                break;
-            case 'from':
-                if (depth === 0 && !loopType) {
-                    loopType = 'ForRange';
-                    finishVarName(token.start);
-                    prevToken = token;
-                }
-                break;
-            case 'to':
-                if (depth === 0 && prevToken && prevToken.name === 'from') {
-                    finishPrevPart(token.start);
-                    prevToken = token;
-                }
-                break;
-            case 'step':
-                if (depth === 0 && prevToken && prevToken.name === 'to') {
-                    finishPrevPart(token.start);
-                    prevToken = token;
-                }
-                break;
-            case 'semicolon':
-                if (depth === 0) {
-                    loopType = 'For';
-
-                    if (forInit == null) {
-                        forInit = str.substring(0, token.start);
-                    } else if (forTest == null) {
-                        forTest = str.substring(prevToken.end, token.start);
-                        forUpdate = str.substring(token.end);
-                    } else {
-                        throwError('Invalid native for loop. Expected format: <init>; <test>; <update>');
-                    }
-
-                    prevToken = token;
-                }
-                break;
-            case 'pipe':
-                if (depth === 0) {
-                    pipeFound = true;
-                    finishPrevPart(token.start);
-                    prevToken = token;
-                }
-                break;
-            case 'status-var':
-                if (depth === 0 && pipeFound && str.charAt(token.start-1) === ' ') {
-                    finishPrevPart(token.start);
-                    prevToken = token;
-                }
-                break;
-            case 'separator':
-                if (depth === 0 && pipeFound && str.charAt(token.start-1) === ' ') {
-                    finishPrevPart(token.start);
-                    prevToken = token;
-                }
-                break;
-            case 'iterator':
-                if (depth === 0 && pipeFound && str.charAt(token.start-1) === ' ') {
-                    finishPrevPart(token.start);
-                    prevToken = token;
-                }
-                break;
-        }
-    });
-
-    finishPrevPart(str.length);
-
-    if (loopType === 'ForEach') {
-        var nameValue = varName.split(/\s*,\s*/);
-        if (nameValue.length === 2) {
-            nameVarName = buildIdentifier(nameValue[0], 'Invalid name variable');
-            valueVarName = buildIdentifier(nameValue[1], 'Invalid value variable');
-            varName = null;
-            loopType = 'ForEachProp';
-        }
-    }
-
-    if (inExpression) {
-        inExpression = parseExpression(inExpression, 'Invalid "in" expression');
-    }
-
-    if (separatorExpression) {
-        separatorExpression = parseExpression(separatorExpression, 'Invalid "separator" expression');
-    }
-
-    if (iteratorExpression) {
-        iteratorExpression = parseExpression(iteratorExpression, 'Invalid "iterator" expression');
-    }
-
-    if (fromExpression) {
-        fromExpression = createNumberExpression(fromExpression, 'Invalid "from" expression');
-    }
-
-    if (toExpression) {
-        toExpression = createNumberExpression(toExpression, 'Invalid "to" expression');
-    }
-
-    if (stepExpression) {
-        stepExpression = createNumberExpression(stepExpression, 'Invalid "step" expression');
-    }
-
-    if (varName != null) {
-        varName = buildIdentifier(varName, 'Invalid variable name');
-    }
-
-    if (statusVarName) {
-        statusVarName = parseExpression(statusVarName, 'Invalid status-var option');
-        if (statusVarName.type === 'Literal') {
-            statusVarName = compiler.builder.identifier(statusVarName.value);
-        } else  if (statusVarName.type !== 'Identifier') {
-            throwError('Invalid status-var option');
-        }
-    }
-
-    if (forInit) {
-        forInit = parseStatement(forInit, 'Invalid for loop init');
-    }
-
-    if (forTest) {
-        forTest = parseExpression(forTest, 'Invalid for loop test');
-    }
-
-    if (forUpdate) {
-        forUpdate = parseExpression(forUpdate, 'Invalid for loop update');
-    }
-
-    // No more tokens... now we need to sort out what happened
-    if (loopType === 'ForEach') {
-        return {
-            'loopType': loopType,
-            'varName': varName,
-            'in': inExpression,
-            'separator': separatorExpression,
-            'statusVarName': statusVarName,
-            'iterator': iteratorExpression
-        };
-    } else if (loopType === 'ForEachProp') {
-        return {
-            'loopType': loopType,
-            'nameVarName': nameVarName,
-            'valueVarName': valueVarName,
-            'in': inExpression
-        };
-    } else if (loopType === 'ForRange') {
-        return {
-            'loopType': loopType,
-            'varName': varName,
-            'from': fromExpression,
-            'to': toExpression,
-            'step': stepExpression
-        };
-    } else if (loopType === 'For') {
-        if (forTest == null) {
-            throwError('Invalid native for loop. Expected format: <init>; <test>; <update>');
-        }
-        return {
-            'loopType': loopType,
-            'init': forInit,
-            'test': forTest,
-            'update': forUpdate
-        };
-    } else {
-        throwError('Invalid for loop');
-    }
-};
-});
-$rmod.def("/marko@3.0.0/taglibs/core/util/createLoopNode",function(o,r,e,p,t){function a(o,r,e){var p=n(o);if(p.body=r,"ForEach"===p.loopType)return e.forEach(p);if("ForRange"===p.loopType)return e.forRange(p);if("ForEachProp"===p.loopType)return e.forEachProp(p);if("For"===p.loopType)return e.forStatement(p);throw new Error("Unsupported loop type: "+p.loopType)}var n=o("./parseFor");e.exports=a});
-$rmod.def("/marko@3.0.0/taglibs/core/core-transformer", function(require, exports, module, __filename, __dirname) { 'use strict';
-
-var createLoopNode = require('./util/createLoopNode');
-
-var coreAttrHandlers = [
-    [
-        'while', function(attr, node) {
-            var whileArgument = attr.argument;
-            if (!whileArgument) {
-                return false;
-            }
-
-            var whileNode = this.builder.whileStatement(whileArgument);
-            node.wrapWith(whileNode);
-        }
-    ],
-    [
-        'for', function(attr, node) {
-            var forArgument = attr.argument;
-            if (!forArgument) {
-                return false;
-            }
-
-            var loopNode;
-
-            try {
-                loopNode = createLoopNode(forArgument, null, this.builder);
-            } catch(e) {
-                if (e.code === 'INVALID_FOR') {
-                    this.addError(e.message);
-                    return;
-                } else {
-                    throw e;
-                }
-            }
-
-
-            //Surround the existing node with the newly created loop node
-            // NOTE: The loop node will be one of the following:
-            //       ForEach, ForRange, ForEachProp or ForStatement
-            node.wrapWith(loopNode);
-        }
-    ],
-    [
-        'if', function(attr, node) {
-            var ifArgument = attr.argument;
-            if (!ifArgument) {
-                return false;
-            }
-
-            var test;
-            try {
-                test = this.builder.parseExpression(ifArgument);
-            } catch(e) {
-                test = this.builder.literalFalse();
-                this.addError('Invalid expression for if statement:\n' + e.message);
-            }
-
-            var ifNode = this.builder.ifStatement(test);
-            //Surround the existing node with an "If" node
-            node.wrapWith(ifNode);
-        }
-    ],
-    [
-        'unless', function(attr, node) {
-            var ifArgument = attr.argument;
-            if (!ifArgument) {
-                return false;
-            }
-
-            var test;
-            try {
-                test = this.builder.parseExpression(ifArgument);
-            } catch(e) {
-                test = this.builder.literalFalse();
-                this.addError('Invalid expression for unless statement:\n' + e.message);
-            }
-
-            test = this.builder.negate(test);
-            var ifNode = this.builder.ifStatement(test);
-            //Surround the existing node with an "if" node
-            node.wrapWith(ifNode);
-        }
-    ],
-    [
-        'else-if', function(attr, node) {
-            var elseIfArgument = attr.argument;
-            if (!elseIfArgument) {
-                return false;
-            }
-
-            var test;
-            try {
-                test = this.builder.parseExpression(elseIfArgument);
-            } catch(e) {
-                test = this.builder.literalFalse();
-                this.addError('Invalid expression for else-if statement:\n' + e.message);
-            }
-
-            var elseIfNode = this.builder.elseIfStatement(test);
-            //Surround the existing node with an "ElseIf" node
-            node.wrapWith(elseIfNode);
-        }
-    ],
-    [
-        'else', function(attr, node) {
-            var elseNode = this.builder.elseStatement();
-            //Surround the existing node with an "Else" node
-            node.wrapWith(elseNode);
-        }
-    ],
-    [
-        'body-only-if', function(attr, node, el) {
-            var argument = attr.argument;
-            if (!argument) {
-                return false;
-            }
-
-            var test;
-            try {
-                test = this.builder.parseExpression(argument);
-            } catch(e) {
-                test = this.builder.literalFalse();
-                this.addError('Invalid expression for body-only-if statement:\n' + e.message);
-            }
-
-            el.setBodyOnlyIf(test);
-        }
-    ],
-    [
-        'marko-preserve-whitespace', function(attr, node, el) {
-            el.setPreserveWhitespace(true);
-        }
-    ],
-    [
-        'marko-init', function(attr, node, el) {
-            if (el.tagName !== 'script') {
-                this.addError('The "marko-init" attribute should only be used on the <script> tag');
-                return;
-            }
-            var bodyText = el.bodyText;
-            el.noOutput = true;
-            this.context.addStaticCode(bodyText);
-            el.detach();
-            return null;
-        }
-    ]
-];
-
-class AttributeTransformer {
-    constructor(context, el) {
-        this.context = context;
-        this.builder = context.builder;
-        this.el = el;
-    }
-
-    addError(message) {
-        this.context.addError({
-            node: this.el,
-            message: message
-        });
-    }
-}
-
-coreAttrHandlers.forEach(function(attrHandler) {
-    var name = attrHandler[0];
-    var func = attrHandler[1];
-    AttributeTransformer.prototype[name] = func;
-});
-
-var attributeTransformers = AttributeTransformer.prototype;
-
-module.exports = function transform(el, context) {
-    el.removeAttribute('marko-body'); // This attribute is handled at parse time. We can just remove it now
-
-    var attributeTransfomer;
-    var node = el;
-
-    el.forEachAttribute((attr) => {
-        let attrName = attr.name;
-        if (!attrName) {
-            if (!node.addDynamicAttributes) {
-                context.addError(el, 'Node does not support the "attrs" attribute');
-            } else {
-                node.addDynamicAttributes(attr.value);
-            }
-            return;
-        }
-        var attrTransformerFunc = attributeTransformers[attrName];
-        if (attrTransformerFunc) {
-            if (!attributeTransfomer) {
-                attributeTransfomer = new AttributeTransformer(context, el);
-            }
-            var newNode = attributeTransfomer[attrName](attr, node, el);
-            if (newNode !== false) {
-                el.removeAttribute(attrName);
-                if (newNode !== undefined) {
-                    if (newNode) {
-                        newNode.pos = node.pos;
-                    }
-
-                    node = newNode;
-                }
-            }
-        }
-    });
-};
-});
-$rmod.def("/marko@3.0.0/taglibs/core/else-if-tag",function(e,r,t,a,i){t.exports=function(e,r){var t=e.argument,a=e.attributes;if(!t)return r.addError(e,"Invalid <else-if> tag. Argument is missing. Example; <if(foo === true)>"),e;if(a.length)return r.addError(e,"Invalid <else-if> tag. Attributes not allowed."),e;var i;try{i=r.builder.parseExpression(t)}catch(s){i=r.builder.literalFalse(),r.addError(e,"Invalid expression for else-if statement:\n"+s.message)}var n=r.builder.elseIfStatement(i);return n}});
-$rmod.def("/marko@3.0.0/taglibs/core/else-tag", function(require, exports, module, __filename, __dirname) { 'use strict';
-
-module.exports = function nodeFactory(el, context) {
-
-    var elseStatement = context.builder.elseStatement();
-
-    var argument = el.argument;
-    if (argument) {
-        context.addError(elseStatement, 'Invalid <else> tag. Argument is not allowed');
-    }
-
-    if (el.hasAttribute('if')) {
-        let ifAttr = el.getAttribute('if');
-        el.removeAttribute('if');
-
-        if (el.attributes.length) {
-            context.addError(elseStatement, 'Invalid <else if> tag. Only the "if" attribute is allowed.');
-            return el;
-        }
-
-        var testExpression = ifAttr.argument;
-        if (!testExpression) {
-            context.addError(elseStatement, 'Invalid <else if> tag. Invalid "if" attribute. Expected: <else if(<test>)>');
-            return el;
-        }
-        var elseIfStatement = context.builder.elseIfStatement(testExpression);
-        return elseIfStatement;
-    }
-
-    if (el.attributes.length) {
-        context.addError(elseStatement, 'Invalid <else> tag. Attributes not allowed.');
-        return el;
-    }
-
-    return elseStatement;
-};
-});
-$rmod.def("/marko@3.0.0/taglibs/core/for-tag",function(r,o,a,e,t){var i=r("./util/createLoopNode");a.exports=function(r,o){var a=r.argument;if(!a)return o.addError("Invalid <for> tag. Argument is missing. Example: <for(color in colors)>"),r;var e=o.builder;try{var t=i(a,r.body,e);return t}catch(d){if("INVALID_FOR"!==d.code)throw d;o.addError(d.message)}}});
-$rmod.def("/marko@3.0.0/taglibs/core/if-tag",function(r,t,e,i,a){e.exports=function(r,t){var e=r.argument;if(!e)return t.addError(r,"Invalid <if> tag. Argument is missing. Example; <if(foo === true)>"),r;var i=r.attributes;if(i.length)return void t.addError(r,"Invalid <if> tag. Attributes not allowed.");var a;try{a=t.builder.parseExpression(e)}catch(n){a=t.builder.literalFalse(),t.addError(r,"Invalid expression for if statement:\n"+n.message)}return t.builder.ifStatement(a)}});
-$rmod.def("/marko@3.0.0/taglibs/core/include-tag", function(require, exports, module, __filename, __dirname) { 'use strict';
-
-module.exports = function codeGenerator(el, codegen) {
-    let argument = el.argument;
-    if (!argument) {
-        return;
-    }
-
-    let builder = codegen.builder;
-    let args = builder.parseJavaScriptArgs(argument);
-    if (args.length === 0) {
-        codegen.addError('Template path is required for the <include(templatePath[, templateData])> tag');
-        return;
-    } else if (args.length > 2) {
-        codegen.addError('Wrong number of arguments passed to the <include> tag. Expected: <include(templatePath[, templateData])> tag');
-        return;
-    }
-
-    let templatePath = args[0];
-    let templateVar;
-
-    if (templatePath.type === 'Literal') {
-        templateVar = codegen.context.importTemplate(templatePath.value);
-    } else {
-        templateVar = templatePath;
-    }
-
-    let templateData = {};
-    let attrs = el.getAttributes();
-    attrs.forEach((attr) => {
-        templateData[attr.name] = attr.value;
-    });
-
-    if (el.body && el.body.length) {
-        templateData.renderBody = builder.renderBodyFunction(el.body);
-    }
-
-    if (args.length === 2) {
-        if (Object.keys(templateData).length === 0) {
-            templateData = args[1];
-        } else {
-            let mergeVar = codegen.addStaticVar('__merge', '__helpers.m');
-            templateData = builder.functionCall(mergeVar, [
-                builder.literal(templateData), // Input props from the attributes take precedence
-                args[1] // The template data object is passed as the second argument: <include("./foo.marko", { ... })/>
-            ]);
-        }
-    } else {
-        templateData = builder.literal(templateData);
-    }
-
-    let renderMethod = builder.memberExpression(templateVar, builder.identifier('render'));
-    let renderArgs = [ templateData, 'out' ];
-    let renderFunctionCall = builder.functionCall(renderMethod, renderArgs);
-    return renderFunctionCall;
-};
-});
-$rmod.def("/marko@3.0.0/taglibs/core/include-text-tag-browser", function(require, exports, module, __filename, __dirname) { 'use strict';
-module.exports = function codeGenerator(el, codegen) {
-    let argument = el.argument;
-    if (!argument) {
-        return;
-    }
-
-    let builder = codegen.builder;
-    let pathExpression = builder.parseExpression(argument);
-    if (pathExpression.type !== 'Literal' || typeof pathExpression.value !== 'string') {
-        codegen.addError('Argument to the <include-text> tag should be a string value: <include-text("./foo.txt")/>');
-        return;
-    }
-
-    var path = pathExpression.value;
-    return builder.text(builder.literal('<include-text> cannot be compiled in the browser (path="' + path + '")'));
-};
-});
-$rmod.def("/marko@3.0.0/taglibs/core/invoke-tag",function(o,r,e,n,i){e.exports=function(o,r){var e=o.attributes[0];if(!e)return void r.addError('Invalid <invoke> tag. Missing function attribute. Expected: <invoke console.log("Hello World")');var n=e.argument;if(void 0===n)return void r.addError('Invalid <invoke> tag. Missing function arguments. Expected: <invoke console.log("Hello World")');var i=e.name,t=i+"("+n+")";return r.builder.parseExpression(t)}});
-$rmod.def("/marko@3.0.0/taglibs/core/macro-body-tag",function(r,e,o,t,n){o.exports=function(r,e){var o=e.builder;return o.ifStatement(o.identifier("renderBody"),[o.functionCall("renderBody",["out"])])}});
-$rmod.def("/marko@3.0.0/taglibs/core/macro-tag",function(r,a,t,e,n){t.exports=function(r,a){var t=r.attributes;if(t.length){var e=t[0];if(null!=e.argument){var n,o=r.body,i=e.name,u=e.argument;n=u?u.split(/\s*,\s*/):[];var m=a.builder;return m.macro(i,n,o)}}}});
-$rmod.def("/marko@3.0.0/taglibs/core/unless-tag",function(e,r,t,a,n){t.exports=function(e,r){var t=e.argument;if(!t)return r.addError(e,"Invalid <unless> tag. Argument is missing. Example; <unless(foo === true)>"),e;var a=e.attributes;if(a.length)return void r.addError(e,"Invalid <unless> tag. Attributes not allowed.");var n,s=r.builder;try{n=s.parseExpression(t)}catch(i){n=s.literalFalse(),r.addError(e,"Invalid expression for unless statement:\n"+i.message)}return r.builder.ifStatement(s.negate(n))}});
-$rmod.def("/marko@3.0.0/taglibs/core/var-tag", function(require, exports, module, __filename, __dirname) { var isValidJavaScriptVarName = require('../../compiler/util/isValidJavaScriptVarName');
-
-module.exports = function nodeFactory(el, context) {
-    var builder = context.builder;
-    var hasError = false;
-
-    var declarations = el.attributes.map((attr) => {
-        var varName = attr.name;
-
-        if (!isValidJavaScriptVarName(varName)) {
-            context.addError(el, 'Invalid JavaScript variable name: ' + varName, 'INVALID_VAR_NAME');
-            hasError = true;
-            return;
-        }
-
-        var id = builder.identifier(varName);
-        var init = attr.value;
-
-        return {
-            id: id,
-            init
-        };
-    });
-
-    if (hasError) {
-        return el;
-    }
-
-    return context.builder.vars(declarations);
-};
-});
-$rmod.def("/marko@3.0.0/taglibs/core/while-tag",function(r,e,i,t,a){i.exports=function(r,e){var i=r.argument;if(!i)return e.addError("Invalid <while> tag. Argument is missing. Example: <while(i < 4)>"),r;var t=e.builder;return t.whileStatement(t.parseExpression(i),r.body)}});
-$rmod.def("/marko@3.0.0/taglibs/html/html-comment-tag",function(t,e,r,o,n){"use strict";r.exports=function(t,e){e.write("<!--"),t.renderBody&&t.renderBody(e),e.write("-->")}});
+$rmod.run("/$/codemirror/mode/css/css");
+$rmod.def("/marko-widgets@6.0.0/taglib/getRequirePath-browser",function(e,t,r,i,o){r.exports=function(e,t){return t.getRequirePath(e)}});
+$rmod.def("/marko-widgets@6.0.0/taglib/init-widgets-tag",function(t,e,i,n,a){var o=t("../"),d=o.WidgetsContext;i.exports=function(t,e){var i=o.getWidgetsContext(e),n=t.immediate?{immediate:!0}:null;t.immediate===!0&&(e.global.events.on("asyncFragmentBeforeRender",function(t){if(t.clientReorder){var e=t.out;e.widgets=new d(e)}}),e.global.events.on("asyncFragmentFinish",function(t){var e=t.out,i=e.data.widgets||e.global.widgets;i&&o.writeInitWidgetsCode(i,e,n)}));var a=e.beginAsync({last:!0,timeout:-1});e.onLast(function(t){i.hasWidgets()&&o.writeInitWidgetsCode(i,a,n),a.end(),t()})}});
+$rmod.def("/marko-widgets@6.0.0/taglib/preserve-tag",function(e,r,d,t,i){var a=e("../");d.exports=function(e,r){var d=r.global;if(d.__rerender===!0){var t=e.id,i=e["if"];if(i!==!1){var o=document.getElementById(t);if(o){var n=a.getWidgetsContext(r),v=e.bodyOnly===!0;if(!v){var f=o.tagName;r.write("<"+f+' id="'+t+'"></'+f+">")}return void n.addPreservedDOMNode(o,v)}}}e.renderBody&&e.renderBody(r)}});
+$rmod.main("/try-require@1.2.1","index");
+$rmod.dep("/$/marko-widgets","try-require","1.2.1");
+$rmod.def("/try-require@1.2.1/index",function(r,t,e,n,u){"use strict";var o=null,l=function(t,e){var n,u=e||r;try{n=u.resolve(t),o=null}catch(l){o=l}return n?u(n):void 0},c=function(t,e){var n,u=e||r;try{n=u.resolve(t),o=null}catch(l){o=l}return n};l.resolve=c,l.lastError=function(){return o},e.exports=l});
 $rmod.main("/assert@1.3.0","assert");
 $rmod.dep("","assert","1.3.0");
 $rmod.main("/util@0.10.3","util");
@@ -1172,3450 +159,883 @@ $rmod.dep("/$/lasso/$/lasso-require","util","0.10.3");
 $rmod.def("/util@0.10.3/util",function(e,t,n,r,i){function o(e,n){var r={seen:[],stylize:s};return arguments.length>=3&&(r.depth=arguments[2]),arguments.length>=4&&(r.colors=arguments[3]),m(n)?r.showHidden=n:n&&t._extend(r,n),j(r.showHidden)&&(r.showHidden=!1),j(r.depth)&&(r.depth=2),j(r.colors)&&(r.colors=!1),j(r.customInspect)&&(r.customInspect=!0),r.colors&&(r.stylize=u),l(r,e,r.depth)}function u(e,t){var n=o.styles[t];return n?"["+o.colors[n][0]+"m"+e+"["+o.colors[n][1]+"m":e}function s(e,t){return e}function c(e){var t={};return e.forEach(function(e,n){t[e]=!0}),t}function l(e,n,r){if(e.customInspect&&n&&D(n.inspect)&&n.inspect!==t.inspect&&(!n.constructor||n.constructor.prototype!==n)){var i=n.inspect(r,e);return O(i)||(i=l(e,i,r)),i}var o=a(e,n);if(o)return o;var u=Object.keys(n),s=c(u);if(e.showHidden&&(u=Object.getOwnPropertyNames(n)),E(n)&&(u.indexOf("message")>=0||u.indexOf("description")>=0))return f(n);if(0===u.length){if(D(n)){var m=n.name?": "+n.name:"";return e.stylize("[Function"+m+"]","special")}if(z(n))return e.stylize(RegExp.prototype.toString.call(n),"regexp");if(x(n))return e.stylize(Date.prototype.toString.call(n),"date");if(E(n))return f(n)}var h="",b=!1,v=["{","}"];if(d(n)&&(b=!0,v=["[","]"]),D(n)){var S=n.name?": "+n.name:"";h=" [Function"+S+"]"}if(z(n)&&(h=" "+RegExp.prototype.toString.call(n)),x(n)&&(h=" "+Date.prototype.toUTCString.call(n)),E(n)&&(h=" "+f(n)),0===u.length&&(!b||0==n.length))return v[0]+h+v[1];if(0>r)return z(n)?e.stylize(RegExp.prototype.toString.call(n),"regexp"):e.stylize("[Object]","special");e.seen.push(n);var j;return j=b?p(e,n,r,s,u):u.map(function(t){return g(e,n,r,s,t,b)}),e.seen.pop(),y(j,h,v)}function a(e,t){if(j(t))return e.stylize("undefined","undefined");if(O(t)){var n="'"+JSON.stringify(t).replace(/^"|"$/g,"").replace(/'/g,"\\'").replace(/\\"/g,'"')+"'";return e.stylize(n,"string")}return v(t)?e.stylize(""+t,"number"):m(t)?e.stylize(""+t,"boolean"):h(t)?e.stylize("null","null"):void 0}function f(e){return"["+Error.prototype.toString.call(e)+"]"}function p(e,t,n,r,i){for(var o=[],u=0,s=t.length;s>u;++u)$(t,String(u))?o.push(g(e,t,n,r,String(u),!0)):o.push("");return i.forEach(function(i){i.match(/^\d+$/)||o.push(g(e,t,n,r,i,!0))}),o}function g(e,t,n,r,i,o){var u,s,c;if(c=Object.getOwnPropertyDescriptor(t,i)||{value:t[i]},c.get?s=c.set?e.stylize("[Getter/Setter]","special"):e.stylize("[Getter]","special"):c.set&&(s=e.stylize("[Setter]","special")),$(r,i)||(u="["+i+"]"),s||(e.seen.indexOf(c.value)<0?(s=h(n)?l(e,c.value,null):l(e,c.value,n-1),s.indexOf("\n")>-1&&(s=o?s.split("\n").map(function(e){return"  "+e}).join("\n").substr(2):"\n"+s.split("\n").map(function(e){return"   "+e}).join("\n"))):s=e.stylize("[Circular]","special")),j(u)){if(o&&i.match(/^\d+$/))return s;u=JSON.stringify(""+i),u.match(/^"([a-zA-Z_][a-zA-Z_0-9]*)"$/)?(u=u.substr(1,u.length-2),u=e.stylize(u,"name")):(u=u.replace(/'/g,"\\'").replace(/\\"/g,'"').replace(/(^"|"$)/g,"'"),u=e.stylize(u,"string"))}return u+": "+s}function y(e,t,n){var r=0,i=e.reduce(function(e,t){return r++,t.indexOf("\n")>=0&&r++,e+t.replace(/\u001b\[\d\d?m/g,"").length+1},0);return i>60?n[0]+(""===t?"":t+"\n ")+" "+e.join(",\n  ")+" "+n[1]:n[0]+t+" "+e.join(", ")+" "+n[1]}function d(e){return Array.isArray(e)}function m(e){return"boolean"==typeof e}function h(e){return null===e}function b(e){return null==e}function v(e){return"number"==typeof e}function O(e){return"string"==typeof e}function S(e){return"symbol"==typeof e}function j(e){return void 0===e}function z(e){return w(e)&&"[object RegExp]"===A(e)}function w(e){return"object"==typeof e&&null!==e}function x(e){return w(e)&&"[object Date]"===A(e)}function E(e){return w(e)&&("[object Error]"===A(e)||e instanceof Error)}function D(e){return"function"==typeof e}function N(e){return null===e||"boolean"==typeof e||"number"==typeof e||"string"==typeof e||"symbol"==typeof e||"undefined"==typeof e}function A(e){return Object.prototype.toString.call(e)}function J(e){return 10>e?"0"+e.toString(10):e.toString(10)}function R(){var e=new Date,t=[J(e.getHours()),J(e.getMinutes()),J(e.getSeconds())].join(":");return[e.getDate(),C[e.getMonth()],t].join(" ")}function $(e,t){return Object.prototype.hasOwnProperty.call(e,t)}var H=e("process"),U=/%[sdj%]/g;t.format=function(e){if(!O(e)){for(var t=[],n=0;n<arguments.length;n++)t.push(o(arguments[n]));return t.join(" ")}for(var n=1,r=arguments,i=r.length,u=String(e).replace(U,function(e){if("%%"===e)return"%";if(n>=i)return e;switch(e){case"%s":return String(r[n++]);case"%d":return Number(r[n++]);case"%j":try{return JSON.stringify(r[n++])}catch(t){return"[Circular]"}default:return e}}),s=r[n];i>n;s=r[++n])u+=h(s)||!w(s)?" "+s:" "+o(s);return u},t.deprecate=function(e,n){function r(){if(!i){if(H.throwDeprecation)throw new Error(n);H.traceDeprecation?console.trace(n):console.error(n),i=!0}return e.apply(this,arguments)}if(j(global.process))return function(){return t.deprecate(e,n).apply(this,arguments)};if(H.noDeprecation===!0)return e;var i=!1;return r};var _,B={};t.debuglog=function(e){if(j(_)&&(_=H.env.NODE_DEBUG||""),e=e.toUpperCase(),!B[e])if(new RegExp("\\b"+e+"\\b","i").test(_)){var n=H.pid;B[e]=function(){var r=t.format.apply(t,arguments);console.error("%s %d: %s",e,n,r)}}else B[e]=function(){};return B[e]},t.inspect=o,o.colors={bold:[1,22],italic:[3,23],underline:[4,24],inverse:[7,27],white:[37,39],grey:[90,39],black:[30,39],blue:[34,39],cyan:[36,39],green:[32,39],magenta:[35,39],red:[31,39],yellow:[33,39]},o.styles={special:"cyan",number:"yellow","boolean":"yellow",undefined:"grey","null":"bold",string:"green",date:"magenta",regexp:"red"},t.isArray=d,t.isBoolean=m,t.isNull=h,t.isNullOrUndefined=b,t.isNumber=v,t.isString=O,t.isSymbol=S,t.isUndefined=j,t.isRegExp=z,t.isObject=w,t.isDate=x,t.isError=E,t.isFunction=D,t.isPrimitive=N,t.isBuffer=e("./support/isBuffer");var C=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];t.log=function(){console.log("%s - %s",R(),t.format.apply(t,arguments))},t.inherits=e("inherits"),t._extend=function(e,t){if(!t||!w(t))return e;for(var n=Object.keys(t),r=n.length;r--;)e[n[r]]=t[n[r]];return e}});
 $rmod.dep("/$/lasso/$/lasso-require","assert","1.3.0");
 $rmod.def("/assert@1.3.0/assert",function(t,e,r,n,i){function o(t,e){return E.isUndefined(e)?""+e:E.isNumber(e)&&!isFinite(e)?e.toString():E.isFunction(e)||E.isRegExp(e)?e.toString():e}function a(t,e){return E.isString(t)?t.length<e?t:t.slice(0,e):t}function s(t){return a(JSON.stringify(t.actual,o),128)+" "+t.operator+" "+a(JSON.stringify(t.expected,o),128)}function u(t,e,r,n,i){throw new x.AssertionError({message:r,actual:t,expected:e,operator:n,stackStartFunction:i})}function c(t,e){t||u(t,!0,e,"==",x.ok)}function l(t,e){if(t===e)return!0;if(E.isBuffer(t)&&E.isBuffer(e)){if(t.length!=e.length)return!1;for(var r=0;r<t.length;r++)if(t[r]!==e[r])return!1;return!0}return E.isDate(t)&&E.isDate(e)?t.getTime()===e.getTime():E.isRegExp(t)&&E.isRegExp(e)?t.source===e.source&&t.global===e.global&&t.multiline===e.multiline&&t.lastIndex===e.lastIndex&&t.ignoreCase===e.ignoreCase:E.isObject(t)||E.isObject(e)?p(t,e):t==e}function f(t){return"[object Arguments]"==Object.prototype.toString.call(t)}function p(t,e){if(E.isNullOrUndefined(t)||E.isNullOrUndefined(e))return!1;if(t.prototype!==e.prototype)return!1;if(E.isPrimitive(t)||E.isPrimitive(e))return t===e;var r=f(t),n=f(e);if(r&&!n||!r&&n)return!1;if(r)return t=d.call(t),e=d.call(e),l(t,e);var i,o,a=q(t),s=q(e);if(a.length!=s.length)return!1;for(a.sort(),s.sort(),o=a.length-1;o>=0;o--)if(a[o]!=s[o])return!1;for(o=a.length-1;o>=0;o--)if(i=a[o],!l(t[i],e[i]))return!1;return!0}function g(t,e){return t&&e?"[object RegExp]"==Object.prototype.toString.call(e)?e.test(t):t instanceof e?!0:e.call({},t)===!0?!0:!1:!1}function h(t,e,r,n){var i;E.isString(r)&&(n=r,r=null);try{e()}catch(o){i=o}if(n=(r&&r.name?" ("+r.name+").":".")+(n?" "+n:"."),t&&!i&&u(i,r,"Missing expected exception"+n),!t&&g(i,r)&&u(i,r,"Got unwanted exception"+n),t&&i&&r&&!g(i,r)||!t&&i)throw i}var E=t("util"),d=Array.prototype.slice,m=Object.prototype.hasOwnProperty,x=r.exports=c;x.AssertionError=function(t){this.name="AssertionError",this.actual=t.actual,this.expected=t.expected,this.operator=t.operator,t.message?(this.message=t.message,this.generatedMessage=!1):(this.message=s(this),this.generatedMessage=!0);var e=t.stackStartFunction||u;if(Error.captureStackTrace)Error.captureStackTrace(this,e);else{var r=new Error;if(r.stack){var n=r.stack,i=e.name,o=n.indexOf("\n"+i);if(o>=0){var a=n.indexOf("\n",o+1);n=n.substring(a+1)}this.stack=n}}},E.inherits(x.AssertionError,Error),x.fail=u,x.ok=c,x.equal=function(t,e,r){t!=e&&u(t,e,r,"==",x.equal)},x.notEqual=function(t,e,r){t==e&&u(t,e,r,"!=",x.notEqual)},x.deepEqual=function(t,e,r){l(t,e)||u(t,e,r,"deepEqual",x.deepEqual)},x.notDeepEqual=function(t,e,r){l(t,e)&&u(t,e,r,"notDeepEqual",x.notDeepEqual)},x.strictEqual=function(t,e,r){t!==e&&u(t,e,r,"===",x.strictEqual)},x.notStrictEqual=function(t,e,r){t===e&&u(t,e,r,"!==",x.notStrictEqual)},x["throws"]=function(t,e,r){h.apply(this,[!0].concat(d.call(arguments)))},x.doesNotThrow=function(t,e){h.apply(this,[!1].concat(d.call(arguments)))},x.ifError=function(t){if(t)throw t};var q=Object.keys||function(t){var e=[];for(var r in t)m.call(t,r)&&e.push(r);return e}});
-$rmod.def("/raptor-util@1.0.10/createError",function(r,n,t,e,a){t.exports=function(r,n){var t,e=arguments.length,a=Error;return 2==e?(t=r instanceof a?r:new a(r),t.stack?t.stack+="\nCaused by: "+(n.stack||n):t._cause=n):1==e&&(t=r instanceof a?r:new a(r)),t}});
-$rmod.main("/htmljs-parser@1.5.5","index");
-$rmod.dep("/$/marko","htmljs-parser","1.5.5");
-$rmod.def("/htmljs-parser@1.5.5/BaseParser", function(require, exports, module, __filename, __dirname) { 'use strict';
+$rmod.def("/marko-widgets@6.0.0/taglib/util/buildWidgetTypeNode",function(e,r,t,i,a){var l=e("/$/marko-widgets/$/try-require"),o=l("raptor-modules/resolver",e),n=e("assert").ok;t.exports=function(e,r,t){n("string"==typeof e,'"path" should be a string'),n("string"==typeof r,'"from" should be a string');var i;if(o){var a=o.resolveRequire(e,r);i=a.logicalPath}else i=e;return t.literal({name:t.literal(i),def:t.functionDeclaration(null,[],[t.returnStatement(t.require(t.literal(e)))])})}});
+$rmod.def("/marko-widgets@6.0.0/taglib/widget-types-tag", function(require, exports, module, __filename, __dirname) { var buildWidgetTypeNode = require('./util/buildWidgetTypeNode');
 
-var CODE_NEWLINE = 10;
-var CODE_CARRIAGE_RETURN = 13;
+module.exports = function codeGenerator(el, codegen) {
+    var builder = codegen.builder;
 
-class Parser {
-    static createState(mixins) {
-        return mixins;
-    }
+    var attrs = el.getAttributes();
 
-    constructor(options) {
-        this.reset();
-    }
+    var typesObject = {};
 
-    reset() {
-        // current absolute character position
-        this.pos = -1;
-
-        // The maxPos property is the last absolute character position that is
-        // readable based on the currently received chunks
-        this.maxPos = -1;
-
-        // the current parser state
-        this.state = null;
-
-        // The raw string that we are parsing
-        this.data = null;
-    }
-
-    setInitialState(initialState) {
-        this.initialState = initialState;
-    }
-
-    enterState(state) {
-        if (this.state === state) {
-            // Re-entering the same state can lead to unexpected behavior
-            // so we should throw error to catch these types of mistakes
-            throw new Error('Re-entering the current state is illegal - ' + state.name);
-        }
-
-        var oldState;
-        if ((oldState = this.state) && oldState.leave) {
-            // console.log('Leaving state ' + oldState.name);
-            oldState.leave.call(this, state);
-        }
-
-        // console.log('Entering state ' + state.name);
-
-        this.state = state;
-
-        if (state.enter) {
-            state.enter.call(this, oldState);
-        }
-    }
-
-    /**
-     * Look ahead to see if the given str matches the substring sequence
-     * beyond
-     */
-    lookAheadFor(str, startPos) {
-        // Have we read enough chunks to read the string that we need?
-        if (startPos == null) {
-            startPos = this.pos + 1;
-        }
-        var len = str.length;
-        var endPos = startPos + len;
-
-        if (endPos > this.maxPos + 1) {
-            return undefined;
-        }
-
-        var found = this.data.substring(startPos, endPos);
-        return (found === str) ? str : undefined;
-    }
-
-    /**
-     * Look ahead to a character at a specific offset.
-     * The callback will be invoked with the character
-     * at the given position.
-     */
-    lookAtCharAhead(offset, startPos) {
-        if (startPos == null) {
-            startPos = this.pos;
-        }
-        return this.data.charAt(startPos + offset);
-    }
-
-    lookAtCharCodeAhead(offset, startPos) {
-        if (startPos == null) {
-            startPos = this.pos;
-        }
-        return this.data.charCodeAt(startPos + offset);
-    }
-
-    rewind(offset) {
-        this.pos -= offset;
-    }
-
-    skip(offset) {
-        // console.log('-- ' + JSON.stringify(this.data.substring(this.pos, this.pos + offset)) + ' --  ' + 'SKIPPED'.gray);
-        this.pos += offset;
-    }
-
-    end() {
-        this.pos = this.maxPos + 1;
-    }
-
-    substring(pos, endPos) {
-        return this.data.substring(pos, endPos);
-    }
-
-    parse(data) {
-        if (data == null) {
+    attrs.forEach((attr) => {
+        if (!attr.isLiteralString()) {
+            codegen.addError('Widget type should be a string');
             return;
         }
 
-        // call the constructor function again because we have a contract that
-        // it will fully reset the parser
-        this.reset();
-
-        if (Array.isArray(data)) {
-            data = data.join('');
-        }
-
-        this.data = data;
-        this.maxPos = data.length - 1;
-
-        // Enter initial state
-        if (this.initialState) {
-            this.enterState(this.initialState);
-        }
-
-        // Move to first position
-        this.pos = 0;
-
-        if (!this.state) {
-            // Cannot resume when parser has no state
-            return;
-        }
-
-        var pos;
-        while ((pos = this.pos) <= this.maxPos) {
-            let ch = data[pos];
-            let code = ch.charCodeAt(0);
-            let state = this.state;
-
-            if (code === CODE_NEWLINE) {
-                if (state.eol) {
-                    state.eol.call(this, ch);
-                }
-                this.pos++;
-                continue;
-            } else if (code === CODE_CARRIAGE_RETURN) {
-                let nextPos = pos + 1;
-                if (nextPos < data.length && data.charCodeAt(nextPos) === CODE_NEWLINE) {
-                    if (state.eol) {
-                        state.eol.call(this, '\r\n');
-                    }
-                    this.pos+=2;
-                    continue;
-                }
-            }
-
-            // console.log('-- ' + JSON.stringify(ch) + ' --  ' + this.state.name.gray);
-
-            // We assume that every state will have "char" function
-            state.char.call(this, ch, code);
-
-            // move to next position
-            this.pos++;
-        }
-
-        let state = this.state;
-        if (state && state.eof) {
-            state.eof.call(this);
-        }
-    }
-}
-
-module.exports = Parser;
-
-});
-$rmod.def("/htmljs-parser@1.5.5/notify-util", function(require, exports, module, __filename, __dirname) { exports.createNotifiers = function(parser, listeners) {
-    var hasError = false;
-
-    return {
-        notifyText(value) {
-            if (hasError) {
-                return;
-            }
-
-            var eventFunc = listeners.onText;
-
-            if (eventFunc && (value.length > 0)) {
-                eventFunc.call(parser, {
-                    type: 'text',
-                    value: value
-                }, parser);
-            }
-        },
-
-        notifyCDATA(value, pos, endPos) {
-            if (hasError) {
-                return;
-            }
-
-            var eventFunc = listeners.onCDATA;
-
-            if (eventFunc && value) {
-                eventFunc.call(parser, {
-                    type: 'cdata',
-                    value: value,
-                    pos: pos,
-                    endPos: endPos
-                }, parser);
-            }
-        },
-
-        notifyError(pos, errorCode, message) {
-            if (hasError) {
-                return;
-            }
-
-            hasError = true;
-
-            var eventFunc = listeners.onError;
-
-            if (eventFunc) {
-                eventFunc.call(parser, {
-                    type: 'error',
-                    code: errorCode,
-                    message: message,
-                    pos: pos,
-                    endPos: parser.pos
-                }, parser);
-            }
-        },
-
-        notifyOpenTag(tagInfo) {
-            if (hasError) {
-                return;
-            }
-
-            var eventFunc = listeners.onOpenTag;
-
-            if (eventFunc) {
-                // set the literalValue property for attributes that are simple
-                // string simple values or simple literal values
-
-                var event = {
-                    type: 'openTag',
-                    tagName: tagInfo.tagName,
-                    tagNameExpression: tagInfo.tagNameExpression,
-                    argument: tagInfo.argument,
-                    pos: tagInfo.pos,
-                    endPos: tagInfo.endPos,
-                    openTagOnly: tagInfo.openTagOnly,
-                    selfClosed: tagInfo.selfClosed,
-                    concise: tagInfo.concise
-                };
-
-                if (tagInfo.shorthandId) {
-                    event.shorthandId = tagInfo.shorthandId;
-                }
-
-                if (tagInfo.shorthandClassNames) {
-                    event.shorthandClassNames = tagInfo.shorthandClassNames;
-                }
-
-                event.attributes = tagInfo.attributes.map((attr) => {
-                    var newAttr = {
-                        name: attr.name,
-                        value: attr.value,
-                        pos: attr.pos,
-                        endPos: attr.endPos,
-                        argument: attr.argument
-                    };
-
-                    if (attr.hasOwnProperty('literalValue')) {
-                        newAttr.literalValue = attr.literalValue;
-                    }
-
-                    return newAttr;
-                });
-
-                eventFunc.call(parser, event, parser);
-            }
-        },
-
-        notifyCloseTag(tagName, pos, endPos) {
-            if (hasError) {
-                return;
-            }
-
-            var eventFunc = listeners.onCloseTag;
-
-            if (eventFunc) {
-                var event = {
-                    type: 'closeTag',
-                    tagName: tagName,
-                    pos: pos,
-                    endPos: endPos
-                };
-
-                eventFunc.call(parser, event, parser);
-            }
-        },
-
-        notifyDocumentType(documentType) {
-            if (hasError) {
-                return;
-            }
-
-            var eventFunc = listeners.onDocumentType;
-
-            if (eventFunc) {
-                eventFunc.call(this, {
-                    type: 'documentType',
-                    value: documentType.value,
-                    pos: documentType.pos,
-                    endPos: documentType.endPos
-                }, parser);
-            }
-        },
-
-        notifyDeclaration(declaration) {
-            if (hasError) {
-                return;
-            }
-
-            var eventFunc = listeners.onDeclaration;
-
-            if (eventFunc) {
-                eventFunc.call(parser, {
-                    type: 'declaration',
-                    value: declaration.value,
-                    pos: declaration.pos,
-                    endPos: declaration.endPos
-                }, parser);
-            }
-        },
-
-        notifyComment(comment) {
-            if (hasError) {
-                return;
-            }
-
-            var eventFunc = listeners.onComment;
-
-            if (eventFunc && comment.value) {
-                eventFunc.call(parser, {
-                    type: 'comment',
-                    value: comment.value,
-                    pos: comment.pos,
-                    endPos: comment.endPos
-                }, parser);
-            }
-        },
-
-        notifyScriptlet(scriptlet) {
-            if (hasError) {
-                return;
-            }
-
-            var eventFunc = listeners.onScriptlet;
-
-            if (eventFunc && scriptlet.value) {
-                eventFunc.call(parser, {
-                    type: 'scriptlet',
-                    value: scriptlet.value,
-                    pos: scriptlet.pos,
-                    endPos: scriptlet.endPos
-                }, parser);
-            }
-        },
-
-        notifyPlaceholder(placeholder) {
-            if (hasError) {
-                return;
-            }
-
-            var eventFunc = listeners.onPlaceholder;
-            if (eventFunc) {
-                var placeholderEvent = {
-                    type: 'placeholder',
-                    value: placeholder.value,
-                    pos: placeholder.pos,
-                    endPos: placeholder.endPos,
-                    escape: placeholder.escape !== false,
-                    withinBody: placeholder.withinBody === true,
-                    withinAttribute: placeholder.withinAttribute === true,
-                    withinString: placeholder.withinString === true,
-                    withinOpenTag: placeholder.withinOpenTag === true,
-                    withinTagName: placeholder.withinTagName === true
-                };
-
-                eventFunc.call(parser, placeholderEvent, parser);
-                return placeholderEvent.value;
-            }
-
-            return placeholder.value;
-        },
-
-        notifyFinish() {
-            if (listeners.onfinish) {
-                listeners.onfinish.call(parser, {}, parser);
-            }
-        }
-    };
-};
-});
-$rmod.def("/htmljs-parser@1.5.5/html-tags",function(r,n,e,a,t){var o={};["base","br","col","hr","embed","img","input","keygen","link","meta","param","source","track","wbr"].forEach(function(r){o[r]=!0}),n.isOpenTagOnly=function(r){return o.hasOwnProperty(r)}});
-$rmod.def("/htmljs-parser@1.5.5/Parser", function(require, exports, module, __filename, __dirname) { 'use strict';
-var BaseParser = require('./BaseParser');
-
-var notifyUtil = require('./notify-util');
-
-function isWhitespaceCode(code) {
-    // For all practical purposes, the space character (32) and all the
-    // control characters below it are whitespace. We simplify this
-    // condition for performance reasons.
-    // NOTE: This might be slightly non-conforming.
-    return (code <= 32);
-}
-
-var NUMBER_REGEX = /^[\-\+]?\d*(?:\.\d+)?(?:e[\-\+]?\d+)?$/;
-
-/**
- * Takes a string expression such as `"foo"` or `'foo "bar"'`
- * and returns the literal String value.
- */
-function evaluateStringExpression(expression) {
-    // We could just use eval(expression) to get the literal String value,
-    // but there is a small chance we could be introducing a security threat
-    // by accidently running malicous code. Instead, we will use
-    // JSON.parse(expression). JSON.parse() only allows strings
-    // that use double quotes so we have to do extra processing if
-    // we detect that the String uses single quotes
-
-    if (expression.charAt(0) === "'") {
-        expression = expression.substring(1, expression.length - 1);
-
-        // Make sure there are no unescaped double quotes in the string expression...
-        expression = expression.replace(/\\\\|\\["]|["]/g, function(match) {
-            if (match === '"'){
-                // Return an escaped double quote if we encounter an
-                // unescaped double quote
-                return '\\"';
-            } else {
-                // Return the escape sequence
-                return match;
-            }
-        });
-
-        expression = '"' + expression + '"';
-    }
-
-    return JSON.parse(expression);
-}
-
-
-function peek(array) {
-    var len = array.length;
-    if (!len) {
-        return undefined;
-    }
-    return array[len - 1];
-}
-
-const MODE_HTML = 1;
-const MODE_CONCISE = 2;
-
-const CODE_NEWLINE = 10;
-const CODE_CARRIAGE_RETURN = 13;
-const CODE_BACK_SLASH = 92;
-const CODE_FORWARD_SLASH = 47;
-const CODE_OPEN_ANGLE_BRACKET = 60;
-const CODE_CLOSE_ANGLE_BRACKET = 62;
-const CODE_EXCLAMATION = 33;
-const CODE_QUESTION = 63;
-const CODE_OPEN_SQUARE_BRACKET = 91;
-const CODE_CLOSE_SQUARE_BRACKET = 93;
-const CODE_EQUAL = 61;
-const CODE_SINGLE_QUOTE = 39;
-const CODE_DOUBLE_QUOTE = 34;
-const CODE_BACKTICK = 96;
-const CODE_OPEN_PAREN = 40;
-const CODE_CLOSE_PAREN = 41;
-const CODE_OPEN_CURLY_BRACE = 123;
-const CODE_CLOSE_CURLY_BRACE = 125;
-const CODE_ASTERISK = 42;
-const CODE_HYPHEN = 45;
-const CODE_HTML_BLOCK_DELIMITER = CODE_HYPHEN;
-const CODE_DOLLAR = 36;
-const CODE_SPACE = 32;
-const CODE_PERCENT = 37;
-const CODE_PERIOD = 46;
-const CODE_NUMBER_SIGN = 35;
-
-const BODY_PARSED_TEXT = 1; // Body of a tag is treated as text, but placeholders will be parsed
-const BODY_STATIC_TEXT = 2;// Body of a tag is treated as text and placeholders will *not* be parsed
-
-const EMPTY_ATTRIBUTES = [];
-const htmlTags = require('./html-tags');
-
-class Parser extends BaseParser {
-    constructor(listeners, options) {
-        super(options);
-
-        var parser = this;
-
-        var notifiers = notifyUtil.createNotifiers(parser, listeners);
-        this.notifiers = notifiers;
-
-        var defaultMode = options && options.concise === false ? MODE_HTML : MODE_CONCISE;
-        var userIsOpenTagOnly = options && options.isOpenTagOnly;
-        var ignorePlaceholders = options && options.ignorePlaceholders;
-
-        var currentOpenTag; // Used to reference the current open tag that is being parsed
-        var currentAttribute; // Used to reference the current attribute that is being parsed
-        var closeTagName; // Used to keep track of the current close tag name as it is being parsed
-        var closeTagPos; // Used to keep track of the position of the current closing tag
-        var expectedCloseTagName; // Used to figure out when a text block has been ended (HTML tags are ignored)
-        var text; // Used to buffer text that is found within the body of a tag
-        var withinOpenTag;// Set to true if the parser is within the open tag
-        var blockStack; // Used to keep track of HTML tags and HTML blocks
-        var partStack; // Used to keep track of parts such as CDATA, expressions, declarations, etc.
-        var currentPart; // The current part at the top of the part stack
-        var indent; // Used to build the indent for the current concise line
-        var isConcise; // Set to true if parser is currently in concise mode
-        var isWithinSingleLineHtmlBlock; // Set to true if the current block is for a single line HTML block
-        var htmlBlockDelimiter; // Current delimiter for multiline HTML blocks nested within a concise tag. e.g. "--"
-        var htmlBlockIndent; // Used to hold the indentation for a delimited, multiline HTML block
-        var beginMixedMode; // Used as a flag to mark that the next HTML block should enter the parser into HTML mode
-        var endingMixedModeAtEOL; // Used as a flag to record that the next EOL to exit HTML mode and go back to concise
-        var placeholderDepth; // Used as an easy way to know if an exptression is within a placeholder
-
-        this.reset = function() {
-            BaseParser.prototype.reset.call(this);
-            text = '';
-            currentOpenTag = undefined;
-            currentAttribute = undefined;
-            closeTagName = undefined;
-            closeTagPos = undefined;
-            expectedCloseTagName = undefined;
-            withinOpenTag = false;
-            blockStack = [];
-            partStack = [];
-            currentPart = undefined;
-            indent = '';
-            isConcise = defaultMode === MODE_CONCISE;
-            isWithinSingleLineHtmlBlock = false;
-            htmlBlockDelimiter = null;
-            htmlBlockIndent = null;
-            beginMixedMode = false;
-            endingMixedModeAtEOL = false;
-            placeholderDepth = 0;
-        };
-
-        this.reset();
-
-        /**
-         * This function is called to determine if a tag is an "open only tag". Open only tags such as <img>
-         * are immediately closed.
-         * @param  {String}  tagName The name of the tag (e.g. "img")
-         */
-        function isOpenTagOnly(tagName) {
-            tagName = tagName.toLowerCase();
-
-            var openTagOnly = userIsOpenTagOnly && userIsOpenTagOnly(tagName);
-            if (openTagOnly == null) {
-                openTagOnly = htmlTags.isOpenTagOnly(tagName);
-            }
-
-            return openTagOnly;
-        }
-
-        /**
-         * Clear out any buffered body text and notify any listeners
-         */
-        function endText(txt) {
-            if (arguments.length === 0) {
-                txt = text;
-            }
-
-            notifiers.notifyText(txt);
-
-            // always clear text buffer...
-            text =  '';
-        }
-
-
-        function openTagEOL() {
-            if (isConcise && !currentOpenTag.withinAttrGroup) {
-                // In concise mode we always end the open tag
-                finishOpenTag();
-            }
-        }
-
-        /**
-         * This function is used to enter into "HTML" parsing mode instead
-         * of concise HTML. We push a block on to the stack so that we know when
-         * return back to the previous parsing mode and to ensure that all
-         * tags within a block are properly closed.
-         */
-        function beginHtmlBlock(delimiter) {
-            htmlBlockIndent = indent;
-            htmlBlockDelimiter = delimiter;
-
-            var parent = peek(blockStack);
-            blockStack.push({
-                type: 'html',
-                delimiter: delimiter,
-                indent: indent
-            });
-
-            if (parent && parent.body) {
-                if (parent.body === BODY_PARSED_TEXT) {
-                    parser.enterState(STATE_PARSED_TEXT_CONTENT);
-                } else if (parent.body === BODY_STATIC_TEXT) {
-                    parser.enterState(STATE_STATIC_TEXT_CONTENT);
-                } else {
-                    throw new Error('Illegal value for parent.body: ' + parent.body);
-                }
-            } else {
-                return parser.enterState(STATE_HTML_CONTENT);
-            }
-        }
-
-        /**
-         * This method gets called when we are in non-concise mode
-         * and we are exiting out of non-concise mode.
-         */
-        function endHtmlBlock() {
-            // End any text
-            endText();
-
-            // Make sure all tags in this HTML block are closed
-            for (let i=blockStack.length-1; i>=0; i--) {
-                var curBlock = blockStack[i];
-                if (curBlock.type === 'html') {
-                    // Remove the HTML block from the stack since it has ended
-                    blockStack.pop();
-                    // We have reached the point where the HTML block started
-                    // so we can stop
-                    break;
-                } else {
-                    // The current block is for an HTML tag and it still open. When a tag is tag is closed
-                    // it is removed from the stack
-                    notifyError(curBlock.pos,
-                        'MISSING_END_TAG',
-                        'Missing ending "' + curBlock.tagName + '" tag');
-                    return;
-                }
-            }
-
-            // Resert variables associated with parsing an HTML block
-            htmlBlockIndent = null;
-            htmlBlockDelimiter = null;
-            isWithinSingleLineHtmlBlock = false;
-
-            if (parser.state !== STATE_CONCISE_HTML_CONTENT) {
-                parser.enterState(STATE_CONCISE_HTML_CONTENT);
-            }
-        }
-
-        /**
-         * This function gets called when we reach EOF outside of a tag.
-         */
-        function htmlEOF() {
-            endText();
-
-            while(blockStack.length) {
-                var curBlock = peek(blockStack);
-                if (curBlock.type === 'tag') {
-                    if (curBlock.concise) {
-                        closeTag(curBlock.expectedCloseTagName);
-                    } else {
-                        // We found an unclosed tag on the stack that is not for a concise tag. That means
-                        // there is a problem with the template because all open tags should have a closing
-                        // tag
-                        //
-                        // NOTE: We have already closed tags that are open tag only or self-closed
-                        notifyError(curBlock.pos,
-                            'MISSING_END_TAG',
-                            'Missing ending "' + curBlock.tagName + '" tag');
-                        return;
-                    }
-                } else if (curBlock.type === 'html') {
-                    if (curBlock.delimiter) {
-                        // We reached the end of the file and there is still a delimited HTML block on the stack.
-                        // That means we never found the ending delimiter and should emit a parse error
-                        notifyError(curBlock.pos,
-                            'MISSING_END_DELIMITER',
-                            'End of file reached before finding the ending "' + curBlock.delimiter + '" delimiter');
-                        return;
-                    } else {
-                        // We reached the end of file while still within a single line HTML block. That's okay
-                        // though since we know the line is completely. We'll continue ending all open concise tags.
-                        blockStack.pop();
-                    }
-                } else {
-                    // There is a bug in our parser...
-                    throw new Error('Illegal state. There should not be any non-concise tags on the stack when in concise mode');
-                }
-            }
-        }
-
-        function openTagEOF() {
-            if (isConcise) {
-                if (currentOpenTag.withinAttrGroup) {
-                    notifyError(currentOpenTag.pos,
-                        'MALFORMED_OPEN_TAG',
-                        'EOF reached while within an attribute group (e.g. "[ ... ]").');
-                    return;
-                }
-
-                // If we reach EOF inside an open tag when in concise-mode
-                // then we just end the tag and all other open tags on the stack
-                finishOpenTag();
-                htmlEOF();
-            } else {
-                // Otherwise, in non-concise mode we consider this malformed input
-                // since the end '>' was not found.
-                notifyError(currentOpenTag.pos,
-                    'MALFORMED_OPEN_TAG',
-                    'EOF reached while parsing open tag');
-            }
-        }
-
-        var notifyCDATA = notifiers.notifyCDATA;
-        var notifyComment = notifiers.notifyComment;
-        var notifyOpenTag = notifiers.notifyOpenTag;
-        var notifyCloseTag = notifiers.notifyCloseTag;
-        var notifyDocumentType = notifiers.notifyDocumentType;
-        var notifyDeclaration = notifiers.notifyDeclaration;
-        var notifyPlaceholder = notifiers.notifyPlaceholder;
-        var notifyScriptlet = notifiers.notifyScriptlet;
-
-        function notifyError(pos, errorCode, message) {
-            parser.end();
-            notifiers.notifyError(pos, errorCode, message);
-        }
-
-        function beginAttribute() {
-            currentAttribute = {};
-            if (currentOpenTag.attributes === EMPTY_ATTRIBUTES) {
-                currentOpenTag.attributes = [currentAttribute];
-            } else {
-                currentOpenTag.attributes.push(currentAttribute);
-            }
-            parser.enterState(STATE_ATTRIBUTE_NAME);
-            return currentAttribute;
-        }
-
-        function endAttribute() {
-            currentAttribute = null;
-            if (parser.state !== STATE_WITHIN_OPEN_TAG) {
-                parser.enterState(STATE_WITHIN_OPEN_TAG);
-            }
-        }
-
-        function beginOpenTag() {
-            endText();
-
-            var tagInfo = {
-                type: 'tag',
-                tagName: '',
-                tagNameParts: null,
-                attributes: [],
-                argument: undefined,
-                pos: parser.pos,
-                indent: indent,
-                nestedIndent: null, // This will get set when we know what hte nested indent is
-                concise: isConcise
-            };
-
-            withinOpenTag = true;
-
-            if (beginMixedMode) {
-                tagInfo.beginMixedMode = true;
-                beginMixedMode = false;
-            }
-
-            blockStack.push(tagInfo);
-
-            currentOpenTag = tagInfo;
-
-            parser.enterState(STATE_TAG_NAME);
-
-            return currentOpenTag;
-        }
-
-        function finishOpenTag(selfClosed) {
-            var tagName = currentOpenTag.tagName;
-
-            currentOpenTag.expectedCloseTagName = expectedCloseTagName =
-                parser.substring(currentOpenTag.tagNameStart, currentOpenTag.tagNameEnd);
-
-            var openTagOnly = currentOpenTag.openTagOnly = isOpenTagOnly(tagName);
-            var endPos = parser.pos;
-
-            if (!isConcise) {
-                if (selfClosed) {
-                    endPos += 2; // Skip past '/>'
-                } else {
-                    endPos += 1;
-                }
-            }
-
-            if (currentOpenTag.tagNameParts) {
-                currentOpenTag.tagNameExpression = currentOpenTag.tagNameParts.join('+');
-            }
-
-            currentOpenTag.endPos = endPos;
-            currentOpenTag.selfClosed = selfClosed === true;
-
-            if (!currentOpenTag.tagName) {
-                tagName = currentOpenTag.tagName = 'div';
-            }
-
-            var origState = parser.state;
-            notifyOpenTag(currentOpenTag);
-
-            var shouldClose = false;
-
-            if (selfClosed) {
-                shouldClose = true;
-            } else if (openTagOnly) {
-                if (!isConcise) {
-                    // Only close the tag if we are not in concise mode. In concise mode
-                    // we want to keep the tag on the stack to make sure nothing is nested below it
-                    shouldClose = true;
-                }
-            }
-
-            if (shouldClose) {
-                closeTag(expectedCloseTagName);
-            }
-
-            withinOpenTag = false;
-
-            // Did the parser stay in the same state after
-            // notifying listeners about openTag?
-            if (parser.state === origState) {
-                // The listener didn't transition the parser to a new state
-                // so we use some simple rules to find the appropriate state.
-                if (tagName === 'script') {
-                    parser.enterJsContentState();
-                } else if (tagName === 'style') {
-                    parser.enterCssContentState();
-                } else {
-                    if (isConcise) {
-                        parser.enterConciseHtmlContentState();
-                    } else {
-                        parser.enterHtmlContentState();
-                    }
-
-                }
-            }
-
-            // We need to record the "expected close tag name" if we transition into
-            // either STATE_STATIC_TEXT_CONTENT or STATE_PARSED_TEXT_CONTENT
-            currentOpenTag = undefined;
-        }
-
-        function closeTag(tagName, pos, endPos) {
-            if (!tagName) {
-                throw new Error('Illegal state. Invalid tag name');
-            }
-            var lastTag = blockStack.length ? blockStack.pop() : undefined;
-
-            if (pos == null && closeTagPos != null) {
-                pos = closeTagPos;
-                endPos = parser.pos + 1;
-            }
-
-            if (!lastTag || lastTag.type !== 'tag') {
-                return notifyError(pos,
-                    'EXTRA_CLOSING_TAG',
-                    'The closing "' + tagName + '" tag was not expected');
-            }
-
-            if (!lastTag || (lastTag.expectedCloseTagName !== tagName && lastTag.tagName !== tagName)) {
-                return notifyError(pos,
-                    'MISMATCHED_CLOSING_TAG',
-                    'The closing "' + tagName + '" tag does not match the corresponding opening "' + lastTag.expectedCloseTagName + '" tag');
-            }
-
-            tagName = lastTag.tagName;
-
-            notifyCloseTag(tagName, pos, endPos);
-
-            if (lastTag.beginMixedMode) {
-                endingMixedModeAtEOL = true;
-            }
-
-            closeTagName = null;
-            closeTagPos = null;
-
-            lastTag = peek(blockStack);
-            expectedCloseTagName = lastTag && lastTag.expectedCloseTagName;
-        }
-
-        function beginPart() {
-            currentPart = {
-                pos: parser.pos,
-                parentState: parser.state
-            };
-
-            partStack.push(currentPart);
-
-            return currentPart;
-        }
-
-        function endPart() {
-            var last = partStack.pop();
-            parser.endPos = parser.pos;
-            parser.enterState(last.parentState);
-            currentPart = partStack.length ? peek(partStack) : undefined;
-            return last;
-        }
-
-        // Expression
-
-        function beginExpression(endAfterGroup) {
-            var expression = beginPart();
-            expression.value = '';
-            expression.groupStack = [];
-            expression.endAfterGroup = endAfterGroup === true;
-            expression.isStringLiteral = null;
-            parser.enterState(STATE_EXPRESSION);
-            return expression;
-        }
-
-        function endExpression() {
-            var expression = endPart();
-            expression.parentState.expression(expression);
-        }
-
-        // --------------------------
-
-        // String
-
-        function beginString(quoteChar, quoteCharCode) {
-            var string = beginPart();
-            string.stringParts = [];
-            string.currentText = '';
-            string.quoteChar = quoteChar;
-            string.quoteCharCode = quoteCharCode;
-            string.isStringLiteral = true;
-            parser.enterState(STATE_STRING);
-            return string;
-        }
-
-        function endString() {
-            var string = endPart();
-            string.parentState.string(string);
-        }
-
-        // --------------------------
-
-        // Template String
-
-        function beginTemplateString() {
-            var templateString = beginPart();
-            templateString.value = '`';
-            parser.enterState(STATE_TEMPLATE_STRING);
-            return templateString;
-        }
-
-        function endTemplateString() {
-            var templateString = endPart();
-            templateString.parentState.templateString(templateString);
-        }
-
-        // --------------------------
-
-
-        // Scriptlet
-
-        function beginScriptlet() {
-            endText();
-
-            var scriptlet = beginPart();
-            scriptlet.value = '';
-            scriptlet.quoteCharCode = null;
-            parser.enterState(STATE_SCRIPTLET);
-            return scriptlet;
-        }
-
-        function endScriptlet(endPos) {
-            var scriptlet = endPart();
-            scriptlet.endPos = endPos;
-            notifyScriptlet(scriptlet);
-        }
-
-        // --------------------------
-
-
-        // DTD
-
-        function beginDocumentType() {
-            endText();
-
-            var documentType = beginPart();
-            documentType.value = '';
-
-            parser.enterState(STATE_DTD);
-            return documentType;
-        }
-
-        function endDocumentType() {
-            var documentType = endPart();
-            notifyDocumentType(documentType);
-        }
-
-        // --------------------------
-
-        // Declaration
-        function beginDeclaration() {
-            endText();
-
-            var declaration = beginPart();
-            declaration.value = '';
-            parser.enterState(STATE_DECLARATION);
-            return declaration;
-        }
-
-        function endDeclaration() {
-            var declaration = endPart();
-            notifyDeclaration(declaration);
-        }
-
-        // --------------------------
-
-        // CDATA
-
-        function beginCDATA() {
-            endText();
-
-            var cdata = beginPart();
-            cdata.value = '';
-            parser.enterState(STATE_CDATA);
-            return cdata;
-        }
-
-        function endCDATA() {
-            var cdata = endPart();
-            notifyCDATA(cdata.value, cdata.pos, parser.pos + 3);
-        }
-
-        // --------------------------
-
-        // JavaScript Comments
-        function beginLineComment() {
-            var comment = beginPart();
-            comment.value = '';
-            comment.type = 'line';
-            parser.enterState(STATE_JS_COMMENT_LINE);
-            return comment;
-        }
-
-        function beginBlockComment() {
-            var comment = beginPart();
-            comment.value = '';
-            comment.type = 'block';
-            parser.enterState(STATE_JS_COMMENT_BLOCK);
-            return comment;
-        }
-
-        function endJavaScriptComment() {
-            var comment = endPart();
-            comment.rawValue = comment.type === 'line' ?
-                '//' + comment.value :
-                '/*' + comment.value + '*/';
-            comment.parentState.comment(comment);
-        }
-        // --------------------------
-
-        // HTML Comment
-
-        function beginHtmlComment() {
-            endText();
-            var comment = beginPart();
-            comment.value = '';
-            parser.enterState(STATE_HTML_COMMENT);
-            return comment;
-        }
-
-        function endHtmlComment() {
-            var comment = endPart();
-            comment.endPos = parser.pos + 3;
-            notifyComment(comment);
-        }
-
-        // --------------------------
-
-        // Trailing whitespace
-
-        function beginCheckTrailingWhitespace(handler) {
-            var part = beginPart();
-            part.handler = handler;
-            if (typeof handler !== 'function') {
-                throw new Error('Invalid handler');
-            }
-            parser.enterState(STATE_CHECK_TRAILING_WHITESPACE);
-        }
-
-        function endCheckTrailingWhitespace(err, eof) {
-            var part = endPart();
-            part.handler(err, eof);
-        }
-
-        function handleTrailingWhitespaceJavaScriptComment(err) {
-            if (err) {
-                // This is a non-whitespace! We don't allow non-whitespace
-                // after matching two or more hyphens. This is user error...
-                notifyError(parser.pos,
-                    'INVALID_CHARACTER',
-                    'A non-whitespace of "' + err.ch + '" was found after a JavaScript block comment.');
-            }
-
-            return;
-        }
-
-        function handleTrailingWhitespaceMultilineHtmlBlcok(err, eof) {
-            if (err) {
-                // This is a non-whitespace! We don't allow non-whitespace
-                // after matching two or more hyphens. This is user error...
-                notifyError(parser.pos,
-                    'INVALID_CHARACTER',
-                    'A non-whitespace of "' + err.ch + '" was found on the same line as the ending delimiter ("' + htmlBlockDelimiter + '") for a multiline HTML block');
-                return;
-            }
-
-            endHtmlBlock();
-
-            if (eof) {
-                htmlEOF();
-            }
-
-            return;
-        }
-
-        // --------------------------
-
-        // Placeholder
-
-        function beginPlaceholder(escape, withinTagName) {
-            var placeholder = beginPart();
-            placeholder.value = '';
-            placeholder.escape = escape !== false;
-            placeholder.type = 'placeholder';
-            placeholder.withinBody = withinOpenTag !== true;
-            placeholder.withinAttribute = currentAttribute != null;
-            placeholder.withinString = placeholder.parentState === STATE_STRING;
-            placeholder.withinOpenTag = withinOpenTag === true && currentAttribute == null;
-            placeholder.withinTagName = withinTagName;
-            placeholderDepth++;
-            parser.enterState(STATE_PLACEHOLDER);
-            return placeholder;
-        }
-
-        function endPlaceholder() {
-            var placeholder = endPart();
-            placeholderDepth--;
-
-            var newExpression = notifyPlaceholder(placeholder);
-            placeholder.value = newExpression;
-            placeholder.parentState.placeholder(placeholder);
-        }
-
-        // --------------------------
-
-        // Placeholder
-
-        function beginTagNameShorthand(escape, withinTagName) {
-            var shorthand = beginPart();
-            shorthand.currentPart = null;
-            shorthand.hasId = false;
-            shorthand.beginPart = function(type) {
-                shorthand.currentPart = {
-                    type: type,
-                    stringParts: [],
-                    text: '',
-                    _endText() {
-                        if (this.text) {
-                            this.stringParts.push(JSON.stringify(this.text));
-                        }
-                        this.text = '';
-                    },
-                    addPlaceholder(placeholder) {
-                        this._endText();
-                        this.stringParts.push('(' + placeholder.value + ')');
-                    },
-                    end() {
-                        this._endText();
-
-                        var expression = this.stringParts.join('+');
-
-                        if (type === 'id') {
-                            currentOpenTag.shorthandId = {
-                                value: expression
-                            };
-                        } else if (type === 'class') {
-                            if (!currentOpenTag.shorthandClassNames) {
-                                currentOpenTag.shorthandClassNames = [];
-                            }
-
-                            currentOpenTag.shorthandClassNames.push({
-                                value: expression
-                            });
-
-
-                        }
-                    }
-                };
-            };
-            parser.enterState(STATE_TAG_NAME_SHORTHAND);
-            return shorthand;
-        }
-
-        function endTagNameShorthand() {
-            var shorthand = endPart();
-            if (shorthand.currentPart) {
-                shorthand.currentPart.end();
-            }
-            parser.enterState(STATE_WITHIN_OPEN_TAG);
-        }
-
-        // --------------------------
-
-        function getAndRemoveArgument(expression) {
-            let start = expression.lastLeftParenPos;
-            if (start != null) {
-                // The tag has an argument that we need to slice off
-                let end = expression.lastRightParenPos;
-                if (end === expression.value.length - 1) {
-                    var argument = {
-                        value: expression.value.substring(start+1, end),
-                        pos: expression.pos + start,
-                        endPos: expression.pos + end + 1
-                    };
-
-                    // Chop off the argument from the expression
-                    expression.value = expression.value.substring(0, start);
-                    // Fix the end position for the expression
-                    expression.endPos = expression.pos + expression.value.length;
-
-                    return argument;
-                }
-            }
-
-            return undefined;
-        }
-
-        // --------------------------
-
-        function checkForPlaceholder(ch, code) {
-            if (code === CODE_DOLLAR) {
-                var nextCode = parser.lookAtCharCodeAhead(1);
-                if (nextCode === CODE_OPEN_CURLY_BRACE) {
-                    // We expect to start a placeholder at the first curly brace (the next character)
-                    beginPlaceholder(true);
-                    return true;
-                } else if (nextCode === CODE_EXCLAMATION) {
-                    var afterExclamationCode = parser.lookAtCharCodeAhead(2);
-                    if (afterExclamationCode === CODE_OPEN_CURLY_BRACE) {
-                        // We expect to start a placeholder at the first curly brace so skip
-                        // past the exclamation point
-                        beginPlaceholder(false);
-                        parser.skip(1);
-                        return true;
-                    }
-                }
-            }
-
-            return false;
-        }
-
-        function checkForEscapedPlaceholder(ch, code) {
-            // Look for \${ and \$!{
-            if (code === CODE_BACK_SLASH) {
-                if (parser.lookAtCharCodeAhead(1) === CODE_DOLLAR) {
-                    if (parser.lookAtCharCodeAhead(2) === CODE_OPEN_CURLY_BRACE) {
-                        return true;
-                    } else if (parser.lookAtCharCodeAhead(2) === CODE_EXCLAMATION) {
-                        if (parser.lookAtCharCodeAhead(3) === CODE_OPEN_CURLY_BRACE) {
-                            return true;
-                        }
-                    }
-                }
-            }
-
-            return false;
-        }
-
-        function checkForEscapedEscapedPlaceholder(ch, code) {
-            // Look for \\${ and \\$!{
-            if (code === CODE_BACK_SLASH) {
-                if (parser.lookAtCharCodeAhead(1) === CODE_BACK_SLASH) {
-                    if (parser.lookAtCharCodeAhead(2) === CODE_DOLLAR) {
-                        if (parser.lookAtCharCodeAhead(3) === CODE_OPEN_CURLY_BRACE) {
-                            return true;
-                        } else if (parser.lookAtCharCodeAhead(3) === CODE_EXCLAMATION) {
-                            if (parser.lookAtCharCodeAhead(4) === CODE_OPEN_CURLY_BRACE) {
-                                return true;
-                            }
-                        }
-                    }
-                }
-            }
-
-            return false;
-        }
-
-        function checkForClosingTag() {
-            // Look ahead to see if we found the closing tag that will
-            // take us out of the EXPRESSION state...
-            var lookAhead = '/' + expectedCloseTagName + '>';
-            var match = parser.lookAheadFor(lookAhead);
-            if (match) {
-                endText();
-                closeTag(expectedCloseTagName, parser.pos, parser.pos + 1 + lookAhead.length);
-                parser.skip(match.length);
-                parser.enterState(STATE_HTML_CONTENT);
-                return true;
-            }
-
-            return false;
-        }
-
-        function checkForCDATA() {
-            if (parser.lookAheadFor('![CDATA[')) {
-                beginCDATA();
-                parser.skip(8);
-                return true;
-            }
-
-            return false;
-        }
-
-        function handleDelimitedBlockEOL(newLine) {
-            // If we are within a delimited HTML block then we want to check if the next line is the end
-            // delimiter. Since we are currently positioned at the start of the new line character our lookahead
-            // will need to include the new line character, followed by the expected indentation, followed by
-            // the delimiter.
-            let endHtmlBlockLookahead = htmlBlockIndent + htmlBlockDelimiter;
-
-            if (parser.lookAheadFor(endHtmlBlockLookahead, parser.pos + newLine.length)) {
-                parser.skip(htmlBlockIndent.length);
-                parser.skip(htmlBlockDelimiter.length);
-
-                parser.enterState(STATE_CONCISE_HTML_CONTENT);
-
-                beginCheckTrailingWhitespace(handleTrailingWhitespaceMultilineHtmlBlcok);
-                return;
-            } else if (parser.lookAheadFor(htmlBlockIndent, parser.pos + newLine.length)) {
-                // We know the next line does not end the multiline HTML block, but we need to check if there
-                // is any indentation that we need to skip over as we continue parsing the HTML in this
-                // multiline HTML block
-
-                parser.skip(htmlBlockIndent.length);
-                // We stay in the same state since we are still parsing a multiline, delimited HTML block
-            }
-        }
-
-        // In STATE_HTML_CONTENT we are looking for tags and placeholders but
-        // everything in between is treated as text.
-        var STATE_HTML_CONTENT = Parser.createState({
-            name: 'STATE_HTML_CONTENT',
-
-            placeholder(placeholder) {
-                // We found a placeholder while parsing the HTML content. This function is called
-                // from endPlaceholder(). We have already notified the listener of the placeholder so there is
-                // nothing to do here
-            },
-
-            eol(newLine) {
-                text += newLine;
-
-                if (beginMixedMode) {
-                    beginMixedMode = false;
-                    endHtmlBlock();
-                } else if (endingMixedModeAtEOL) {
-                    endingMixedModeAtEOL = false;
-                    endHtmlBlock();
-                } else if (isWithinSingleLineHtmlBlock) {
-                    // We are parsing "HTML" and we reached the end of the line. If we are within a single
-                    // line HTML block then we should return back to the state to parse concise HTML.
-                    // A single line HTML block can be at the end of the tag or on its own line:
-                    //
-                    // span class="hello" - This is an HTML block at the end of a tag
-                    //     - This is an HTML block on its own line
-                    //
-                    endHtmlBlock();
-                } else if (htmlBlockDelimiter) {
-                    handleDelimitedBlockEOL(newLine);
-                }
-            },
-
-            eof: htmlEOF,
-
-            enter() {
-                isConcise = false; // Back into non-concise HTML parsing
-            },
-
-            char(ch, code) {
-                if (code === CODE_OPEN_ANGLE_BRACKET) {
-                    if (checkForCDATA()) {
-                        return;
-                    }
-
-                    var nextCode = parser.lookAtCharCodeAhead(1);
-
-                    if (nextCode === CODE_PERCENT) {
-                        beginScriptlet();
-                        parser.skip(1);
-                    } else if (parser.lookAheadFor('!--')) {
-                        beginHtmlComment();
-                        parser.skip(3);
-                    } else if (nextCode === CODE_EXCLAMATION) {
-                        // something like:
-                        // <!DOCTYPE html>
-                        // NOTE: We already checked for CDATA earlier and <!--
-                        beginDocumentType();
-                        parser.skip(1);
-                    } else if (nextCode === CODE_QUESTION) {
-                        // something like:
-                        // <?xml version="1.0"?>
-                        beginDeclaration();
-                        parser.skip(1);
-                    } else if (nextCode === CODE_FORWARD_SLASH) {
-                        closeTagPos = parser.pos;
-                        closeTagName = null;
-
-                        parser.skip(1);
-                        // something like:
-                        // </html>
-                        endText();
-
-                        parser.enterState(STATE_CLOSE_TAG);
-                    } else if (nextCode === CODE_CLOSE_ANGLE_BRACKET ||
-                               nextCode === CODE_OPEN_ANGLE_BRACKET ||
-                               isWhitespaceCode(nextCode)) {
-                        // something like:
-                        // "<>"
-                        // "<<"
-                        // "< "
-                        // We'll treat this left angle brakect as text
-                        text += '<';
-                    } else {
-                        beginOpenTag();
-                        currentOpenTag.tagNameStart = parser.pos+1;
-                    }
-                } else if (!ignorePlaceholders && checkForEscapedEscapedPlaceholder(ch, code)) {
-                    text += '\\';
-                    parser.skip(1);
-                }  else if (!ignorePlaceholders && checkForEscapedPlaceholder(ch, code)) {
-                    text += '$';
-                    parser.skip(1);
-                } else if (!ignorePlaceholders && checkForPlaceholder(ch, code)) {
-                    // We went into placeholder state...
-                    endText();
-                } else {
-                    text += ch;
-                }
-            }
-        });
-
-        // In STATE_CONCISE_HTML_CONTENT we are looking for concise tags and text blocks based on indent
-        var STATE_CONCISE_HTML_CONTENT = Parser.createState({
-            name: 'STATE_CONCISE_HTML_CONTENT',
-
-            eof: htmlEOF,
-
-            enter() {
-                isConcise = true;
-                indent = '';
-            },
-
-            comment(comment) {
-                var value = comment.value;
-
-                value = value.trim();
-
-                notifyComment({
-                    value: value,
-                    pos: comment.pos,
-                    endPos: comment.endPos
-                });
-
-                if (comment.type === 'block') {
-                    // Make sure there is only whitespace on the line
-                    // after the ending "*/" sequence
-                    beginCheckTrailingWhitespace(handleTrailingWhitespaceJavaScriptComment);
-                }
-            },
-
-            endTrailingWhitespace(eof) {
-                endHtmlBlock();
-
-                if (eof) {
-                    htmlEOF();
-                }
-            },
-
-            char(ch, code) {
-                if (isWhitespaceCode(code)) {
-                    indent += ch;
-                } else  {
-                    while(true) {
-                        let len = blockStack.length;
-                        if (len) {
-                            let curBlock = blockStack[len - 1];
-                            if (curBlock.indent.length >= indent.length) {
-                                closeTag(curBlock.expectedCloseTagName);
-                            } else {
-                                // Indentation is greater than the last tag so we are starting a
-                                // nested tag and there are no more tags to end
-                                break;
-                            }
-                        } else {
-                            if (indent) {
-                                notifyError(parser.pos,
-                                    'BAD_INDENTATION',
-                                    'Line has extra indentation at the beginning');
-                                return;
-                            }
-                            break;
-                        }
-                    }
-
-                    var parent = blockStack.length && blockStack[blockStack.length - 1];
-                    var body;
-
-                    if (parent) {
-                        body = parent.body;
-                        if (parent.openTagOnly) {
-                            notifyError(parser.pos,
-                                'INVALID_BODY',
-                                'The "' + parent.tagName + '" tag does not allow nested body content');
-                            return;
-                        }
-
-                        if (parent.nestedIndent) {
-                            if (parent.nestedIndent.length !== indent.length) {
-                                notifyError(parser.pos,
-                                    'BAD_INDENTATION',
-                                    'Line indentation does match indentation of previous line');
-                                return;
-                            }
-                        } else {
-                            parent.nestedIndent = indent;
-                        }
-                    }
-
-                    if (body && code !== CODE_HTML_BLOCK_DELIMITER) {
-                        notifyError(parser.pos,
-                            'ILLEGAL_LINE_START',
-                            'A line within a tag that only allows text content must begin with a "-" character');
-                        return;
-                    }
-
-                    if (code === CODE_OPEN_ANGLE_BRACKET || code === CODE_DOLLAR) {
-                        beginMixedMode = true;
-                        parser.rewind(1);
-                        beginHtmlBlock();
-                        return;
-                    }
-
-                    if (code === CODE_HTML_BLOCK_DELIMITER) {
-                        if (parser.lookAtCharCodeAhead(1) === CODE_HTML_BLOCK_DELIMITER) {
-                            // Two or more HTML block delimiters means we are starting a multiline, delimited HTML block
-                            htmlBlockDelimiter = ch;
-                            // We enter the following state to read in the full delimiter
-                            return parser.enterState(STATE_BEGIN_DELIMITED_HTML_BLOCK);
-                        } else {
-
-                            if (parser.lookAtCharCodeAhead(1) === CODE_SPACE) {
-                                // We skip over the first space
-                                parser.skip(1);
-                            }
-                            isWithinSingleLineHtmlBlock = true;
-                            beginHtmlBlock();
-                        }
-                    } else if (code === CODE_FORWARD_SLASH) {
-                        // Check next character to see if we are in a comment
-                        var nextCode = parser.lookAtCharCodeAhead(1);
-                        if (nextCode === CODE_FORWARD_SLASH) {
-                            beginLineComment();
-                            parser.skip(1);
-                            return;
-                        } else if (nextCode === CODE_ASTERISK) {
-                            beginBlockComment();
-                            parser.skip(1);
-                            return;
-                        } else {
-                            notifyError(parser.pos,
-                                'ILLEGAL_LINE_START',
-                                'A line in concise mode cannot start with "/" unless it starts a "//" or "/*" comment');
-                            return;
-                        }
-                    } else {
-                        beginOpenTag();
-                        currentOpenTag.tagNameStart = parser.pos;
-                        parser.rewind(1); // START_TAG_NAME expects to start at the first character
-                    }
-                }
-            }
-        });
-
-        // In STATE_BEGIN_DELIMITED_HTML_BLOCK we have already found two consecutive hyphens. We expect
-        // to reach the end of the line with only whitespace characters
-        var STATE_BEGIN_DELIMITED_HTML_BLOCK = Parser.createState({
-            name: 'STATE_BEGIN_DELIMITED_HTML_BLOCK',
-
-            eol: function(newLine) {
-                // We have reached the end of the first delimiter... we need to skip over any indentation on the next
-                // line and we might also find that the multi-line, delimited block is immediately ended
-                beginHtmlBlock(htmlBlockDelimiter);
-                handleDelimitedBlockEOL(newLine);
-            },
-
-            eof: htmlEOF,
-
-            char(ch, code) {
-                if (code === CODE_HTML_BLOCK_DELIMITER) {
-                    htmlBlockDelimiter += ch;
-                } else if (isWhitespaceCode(code)) {
-                    // Just whitespace... we are still good
-                } else {
-                    // This is a non-whitespace! We don't allow non-whitespace
-                    // after matching two or more hyphens. This is user error...
-                    notifyError(parser.pos,
-                        'MALFORMED_MULTILINE_HTML_BLOCK',
-                        'A non-whitespace of "' + ch + '" was found on the same line as a multiline HTML block delimiter ("' + htmlBlockDelimiter + '")');
-                }
-            }
-        });
-
-        var STATE_CHECK_TRAILING_WHITESPACE = Parser.createState({
-            name: 'STATE_CHECK_TRAILING_WHITESPACE',
-
-            eol: function() {
-                endCheckTrailingWhitespace(null /* no error */, false /* not EOF */);
-            },
-
-            eof: function() {
-                endCheckTrailingWhitespace(null /* no error */, true /* EOF */);
-            },
-
-            char(ch, code) {
-                if (isWhitespaceCode(code)) {
-                    // Just whitespace... we are still good
-                } else {
-                    endCheckTrailingWhitespace({
-                        ch: ch
-                    });
-                }
-            }
-        });
-
-        // We enter STATE_STATIC_TEXT_CONTENT when a listener manually chooses
-        // to enter this state after seeing an openTag event for a tag
-        // whose content should not be parsed at all (except for the purpose
-        // of looking for the end tag).
-        var STATE_STATIC_TEXT_CONTENT = Parser.createState({
-            name: 'STATE_STATIC_TEXT_CONTENT',
-
-            eol(newLine) {
-                text += newLine;
-
-                if (isWithinSingleLineHtmlBlock) {
-                    // We are parsing "HTML" and we reached the end of the line. If we are within a single
-                    // line HTML block then we should return back to the state to parse concise HTML.
-                    // A single line HTML block can be at the end of the tag or on its own line:
-                    //
-                    // span class="hello" - This is an HTML block at the end of a tag
-                    //     - This is an HTML block on its own line
-                    //
-                    endHtmlBlock();
-                } else if (htmlBlockDelimiter) {
-                    handleDelimitedBlockEOL(newLine);
-                }
-            },
-
-            eof: htmlEOF,
-
-            char(ch, code) {
-                // See if we need to see if we reached the closing tag...
-                if (!isConcise && code === CODE_OPEN_ANGLE_BRACKET) {
-                    if (checkForClosingTag()) {
-                        return;
-                    }
-                }
-
-                text += ch;
-            }
-        });
-
-        // We enter STATE_PARSED_TEXT_CONTENT when we are parsing
-        // the body of a tag does not contain HTML tags but may contains
-        // placeholders
-        var STATE_PARSED_TEXT_CONTENT = Parser.createState({
-            name: 'STATE_PARSED_TEXT_CONTENT',
-
-            placeholder: STATE_HTML_CONTENT.placeholder,
-
-            eol(newLine) {
-                text += newLine;
-
-                if (isWithinSingleLineHtmlBlock) {
-                    // We are parsing "HTML" and we reached the end of the line. If we are within a single
-                    // line HTML block then we should return back to the state to parse concise HTML.
-                    // A single line HTML block can be at the end of the tag or on its own line:
-                    //
-                    // span class="hello" - This is an HTML block at the end of a tag
-                    //     - This is an HTML block on its own line
-                    //
-                    endHtmlBlock();
-                } else if (htmlBlockDelimiter) {
-                    handleDelimitedBlockEOL(newLine);
-                }
-            },
-
-            eof: htmlEOF,
-
-            char(ch, code) {
-                if (!isConcise && code === CODE_OPEN_ANGLE_BRACKET) {
-                    // First, see if we need to see if we reached the closing tag
-                    // and then check if we encountered CDATA
-                    if (checkForClosingTag()) {
-                        return;
-                    } else if (checkForCDATA()) {
-                        return;
-                    } else if (parser.lookAtCharCodeAhead(1) === CODE_PERCENT) {
-                        beginScriptlet();
-                        parser.skip(1);
-                        return;
-                    }
-                } else if (!ignorePlaceholders && checkForEscapedEscapedPlaceholder(ch, code)) {
-                    text += '\\';
-                    parser.skip(1);
-                }  else if (!ignorePlaceholders && checkForEscapedPlaceholder(ch, code)) {
-                    text += '$';
-                    parser.skip(1);
-                } else if (!ignorePlaceholders && checkForPlaceholder(ch, code)) {
-                    // We went into placeholder state...
-                    endText();
-                    return;
-                }
-
-                text += ch;
-            }
-        });
-
-        // We enter STATE_TAG_NAME after we encounter a "<"
-        // followed by a non-special character
-        var STATE_TAG_NAME = Parser.createState({
-            name: 'STATE_TAG_NAME',
-
-            eol: openTagEOL,
-
-            eof: openTagEOF,
-
-            expression(expression) {
-                var argument = getAndRemoveArgument(expression);
-
-                if (argument) {
-                    // The tag has an argument that we need to slice off
-
-                    if (currentOpenTag.argument != null) {
-                        notifyError(expression.endPos,
-                            'ILLEGAL_TAG_ARGUMENT',
-                            'A tag can only have one argument');
-                    }
-
-                    currentOpenTag.argument = argument;
-                    currentOpenTag.tagNameEnd = expression.pos + expression.lastLeftParenPos + 1;
-                } else {
-                    currentOpenTag.tagNameEnd = expression.endPos;
-                }
-
-
-                if (expression.value) {
-                    currentOpenTag.tagName += expression.value;
-
-                    if (currentOpenTag.tagNameParts) {
-                        currentOpenTag.tagNameParts.push(JSON.stringify(expression.value));
-                    }
-                }
-            },
-
-            placeholder(placeholder) {
-                if (!currentOpenTag.tagNameParts) {
-                    currentOpenTag.tagNameParts = [];
-
-                    if (currentOpenTag.tagName) {
-                        currentOpenTag.tagNameParts.push(JSON.stringify(currentOpenTag.tagName));
-                    }
-                }
-
-                currentOpenTag.tagName += parser.substring(placeholder.pos, placeholder.endPos);
-                currentOpenTag.tagNameParts.push('(' + placeholder.value + ')');
-                currentOpenTag.tagNameEnd = placeholder.endPos;
-            },
-
-            enter(oldState) {
-                if (oldState !== STATE_EXPRESSION) {
-                    beginExpression();
-                }
-            },
-
-            char(ch, code) {
-                throw new Error('Illegal state');
-            }
-        });
-
-
-
-        // We enter STATE_CDATA after we see "<![CDATA["
-        var STATE_CDATA = Parser.createState({
-            name: 'STATE_CDATA',
-
-            eof() {
-                notifyError(currentPart.pos,
-                    'MALFORMED_CDATA',
-                    'EOF reached while parsing CDATA');
-            },
-
-            char(ch, code) {
-                if (code === CODE_CLOSE_SQUARE_BRACKET) {
-                    var match = parser.lookAheadFor(']>');
-                    if (match) {
-                        endCDATA();
-                        parser.skip(match.length);
-                        return;
-                    }
-                }
-
-                currentPart.value += ch;
-            }
-        });
-
-        // We enter STATE_CLOSE_TAG after we see "</"
-        var STATE_CLOSE_TAG = Parser.createState({
-            name: 'STATE_CLOSE_TAG',
-            eof() {
-                notifyError(closeTag.pos,
-                    'MALFORMED_CLOSE_TAG',
-                    'EOF reached while parsing closing tag');
-            },
-
-            enter() {
-                closeTagName = '';
-            },
-
-            char(ch, code) {
-                if (code === CODE_CLOSE_ANGLE_BRACKET) {
-                    if (closeTagName.length > 0) {
-                        closeTag(closeTagName, closeTagPos, parser.pos + 1);
-                    } else {
-                        closeTag(expectedCloseTagName, closeTagPos, parser.pos + 1);
-                    }
-
-                    parser.enterState(STATE_HTML_CONTENT);
-                } else {
-                    closeTagName += ch;
-                }
-            }
-        });
-
-        // We enter STATE_WITHIN_OPEN_TAG after we have fully
-        // read in the tag name and encountered a whitespace character
-        var STATE_WITHIN_OPEN_TAG = Parser.createState({
-            name: 'STATE_WITHIN_OPEN_TAG',
-
-            eol: openTagEOL,
-
-            eof: openTagEOF,
-
-            expression(expression) {
-                var argument = getAndRemoveArgument(expression);
-
-                if (argument) {
-                    // We found an argument... the argument could be for an attribute or the tag
-                    if (currentOpenTag.attributes.length === 0) {
-                        if (currentOpenTag.argument != null) {
-                            notifyError(expression.endPos,
-                                'ILLEGAL_TAG_ARGUMENT',
-                                'A tag can only have one argument');
-                            return;
-                        }
-                        currentOpenTag.argument = argument;
-                    } else {
-                        let targetAttribute = currentAttribute || peek(currentOpenTag.attributes);
-
-                        if (targetAttribute.argument != null) {
-                            notifyError(expression.endPos,
-                                'ILLEGAL_ATTRIBUTE_ARGUMENT',
-                                'An attribute can only have one argument');
-                            return;
-                        }
-                        targetAttribute.argument = argument;
-                    }
-                }
-            },
-
-            placeholder(placeholder) {
-                var attr = beginAttribute();
-                attr.value = placeholder.value;
-                endAttribute();
-
-                parser.enterState(STATE_AFTER_PLACEHOLDER_WITHIN_TAG);
-            },
-
-            comment(comment) {
-                /* Ignore comments within an open tag */
-            },
-
-            char(ch, code) {
-
-                if (isConcise) {
-                    if (code === CODE_HTML_BLOCK_DELIMITER) {
-                        if (currentOpenTag.withinAttrGroup) {
-                            notifyError(currentOpenTag.pos,
-                                'MALFORMED_OPEN_TAG',
-                                'Attribute group was not properly ended');
-                            return;
-                        }
-
-                        // The open tag is complete
-                        finishOpenTag();
-
-                        let nextCode = parser.lookAtCharCodeAhead(1);
-                        if (nextCode !== CODE_NEWLINE && nextCode !== CODE_CARRIAGE_RETURN &&
-                            isWhitespaceCode(nextCode)) {
-                            // We want to remove the first whitespace character after the `-` symbol
-                            parser.skip(1);
-                        }
-
-                        isWithinSingleLineHtmlBlock = true;
-                        beginHtmlBlock();
-                        return;
-                    } else if (code === CODE_OPEN_SQUARE_BRACKET) {
-                        if (currentOpenTag.withinAttrGroup) {
-                            notifyError(parser.pos,
-                                'MALFORMED_OPEN_TAG',
-                                'Unexpected "[" character within open tag.');
-                            return;
-                        }
-
-                        currentOpenTag.withinAttrGroup = true;
-                        return;
-                    } else if (code === CODE_CLOSE_SQUARE_BRACKET) {
-                        if (!currentOpenTag.withinAttrGroup) {
-                            notifyError(parser.pos,
-                                'MALFORMED_OPEN_TAG',
-                                'Unexpected "]" character within open tag.');
-                            return;
-                        }
-
-                        currentOpenTag.withinAttrGroup = false;
-                        return;
-                    }
-                } else {
-                    if (code === CODE_CLOSE_ANGLE_BRACKET) {
-                        finishOpenTag();
-                        return;
-                    } else if (code === CODE_FORWARD_SLASH) {
-                        let nextCode = parser.lookAtCharCodeAhead(1);
-                        if (nextCode === CODE_CLOSE_ANGLE_BRACKET) {
-                            finishOpenTag(true /* self closed */);
-                            parser.skip(1);
-                            return;
-                        }
-                    }
-                }
-
-                if (checkForEscapedEscapedPlaceholder(ch, code)) {
-                    let attr = beginAttribute();
-                    attr.name = '\\';
-                    parser.skip(1);
-                    return;
-                }  else if (checkForEscapedPlaceholder(ch, code)) {
-                    let attr = beginAttribute();
-                    attr.name = '$';
-                    parser.skip(1);
-                    return;
-                } else if (checkForPlaceholder(ch, code)) {
-                    return;
-                }
-
-                if (code === CODE_OPEN_ANGLE_BRACKET) {
-                    return notifyError(parser.pos,
-                        'ILLEGAL_ATTRIBUTE_NAME',
-                        'Invalid attribute name. Attribute name cannot begin with the "<" character.');
-                }
-
-                if (code === CODE_FORWARD_SLASH && parser.lookAtCharCodeAhead(1) === CODE_ASTERISK) {
-                    // Skip over code inside a JavaScript block comment
-                    beginBlockComment();
-                    parser.skip(1);
-                    return;
-                }
-
-                if (isWhitespaceCode(code)) {
-                    // ignore whitespace within element...
-                } else if (code === CODE_OPEN_PAREN) {
-                    parser.rewind(1);
-                    beginExpression();
-                    // encountered something like:
-                    // <for (var i = 0; i < len; i++)>
-                } else {
-                    parser.rewind(1);
-                    // attribute name is initially the first non-whitespace
-                    // character that we found
-                    beginAttribute();
-                }
-            }
-        });
-
-        // We enter STATE_ATTRIBUTE_NAME when we see a non-whitespace
-        // character after reading the tag name
-        var STATE_ATTRIBUTE_NAME = Parser.createState({
-            name: 'STATE_ATTRIBUTE_NAME',
-
-            eol: openTagEOL,
-
-            eof: openTagEOF,
-
-            expression(expression) {
-                var argument = getAndRemoveArgument(expression);
-                if (argument) {
-                    // The tag has an argument that we need to slice off
-                    currentAttribute.argument = argument;
-                }
-
-                currentAttribute.name = currentAttribute.name ? currentAttribute.name + expression.value : expression.value;
-                currentAttribute.pos = expression.pos;
-                currentAttribute.endPos = expression.endPos;
-            },
-
-            enter(oldState) {
-                if (oldState !== STATE_EXPRESSION) {
-                    beginExpression();
-                }
-            },
-
-            char(ch, code) {
-                throw new Error('Illegal state');
-            }
-        });
-
-        // We enter STATE_ATTRIBUTE_VALUE when we see a "=" while in
-        // the ATTRIBUTE_NAME state.
-        var STATE_ATTRIBUTE_VALUE = Parser.createState({
-            name: 'STATE_ATTRIBUTE_VALUE',
-
-            expression(expression) {
-                var value = expression.value;
-
-                if (value === '') {
-
-                    return notifyError(expression.pos,
-                        'ILLEGAL_ATTRIBUTE_VALUE',
-                        'No attribute value found after "="');
-                }
-                currentAttribute.value = value;
-                currentAttribute.pos = expression.pos;
-                currentAttribute.endPos = expression.endPos;
-
-                // If the expression evaluates to a literal value then add the
-                // `literalValue` property to the attribute
-                if (expression.isStringLiteral) {
-                    currentAttribute.literalValue = evaluateStringExpression(value);
-                } else if (value === 'true') {
-                    currentAttribute.literalValue = true;
-                } else if (value === 'false') {
-                    currentAttribute.literalValue = false;
-                } else if (value === 'null') {
-                    currentAttribute.literalValue = null;
-                } else if (value === 'undefined') {
-                    currentAttribute.literalValue = undefined;
-                } else if (NUMBER_REGEX.test(value)) {
-                    currentAttribute.literalValue = Number(value);
-                }
-
-                // We encountered a whitespace character while parsing the attribute name. That
-                // means the attribute name has ended and we should continue parsing within the
-                // open tag
-                endAttribute();
-            },
-
-            eol: openTagEOL,
-
-            eof: openTagEOF,
-
-            enter(oldState) {
-                if (oldState !== STATE_EXPRESSION) {
-                    beginExpression();
-                }
-            },
-
-            char(ch, code) {
-                throw new Error('Illegal state');
-            }
-        });
-
-        var STATE_EXPRESSION = Parser.createState({
-            name: 'STATE_EXPRESSION',
-
-            eol(str) {
-                let depth = currentPart.groupStack.length;
-
-                if (depth === 0) {
-                    if (currentPart.parentState === STATE_ATTRIBUTE_NAME || currentPart.parentState === STATE_ATTRIBUTE_VALUE) {
-                        currentPart.endPos = parser.pos;
-                        endExpression();
-                        // We encountered a whitespace character while parsing the attribute name. That
-                        // means the attribute name has ended and we should continue parsing within the
-                        // open tag
-                        endAttribute();
-
-                        if (isConcise) {
-                            openTagEOL();
-                        }
-                        return;
-                    } else if (currentPart.parentState === STATE_TAG_NAME) {
-                        currentPart.endPos = parser.pos;
-                        endExpression();
-
-                        // We encountered a whitespace character while parsing the attribute name. That
-                        // means the attribute name has ended and we should continue parsing within the
-                        // open tag
-                        if (parser.state !== STATE_WITHIN_OPEN_TAG) {
-                            // Make sure we transition into parsing within the open tag
-                            parser.enterState(STATE_WITHIN_OPEN_TAG);
-                        }
-
-                        if (isConcise) {
-                            openTagEOL();
-                        }
-
-                        return;
-                    }
-                }
-
-                currentPart.value += str;
-            },
-
-            eof() {
-                if (isConcise && currentPart.groupStack.length === 0) {
-                    currentPart.endPos = parser.pos;
-                    endExpression();
-                    openTagEOF();
-                } else {
-                    let parentState = currentPart.parentState;
-
-                    if (parentState === STATE_ATTRIBUTE_NAME) {
-                        return notifyError(currentPart.pos,
-                            'MALFORMED_OPEN_TAG',
-                            'EOF reached while parsing attribute name for the "' + currentOpenTag.tagName + '" tag');
-                    } else if (parentState === STATE_ATTRIBUTE_VALUE) {
-                        return notifyError(currentPart.pos,
-                            'MALFORMED_OPEN_TAG',
-                            'EOF reached while parsing attribute value for the "' + currentAttribute.name + '" attribute');
-                    } else if (parentState === STATE_TAG_NAME) {
-                        return notifyError(currentPart.pos,
-                            'MALFORMED_OPEN_TAG',
-                            'EOF reached while parsing tag name');
-                    } else if (parentState === STATE_PLACEHOLDER) {
-                        return notifyError(currentPart.pos,
-                            'MALFORMED_PLACEHOLDER',
-                            'EOF reached while parsing placeholder');
-                    }
-
-                    return notifyError(currentPart.pos,
-                        'INVALID_EXPRESSION',
-                        'EOF reached will parsing expression');
-                }
-            },
-
-            string(string) {
-                if (currentPart.value === '') {
-                    currentPart.isStringLiteral = string.isStringLiteral === true;
-                } else {
-                    // More than one strings means it is for sure not a string literal...
-                    currentPart.isStringLiteral = false;
-                }
-
-                currentPart.value += string.value;
-            },
-
-            comment(comment) {
-                currentPart.isStringLiteral = false;
-                currentPart.value += comment.rawValue;
-            },
-
-            templateString(templateString) {
-                currentPart.isStringLiteral = false;
-                currentPart.value += templateString.value;
-            },
-
-            char(ch, code) {
-                let depth = currentPart.groupStack.length;
-                let parentState = currentPart.parentState;
-
-                if (code === CODE_SINGLE_QUOTE) {
-                    return beginString("'", CODE_SINGLE_QUOTE);
-                } else if (code === CODE_DOUBLE_QUOTE) {
-                    return beginString('"', CODE_DOUBLE_QUOTE);
-                } else if (code === CODE_BACKTICK) {
-                    return beginTemplateString();
-                } else if (code === CODE_FORWARD_SLASH) {
-                    // Check next character to see if we are in a comment
-                    var nextCode = parser.lookAtCharCodeAhead(1);
-                    if (nextCode === CODE_FORWARD_SLASH) {
-                        beginLineComment();
-                        parser.skip(1);
-                        return;
-                    } else if (nextCode === CODE_ASTERISK) {
-
-                        beginBlockComment();
-                        parser.skip(1);
-                        return;
-                    } else if (depth === 0 && !isConcise && nextCode === CODE_CLOSE_ANGLE_BRACKET) {
-                        // Let the STATE_WITHIN_OPEN_TAG state deal with the ending tag sequence
-                        currentPart.endPos = parser.pos;
-                        endExpression();
-                        parser.rewind(1);
-
-                        if (parser.state !== STATE_WITHIN_OPEN_TAG) {
-                            // Make sure we transition into parsing within the open tag
-                            parser.enterState(STATE_WITHIN_OPEN_TAG);
-                        }
-                        return;
-                    }
-                } else if (code === CODE_OPEN_PAREN ||
-                           code === CODE_OPEN_SQUARE_BRACKET ||
-                           code === CODE_OPEN_CURLY_BRACE) {
-
-                    if (depth === 0 && code === CODE_OPEN_PAREN) {
-                        currentPart.lastLeftParenPos = currentPart.value.length;
-                    }
-
-                    currentPart.groupStack.push(code);
-                    currentPart.isStringLiteral = false;
-                    currentPart.value += ch;
-                    return;
-                } else if (code === CODE_CLOSE_PAREN ||
-                           code === CODE_CLOSE_SQUARE_BRACKET ||
-                           code === CODE_CLOSE_CURLY_BRACE) {
-
-                    if (depth === 0) {
-                        if (code === CODE_CLOSE_SQUARE_BRACKET) {
-                            // We are ending the attribute group so end this expression and let the
-                            // STATE_WITHIN_OPEN_TAG state deal with the ending attribute group
-                            if (currentOpenTag.withinAttrGroup) {
-                                currentPart.endPos = parser.pos + 1;
-                                endExpression();
-                                // Let the STATE_WITHIN_OPEN_TAG state deal with the ending tag sequence
-                                parser.rewind(1);
-                                if (parser.state !== STATE_WITHIN_OPEN_TAG) {
-                                    // Make sure we transition into parsing within the open tag
-                                    parser.enterState(STATE_WITHIN_OPEN_TAG);
-                                }
-                                return;
-                            }
-                        } else {
-                            return notifyError(currentPart.pos,
-                                'INVALID_EXPRESSION',
-                                'Mismatched group. A closing "' + ch + '" character was found but it is not matched with a corresponding opening character.');
-                        }
-                    }
-
-
-                    let matchingGroupCharCode = currentPart.groupStack.pop();
-
-                    if ((code === CODE_CLOSE_PAREN && matchingGroupCharCode !== CODE_OPEN_PAREN) ||
-                        (code === CODE_CLOSE_SQUARE_BRACKET && matchingGroupCharCode !== CODE_OPEN_SQUARE_BRACKET) ||
-                        (code === CODE_CLOSE_CURLY_BRACE && matchingGroupCharCode !== CODE_OPEN_CURLY_BRACE)) {
-                            return notifyError(currentPart.pos,
-                                'INVALID_EXPRESSION',
-                                'Mismatched group. A "' + ch + '" character was found when "' + String.fromCharCode(matchingGroupCharCode) + '" was expected.');
-                    }
-
-                    currentPart.value += ch;
-
-                    if (currentPart.groupStack.length === 0) {
-                        if (code === CODE_CLOSE_PAREN) {
-                            currentPart.lastRightParenPos = currentPart.value.length - 1;
-                        } else if (code === CODE_CLOSE_CURLY_BRACE && parentState === STATE_PLACEHOLDER) {
-                            currentPart.endPos = parser.pos + 1;
-                            endExpression();
-                            return;
-                        }
-                    }
-
-                    return;
-                } else if (depth === 0) {
-                    if (!isConcise) {
-                        if (code === CODE_CLOSE_ANGLE_BRACKET &&
-                            (parentState === STATE_TAG_NAME ||
-                             parentState === STATE_ATTRIBUTE_NAME ||
-                             parentState === STATE_ATTRIBUTE_VALUE ||
-                             parentState === STATE_WITHIN_OPEN_TAG)) {
-                            currentPart.endPos = parser.pos;
-                            endExpression();
-                            endAttribute();
-                            // Let the STATE_WITHIN_OPEN_TAG state deal with the ending tag sequence
-                            parser.rewind(1);
-                            if (parser.state !== STATE_WITHIN_OPEN_TAG) {
-                                // Make sure we transition into parsing within the open tag
-                                parser.enterState(STATE_WITHIN_OPEN_TAG);
-                            }
-                            return;
-                        }
-                    }
-
-                    if (isWhitespaceCode(code)) {
-                        currentPart.endPos = parser.pos;
-                        endExpression();
-                        endAttribute();
-                        if (parser.state !== STATE_WITHIN_OPEN_TAG) {
-                            // Make sure we transition into parsing within the open tag
-                            parser.enterState(STATE_WITHIN_OPEN_TAG);
-                        }
-                        return;
-                    } else if (code === CODE_EQUAL && parentState === STATE_ATTRIBUTE_NAME) {
-                        currentPart.endPos = parser.pos;
-                        endExpression();
-                        // We encountered "=" which means we need to start reading
-                        // the attribute value.
-                        parser.enterState(STATE_ATTRIBUTE_VALUE);
-                        return;
-                    }
-
-                    if (currentPart.parentState === STATE_TAG_NAME) {
-                        if (checkForEscapedEscapedPlaceholder(ch, code)) {
-                            currentPart.value += '\\';
-                            parser.skip(1);
-                            return;
-                        }  else if (checkForEscapedPlaceholder(ch, code)) {
-                            currentPart.value += '$';
-                            parser.skip(1);
-                            return;
-                        } else if (code === CODE_DOLLAR && parser.lookAtCharCodeAhead(1) === CODE_OPEN_CURLY_BRACE) {
-                            currentPart.endPos = parser.pos;
-                            endExpression();
-                            // We expect to start a placeholder at the first curly brace (the next character)
-                            beginPlaceholder(true, true /* tag name */);
-                            return;
-                        } else if (code === CODE_PERIOD || code === CODE_NUMBER_SIGN) {
-                            endExpression();
-                            parser.rewind(1);
-                            beginTagNameShorthand();
-                            return;
-                        }
-                    }
-                }
-
-                currentPart.value += ch;
-            }
-        });
-
-        var STATE_TAG_NAME_SHORTHAND = Parser.createState({
-            name: 'STATE_TAG_NAME_SHORTHAND',
-
-            placeholder(placeholder) {
-                var shorthand = currentPart;
-                shorthand.currentPart.addPlaceholder(placeholder);
-            },
-
-            eol(str) {
-                currentOpenTag.tagNameEnd = parser.pos;
-                endTagNameShorthand();
-
-                if (parser.state !== STATE_WITHIN_OPEN_TAG) {
-                    // Make sure we transition into parsing within the open tag
-                    parser.enterState(STATE_WITHIN_OPEN_TAG);
-                }
-
-                if (isConcise) {
-                    openTagEOL();
-                }
-            },
-
-            eof() {
-                endTagNameShorthand();
-
-                if (isConcise) {
-                    openTagEOF();
-                } else {
-                    return notifyError(currentPart.pos,
-                        'INVALID_TAG_SHORTHAND',
-                        'EOF reached will parsing id/class shorthand in tag name');
-                }
-            },
-
-            char(ch, code) {
-                var shorthand = currentPart;
-                if (!isConcise) {
-                    if (code === CODE_CLOSE_ANGLE_BRACKET) {
-                        currentOpenTag.tagNameEnd = parser.pos;
-                        endTagNameShorthand();
-                        parser.rewind(1);
-                        return;
-                    }
-                }
-
-                if (isWhitespaceCode(code)) {
-                    endTagNameShorthand();
-                    currentOpenTag.tagNameEnd = parser.pos;
-                    if (parser.state !== STATE_WITHIN_OPEN_TAG) {
-                        parser.enterState(STATE_WITHIN_OPEN_TAG);
-                    }
-                    return;
-                }
-
-                if (code === CODE_PERIOD) {
-                    if (shorthand.currentPart) {
-                        shorthand.currentPart.end();
-                    }
-
-                    shorthand.beginPart('class');
-                } else if (code === CODE_NUMBER_SIGN) {
-                    if (shorthand.hasId) {
-                        return notifyError(currentPart.pos,
-                            'INVALID_TAG_SHORTHAND',
-                            'Multiple shorthand ID parts are not allowed on the same tag');
-                    }
-
-                    shorthand.hasId = true;
-
-                    if (shorthand.currentPart) {
-                        shorthand.currentPart.end();
-                    }
-
-                    shorthand.beginPart('id');
-                }
-
-                else if (!ignorePlaceholders && checkForEscapedEscapedPlaceholder(ch, code)) {
-                    shorthand.currentPart.text += '\\';
-                    parser.skip(1);
-                }  else if (!ignorePlaceholders && checkForEscapedPlaceholder(ch, code)) {
-                    shorthand.currentPart.text += '$';
-                    parser.skip(1);
-                } else if (!ignorePlaceholders && checkForPlaceholder(ch, code)) {
-                    // We went into placeholder state...
-                } else {
-                    shorthand.currentPart.text += ch;
-                }
-            }
-        });
-
-        // We enter STATE_WITHIN_OPEN_TAG after we have fully
-        // read in the tag name and encountered a whitespace character
-        var STATE_AFTER_PLACEHOLDER_WITHIN_TAG = Parser.createState({
-            name: 'STATE_AFTER_PLACEHOLDER_WITHIN_TAG',
-
-            eol: openTagEOL,
-
-            eof: openTagEOF,
-
-            char(ch, code) {
-
-                if (!isConcise) {
-                    if (code === CODE_CLOSE_ANGLE_BRACKET) {
-                        finishOpenTag();
-                        return;
-                    } else if (code === CODE_FORWARD_SLASH) {
-                        let nextCode = parser.lookAtCharCodeAhead(1);
-                        if (nextCode === CODE_CLOSE_ANGLE_BRACKET) {
-                            finishOpenTag(true /* self closed */);
-                            parser.skip(1);
-                            return;
-                        }
-                    }
-                }
-
-                if (isWhitespaceCode(code)) {
-                    parser.enterState(STATE_WITHIN_OPEN_TAG);
-                } else {
-                    notifyError(parser.pos,
-                        'UNEXPECTED_TEXT_AFTER_PLACEHOLDER_IN_TAG',
-                        `An unexpected "${ch}" character was found after a placeoholder within the open tag.`);
-                    return;
-                }
-            }
-        });
-
-        var STATE_PLACEHOLDER = Parser.createState({
-            name: 'STATE_PLACEHOLDER',
-
-            expression(expression) {
-                currentPart.value = expression.value.slice(1, -1); // Chop off the curly braces
-                currentPart.endPos = expression.endPos;
-                endPlaceholder();
-            },
-
-            eol(str) {
-                throw new Error('Illegal state. EOL not expected');
-            },
-
-            eof() {
-                throw new Error('Illegal state. EOF not expected');
-            },
-
-            enter(oldState) {
-                if (oldState !== STATE_EXPRESSION) {
-                    beginExpression();
-                }
-            }
-        });
-
-        var STATE_STRING = Parser.createState({
-            name: 'STATE_STRING',
-
-            placeholder(placeholder) {
-                if (currentPart.currentText) {
-                    currentPart.stringParts.push(currentPart.currentText);
-                    currentPart.currentText = '';
-                }
-                currentPart.isStringLiteral = false;
-                currentPart.stringParts.push(placeholder);
-            },
-
-            eol(str) {
-                // New line characters are not allowed in JavaScript string expressions. We need to use
-                // a different character sequence, but we don't want to through off positions so we need
-                // to use a replacement sequence with the same number of characters.
-                if (str.length === 2) {
-                    currentPart.currentText += '\\r\\n';
-                } else {
-                    currentPart.currentText += '\\n';
-                }
-
-            },
-
-            eof() {
-                if (placeholderDepth > 0) {
-                    notifyError(parser.pos,
-                        'INVALID_STRING',
-                        'EOF reached while parsing string expression found inside placeholder');
-                    return;
-                }
-                notifyError(parser.pos,
-                    'INVALID_STRING',
-                    'EOF reached while parsing string expression');
-            },
-
-            char(ch, code) {
-                var stringParts = currentPart.stringParts;
-
-                var nextCh;
-                var quoteCharCode = currentPart.quoteCharCode;
-
-                if (code === CODE_BACK_SLASH) {
-                    if (!ignorePlaceholders && checkForEscapedEscapedPlaceholder(ch, code)) {
-                        currentPart.currentText += '\\';
-                    }  else if (!ignorePlaceholders && checkForEscapedPlaceholder(ch, code)) {
-                        currentPart.currentText += '$';
-                    } else {
-                        // Handle string escape sequence
-                        nextCh = parser.lookAtCharAhead(1);
-                        currentPart.currentText += ch + nextCh;
-                    }
-
-                    parser.skip(1);
-                } else if (code === quoteCharCode) {
-                    // We encountered the end delimiter
-                    if (currentPart.currentText) {
-                        stringParts.push(currentPart.currentText);
-                    }
-
-                    let stringExpr = '';
-                    let quoteChar =  currentPart.quoteChar;
-
-                    if (stringParts.length) {
-                        for (let i=0; i<stringParts.length; i++) {
-                            let part = stringParts[i];
-                            if (i !== 0) {
-                                stringExpr += '+';
-                            }
-
-                            if (typeof part === 'string') {
-                                stringExpr += quoteChar + part + quoteChar;
-                            } else {
-                                stringExpr += '(' + part.value + ')';
-                            }
-                        }
-                    } else {
-                        // Just an empty string...
-                        stringExpr = quoteChar + quoteChar;
-                    }
-
-                    if (stringParts.length > 1) {
-                        stringExpr = '(' + stringExpr + ')';
-                    }
-
-                    currentPart.value = stringExpr;
-                    endString();
-                } else if (!ignorePlaceholders && checkForPlaceholder(ch, code)) {
-                    if (currentPart.currentText) {
-                        stringParts.push(currentPart.currentText);
-                    }
-
-                    currentPart.currentText = '';
-                    // We encountered nested placeholder...
-                    currentPart.isStringLiteral = false;
-                } else {
-                    currentPart.currentText += ch;
-                }
-            }
-        });
-
-        var STATE_TEMPLATE_STRING = Parser.createState({
-            name: 'STATE_TEMPLATE_STRING',
-
-            placeholder: function(placeholder) {
-                if (currentPart.currentText) {
-                    currentPart.stringParts.push(currentPart.currentText);
-                    currentPart.currentText = '';
-                }
-                currentPart.isStringLiteral = false;
-                currentPart.stringParts.push(placeholder);
-            },
-
-            eol(str) {
-                // Convert the EOL sequence ot the equivalent string escape sequences... Not necessary
-                // for template strings but it is equivalent.
-                if (str.length === 2) {
-                    currentPart.value += '\\r\\n';
-                } else {
-                    currentPart.value += '\\n';
-                }
-            },
-
-            eof() {
-                notifyError(parser.pos,
-                    'INVALID_TEMPLATE_STRING',
-                    'EOF reached while parsing template string expression');
-            },
-
-            char(ch, code) {
-                var nextCh;
-                currentPart.value += ch;
-                if (code === CODE_BACK_SLASH) {
-                    // Handle string escape sequence
-                    nextCh = parser.lookAtCharAhead(1);
-                    parser.skip(1);
-
-                    currentPart.value += nextCh;
-                } else if (code === CODE_BACKTICK) {
-                    endTemplateString();
-                }
-            }
-        });
-
-        // We enter STATE_JS_COMMENT_BLOCK after we encounter a "/*" sequence
-        // while in STATE_ATTRIBUTE_VALUE or STATE_DELIMITED_EXPRESSION.
-        // We leave STATE_JS_COMMENT_BLOCK when we see a "*/" sequence.
-        var STATE_JS_COMMENT_BLOCK = Parser.createState({
-            name: 'STATE_JS_COMMENT_BLOCK',
-
-            eol(str) {
-                currentPart.value += str;
-            },
-
-            eof() {
-                notifyError(currentPart.pos,
-                    'MALFORMED_COMMENT',
-                    'EOF reached while parsing multi-line JavaScript comment');
-            },
-
-            char(ch, code) {
-
-
-                if (code === CODE_ASTERISK) {
-                    var nextCode = parser.lookAtCharCodeAhead(1);
-                    if (nextCode === CODE_FORWARD_SLASH) {
-                        currentPart.endPos = parser.pos + 2;
-                        endJavaScriptComment();
-                        parser.skip(1);
-                        return;
-                    }
-                }
-
-                currentPart.value += ch;
-            }
-        });
-
-        // We enter STATE_JS_COMMENT_LINE after we encounter a "//" sequence
-        // when parsing JavaScript code.
-        // We leave STATE_JS_COMMENT_LINE when we see a newline character.
-        var STATE_JS_COMMENT_LINE = Parser.createState({
-            name: 'STATE_JS_COMMENT_LINE',
-
-            eol(str) {
-                currentPart.value += str;
-                currentPart.endPos = parser.pos;
-                endJavaScriptComment();
-            },
-
-            eof() {
-                currentPart.endPos = parser.pos;
-                endJavaScriptComment();
-            },
-
-            char(ch, code) {
-                currentPart.value += ch;
-            }
-        });
-
-        // We enter STATE_DTD after we encounter a "<!" while in the STATE_HTML_CONTENT.
-        // We leave STATE_DTD if we see a ">".
-        var STATE_DTD = Parser.createState({
-            name: 'STATE_DTD',
-
-            eol(str) {
-                currentPart.value += str;
-            },
-
-            eof() {
-                notifyError(currentPart.pos,
-                    'MALFORMED_DOCUMENT_TYPE',
-                    'EOF reached while parsing document type');
-            },
-
-            char(ch, code) {
-                if (code === CODE_CLOSE_ANGLE_BRACKET) {
-                    currentPart.endPos = parser.pos + 1;
-                    endDocumentType();
-                } else {
-                    currentPart.value += ch;
-                }
-            }
-        });
-
-        // We enter STATE_DECLARATION after we encounter a "<?"
-        // while in the STATE_HTML_CONTENT.
-        // We leave STATE_DECLARATION if we see a "?>" or ">".
-        var STATE_DECLARATION = Parser.createState({
-            name: 'STATE_DECLARATION',
-
-            eol(str) {
-                currentPart.value += str;
-            },
-
-            eof() {
-                notifyError(currentPart.pos,
-                    'MALFORMED_DECLARATION',
-                    'EOF reached while parsing declaration');
-            },
-
-            char(ch, code) {
-                if (code === CODE_QUESTION) {
-                    var nextCode = parser.lookAtCharCodeAhead(1);
-                    if (nextCode === CODE_CLOSE_ANGLE_BRACKET) {
-                        currentPart.endPos = parser.pos + 2;
-                        endDeclaration();
-                        parser.skip(1);
-                    }
-                } else if (code === CODE_CLOSE_ANGLE_BRACKET) {
-                    currentPart.endPos = parser.pos + 1;
-                    endDeclaration();
-                } else {
-                    currentPart.value += ch;
-                }
-            }
-        });
-
-        // We enter STATE_HTML_COMMENT after we encounter a "<--"
-        // while in the STATE_HTML_CONTENT.
-        // We leave STATE_HTML_COMMENT when we see a "-->".
-        var STATE_HTML_COMMENT = Parser.createState({
-            name: 'STATE_HTML_COMMENT',
-
-            eol(newLineChars) {
-                currentPart.value += newLineChars;
-            },
-
-            eof() {
-                notifyError(currentPart.pos,
-                    'MALFORMED_COMMENT',
-                    'EOF reached while parsing comment');
-            },
-
-            char(ch, code) {
-                if (code === CODE_HYPHEN) {
-                    var match = parser.lookAheadFor('->');
-                    if (match) {
-                        currentPart.endPos = parser.pos + 3;
-                        endHtmlComment();
-                        parser.skip(match.length);
-                    } else {
-                        currentPart.value += ch;
-                    }
-                } else {
-                    currentPart.value += ch;
-                }
-            }
-        });
-
-        // We enter STATE_SCRIPTLET after we encounter a "<%" while in STATE_HTML_CONTENT.
-        // We leave STATE_SCRIPTLET if we see a "%>".
-        var STATE_SCRIPTLET = Parser.createState({
-            name: 'STATE_SCRIPTLET',
-
-            eol(str) {
-                currentPart.value += str;
-            },
-
-            eof() {
-                notifyError(currentPart.pos,
-                    'MALFORMED_SCRIPTLET',
-                    'EOF reached while parsing scriptlet');
-            },
-
-            comment(comment) {
-                currentPart.value += comment.rawValue;
-            },
-
-            char(ch, code) {
-                if (currentPart.quoteCharCode) {
-                    currentPart.value += ch;
-
-                    // We are within a string... only look for ending string code
-                    if (code === CODE_BACK_SLASH) {
-                        // Handle string escape sequence
-                        currentPart.value += parser.lookAtCharAhead(1);
-                        parser.skip(1);
-                    } else if (code === currentPart.quoteCharCode) {
-                        currentPart.quoteCharCode = null;
-                    }
-                    return;
-                } else if (code === CODE_FORWARD_SLASH) {
-                    if (parser.lookAtCharCodeAhead(1) === CODE_ASTERISK) {
-                        // Skip over code inside a JavaScript block comment
-                        beginBlockComment();
-                        parser.skip(1);
-                        return;
-                    }
-                } else if (code === CODE_SINGLE_QUOTE || code === CODE_DOUBLE_QUOTE) {
-                    currentPart.quoteCharCode = code;
-                } else if (code === CODE_PERCENT) {
-                    if (parser.lookAtCharCodeAhead(1) === CODE_CLOSE_ANGLE_BRACKET) {
-                        endScriptlet(parser.pos + 2 /* end pos */);
-                        parser.skip(1); // Skip over the closing right angle bracket
-                        return;
-                    }
-                }
-
-                currentPart.value += ch;
-            }
-        });
-
-        parser.enterHtmlContentState = function() {
-            parser.enterState(STATE_HTML_CONTENT);
-        };
-
-        parser.enterConciseHtmlContentState = function() {
-            parser.enterState(STATE_CONCISE_HTML_CONTENT);
-        };
-
-        parser.enterParsedTextContentState = function() {
-            var last = blockStack.length && blockStack[blockStack.length - 1];
-
-            if (!last || !last.tagName) {
-                throw new Error('The "parsed text content" parser state is only allowed within a tag');
-            }
-
-            if (isConcise) {
-                // We will transition into the STATE_PARSED_TEXT_CONTENT state
-                // for each of the nested HTML blocks
-                last.body = BODY_PARSED_TEXT;
-                parser.enterState(STATE_CONCISE_HTML_CONTENT);
-            } else {
-                parser.enterState(STATE_PARSED_TEXT_CONTENT);
-            }
-        };
-
-        parser.enterJsContentState = parser.enterParsedTextContentState;
-        parser.enterCssContentState = parser.enterParsedTextContentState;
-
-        parser.enterStaticTextContentState = function() {
-            var last = blockStack.length && blockStack[blockStack.length - 1];
-
-            if (!last || !last.tagName) {
-                throw new Error('The "static text content" parser state is only allowed within a tag');
-            }
-
-            if (isConcise) {
-                // We will transition into the STATE_STATIC_TEXT_CONTENT state
-                // for each of the nested HTML blocks
-                last.body = BODY_STATIC_TEXT;
-                parser.enterState(STATE_CONCISE_HTML_CONTENT);
-            } else {
-                parser.enterState(STATE_STATIC_TEXT_CONTENT);
-            }
-        };
-
-
-        if (defaultMode === MODE_CONCISE) {
-            parser.setInitialState(STATE_CONCISE_HTML_CONTENT);
-            parser.enterDefaultState = function() {
-                parser.enterState(STATE_CONCISE_HTML_CONTENT);
-            };
-        } else {
-            parser.setInitialState(STATE_HTML_CONTENT);
-            parser.enterDefaultState = function() {
-                parser.enterState(STATE_HTML_CONTENT);
-            };
-        }
-    }
-
-    parse(data) {
-        super.parse(data);
-        this.notifiers.notifyFinish();
-    }
-}
-
-module.exports = Parser;
-});
-$rmod.def("/htmljs-parser@1.5.5/index",function(r,e,n,a,t){var s=r("./Parser");e.createParser=function(r,e){var n=new s(r,e);return n}});
-$rmod.main("/esprima@2.7.2","esprima");
-$rmod.dep("/$/marko","esprima","2.7.2");
-$rmod.def("/esprima@2.7.2/esprima",function(e,u,t,n,i){!function(e,t){"use strict";"function"==typeof define&&define.amd?define(["exports"],t):t("undefined"!=typeof u?u:e.esprima={})}(this,function(e){"use strict";function u(e,u){if(!e)throw new Error("ASSERT: "+u)}function t(e){return e>=48&&57>=e}function n(e){return"0123456789abcdefABCDEF".indexOf(e)>=0}function i(e){return"01234567".indexOf(e)>=0}function r(e){var u="0"!==e,t="01234567".indexOf(e);return Et>st&&i(rt[st])&&(u=!0,t=8*t+"01234567".indexOf(rt[st++]),"0123".indexOf(e)>=0&&Et>st&&i(rt[st])&&(t=8*t+"01234567".indexOf(rt[st++]))),{code:t,octal:u}}function a(e){return 32===e||9===e||11===e||12===e||160===e||e>=5760&&[5760,6158,8192,8193,8194,8195,8196,8197,8198,8199,8200,8201,8202,8239,8287,12288,65279].indexOf(e)>=0}function s(e){return 10===e||13===e||8232===e||8233===e}function o(e){return 65536>e?String.fromCharCode(e):String.fromCharCode(55296+(e-65536>>10))+String.fromCharCode(56320+(e-65536&1023))}function l(e){return 36===e||95===e||e>=65&&90>=e||e>=97&&122>=e||92===e||e>=128&&it.NonAsciiIdentifierStart.test(o(e))}function D(e){return 36===e||95===e||e>=65&&90>=e||e>=97&&122>=e||e>=48&&57>=e||92===e||e>=128&&it.NonAsciiIdentifierPart.test(o(e))}function c(e){switch(e){case"enum":case"export":case"import":case"super":return!0;default:return!1}}function f(e){switch(e){case"implements":case"interface":case"package":case"private":case"protected":case"public":case"static":case"yield":case"let":return!0;default:return!1}}function h(e){return"eval"===e||"arguments"===e}function p(e){switch(e.length){case 2:return"if"===e||"in"===e||"do"===e;case 3:return"var"===e||"for"===e||"new"===e||"try"===e||"let"===e;case 4:return"this"===e||"else"===e||"case"===e||"void"===e||"with"===e||"enum"===e;case 5:return"while"===e||"break"===e||"catch"===e||"throw"===e||"const"===e||"yield"===e||"class"===e||"super"===e;case 6:return"return"===e||"typeof"===e||"delete"===e||"switch"===e||"export"===e||"import"===e;case 7:return"default"===e||"finally"===e||"extends"===e;case 8:return"function"===e||"continue"===e||"debugger"===e;case 10:return"instanceof"===e;default:return!1}}function C(e,t,n,i,r){var a;u("number"==typeof n,"Comment must have valid position"),mt.lastCommentStart=n,a={type:e,value:t},Bt.range&&(a.range=[n,i]),Bt.loc&&(a.loc=r),Bt.comments.push(a),Bt.attachComment&&(Bt.leadingComments.push(a),Bt.trailingComments.push(a)),Bt.tokenize&&(a.type=a.type+"Comment",Bt.delegate&&(a=Bt.delegate(a)),Bt.tokens.push(a))}function F(e){var u,t,n,i;for(u=st-e,t={start:{line:ot,column:st-lt-e}};Et>st;)if(n=rt.charCodeAt(st),++st,s(n))return Dt=!0,Bt.comments&&(i=rt.slice(u+e,st-1),t.end={line:ot,column:st-lt-1},C("Line",i,u,st-1,t)),13===n&&10===rt.charCodeAt(st)&&++st,++ot,void(lt=st);Bt.comments&&(i=rt.slice(u+e,st),t.end={line:ot,column:st-lt},C("Line",i,u,st,t))}function A(){var e,u,t,n;for(Bt.comments&&(e=st-2,u={start:{line:ot,column:st-lt-2}});Et>st;)if(t=rt.charCodeAt(st),s(t))13===t&&10===rt.charCodeAt(st+1)&&++st,Dt=!0,++ot,++st,lt=st;else if(42===t){if(47===rt.charCodeAt(st+1))return++st,++st,void(Bt.comments&&(n=rt.slice(e+2,st-2),u.end={line:ot,column:st-lt},C("Block",n,e,st,u)));++st}else++st;Bt.comments&&(u.end={line:ot,column:st-lt},n=rt.slice(e+2,st),C("Block",n,e,st,u)),te()}function E(){var e,u;for(Dt=!1,u=0===st;Et>st;)if(e=rt.charCodeAt(st),a(e))++st;else if(s(e))Dt=!0,++st,13===e&&10===rt.charCodeAt(st)&&++st,++ot,lt=st,u=!0;else if(47===e)if(e=rt.charCodeAt(st+1),47===e)++st,++st,F(2),u=!0;else{if(42!==e)break;++st,++st,A()}else if(u&&45===e){if(45!==rt.charCodeAt(st+1)||62!==rt.charCodeAt(st+2))break;st+=3,F(3)}else{if(60!==e)break;if("!--"!==rt.slice(st+1,st+4))break;++st,++st,++st,++st,F(4)}}function d(e){var u,t,i,r=0;for(t="u"===e?4:2,u=0;t>u;++u){if(!(Et>st&&n(rt[st])))return"";i=rt[st++],r=16*r+"0123456789abcdef".indexOf(i.toLowerCase())}return String.fromCharCode(r)}function m(){var e,u;for(e=rt[st],u=0,"}"===e&&ue();Et>st&&(e=rt[st++],n(e));)u=16*u+"0123456789abcdef".indexOf(e.toLowerCase());return(u>1114111||"}"!==e)&&ue(),o(u)}function B(e){var u,t,n;return u=rt.charCodeAt(e),u>=55296&&56319>=u&&(n=rt.charCodeAt(e+1),n>=56320&&57343>=n&&(t=u,u=1024*(t-55296)+n-56320+65536)),u}function y(){var e,u,t;for(e=B(st),t=o(e),st+=t.length,92===e&&(117!==rt.charCodeAt(st)&&ue(),++st,"{"===rt[st]?(++st,u=m()):(u=d("u"),e=u.charCodeAt(0),u&&"\\"!==u&&l(e)||ue()),t=u);Et>st&&(e=B(st),D(e));)u=o(e),t+=u,st+=u.length,92===e&&(t=t.substr(0,t.length-1),117!==rt.charCodeAt(st)&&ue(),++st,"{"===rt[st]?(++st,u=m()):(u=d("u"),e=u.charCodeAt(0),u&&"\\"!==u&&D(e)||ue()),t+=u);return t}function g(){var e,u;for(e=st++;Et>st;){if(u=rt.charCodeAt(st),92===u)return st=e,y();if(u>=55296&&57343>u)return st=e,y();if(!D(u))break;++st}return rt.slice(e,st)}function S(){var e,u,t;return e=st,u=92===rt.charCodeAt(st)?y():g(),t=1===u.length?Qu.Identifier:p(u)?Qu.Keyword:"null"===u?Qu.NullLiteral:"true"===u||"false"===u?Qu.BooleanLiteral:Qu.Identifier,{type:t,value:u,lineNumber:ot,lineStart:lt,start:e,end:st}}function v(){var e,u;switch(e={type:Qu.Punctuator,value:"",lineNumber:ot,lineStart:lt,start:st,end:st},u=rt[st]){case"(":Bt.tokenize&&(Bt.openParenToken=Bt.tokenValues.length),++st;break;case"{":Bt.tokenize&&(Bt.openCurlyToken=Bt.tokenValues.length),mt.curlyStack.push("{"),++st;break;case".":++st,"."===rt[st]&&"."===rt[st+1]&&(st+=2,u="...");break;case"}":++st,mt.curlyStack.pop();break;case")":case";":case",":case"[":case"]":case":":case"?":case"~":++st;break;default:u=rt.substr(st,4),">>>="===u?st+=4:(u=u.substr(0,3),"==="===u||"!=="===u||">>>"===u||"<<="===u||">>="===u?st+=3:(u=u.substr(0,2),"&&"===u||"||"===u||"=="===u||"!="===u||"+="===u||"-="===u||"*="===u||"/="===u||"++"===u||"--"===u||"<<"===u||">>"===u||"&="===u||"|="===u||"^="===u||"%="===u||"<="===u||">="===u||"=>"===u?st+=2:(u=rt[st],"<>=!+-*%&|^/".indexOf(u)>=0&&++st)))}return st===e.start&&ue(),e.end=st,e.value=u,e}function w(e){for(var u="";Et>st&&n(rt[st]);)u+=rt[st++];return 0===u.length&&ue(),l(rt.charCodeAt(st))&&ue(),{type:Qu.NumericLiteral,value:parseInt("0x"+u,16),lineNumber:ot,lineStart:lt,start:e,end:st}}function x(e){var u,n;for(n="";Et>st&&(u=rt[st],"0"===u||"1"===u);)n+=rt[st++];return 0===n.length&&ue(),Et>st&&(u=rt.charCodeAt(st),(l(u)||t(u))&&ue()),{type:Qu.NumericLiteral,value:parseInt(n,2),lineNumber:ot,lineStart:lt,start:e,end:st}}function b(e,u){var n,r;for(i(e)?(r=!0,n="0"+rt[st++]):(r=!1,++st,n="");Et>st&&i(rt[st]);)n+=rt[st++];return r||0!==n.length||ue(),(l(rt.charCodeAt(st))||t(rt.charCodeAt(st)))&&ue(),{type:Qu.NumericLiteral,value:parseInt(n,8),octal:r,lineNumber:ot,lineStart:lt,start:u,end:st}}function k(){var e,u;for(e=st+1;Et>e;++e){if(u=rt[e],"8"===u||"9"===u)return!1;if(!i(u))return!0}return!0}function I(){var e,n,r;if(r=rt[st],u(t(r.charCodeAt(0))||"."===r,"Numeric literal must start with a decimal digit or a decimal point"),n=st,e="","."!==r){if(e=rt[st++],r=rt[st],"0"===e){if("x"===r||"X"===r)return++st,w(n);if("b"===r||"B"===r)return++st,x(n);if("o"===r||"O"===r)return b(r,n);if(i(r)&&k())return b(r,n)}for(;t(rt.charCodeAt(st));)e+=rt[st++];r=rt[st]}if("."===r){for(e+=rt[st++];t(rt.charCodeAt(st));)e+=rt[st++];r=rt[st]}if("e"===r||"E"===r)if(e+=rt[st++],r=rt[st],("+"===r||"-"===r)&&(e+=rt[st++]),t(rt.charCodeAt(st)))for(;t(rt.charCodeAt(st));)e+=rt[st++];else ue();return l(rt.charCodeAt(st))&&ue(),{type:Qu.NumericLiteral,value:parseFloat(e),lineNumber:ot,lineStart:lt,start:n,end:st}}function P(){var e,t,n,a,o,l="",D=!1;for(e=rt[st],u("'"===e||'"'===e,"String literal must starts with a quote"),t=st,++st;Et>st;){if(n=rt[st++],n===e){e="";break}if("\\"===n)if(n=rt[st++],n&&s(n.charCodeAt(0)))++ot,"\r"===n&&"\n"===rt[st]&&++st,lt=st;else switch(n){case"u":case"x":if("{"===rt[st])++st,l+=m();else{if(a=d(n),!a)throw ue();l+=a}break;case"n":l+="\n";break;case"r":l+="\r";break;case"t":l+="	";break;case"b":l+="\b";break;case"f":l+="\f";break;case"v":l+="";break;case"8":case"9":l+=n,te();break;default:i(n)?(o=r(n),D=o.octal||D,l+=String.fromCharCode(o.code)):l+=n}else{if(s(n.charCodeAt(0)))break;l+=n}}return""!==e&&(st=t,ue()),{type:Qu.StringLiteral,value:l,octal:D,lineNumber:Ct,lineStart:Ft,start:t,end:st}}function L(){var e,u,n,r,a,o,l,D,c="";for(r=!1,o=!1,u=st,a="`"===rt[st],n=2,++st;Et>st;){if(e=rt[st++],"`"===e){n=1,o=!0,r=!0;break}if("$"===e){if("{"===rt[st]){mt.curlyStack.push("${"),++st,r=!0;break}c+=e}else if("\\"===e)if(e=rt[st++],s(e.charCodeAt(0)))++ot,"\r"===e&&"\n"===rt[st]&&++st,lt=st;else switch(e){case"n":c+="\n";break;case"r":c+="\r";break;case"t":c+="	";break;case"u":case"x":"{"===rt[st]?(++st,c+=m()):(l=st,D=d(e),D?c+=D:(st=l,c+=e));break;case"b":c+="\b";break;case"f":c+="\f";break;case"v":c+="";break;default:"0"===e?(t(rt.charCodeAt(st))&&Q(nt.TemplateOctalLiteral),c+="\x00"):i(e)?Q(nt.TemplateOctalLiteral):c+=e}else s(e.charCodeAt(0))?(++ot,"\r"===e&&"\n"===rt[st]&&++st,lt=st,c+="\n"):c+=e}return r||ue(),a||mt.curlyStack.pop(),{type:Qu.Template,value:{cooked:c,raw:rt.slice(u+1,st-n)},head:a,tail:o,lineNumber:ot,lineStart:lt,start:u,end:st}}function T(e,u){var t="￿",n=e;u.indexOf("u")>=0&&(n=n.replace(/\\u\{([0-9a-fA-F]+)\}|\\u([a-fA-F0-9]{4})/g,function(e,u,n){var i=parseInt(u||n,16);return i>1114111&&ue(null,nt.InvalidRegExp),65535>=i?String.fromCharCode(i):t}).replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]/g,t));try{RegExp(n)}catch(i){ue(null,nt.InvalidRegExp)}try{return new RegExp(e,u)}catch(r){return null}}function N(){var e,t,n,i,r;for(e=rt[st],u("/"===e,"Regular expression literal must start with a slash"),t=rt[st++],n=!1,i=!1;Et>st;)if(e=rt[st++],t+=e,"\\"===e)e=rt[st++],s(e.charCodeAt(0))&&ue(null,nt.UnterminatedRegExp),t+=e;else if(s(e.charCodeAt(0)))ue(null,nt.UnterminatedRegExp);else if(n)"]"===e&&(n=!1);else{if("/"===e){i=!0;break}"["===e&&(n=!0)}return i||ue(null,nt.UnterminatedRegExp),r=t.substr(1,t.length-2),{value:r,literal:t}}function O(){var e,u,t,n;for(u="",t="";Et>st&&(e=rt[st],D(e.charCodeAt(0)));)if(++st,"\\"===e&&Et>st)if(e=rt[st],"u"===e){if(++st,n=st,e=d("u"))for(t+=e,u+="\\u";st>n;++n)u+=rt[n];else st=n,t+="u",u+="\\u";te()}else u+="\\",te();else t+=e,u+=e;return{value:t,literal:u}}function R(){var e,u,t,n;return At=!0,dt=null,E(),e=st,u=N(),t=O(),n=T(u.value,t.value),At=!1,Bt.tokenize?{type:Qu.RegularExpression,value:n,regex:{pattern:u.value,flags:t.value},lineNumber:ot,lineStart:lt,start:e,end:st}:{literal:u.literal+t.literal,value:n,regex:{pattern:u.value,flags:t.value},start:e,end:st}}function U(){var e,u,t,n;return E(),e=st,u={start:{line:ot,column:st-lt}},t=R(),u.end={line:ot,column:st-lt},Bt.tokenize||(Bt.tokens.length>0&&(n=Bt.tokens[Bt.tokens.length-1],n.range[0]===e&&"Punctuator"===n.type&&("/"===n.value||"/="===n.value)&&Bt.tokens.pop()),Bt.tokens.push({type:"RegularExpression",value:t.literal,regex:t.regex,range:[e,st],loc:u})),t}function Y(e){return e.type===Qu.Identifier||e.type===Qu.Keyword||e.type===Qu.BooleanLiteral||e.type===Qu.NullLiteral}function M(){function e(e){return e&&e.length>1&&e[0]>="a"&&e[0]<="z"}var u,t,n;switch(t=Bt.tokenValues[Bt.tokens.length-1],u=null!==t,t){case"this":case"]":u=!1;break;case")":n=Bt.tokenValues[Bt.openParenToken-1],u="if"===n||"while"===n||"for"===n||"with"===n;break;case"}":u=!1,e(Bt.tokenValues[Bt.openCurlyToken-3])?(n=Bt.tokenValues[Bt.openCurlyToken-4],u=n?et.indexOf(n)<0:!1):e(Bt.tokenValues[Bt.openCurlyToken-4])&&(n=Bt.tokenValues[Bt.openCurlyToken-5],u=n?et.indexOf(n)<0:!0)}return u?U():v()}function j(){var e,u;return st>=Et?{type:Qu.EOF,lineNumber:ot,lineStart:lt,start:st,end:st}:(e=rt.charCodeAt(st),l(e)?(u=S(),at&&f(u.value)&&(u.type=Qu.Keyword),u):40===e||41===e||59===e?v():39===e||34===e?P():46===e?t(rt.charCodeAt(st+1))?I():v():t(e)?I():Bt.tokenize&&47===e?M():96===e||125===e&&"${"===mt.curlyStack[mt.curlyStack.length-1]?L():e>=55296&&57343>e&&(e=B(st),l(e))?S():v())}function V(){var e,u,t,n;return e={start:{line:ot,column:st-lt}},u=j(),e.end={line:ot,column:st-lt},u.type!==Qu.EOF&&(t=rt.slice(u.start,u.end),n={type:Zu[u.type],value:t,range:[u.start,u.end],loc:e},u.regex&&(n.regex={pattern:u.regex.pattern,flags:u.regex.flags}),Bt.tokenValues&&Bt.tokenValues.push("Punctuator"===n.type||"Keyword"===n.type?n.value:null),Bt.tokenize&&(Bt.range||delete n.range,Bt.loc||delete n.loc,Bt.delegate&&(n=Bt.delegate(n))),Bt.tokens.push(n)),u}function W(){var e;return At=!0,ct=st,ft=ot,ht=lt,E(),e=dt,pt=st,Ct=ot,Ft=lt,dt="undefined"!=typeof Bt.tokens?V():j(),At=!1,e}function H(){At=!0,E(),ct=st,ft=ot,ht=lt,pt=st,Ct=ot,Ft=lt,dt="undefined"!=typeof Bt.tokens?V():j(),At=!1}function K(){this.line=Ct,this.column=pt-Ft}function q(){this.start=new K,this.end=null}function z(e){this.start={line:e.lineNumber,column:e.start-e.lineStart},this.end=null}function _(){Bt.range&&(this.range=[pt,0]),Bt.loc&&(this.loc=new q)}function $(e){Bt.range&&(this.range=[e.start,0]),Bt.loc&&(this.loc=new z(e))}function G(e){var u,t;for(u=0;u<Bt.errors.length;u++)if(t=Bt.errors[u],t.index===e.index&&t.message===e.message)return;Bt.errors.push(e)}function X(e,u){var t=new Error(e);try{throw t}catch(n){Object.create&&Object.defineProperty&&(t=Object.create(n),Object.defineProperty(t,"column",{value:u}))}finally{return t}}function J(e,u,t){var n,i,r;return n="Line "+e+": "+t,i=u-(At?lt:ht)+1,r=X(n,i),r.lineNumber=e,r.description=t,r.index=u,r}function Q(e){var t,n;throw t=Array.prototype.slice.call(arguments,1),n=e.replace(/%(\d)/g,function(e,n){return u(n<t.length,"Message reference must be in range"),t[n]}),J(ft,ct,n)}function Z(e){var t,n,i;if(t=Array.prototype.slice.call(arguments,1),n=e.replace(/%(\d)/g,function(e,n){return u(n<t.length,"Message reference must be in range"),t[n]}),i=J(ot,ct,n),!Bt.errors)throw i;G(i)}function ee(e,u){var t,n=u||nt.UnexpectedToken;return e?(u||(n=e.type===Qu.EOF?nt.UnexpectedEOS:e.type===Qu.Identifier?nt.UnexpectedIdentifier:e.type===Qu.NumericLiteral?nt.UnexpectedNumber:e.type===Qu.StringLiteral?nt.UnexpectedString:e.type===Qu.Template?nt.UnexpectedTemplate:nt.UnexpectedToken,e.type===Qu.Keyword&&(c(e.value)?n=nt.UnexpectedReserved:at&&f(e.value)&&(n=nt.StrictReservedWord))),t=e.type===Qu.Template?e.value.raw:e.value):t="ILLEGAL",n=n.replace("%0",t),e&&"number"==typeof e.lineNumber?J(e.lineNumber,e.start,n):J(At?ot:ft,At?st:ct,n)}function ue(e,u){throw ee(e,u)}function te(e,u){var t=ee(e,u);if(!Bt.errors)throw t;G(t)}function ne(e){var u=W();(u.type!==Qu.Punctuator||u.value!==e)&&ue(u)}function ie(){var e;Bt.errors?(e=dt,e.type===Qu.Punctuator&&","===e.value?W():e.type===Qu.Punctuator&&";"===e.value?(W(),te(e)):te(e,nt.UnexpectedToken)):ne(",")}function re(e){var u=W();(u.type!==Qu.Keyword||u.value!==e)&&ue(u)}function ae(e){return dt.type===Qu.Punctuator&&dt.value===e}function se(e){return dt.type===Qu.Keyword&&dt.value===e}function oe(e){return dt.type===Qu.Identifier&&dt.value===e}function le(){var e;return dt.type!==Qu.Punctuator?!1:(e=dt.value,"="===e||"*="===e||"/="===e||"%="===e||"+="===e||"-="===e||"<<="===e||">>="===e||">>>="===e||"&="===e||"^="===e||"|="===e)}function De(){return 59===rt.charCodeAt(pt)||ae(";")?void W():void(Dt||(ct=pt,ft=Ct,ht=Ft,dt.type===Qu.EOF||ae("}")||ue(dt)))}function ce(e){var u,t=yt,n=gt,i=St;return yt=!0,gt=!0,St=null,u=e(),null!==St&&ue(St),yt=t,gt=n,St=i,u}function fe(e){var u,t=yt,n=gt,i=St;return yt=!0,gt=!0,St=null,u=e(),yt=yt&&t,gt=gt&&n,St=i||St,u}function he(e,u){var t,n,i=new _,r=[];for(ne("[");!ae("]");)if(ae(","))W(),r.push(null);else{if(ae("...")){n=new _,W(),e.push(dt),t=Ze(u),r.push(n.finishRestElement(t));break}r.push(Ae(e,u)),ae("]")||ne(",")}return ne("]"),i.finishArrayPattern(r)}function pe(e,u){var t,n,i,r=new _,a=ae("[");if(dt.type===Qu.Identifier){if(n=dt,t=Ze(),ae("="))return e.push(n),W(),i=$e(),r.finishProperty("init",t,!1,new $(n).finishAssignmentPattern(t,i),!1,!0);if(!ae(":"))return e.push(n),r.finishProperty("init",t,!1,t,!1,!0)}else t=Be();return ne(":"),i=Ae(e,u),r.finishProperty("init",t,a,i,!1,!1)}function Ce(e,u){var t=new _,n=[];for(ne("{");!ae("}");)n.push(pe(e,u)),ae("}")||ne(",");return W(),t.finishObjectPattern(n)}function Fe(e,u){return ae("[")?he(e,u):ae("{")?Ce(e,u):(se("let")&&("const"===u||"let"===u)&&te(dt,nt.UnexpectedToken),e.push(dt),Ze(u))}function Ae(e,u){var t,n,i,r=dt;return t=Fe(e,u),ae("=")&&(W(),n=mt.allowYield,mt.allowYield=!0,i=ce($e),mt.allowYield=n,t=new $(r).finishAssignmentPattern(t,i)),t}function Ee(){var e,u=[],t=new _;for(ne("[");!ae("]");)ae(",")?(W(),u.push(null)):ae("...")?(e=new _,W(),e.finishSpreadElement(fe($e)),ae("]")||(gt=yt=!1,ne(",")),u.push(e)):(u.push(fe($e)),ae("]")||ne(","));return W(),t.finishArrayExpression(u)}function de(e,u,t){var n,i;return gt=yt=!1,n=at,i=ce(xu),at&&u.firstRestricted&&te(u.firstRestricted,u.message),at&&u.stricted&&te(u.stricted,u.message),at=n,e.finishFunctionExpression(null,u.params,u.defaults,i,t)}function me(){var e,u,t=new _,n=mt.allowYield;return mt.allowYield=!1,e=Iu(),mt.allowYield=n,mt.allowYield=!1,u=de(t,e,!1),mt.allowYield=n,u}function Be(){var e,u,t=new _;switch(e=W(),e.type){case Qu.StringLiteral:case Qu.NumericLiteral:return at&&e.octal&&te(e,nt.StrictOctalLiteral),t.finishLiteral(e);case Qu.Identifier:case Qu.BooleanLiteral:case Qu.NullLiteral:case Qu.Keyword:return t.finishIdentifier(e.value);case Qu.Punctuator:if("["===e.value)return u=ce($e),ne("]"),u}ue(e)}function ye(){switch(dt.type){case Qu.Identifier:case Qu.StringLiteral:case Qu.BooleanLiteral:case Qu.NullLiteral:case Qu.NumericLiteral:case Qu.Keyword:return!0;case Qu.Punctuator:return"["===dt.value}return!1}function ge(e,u,t,n){var i,r,a,s,o=mt.allowYield;if(e.type===Qu.Identifier){if("get"===e.value&&ye())return t=ae("["),u=Be(),a=new _,ne("("),ne(")"),mt.allowYield=!1,i=de(a,{params:[],defaults:[],stricted:null,firstRestricted:null,message:null},!1),mt.allowYield=o,n.finishProperty("get",u,t,i,!1,!1);if("set"===e.value&&ye())return t=ae("["),u=Be(),a=new _,ne("("),r={params:[],defaultCount:0,defaults:[],firstRestricted:null,paramSet:{}},ae(")")?te(dt):(mt.allowYield=!1,ku(r),mt.allowYield=o,0===r.defaultCount&&(r.defaults=[])),ne(")"),mt.allowYield=!1,i=de(a,r,!1),mt.allowYield=o,n.finishProperty("set",u,t,i,!1,!1)}else if(e.type===Qu.Punctuator&&"*"===e.value&&ye())return t=ae("["),u=Be(),a=new _,mt.allowYield=!0,s=Iu(),mt.allowYield=o,mt.allowYield=!1,i=de(a,s,!0),mt.allowYield=o,n.finishProperty("init",u,t,i,!0,!1);return u&&ae("(")?(i=me(),n.finishProperty("init",u,t,i,!0,!1)):null}function Se(e){var u,t,n,i,r,a=dt,s=new _;return u=ae("["),ae("*")?W():t=Be(),(n=ge(a,t,u,s))?n:(t||ue(dt),u||(i=t.type===ut.Identifier&&"__proto__"===t.name||t.type===ut.Literal&&"__proto__"===t.value,e.value&&i&&Z(nt.DuplicateProtoProperty),e.value|=i),ae(":")?(W(),r=fe($e),s.finishProperty("init",t,u,r,!1,!1)):a.type===Qu.Identifier?ae("=")?(St=dt,W(),r=ce($e),s.finishProperty("init",t,u,new $(a).finishAssignmentPattern(t,r),!1,!0)):s.finishProperty("init",t,u,t,!1,!0):void ue(dt))}function ve(){var e=[],u={value:!1},t=new _;for(ne("{");!ae("}");)e.push(Se(u)),ae("}")||ie();return ne("}"),t.finishObjectExpression(e)}function we(e){var u;switch(e.type){case ut.Identifier:case ut.MemberExpression:case ut.RestElement:case ut.AssignmentPattern:break;case ut.SpreadElement:e.type=ut.RestElement,we(e.argument);break;case ut.ArrayExpression:for(e.type=ut.ArrayPattern,u=0;u<e.elements.length;u++)null!==e.elements[u]&&we(e.elements[u]);break;case ut.ObjectExpression:for(e.type=ut.ObjectPattern,u=0;u<e.properties.length;u++)we(e.properties[u].value);break;case ut.AssignmentExpression:e.type=ut.AssignmentPattern,we(e.left)}}function xe(e){var u,t;return(dt.type!==Qu.Template||e.head&&!dt.head)&&ue(),u=new _,t=W(),u.finishTemplateElement({raw:t.value.raw,cooked:t.value.cooked},t.tail)}function be(){var e,u,t,n=new _;for(e=xe({head:!0}),u=[e],t=[];!e.tail;)t.push(Ge()),e=xe({head:!1}),u.push(e);return n.finishTemplateLiteral(u,t)}function ke(){var e,u,t,n,i=[];if(ne("("),ae(")"))return W(),ae("=>")||ne("=>"),{type:tt.ArrowParameterPlaceHolder,params:[],rawParams:[]};if(t=dt,ae("..."))return e=lu(i),ne(")"),ae("=>")||ne("=>"),{type:tt.ArrowParameterPlaceHolder,params:[e]};if(yt=!0,e=fe($e),ae(",")){for(gt=!1,u=[e];Et>pt&&ae(",");){if(W(),ae("...")){for(yt||ue(dt),u.push(lu(i)),ne(")"),ae("=>")||ne("=>"),yt=!1,n=0;n<u.length;n++)we(u[n]);return{type:tt.ArrowParameterPlaceHolder,params:u}}u.push(fe($e))}e=new $(t).finishSequenceExpression(u)}if(ne(")"),ae("=>")){if(e.type===ut.Identifier&&"yield"===e.name)return{type:tt.ArrowParameterPlaceHolder,params:[e]};if(yt||ue(dt),e.type===ut.SequenceExpression)for(n=0;n<e.expressions.length;n++)we(e.expressions[n]);else we(e);e={type:tt.ArrowParameterPlaceHolder,params:e.type===ut.SequenceExpression?e.expressions:[e]}}return yt=!1,e}function Ie(){var e,u,t,n;if(ae("("))return yt=!1,fe(ke);if(ae("["))return fe(Ee);if(ae("{"))return fe(ve);if(e=dt.type,n=new _,e===Qu.Identifier)"module"===mt.sourceType&&"await"===dt.value&&te(dt),t=n.finishIdentifier(W().value);else if(e===Qu.StringLiteral||e===Qu.NumericLiteral)gt=yt=!1,at&&dt.octal&&te(dt,nt.StrictOctalLiteral),t=n.finishLiteral(W());else if(e===Qu.Keyword){if(!at&&mt.allowYield&&se("yield"))return Le();if(!at&&se("let"))return n.finishIdentifier(W().value);if(gt=yt=!1,se("function"))return Lu();if(se("this"))return W(),n.finishThisExpression();if(se("class"))return Ou();ue(W())}else e===Qu.BooleanLiteral?(gt=yt=!1,u=W(),u.value="true"===u.value,t=n.finishLiteral(u)):e===Qu.NullLiteral?(gt=yt=!1,u=W(),u.value=null,t=n.finishLiteral(u)):ae("/")||ae("/=")?(gt=yt=!1,st=pt,u="undefined"!=typeof Bt.tokens?U():R(),W(),t=n.finishLiteral(u)):e===Qu.Template?t=be():ue(W());return t}function Pe(){var e,u=[];if(ne("("),!ae(")"))for(;Et>pt&&(ae("...")?(e=new _,W(),e.finishSpreadElement(ce($e))):e=ce($e),u.push(e),!ae(")"));)ie();return ne(")"),u}function Le(){var e,u=new _;return e=W(),Y(e)||ue(e),u.finishIdentifier(e.value)}function Te(){return ne("."),Le()}function Ne(){var e;return ne("["),e=ce(Ge),ne("]"),e}function Oe(){var e,u,t=new _;if(re("new"),ae(".")){if(W(),dt.type===Qu.Identifier&&"target"===dt.value&&mt.inFunctionBody)return W(),t.finishMetaProperty("new","target");ue(dt)}return e=ce(Ue),u=ae("(")?Pe():[],gt=yt=!1,t.finishNewExpression(e,u)}function Re(){var e,u,t,n,i,r=mt.allowIn;for(i=dt,mt.allowIn=!0,se("super")&&mt.inFunctionBody?(u=new _,W(),u=u.finishSuper(),ae("(")||ae(".")||ae("[")||ue(dt)):u=fe(se("new")?Oe:Ie);;)if(ae("."))yt=!1,gt=!0,n=Te(),u=new $(i).finishMemberExpression(".",u,n);else if(ae("("))yt=!1,gt=!1,t=Pe(),u=new $(i).finishCallExpression(u,t);else if(ae("["))yt=!1,gt=!0,n=Ne(),u=new $(i).finishMemberExpression("[",u,n);else{if(dt.type!==Qu.Template||!dt.head)break;e=be(),u=new $(i).finishTaggedTemplateExpression(u,e)}return mt.allowIn=r,u}function Ue(){var e,t,n,i;for(u(mt.allowIn,"callee of new expression always allow in keyword."),i=dt,se("super")&&mt.inFunctionBody?(t=new _,W(),t=t.finishSuper(),ae("[")||ae(".")||ue(dt)):t=fe(se("new")?Oe:Ie);;)if(ae("["))yt=!1,gt=!0,n=Ne(),t=new $(i).finishMemberExpression("[",t,n);else if(ae("."))yt=!1,gt=!0,n=Te(),t=new $(i).finishMemberExpression(".",t,n);else{if(dt.type!==Qu.Template||!dt.head)break;e=be(),t=new $(i).finishTaggedTemplateExpression(t,e)}return t}function Ye(){var e,u,t=dt;return e=fe(Re),Dt||dt.type!==Qu.Punctuator||(ae("++")||ae("--"))&&(at&&e.type===ut.Identifier&&h(e.name)&&Z(nt.StrictLHSPostfix),gt||Z(nt.InvalidLHSInAssignment),gt=yt=!1,u=W(),e=new $(t).finishPostfixExpression(u.value,e)),e}function Me(){var e,u,t;return dt.type!==Qu.Punctuator&&dt.type!==Qu.Keyword?u=Ye():ae("++")||ae("--")?(t=dt,e=W(),u=fe(Me),at&&u.type===ut.Identifier&&h(u.name)&&Z(nt.StrictLHSPrefix),gt||Z(nt.InvalidLHSInAssignment),u=new $(t).finishUnaryExpression(e.value,u),gt=yt=!1):ae("+")||ae("-")||ae("~")||ae("!")?(t=dt,e=W(),u=fe(Me),u=new $(t).finishUnaryExpression(e.value,u),gt=yt=!1):se("delete")||se("void")||se("typeof")?(t=dt,e=W(),u=fe(Me),u=new $(t).finishUnaryExpression(e.value,u),at&&"delete"===u.operator&&u.argument.type===ut.Identifier&&Z(nt.StrictDelete),gt=yt=!1):u=Ye(),u}function je(e,u){var t=0;if(e.type!==Qu.Punctuator&&e.type!==Qu.Keyword)return 0;switch(e.value){case"||":t=1;break;case"&&":t=2;break;case"|":t=3;break;case"^":t=4;break;case"&":t=5;break;case"==":case"!=":case"===":case"!==":t=6;break;case"<":case">":case"<=":case">=":case"instanceof":t=7;break;case"in":t=u?7:0;break;case"<<":case">>":case">>>":t=8;break;case"+":case"-":t=9;break;case"*":case"/":case"%":t=11}return t}function Ve(){var e,u,t,n,i,r,a,s,o,l;if(e=dt,o=fe(Me),n=dt,i=je(n,mt.allowIn),0===i)return o;for(gt=yt=!1,n.prec=i,W(),u=[e,dt],a=ce(Me),r=[o,n,a];(i=je(dt,mt.allowIn))>0;){for(;r.length>2&&i<=r[r.length-2].prec;)a=r.pop(),s=r.pop().value,o=r.pop(),u.pop(),t=new $(u[u.length-1]).finishBinaryExpression(s,o,a),r.push(t);n=W(),n.prec=i,r.push(n),u.push(dt),t=ce(Me),r.push(t)}for(l=r.length-1,t=r[l],u.pop();l>1;)t=new $(u.pop()).finishBinaryExpression(r[l-1].value,r[l-2],t),l-=2;return t}function We(){var e,u,t,n,i;return i=dt,e=fe(Ve),ae("?")&&(W(),u=mt.allowIn,mt.allowIn=!0,t=ce($e),mt.allowIn=u,ne(":"),n=ce($e),e=new $(i).finishConditionalExpression(e,t,n),gt=yt=!1),e}function He(){return ae("{")?xu():ce($e)}function Ke(e,t){var n;switch(t.type){case ut.Identifier:bu(e,t,t.name);break;case ut.RestElement:Ke(e,t.argument);break;case ut.AssignmentPattern:Ke(e,t.left);break;case ut.ArrayPattern:for(n=0;n<t.elements.length;n++)null!==t.elements[n]&&Ke(e,t.elements[n]);break;case ut.YieldExpression:break;default:for(u(t.type===ut.ObjectPattern,"Invalid type"),n=0;n<t.properties.length;n++)Ke(e,t.properties[n].value)}}function qe(e){var u,t,n,i,r,a,s,o;switch(r=[],a=0,i=[e],e.type){case ut.Identifier:break;case tt.ArrowParameterPlaceHolder:i=e.params;break;default:return null}for(s={paramSet:{}},u=0,t=i.length;t>u;u+=1)switch(n=i[u],n.type){case ut.AssignmentPattern:i[u]=n.left,n.right.type===ut.YieldExpression&&(n.right.argument&&ue(dt),n.right.type=ut.Identifier,n.right.name="yield",delete n.right.argument,delete n.right.delegate),r.push(n.right),++a,Ke(s,n.left);break;default:Ke(s,n),i[u]=n,r.push(null)}if(at||!mt.allowYield)for(u=0,t=i.length;t>u;u+=1)n=i[u],n.type===ut.YieldExpression&&ue(dt);return s.message===nt.StrictParamDupe&&(o=at?s.stricted:s.firstRestricted,ue(o,s.message)),0===a&&(r=[]),{params:i,defaults:r,stricted:s.stricted,firstRestricted:s.firstRestricted,message:s.message}}function ze(e,u){var t,n,i;return Dt&&te(dt),ne("=>"),t=at,n=mt.allowYield,mt.allowYield=!0,i=He(),at&&e.firstRestricted&&ue(e.firstRestricted,e.message),at&&e.stricted&&te(e.stricted,e.message),at=t,mt.allowYield=n,u.finishArrowFunctionExpression(e.params,e.defaults,i,i.type!==ut.BlockStatement)}function _e(){var e,u,t,n;return e=null,u=new _,t=!1,re("yield"),Dt||(n=mt.allowYield,mt.allowYield=!1,t=ae("*"),t?(W(),e=$e()):ae(";")||ae("}")||ae(")")||dt.type===Qu.EOF||(e=$e()),mt.allowYield=n),u.finishYieldExpression(e,t)}function $e(){var e,u,t,n,i;return i=dt,e=dt,!mt.allowYield&&se("yield")?_e():(u=We(),u.type===tt.ArrowParameterPlaceHolder||ae("=>")?(gt=yt=!1,n=qe(u),n?(St=null,ze(n,new $(i))):u):(le()&&(gt||Z(nt.InvalidLHSInAssignment),at&&u.type===ut.Identifier&&(h(u.name)&&te(e,nt.StrictLHSAssignment),f(u.name)&&te(e,nt.StrictReservedWord)),ae("=")?we(u):gt=yt=!1,e=W(),t=ce($e),u=new $(i).finishAssignmentExpression(e.value,u,t),St=null),u))}function Ge(){var e,u,t=dt;if(e=ce($e),ae(",")){for(u=[e];Et>pt&&ae(",");)W(),u.push(ce($e));e=new $(t).finishSequenceExpression(u)}return e}function Xe(){if(dt.type===Qu.Keyword)switch(dt.value){case"export":return"module"!==mt.sourceType&&te(dt,nt.IllegalExportDeclaration),Vu();case"import":return"module"!==mt.sourceType&&te(dt,nt.IllegalImportDeclaration),zu();case"const":return ou({inFor:!1});case"function":return Pu(new _);case"class":return Nu()}return se("let")&&su()?ou({inFor:!1}):wu()}function Je(){for(var e=[];Et>pt&&!ae("}");)e.push(Xe());return e}function Qe(){var e,u=new _;return ne("{"),e=Je(),ne("}"),u.finishBlockStatement(e)}function Ze(e){var u,t=new _;return u=W(),u.type===Qu.Keyword&&"yield"===u.value?(at&&te(u,nt.StrictReservedWord),mt.allowYield||ue(u)):u.type!==Qu.Identifier?at&&u.type===Qu.Keyword&&f(u.value)?te(u,nt.StrictReservedWord):(at||"let"!==u.value||"var"!==e)&&ue(u):"module"===mt.sourceType&&u.type===Qu.Identifier&&"await"===u.value&&te(u),t.finishIdentifier(u.value)}function eu(e){var u,t=null,n=new _,i=[];return u=Fe(i,"var"),at&&h(u.name)&&Z(nt.StrictVarName),ae("=")?(W(),t=ce($e)):u.type===ut.Identifier||e.inFor||ne("="),n.finishVariableDeclarator(u,t)}function uu(e){var u,t;for(u={inFor:e.inFor},t=[eu(u)];ae(",");)W(),t.push(eu(u));return t}function tu(e){var u;return re("var"),u=uu({inFor:!1}),De(),e.finishVariableDeclaration(u)}function nu(e,u){var t,n=null,i=new _,r=[];return t=Fe(r,e),at&&t.type===ut.Identifier&&h(t.name)&&Z(nt.StrictVarName),"const"===e?se("in")||oe("of")||(ne("="),n=ce($e)):(!u.inFor&&t.type!==ut.Identifier||ae("="))&&(ne("="),n=ce($e)),i.finishVariableDeclarator(t,n)}function iu(e,u){for(var t=[nu(e,u)];ae(",");)W(),t.push(nu(e,u));return t}function ru(){return{index:st,lineNumber:ot,lineStart:lt,hasLineTerminator:Dt,lastIndex:ct,lastLineNumber:ft,lastLineStart:ht,startIndex:pt,startLineNumber:Ct,startLineStart:Ft,lookahead:dt,tokenCount:Bt.tokens?Bt.tokens.length:0}}function au(e){st=e.index,ot=e.lineNumber,lt=e.lineStart,Dt=e.hasLineTerminator,ct=e.lastIndex,ft=e.lastLineNumber,ht=e.lastLineStart,pt=e.startIndex,Ct=e.startLineNumber,Ft=e.startLineStart,dt=e.lookahead,Bt.tokens&&Bt.tokens.splice(e.tokenCount,Bt.tokens.length)}function su(){var e,u;return u=ru(),W(),e=dt.type===Qu.Identifier||ae("[")||ae("{")||se("let")||se("yield"),au(u),e}function ou(e){var t,n,i=new _;return t=W().value,u("let"===t||"const"===t,"Lexical declaration must be either let or const"),n=iu(t,e),De(),i.finishLexicalDeclaration(n,t)}function lu(e){var u,t=new _;return W(),ae("{")&&Q(nt.ObjectPatternAsRestParameter),e.push(dt),u=Ze(),ae("=")&&Q(nt.DefaultRestParameter),ae(")")||Q(nt.ParameterAfterRestParameter),t.finishRestElement(u)}function Du(e){return ne(";"),e.finishEmptyStatement()}function cu(e){var u=Ge();return De(),e.finishExpressionStatement(u)}function fu(e){var u,t,n;return re("if"),ne("("),u=Ge(),ne(")"),t=wu(),se("else")?(W(),n=wu()):n=null,e.finishIfStatement(u,t,n)}function hu(e){var u,t,n;return re("do"),n=mt.inIteration,mt.inIteration=!0,u=wu(),mt.inIteration=n,re("while"),ne("("),t=Ge(),ne(")"),ae(";")&&W(),e.finishDoWhileStatement(u,t)}function pu(e){var u,t,n;return re("while"),ne("("),u=Ge(),ne(")"),n=mt.inIteration,mt.inIteration=!0,t=wu(),mt.inIteration=n,e.finishWhileStatement(u,t)}function Cu(e){var u,t,n,i,r,a,s,o,l,D,c,f,h=mt.allowIn;if(u=r=a=null,t=!0,re("for"),ne("("),ae(";"))W();else if(se("var"))u=new _,W(),mt.allowIn=!1,D=uu({inFor:!0}),mt.allowIn=h,1===D.length&&se("in")?(u=u.finishVariableDeclaration(D),W(),s=u,o=Ge(),u=null):1===D.length&&null===D[0].init&&oe("of")?(u=u.finishVariableDeclaration(D),W(),s=u,o=$e(),u=null,t=!1):(u=u.finishVariableDeclaration(D),ne(";"));else if(se("const")||se("let"))u=new _,l=W().value,at||"in"!==dt.value?(mt.allowIn=!1,D=iu(l,{inFor:!0}),mt.allowIn=h,1===D.length&&null===D[0].init&&se("in")?(u=u.finishLexicalDeclaration(D,l),W(),s=u,o=Ge(),u=null):1===D.length&&null===D[0].init&&oe("of")?(u=u.finishLexicalDeclaration(D,l),W(),s=u,o=$e(),u=null,t=!1):(De(),u=u.finishLexicalDeclaration(D,l))):(u=u.finishIdentifier(l),W(),s=u,o=Ge(),u=null);else if(i=dt,mt.allowIn=!1,u=fe($e),mt.allowIn=h,se("in"))gt||Z(nt.InvalidLHSInForIn),W(),we(u),s=u,o=Ge(),u=null;else if(oe("of"))gt||Z(nt.InvalidLHSInForLoop),W(),we(u),s=u,o=$e(),u=null,t=!1;else{if(ae(",")){for(n=[u];ae(",");)W(),n.push(ce($e));u=new $(i).finishSequenceExpression(n)}ne(";")}return"undefined"==typeof s&&(ae(";")||(r=Ge()),ne(";"),ae(")")||(a=Ge())),ne(")"),f=mt.inIteration,mt.inIteration=!0,c=ce(wu),mt.inIteration=f,"undefined"==typeof s?e.finishForStatement(u,r,a,c):t?e.finishForInStatement(s,o,c):e.finishForOfStatement(s,o,c)}function Fu(e){
-var u,t=null;return re("continue"),59===rt.charCodeAt(pt)?(W(),mt.inIteration||Q(nt.IllegalContinue),e.finishContinueStatement(null)):Dt?(mt.inIteration||Q(nt.IllegalContinue),e.finishContinueStatement(null)):(dt.type===Qu.Identifier&&(t=Ze(),u="$"+t.name,Object.prototype.hasOwnProperty.call(mt.labelSet,u)||Q(nt.UnknownLabel,t.name)),De(),null!==t||mt.inIteration||Q(nt.IllegalContinue),e.finishContinueStatement(t))}function Au(e){var u,t=null;return re("break"),59===rt.charCodeAt(ct)?(W(),mt.inIteration||mt.inSwitch||Q(nt.IllegalBreak),e.finishBreakStatement(null)):(Dt?mt.inIteration||mt.inSwitch||Q(nt.IllegalBreak):dt.type===Qu.Identifier&&(t=Ze(),u="$"+t.name,Object.prototype.hasOwnProperty.call(mt.labelSet,u)||Q(nt.UnknownLabel,t.name)),De(),null!==t||mt.inIteration||mt.inSwitch||Q(nt.IllegalBreak),e.finishBreakStatement(t))}function Eu(e){var u=null;return re("return"),mt.inFunctionBody||Z(nt.IllegalReturn),32===rt.charCodeAt(ct)&&l(rt.charCodeAt(ct+1))?(u=Ge(),De(),e.finishReturnStatement(u)):Dt?e.finishReturnStatement(null):(ae(";")||ae("}")||dt.type===Qu.EOF||(u=Ge()),De(),e.finishReturnStatement(u))}function du(e){var u,t;return at&&Z(nt.StrictModeWith),re("with"),ne("("),u=Ge(),ne(")"),t=wu(),e.finishWithStatement(u,t)}function mu(){var e,u,t=[],n=new _;for(se("default")?(W(),e=null):(re("case"),e=Ge()),ne(":");Et>pt&&!(ae("}")||se("default")||se("case"));)u=Xe(),t.push(u);return n.finishSwitchCase(e,t)}function Bu(e){var u,t,n,i,r;if(re("switch"),ne("("),u=Ge(),ne(")"),ne("{"),t=[],ae("}"))return W(),e.finishSwitchStatement(u,t);for(i=mt.inSwitch,mt.inSwitch=!0,r=!1;Et>pt&&!ae("}");)n=mu(),null===n.test&&(r&&Q(nt.MultipleDefaultsInSwitch),r=!0),t.push(n);return mt.inSwitch=i,ne("}"),e.finishSwitchStatement(u,t)}function yu(e){var u;return re("throw"),Dt&&Q(nt.NewlineAfterThrow),u=Ge(),De(),e.finishThrowStatement(u)}function gu(){var e,u,t,n,i=[],r={},a=new _;for(re("catch"),ne("("),ae(")")&&ue(dt),e=Fe(i),t=0;t<i.length;t++)u="$"+i[t].value,Object.prototype.hasOwnProperty.call(r,u)&&Z(nt.DuplicateBinding,i[t].value),r[u]=!0;return at&&h(e.name)&&Z(nt.StrictCatchVariable),ne(")"),n=Qe(),a.finishCatchClause(e,n)}function Su(e){var u,t=null,n=null;return re("try"),u=Qe(),se("catch")&&(t=gu()),se("finally")&&(W(),n=Qe()),t||n||Q(nt.NoCatchOrFinally),e.finishTryStatement(u,t,n)}function vu(e){return re("debugger"),De(),e.finishDebuggerStatement()}function wu(){var e,u,t,n,i=dt.type;if(i===Qu.EOF&&ue(dt),i===Qu.Punctuator&&"{"===dt.value)return Qe();if(gt=yt=!0,n=new _,i===Qu.Punctuator)switch(dt.value){case";":return Du(n);case"(":return cu(n)}else if(i===Qu.Keyword)switch(dt.value){case"break":return Au(n);case"continue":return Fu(n);case"debugger":return vu(n);case"do":return hu(n);case"for":return Cu(n);case"function":return Pu(n);case"if":return fu(n);case"return":return Eu(n);case"switch":return Bu(n);case"throw":return yu(n);case"try":return Su(n);case"var":return tu(n);case"while":return pu(n);case"with":return du(n)}return e=Ge(),e.type===ut.Identifier&&ae(":")?(W(),t="$"+e.name,Object.prototype.hasOwnProperty.call(mt.labelSet,t)&&Q(nt.Redeclaration,"Label",e.name),mt.labelSet[t]=!0,u=wu(),delete mt.labelSet[t],n.finishLabeledStatement(e,u)):(De(),n.finishExpressionStatement(e))}function xu(){var e,u,t,n,i,r,a,s,o=[],l=new _;for(ne("{");Et>pt&&dt.type===Qu.StringLiteral&&(u=dt,e=Xe(),o.push(e),e.expression.type===ut.Literal);)t=rt.slice(u.start+1,u.end-1),"use strict"===t?(at=!0,n&&te(n,nt.StrictOctalLiteral)):!n&&u.octal&&(n=u);for(i=mt.labelSet,r=mt.inIteration,a=mt.inSwitch,s=mt.inFunctionBody,mt.labelSet={},mt.inIteration=!1,mt.inSwitch=!1,mt.inFunctionBody=!0;Et>pt&&!ae("}");)o.push(Xe());return ne("}"),mt.labelSet=i,mt.inIteration=r,mt.inSwitch=a,mt.inFunctionBody=s,l.finishBlockStatement(o)}function bu(e,u,t){var n="$"+t;at?(h(t)&&(e.stricted=u,e.message=nt.StrictParamName),Object.prototype.hasOwnProperty.call(e.paramSet,n)&&(e.stricted=u,e.message=nt.StrictParamDupe)):e.firstRestricted||(h(t)?(e.firstRestricted=u,e.message=nt.StrictParamName):f(t)?(e.firstRestricted=u,e.message=nt.StrictReservedWord):Object.prototype.hasOwnProperty.call(e.paramSet,n)&&(e.stricted=u,e.message=nt.StrictParamDupe)),e.paramSet[n]=!0}function ku(e){var u,t,n,i,r=[];if(u=dt,"..."===u.value)return t=lu(r),bu(e,t.argument,t.argument.name),e.params.push(t),e.defaults.push(null),!1;for(t=Ae(r),n=0;n<r.length;n++)bu(e,r[n],r[n].value);return t.type===ut.AssignmentPattern&&(i=t.right,t=t.left,++e.defaultCount),e.params.push(t),e.defaults.push(i),!ae(")")}function Iu(e){var u;if(u={params:[],defaultCount:0,defaults:[],firstRestricted:e},ne("("),!ae(")"))for(u.paramSet={};Et>pt&&ku(u);)ne(",");return ne(")"),0===u.defaultCount&&(u.defaults=[]),{params:u.params,defaults:u.defaults,stricted:u.stricted,firstRestricted:u.firstRestricted,message:u.message}}function Pu(e,u){var t,n,i,r,a,s,o,l,D,c=null,p=[],C=[];return D=mt.allowYield,re("function"),l=ae("*"),l&&W(),u&&ae("(")||(n=dt,c=Ze(),at?h(n.value)&&te(n,nt.StrictFunctionName):h(n.value)?(a=n,s=nt.StrictFunctionName):f(n.value)&&(a=n,s=nt.StrictReservedWord)),mt.allowYield=!l,r=Iu(a),p=r.params,C=r.defaults,i=r.stricted,a=r.firstRestricted,r.message&&(s=r.message),o=at,t=xu(),at&&a&&ue(a,s),at&&i&&te(i,s),at=o,mt.allowYield=D,e.finishFunctionDeclaration(c,p,C,t,l)}function Lu(){var e,u,t,n,i,r,a,s,o,l=null,D=[],c=[],p=new _;return o=mt.allowYield,re("function"),s=ae("*"),s&&W(),mt.allowYield=!s,ae("(")||(e=dt,l=at||s||!se("yield")?Ze():Le(),at?h(e.value)&&te(e,nt.StrictFunctionName):h(e.value)?(t=e,n=nt.StrictFunctionName):f(e.value)&&(t=e,n=nt.StrictReservedWord)),i=Iu(t),D=i.params,c=i.defaults,u=i.stricted,t=i.firstRestricted,i.message&&(n=i.message),a=at,r=xu(),at&&t&&ue(t,n),at&&u&&te(u,n),at=a,mt.allowYield=o,p.finishFunctionExpression(l,D,c,r,s)}function Tu(){var e,u,t,n,i,r,a,s=!1;for(e=new _,ne("{"),n=[];!ae("}");)ae(";")?W():(i=new _,u=dt,t=!1,r=ae("["),ae("*")?W():(a=Be(),"static"===a.name&&(ye()||ae("*"))&&(u=dt,t=!0,r=ae("["),ae("*")?W():a=Be())),i=ge(u,a,r,i),i?(i["static"]=t,"init"===i.kind&&(i.kind="method"),t?i.computed||"prototype"!==(i.key.name||i.key.value.toString())||ue(u,nt.StaticPrototype):i.computed||"constructor"!==(i.key.name||i.key.value.toString())||(("method"!==i.kind||!i.method||i.value.generator)&&ue(u,nt.ConstructorSpecialMethod),s?ue(u,nt.DuplicateConstructor):s=!0,i.kind="constructor"),i.type=ut.MethodDefinition,delete i.method,delete i.shorthand,n.push(i)):ue(dt));return W(),e.finishClassBody(n)}function Nu(e){var u,t=null,n=null,i=new _,r=at;return at=!0,re("class"),e&&dt.type!==Qu.Identifier||(t=Ze()),se("extends")&&(W(),n=ce(Re)),u=Tu(),at=r,i.finishClassDeclaration(t,n,u)}function Ou(){var e,u=null,t=null,n=new _,i=at;return at=!0,re("class"),dt.type===Qu.Identifier&&(u=Ze()),se("extends")&&(W(),t=ce(Re)),e=Tu(),at=i,n.finishClassExpression(u,t,e)}function Ru(){var e=new _;return dt.type!==Qu.StringLiteral&&Q(nt.InvalidModuleSpecifier),e.finishLiteral(W())}function Uu(){var e,u,t,n=new _;return se("default")?(t=new _,W(),u=t.finishIdentifier("default")):u=Ze(),oe("as")&&(W(),e=Le()),n.finishExportSpecifier(u,e)}function Yu(e){var u,t=null,n=null,i=[];if(dt.type===Qu.Keyword)switch(dt.value){case"let":case"const":return t=ou({inFor:!1}),e.finishExportNamedDeclaration(t,i,null);case"var":case"class":case"function":return t=Xe(),e.finishExportNamedDeclaration(t,i,null)}for(ne("{");!ae("}")&&(u=u||se("default"),i.push(Uu()),ae("}")||(ne(","),!ae("}"))););return ne("}"),oe("from")?(W(),n=Ru(),De()):u?Q(dt.value?nt.UnexpectedToken:nt.MissingFromClause,dt.value):De(),e.finishExportNamedDeclaration(t,i,n)}function Mu(e){var u=null,t=null;return re("default"),se("function")?(u=Pu(new _,!0),e.finishExportDefaultDeclaration(u)):se("class")?(u=Nu(!0),e.finishExportDefaultDeclaration(u)):(oe("from")&&Q(nt.UnexpectedToken,dt.value),t=ae("{")?ve():ae("[")?Ee():$e(),De(),e.finishExportDefaultDeclaration(t))}function ju(e){var u;return ne("*"),oe("from")||Q(dt.value?nt.UnexpectedToken:nt.MissingFromClause,dt.value),W(),u=Ru(),De(),e.finishExportAllDeclaration(u)}function Vu(){var e=new _;return mt.inFunctionBody&&Q(nt.IllegalExportDeclaration),re("export"),se("default")?Mu(e):ae("*")?ju(e):Yu(e)}function Wu(){var e,u,t=new _;return u=Le(),oe("as")&&(W(),e=Ze()),t.finishImportSpecifier(e,u)}function Hu(){var e=[];for(ne("{");!ae("}")&&(e.push(Wu()),ae("}")||(ne(","),!ae("}"))););return ne("}"),e}function Ku(){var e,u=new _;return e=Le(),u.finishImportDefaultSpecifier(e)}function qu(){var e,u=new _;return ne("*"),oe("as")||Q(nt.NoAsAfterImportNamespace),W(),e=Le(),u.finishImportNamespaceSpecifier(e)}function zu(){var e,u=[],t=new _;return mt.inFunctionBody&&Q(nt.IllegalImportDeclaration),re("import"),dt.type===Qu.StringLiteral?e=Ru():(ae("{")?u=u.concat(Hu()):ae("*")?u.push(qu()):Y(dt)&&!se("default")?(u.push(Ku()),ae(",")&&(W(),ae("*")?u.push(qu()):ae("{")?u=u.concat(Hu()):ue(dt))):ue(W()),oe("from")||Q(dt.value?nt.UnexpectedToken:nt.MissingFromClause,dt.value),W(),e=Ru()),De(),t.finishImportDeclaration(u,e)}function _u(){for(var e,u,t,n,i=[];Et>pt&&(u=dt,u.type===Qu.StringLiteral)&&(e=Xe(),i.push(e),e.expression.type===ut.Literal);)t=rt.slice(u.start+1,u.end-1),"use strict"===t?(at=!0,n&&te(n,nt.StrictOctalLiteral)):!n&&u.octal&&(n=u);for(;Et>pt&&(e=Xe(),"undefined"!=typeof e);)i.push(e);return i}function $u(){var e,u;return H(),u=new _,e=_u(),u.finishProgram(e,mt.sourceType)}function Gu(){var e,u,t,n=[];for(e=0;e<Bt.tokens.length;++e)u=Bt.tokens[e],t={type:u.type,value:u.value},u.regex&&(t.regex={pattern:u.regex.pattern,flags:u.regex.flags}),Bt.range&&(t.range=u.range),Bt.loc&&(t.loc=u.loc),n.push(t);Bt.tokens=n}function Xu(e,u,t){var n,i;n=String,"string"==typeof e||e instanceof String||(e=n(e)),rt=e,st=0,ot=rt.length>0?1:0,lt=0,pt=st,Ct=ot,Ft=lt,Et=rt.length,dt=null,mt={allowIn:!0,allowYield:!0,labelSet:{},inFunctionBody:!1,inIteration:!1,inSwitch:!1,lastCommentStart:-1,curlyStack:[]},Bt={},u=u||{},u.tokens=!0,Bt.tokens=[],Bt.tokenValues=[],Bt.tokenize=!0,Bt.delegate=t,Bt.openParenToken=-1,Bt.openCurlyToken=-1,Bt.range="boolean"==typeof u.range&&u.range,Bt.loc="boolean"==typeof u.loc&&u.loc,"boolean"==typeof u.comment&&u.comment&&(Bt.comments=[]),"boolean"==typeof u.tolerant&&u.tolerant&&(Bt.errors=[]);try{if(H(),dt.type===Qu.EOF)return Bt.tokens;for(W();dt.type!==Qu.EOF;)try{W()}catch(r){if(Bt.errors){G(r);break}throw r}i=Bt.tokens,"undefined"!=typeof Bt.errors&&(i.errors=Bt.errors)}catch(a){throw a}finally{Bt={}}return i}function Ju(e,u){var t,n;n=String,"string"==typeof e||e instanceof String||(e=n(e)),rt=e,st=0,ot=rt.length>0?1:0,lt=0,pt=st,Ct=ot,Ft=lt,Et=rt.length,dt=null,mt={allowIn:!0,allowYield:!0,labelSet:{},inFunctionBody:!1,inIteration:!1,inSwitch:!1,lastCommentStart:-1,curlyStack:[],sourceType:"script"},at=!1,Bt={},"undefined"!=typeof u&&(Bt.range="boolean"==typeof u.range&&u.range,Bt.loc="boolean"==typeof u.loc&&u.loc,Bt.attachComment="boolean"==typeof u.attachComment&&u.attachComment,Bt.loc&&null!==u.source&&void 0!==u.source&&(Bt.source=n(u.source)),"boolean"==typeof u.tokens&&u.tokens&&(Bt.tokens=[]),"boolean"==typeof u.comment&&u.comment&&(Bt.comments=[]),"boolean"==typeof u.tolerant&&u.tolerant&&(Bt.errors=[]),Bt.attachComment&&(Bt.range=!0,Bt.comments=[],Bt.bottomRightStack=[],Bt.trailingComments=[],Bt.leadingComments=[]),"module"===u.sourceType&&(mt.sourceType=u.sourceType,at=!0));try{t=$u(),"undefined"!=typeof Bt.comments&&(t.comments=Bt.comments),"undefined"!=typeof Bt.tokens&&(Gu(),t.tokens=Bt.tokens),"undefined"!=typeof Bt.errors&&(t.errors=Bt.errors)}catch(i){throw i}finally{Bt={}}return t}var Qu,Zu,et,ut,tt,nt,it,rt,at,st,ot,lt,Dt,ct,ft,ht,pt,Ct,Ft,At,Et,dt,mt,Bt,yt,gt,St;Qu={BooleanLiteral:1,EOF:2,Identifier:3,Keyword:4,NullLiteral:5,NumericLiteral:6,Punctuator:7,StringLiteral:8,RegularExpression:9,Template:10},Zu={},Zu[Qu.BooleanLiteral]="Boolean",Zu[Qu.EOF]="<end>",Zu[Qu.Identifier]="Identifier",Zu[Qu.Keyword]="Keyword",Zu[Qu.NullLiteral]="Null",Zu[Qu.NumericLiteral]="Numeric",Zu[Qu.Punctuator]="Punctuator",Zu[Qu.StringLiteral]="String",Zu[Qu.RegularExpression]="RegularExpression",Zu[Qu.Template]="Template",et=["(","{","[","in","typeof","instanceof","new","return","case","delete","throw","void","=","+=","-=","*=","/=","%=","<<=",">>=",">>>=","&=","|=","^=",",","+","-","*","/","%","++","--","<<",">>",">>>","&","|","^","!","~","&&","||","?",":","===","==",">=","<=","<",">","!=","!=="],ut={AssignmentExpression:"AssignmentExpression",AssignmentPattern:"AssignmentPattern",ArrayExpression:"ArrayExpression",ArrayPattern:"ArrayPattern",ArrowFunctionExpression:"ArrowFunctionExpression",BlockStatement:"BlockStatement",BinaryExpression:"BinaryExpression",BreakStatement:"BreakStatement",CallExpression:"CallExpression",CatchClause:"CatchClause",ClassBody:"ClassBody",ClassDeclaration:"ClassDeclaration",ClassExpression:"ClassExpression",ConditionalExpression:"ConditionalExpression",ContinueStatement:"ContinueStatement",DoWhileStatement:"DoWhileStatement",DebuggerStatement:"DebuggerStatement",EmptyStatement:"EmptyStatement",ExportAllDeclaration:"ExportAllDeclaration",ExportDefaultDeclaration:"ExportDefaultDeclaration",ExportNamedDeclaration:"ExportNamedDeclaration",ExportSpecifier:"ExportSpecifier",ExpressionStatement:"ExpressionStatement",ForStatement:"ForStatement",ForOfStatement:"ForOfStatement",ForInStatement:"ForInStatement",FunctionDeclaration:"FunctionDeclaration",FunctionExpression:"FunctionExpression",Identifier:"Identifier",IfStatement:"IfStatement",ImportDeclaration:"ImportDeclaration",ImportDefaultSpecifier:"ImportDefaultSpecifier",ImportNamespaceSpecifier:"ImportNamespaceSpecifier",ImportSpecifier:"ImportSpecifier",Literal:"Literal",LabeledStatement:"LabeledStatement",LogicalExpression:"LogicalExpression",MemberExpression:"MemberExpression",MetaProperty:"MetaProperty",MethodDefinition:"MethodDefinition",NewExpression:"NewExpression",ObjectExpression:"ObjectExpression",ObjectPattern:"ObjectPattern",Program:"Program",Property:"Property",RestElement:"RestElement",ReturnStatement:"ReturnStatement",SequenceExpression:"SequenceExpression",SpreadElement:"SpreadElement",Super:"Super",SwitchCase:"SwitchCase",SwitchStatement:"SwitchStatement",TaggedTemplateExpression:"TaggedTemplateExpression",TemplateElement:"TemplateElement",TemplateLiteral:"TemplateLiteral",ThisExpression:"ThisExpression",ThrowStatement:"ThrowStatement",TryStatement:"TryStatement",UnaryExpression:"UnaryExpression",UpdateExpression:"UpdateExpression",VariableDeclaration:"VariableDeclaration",VariableDeclarator:"VariableDeclarator",WhileStatement:"WhileStatement",WithStatement:"WithStatement",YieldExpression:"YieldExpression"},tt={ArrowParameterPlaceHolder:"ArrowParameterPlaceHolder"},nt={UnexpectedToken:"Unexpected token %0",UnexpectedNumber:"Unexpected number",UnexpectedString:"Unexpected string",UnexpectedIdentifier:"Unexpected identifier",UnexpectedReserved:"Unexpected reserved word",UnexpectedTemplate:"Unexpected quasi %0",UnexpectedEOS:"Unexpected end of input",NewlineAfterThrow:"Illegal newline after throw",InvalidRegExp:"Invalid regular expression",UnterminatedRegExp:"Invalid regular expression: missing /",InvalidLHSInAssignment:"Invalid left-hand side in assignment",InvalidLHSInForIn:"Invalid left-hand side in for-in",InvalidLHSInForLoop:"Invalid left-hand side in for-loop",MultipleDefaultsInSwitch:"More than one default clause in switch statement",NoCatchOrFinally:"Missing catch or finally after try",UnknownLabel:"Undefined label '%0'",Redeclaration:"%0 '%1' has already been declared",IllegalContinue:"Illegal continue statement",IllegalBreak:"Illegal break statement",IllegalReturn:"Illegal return statement",StrictModeWith:"Strict mode code may not include a with statement",StrictCatchVariable:"Catch variable may not be eval or arguments in strict mode",StrictVarName:"Variable name may not be eval or arguments in strict mode",StrictParamName:"Parameter name eval or arguments is not allowed in strict mode",StrictParamDupe:"Strict mode function may not have duplicate parameter names",StrictFunctionName:"Function name may not be eval or arguments in strict mode",StrictOctalLiteral:"Octal literals are not allowed in strict mode.",StrictDelete:"Delete of an unqualified identifier in strict mode.",StrictLHSAssignment:"Assignment to eval or arguments is not allowed in strict mode",StrictLHSPostfix:"Postfix increment/decrement may not have eval or arguments operand in strict mode",StrictLHSPrefix:"Prefix increment/decrement may not have eval or arguments operand in strict mode",StrictReservedWord:"Use of future reserved word in strict mode",TemplateOctalLiteral:"Octal literals are not allowed in template strings.",ParameterAfterRestParameter:"Rest parameter must be last formal parameter",DefaultRestParameter:"Unexpected token =",ObjectPatternAsRestParameter:"Unexpected token {",DuplicateProtoProperty:"Duplicate __proto__ fields are not allowed in object literals",ConstructorSpecialMethod:"Class constructor may not be an accessor",DuplicateConstructor:"A class may only have one constructor",StaticPrototype:"Classes may not have static property named prototype",MissingFromClause:"Unexpected token",NoAsAfterImportNamespace:"Unexpected token",InvalidModuleSpecifier:"Unexpected token",IllegalImportDeclaration:"Unexpected token",IllegalExportDeclaration:"Unexpected token",DuplicateBinding:"Duplicate binding %0"},it={NonAsciiIdentifierStart:/[\xAA\xB5\xBA\xC0-\xD6\xD8-\xF6\xF8-\u02C1\u02C6-\u02D1\u02E0-\u02E4\u02EC\u02EE\u0370-\u0374\u0376\u0377\u037A-\u037D\u037F\u0386\u0388-\u038A\u038C\u038E-\u03A1\u03A3-\u03F5\u03F7-\u0481\u048A-\u052F\u0531-\u0556\u0559\u0561-\u0587\u05D0-\u05EA\u05F0-\u05F2\u0620-\u064A\u066E\u066F\u0671-\u06D3\u06D5\u06E5\u06E6\u06EE\u06EF\u06FA-\u06FC\u06FF\u0710\u0712-\u072F\u074D-\u07A5\u07B1\u07CA-\u07EA\u07F4\u07F5\u07FA\u0800-\u0815\u081A\u0824\u0828\u0840-\u0858\u08A0-\u08B2\u0904-\u0939\u093D\u0950\u0958-\u0961\u0971-\u0980\u0985-\u098C\u098F\u0990\u0993-\u09A8\u09AA-\u09B0\u09B2\u09B6-\u09B9\u09BD\u09CE\u09DC\u09DD\u09DF-\u09E1\u09F0\u09F1\u0A05-\u0A0A\u0A0F\u0A10\u0A13-\u0A28\u0A2A-\u0A30\u0A32\u0A33\u0A35\u0A36\u0A38\u0A39\u0A59-\u0A5C\u0A5E\u0A72-\u0A74\u0A85-\u0A8D\u0A8F-\u0A91\u0A93-\u0AA8\u0AAA-\u0AB0\u0AB2\u0AB3\u0AB5-\u0AB9\u0ABD\u0AD0\u0AE0\u0AE1\u0B05-\u0B0C\u0B0F\u0B10\u0B13-\u0B28\u0B2A-\u0B30\u0B32\u0B33\u0B35-\u0B39\u0B3D\u0B5C\u0B5D\u0B5F-\u0B61\u0B71\u0B83\u0B85-\u0B8A\u0B8E-\u0B90\u0B92-\u0B95\u0B99\u0B9A\u0B9C\u0B9E\u0B9F\u0BA3\u0BA4\u0BA8-\u0BAA\u0BAE-\u0BB9\u0BD0\u0C05-\u0C0C\u0C0E-\u0C10\u0C12-\u0C28\u0C2A-\u0C39\u0C3D\u0C58\u0C59\u0C60\u0C61\u0C85-\u0C8C\u0C8E-\u0C90\u0C92-\u0CA8\u0CAA-\u0CB3\u0CB5-\u0CB9\u0CBD\u0CDE\u0CE0\u0CE1\u0CF1\u0CF2\u0D05-\u0D0C\u0D0E-\u0D10\u0D12-\u0D3A\u0D3D\u0D4E\u0D60\u0D61\u0D7A-\u0D7F\u0D85-\u0D96\u0D9A-\u0DB1\u0DB3-\u0DBB\u0DBD\u0DC0-\u0DC6\u0E01-\u0E30\u0E32\u0E33\u0E40-\u0E46\u0E81\u0E82\u0E84\u0E87\u0E88\u0E8A\u0E8D\u0E94-\u0E97\u0E99-\u0E9F\u0EA1-\u0EA3\u0EA5\u0EA7\u0EAA\u0EAB\u0EAD-\u0EB0\u0EB2\u0EB3\u0EBD\u0EC0-\u0EC4\u0EC6\u0EDC-\u0EDF\u0F00\u0F40-\u0F47\u0F49-\u0F6C\u0F88-\u0F8C\u1000-\u102A\u103F\u1050-\u1055\u105A-\u105D\u1061\u1065\u1066\u106E-\u1070\u1075-\u1081\u108E\u10A0-\u10C5\u10C7\u10CD\u10D0-\u10FA\u10FC-\u1248\u124A-\u124D\u1250-\u1256\u1258\u125A-\u125D\u1260-\u1288\u128A-\u128D\u1290-\u12B0\u12B2-\u12B5\u12B8-\u12BE\u12C0\u12C2-\u12C5\u12C8-\u12D6\u12D8-\u1310\u1312-\u1315\u1318-\u135A\u1380-\u138F\u13A0-\u13F4\u1401-\u166C\u166F-\u167F\u1681-\u169A\u16A0-\u16EA\u16EE-\u16F8\u1700-\u170C\u170E-\u1711\u1720-\u1731\u1740-\u1751\u1760-\u176C\u176E-\u1770\u1780-\u17B3\u17D7\u17DC\u1820-\u1877\u1880-\u18A8\u18AA\u18B0-\u18F5\u1900-\u191E\u1950-\u196D\u1970-\u1974\u1980-\u19AB\u19C1-\u19C7\u1A00-\u1A16\u1A20-\u1A54\u1AA7\u1B05-\u1B33\u1B45-\u1B4B\u1B83-\u1BA0\u1BAE\u1BAF\u1BBA-\u1BE5\u1C00-\u1C23\u1C4D-\u1C4F\u1C5A-\u1C7D\u1CE9-\u1CEC\u1CEE-\u1CF1\u1CF5\u1CF6\u1D00-\u1DBF\u1E00-\u1F15\u1F18-\u1F1D\u1F20-\u1F45\u1F48-\u1F4D\u1F50-\u1F57\u1F59\u1F5B\u1F5D\u1F5F-\u1F7D\u1F80-\u1FB4\u1FB6-\u1FBC\u1FBE\u1FC2-\u1FC4\u1FC6-\u1FCC\u1FD0-\u1FD3\u1FD6-\u1FDB\u1FE0-\u1FEC\u1FF2-\u1FF4\u1FF6-\u1FFC\u2071\u207F\u2090-\u209C\u2102\u2107\u210A-\u2113\u2115\u2118-\u211D\u2124\u2126\u2128\u212A-\u2139\u213C-\u213F\u2145-\u2149\u214E\u2160-\u2188\u2C00-\u2C2E\u2C30-\u2C5E\u2C60-\u2CE4\u2CEB-\u2CEE\u2CF2\u2CF3\u2D00-\u2D25\u2D27\u2D2D\u2D30-\u2D67\u2D6F\u2D80-\u2D96\u2DA0-\u2DA6\u2DA8-\u2DAE\u2DB0-\u2DB6\u2DB8-\u2DBE\u2DC0-\u2DC6\u2DC8-\u2DCE\u2DD0-\u2DD6\u2DD8-\u2DDE\u3005-\u3007\u3021-\u3029\u3031-\u3035\u3038-\u303C\u3041-\u3096\u309B-\u309F\u30A1-\u30FA\u30FC-\u30FF\u3105-\u312D\u3131-\u318E\u31A0-\u31BA\u31F0-\u31FF\u3400-\u4DB5\u4E00-\u9FCC\uA000-\uA48C\uA4D0-\uA4FD\uA500-\uA60C\uA610-\uA61F\uA62A\uA62B\uA640-\uA66E\uA67F-\uA69D\uA6A0-\uA6EF\uA717-\uA71F\uA722-\uA788\uA78B-\uA78E\uA790-\uA7AD\uA7B0\uA7B1\uA7F7-\uA801\uA803-\uA805\uA807-\uA80A\uA80C-\uA822\uA840-\uA873\uA882-\uA8B3\uA8F2-\uA8F7\uA8FB\uA90A-\uA925\uA930-\uA946\uA960-\uA97C\uA984-\uA9B2\uA9CF\uA9E0-\uA9E4\uA9E6-\uA9EF\uA9FA-\uA9FE\uAA00-\uAA28\uAA40-\uAA42\uAA44-\uAA4B\uAA60-\uAA76\uAA7A\uAA7E-\uAAAF\uAAB1\uAAB5\uAAB6\uAAB9-\uAABD\uAAC0\uAAC2\uAADB-\uAADD\uAAE0-\uAAEA\uAAF2-\uAAF4\uAB01-\uAB06\uAB09-\uAB0E\uAB11-\uAB16\uAB20-\uAB26\uAB28-\uAB2E\uAB30-\uAB5A\uAB5C-\uAB5F\uAB64\uAB65\uABC0-\uABE2\uAC00-\uD7A3\uD7B0-\uD7C6\uD7CB-\uD7FB\uF900-\uFA6D\uFA70-\uFAD9\uFB00-\uFB06\uFB13-\uFB17\uFB1D\uFB1F-\uFB28\uFB2A-\uFB36\uFB38-\uFB3C\uFB3E\uFB40\uFB41\uFB43\uFB44\uFB46-\uFBB1\uFBD3-\uFD3D\uFD50-\uFD8F\uFD92-\uFDC7\uFDF0-\uFDFB\uFE70-\uFE74\uFE76-\uFEFC\uFF21-\uFF3A\uFF41-\uFF5A\uFF66-\uFFBE\uFFC2-\uFFC7\uFFCA-\uFFCF\uFFD2-\uFFD7\uFFDA-\uFFDC]|\uD800[\uDC00-\uDC0B\uDC0D-\uDC26\uDC28-\uDC3A\uDC3C\uDC3D\uDC3F-\uDC4D\uDC50-\uDC5D\uDC80-\uDCFA\uDD40-\uDD74\uDE80-\uDE9C\uDEA0-\uDED0\uDF00-\uDF1F\uDF30-\uDF4A\uDF50-\uDF75\uDF80-\uDF9D\uDFA0-\uDFC3\uDFC8-\uDFCF\uDFD1-\uDFD5]|\uD801[\uDC00-\uDC9D\uDD00-\uDD27\uDD30-\uDD63\uDE00-\uDF36\uDF40-\uDF55\uDF60-\uDF67]|\uD802[\uDC00-\uDC05\uDC08\uDC0A-\uDC35\uDC37\uDC38\uDC3C\uDC3F-\uDC55\uDC60-\uDC76\uDC80-\uDC9E\uDD00-\uDD15\uDD20-\uDD39\uDD80-\uDDB7\uDDBE\uDDBF\uDE00\uDE10-\uDE13\uDE15-\uDE17\uDE19-\uDE33\uDE60-\uDE7C\uDE80-\uDE9C\uDEC0-\uDEC7\uDEC9-\uDEE4\uDF00-\uDF35\uDF40-\uDF55\uDF60-\uDF72\uDF80-\uDF91]|\uD803[\uDC00-\uDC48]|\uD804[\uDC03-\uDC37\uDC83-\uDCAF\uDCD0-\uDCE8\uDD03-\uDD26\uDD50-\uDD72\uDD76\uDD83-\uDDB2\uDDC1-\uDDC4\uDDDA\uDE00-\uDE11\uDE13-\uDE2B\uDEB0-\uDEDE\uDF05-\uDF0C\uDF0F\uDF10\uDF13-\uDF28\uDF2A-\uDF30\uDF32\uDF33\uDF35-\uDF39\uDF3D\uDF5D-\uDF61]|\uD805[\uDC80-\uDCAF\uDCC4\uDCC5\uDCC7\uDD80-\uDDAE\uDE00-\uDE2F\uDE44\uDE80-\uDEAA]|\uD806[\uDCA0-\uDCDF\uDCFF\uDEC0-\uDEF8]|\uD808[\uDC00-\uDF98]|\uD809[\uDC00-\uDC6E]|[\uD80C\uD840-\uD868\uD86A-\uD86C][\uDC00-\uDFFF]|\uD80D[\uDC00-\uDC2E]|\uD81A[\uDC00-\uDE38\uDE40-\uDE5E\uDED0-\uDEED\uDF00-\uDF2F\uDF40-\uDF43\uDF63-\uDF77\uDF7D-\uDF8F]|\uD81B[\uDF00-\uDF44\uDF50\uDF93-\uDF9F]|\uD82C[\uDC00\uDC01]|\uD82F[\uDC00-\uDC6A\uDC70-\uDC7C\uDC80-\uDC88\uDC90-\uDC99]|\uD835[\uDC00-\uDC54\uDC56-\uDC9C\uDC9E\uDC9F\uDCA2\uDCA5\uDCA6\uDCA9-\uDCAC\uDCAE-\uDCB9\uDCBB\uDCBD-\uDCC3\uDCC5-\uDD05\uDD07-\uDD0A\uDD0D-\uDD14\uDD16-\uDD1C\uDD1E-\uDD39\uDD3B-\uDD3E\uDD40-\uDD44\uDD46\uDD4A-\uDD50\uDD52-\uDEA5\uDEA8-\uDEC0\uDEC2-\uDEDA\uDEDC-\uDEFA\uDEFC-\uDF14\uDF16-\uDF34\uDF36-\uDF4E\uDF50-\uDF6E\uDF70-\uDF88\uDF8A-\uDFA8\uDFAA-\uDFC2\uDFC4-\uDFCB]|\uD83A[\uDC00-\uDCC4]|\uD83B[\uDE00-\uDE03\uDE05-\uDE1F\uDE21\uDE22\uDE24\uDE27\uDE29-\uDE32\uDE34-\uDE37\uDE39\uDE3B\uDE42\uDE47\uDE49\uDE4B\uDE4D-\uDE4F\uDE51\uDE52\uDE54\uDE57\uDE59\uDE5B\uDE5D\uDE5F\uDE61\uDE62\uDE64\uDE67-\uDE6A\uDE6C-\uDE72\uDE74-\uDE77\uDE79-\uDE7C\uDE7E\uDE80-\uDE89\uDE8B-\uDE9B\uDEA1-\uDEA3\uDEA5-\uDEA9\uDEAB-\uDEBB]|\uD869[\uDC00-\uDED6\uDF00-\uDFFF]|\uD86D[\uDC00-\uDF34\uDF40-\uDFFF]|\uD86E[\uDC00-\uDC1D]|\uD87E[\uDC00-\uDE1D]/,NonAsciiIdentifierPart:/[\xAA\xB5\xB7\xBA\xC0-\xD6\xD8-\xF6\xF8-\u02C1\u02C6-\u02D1\u02E0-\u02E4\u02EC\u02EE\u0300-\u0374\u0376\u0377\u037A-\u037D\u037F\u0386-\u038A\u038C\u038E-\u03A1\u03A3-\u03F5\u03F7-\u0481\u0483-\u0487\u048A-\u052F\u0531-\u0556\u0559\u0561-\u0587\u0591-\u05BD\u05BF\u05C1\u05C2\u05C4\u05C5\u05C7\u05D0-\u05EA\u05F0-\u05F2\u0610-\u061A\u0620-\u0669\u066E-\u06D3\u06D5-\u06DC\u06DF-\u06E8\u06EA-\u06FC\u06FF\u0710-\u074A\u074D-\u07B1\u07C0-\u07F5\u07FA\u0800-\u082D\u0840-\u085B\u08A0-\u08B2\u08E4-\u0963\u0966-\u096F\u0971-\u0983\u0985-\u098C\u098F\u0990\u0993-\u09A8\u09AA-\u09B0\u09B2\u09B6-\u09B9\u09BC-\u09C4\u09C7\u09C8\u09CB-\u09CE\u09D7\u09DC\u09DD\u09DF-\u09E3\u09E6-\u09F1\u0A01-\u0A03\u0A05-\u0A0A\u0A0F\u0A10\u0A13-\u0A28\u0A2A-\u0A30\u0A32\u0A33\u0A35\u0A36\u0A38\u0A39\u0A3C\u0A3E-\u0A42\u0A47\u0A48\u0A4B-\u0A4D\u0A51\u0A59-\u0A5C\u0A5E\u0A66-\u0A75\u0A81-\u0A83\u0A85-\u0A8D\u0A8F-\u0A91\u0A93-\u0AA8\u0AAA-\u0AB0\u0AB2\u0AB3\u0AB5-\u0AB9\u0ABC-\u0AC5\u0AC7-\u0AC9\u0ACB-\u0ACD\u0AD0\u0AE0-\u0AE3\u0AE6-\u0AEF\u0B01-\u0B03\u0B05-\u0B0C\u0B0F\u0B10\u0B13-\u0B28\u0B2A-\u0B30\u0B32\u0B33\u0B35-\u0B39\u0B3C-\u0B44\u0B47\u0B48\u0B4B-\u0B4D\u0B56\u0B57\u0B5C\u0B5D\u0B5F-\u0B63\u0B66-\u0B6F\u0B71\u0B82\u0B83\u0B85-\u0B8A\u0B8E-\u0B90\u0B92-\u0B95\u0B99\u0B9A\u0B9C\u0B9E\u0B9F\u0BA3\u0BA4\u0BA8-\u0BAA\u0BAE-\u0BB9\u0BBE-\u0BC2\u0BC6-\u0BC8\u0BCA-\u0BCD\u0BD0\u0BD7\u0BE6-\u0BEF\u0C00-\u0C03\u0C05-\u0C0C\u0C0E-\u0C10\u0C12-\u0C28\u0C2A-\u0C39\u0C3D-\u0C44\u0C46-\u0C48\u0C4A-\u0C4D\u0C55\u0C56\u0C58\u0C59\u0C60-\u0C63\u0C66-\u0C6F\u0C81-\u0C83\u0C85-\u0C8C\u0C8E-\u0C90\u0C92-\u0CA8\u0CAA-\u0CB3\u0CB5-\u0CB9\u0CBC-\u0CC4\u0CC6-\u0CC8\u0CCA-\u0CCD\u0CD5\u0CD6\u0CDE\u0CE0-\u0CE3\u0CE6-\u0CEF\u0CF1\u0CF2\u0D01-\u0D03\u0D05-\u0D0C\u0D0E-\u0D10\u0D12-\u0D3A\u0D3D-\u0D44\u0D46-\u0D48\u0D4A-\u0D4E\u0D57\u0D60-\u0D63\u0D66-\u0D6F\u0D7A-\u0D7F\u0D82\u0D83\u0D85-\u0D96\u0D9A-\u0DB1\u0DB3-\u0DBB\u0DBD\u0DC0-\u0DC6\u0DCA\u0DCF-\u0DD4\u0DD6\u0DD8-\u0DDF\u0DE6-\u0DEF\u0DF2\u0DF3\u0E01-\u0E3A\u0E40-\u0E4E\u0E50-\u0E59\u0E81\u0E82\u0E84\u0E87\u0E88\u0E8A\u0E8D\u0E94-\u0E97\u0E99-\u0E9F\u0EA1-\u0EA3\u0EA5\u0EA7\u0EAA\u0EAB\u0EAD-\u0EB9\u0EBB-\u0EBD\u0EC0-\u0EC4\u0EC6\u0EC8-\u0ECD\u0ED0-\u0ED9\u0EDC-\u0EDF\u0F00\u0F18\u0F19\u0F20-\u0F29\u0F35\u0F37\u0F39\u0F3E-\u0F47\u0F49-\u0F6C\u0F71-\u0F84\u0F86-\u0F97\u0F99-\u0FBC\u0FC6\u1000-\u1049\u1050-\u109D\u10A0-\u10C5\u10C7\u10CD\u10D0-\u10FA\u10FC-\u1248\u124A-\u124D\u1250-\u1256\u1258\u125A-\u125D\u1260-\u1288\u128A-\u128D\u1290-\u12B0\u12B2-\u12B5\u12B8-\u12BE\u12C0\u12C2-\u12C5\u12C8-\u12D6\u12D8-\u1310\u1312-\u1315\u1318-\u135A\u135D-\u135F\u1369-\u1371\u1380-\u138F\u13A0-\u13F4\u1401-\u166C\u166F-\u167F\u1681-\u169A\u16A0-\u16EA\u16EE-\u16F8\u1700-\u170C\u170E-\u1714\u1720-\u1734\u1740-\u1753\u1760-\u176C\u176E-\u1770\u1772\u1773\u1780-\u17D3\u17D7\u17DC\u17DD\u17E0-\u17E9\u180B-\u180D\u1810-\u1819\u1820-\u1877\u1880-\u18AA\u18B0-\u18F5\u1900-\u191E\u1920-\u192B\u1930-\u193B\u1946-\u196D\u1970-\u1974\u1980-\u19AB\u19B0-\u19C9\u19D0-\u19DA\u1A00-\u1A1B\u1A20-\u1A5E\u1A60-\u1A7C\u1A7F-\u1A89\u1A90-\u1A99\u1AA7\u1AB0-\u1ABD\u1B00-\u1B4B\u1B50-\u1B59\u1B6B-\u1B73\u1B80-\u1BF3\u1C00-\u1C37\u1C40-\u1C49\u1C4D-\u1C7D\u1CD0-\u1CD2\u1CD4-\u1CF6\u1CF8\u1CF9\u1D00-\u1DF5\u1DFC-\u1F15\u1F18-\u1F1D\u1F20-\u1F45\u1F48-\u1F4D\u1F50-\u1F57\u1F59\u1F5B\u1F5D\u1F5F-\u1F7D\u1F80-\u1FB4\u1FB6-\u1FBC\u1FBE\u1FC2-\u1FC4\u1FC6-\u1FCC\u1FD0-\u1FD3\u1FD6-\u1FDB\u1FE0-\u1FEC\u1FF2-\u1FF4\u1FF6-\u1FFC\u200C\u200D\u203F\u2040\u2054\u2071\u207F\u2090-\u209C\u20D0-\u20DC\u20E1\u20E5-\u20F0\u2102\u2107\u210A-\u2113\u2115\u2118-\u211D\u2124\u2126\u2128\u212A-\u2139\u213C-\u213F\u2145-\u2149\u214E\u2160-\u2188\u2C00-\u2C2E\u2C30-\u2C5E\u2C60-\u2CE4\u2CEB-\u2CF3\u2D00-\u2D25\u2D27\u2D2D\u2D30-\u2D67\u2D6F\u2D7F-\u2D96\u2DA0-\u2DA6\u2DA8-\u2DAE\u2DB0-\u2DB6\u2DB8-\u2DBE\u2DC0-\u2DC6\u2DC8-\u2DCE\u2DD0-\u2DD6\u2DD8-\u2DDE\u2DE0-\u2DFF\u3005-\u3007\u3021-\u302F\u3031-\u3035\u3038-\u303C\u3041-\u3096\u3099-\u309F\u30A1-\u30FA\u30FC-\u30FF\u3105-\u312D\u3131-\u318E\u31A0-\u31BA\u31F0-\u31FF\u3400-\u4DB5\u4E00-\u9FCC\uA000-\uA48C\uA4D0-\uA4FD\uA500-\uA60C\uA610-\uA62B\uA640-\uA66F\uA674-\uA67D\uA67F-\uA69D\uA69F-\uA6F1\uA717-\uA71F\uA722-\uA788\uA78B-\uA78E\uA790-\uA7AD\uA7B0\uA7B1\uA7F7-\uA827\uA840-\uA873\uA880-\uA8C4\uA8D0-\uA8D9\uA8E0-\uA8F7\uA8FB\uA900-\uA92D\uA930-\uA953\uA960-\uA97C\uA980-\uA9C0\uA9CF-\uA9D9\uA9E0-\uA9FE\uAA00-\uAA36\uAA40-\uAA4D\uAA50-\uAA59\uAA60-\uAA76\uAA7A-\uAAC2\uAADB-\uAADD\uAAE0-\uAAEF\uAAF2-\uAAF6\uAB01-\uAB06\uAB09-\uAB0E\uAB11-\uAB16\uAB20-\uAB26\uAB28-\uAB2E\uAB30-\uAB5A\uAB5C-\uAB5F\uAB64\uAB65\uABC0-\uABEA\uABEC\uABED\uABF0-\uABF9\uAC00-\uD7A3\uD7B0-\uD7C6\uD7CB-\uD7FB\uF900-\uFA6D\uFA70-\uFAD9\uFB00-\uFB06\uFB13-\uFB17\uFB1D-\uFB28\uFB2A-\uFB36\uFB38-\uFB3C\uFB3E\uFB40\uFB41\uFB43\uFB44\uFB46-\uFBB1\uFBD3-\uFD3D\uFD50-\uFD8F\uFD92-\uFDC7\uFDF0-\uFDFB\uFE00-\uFE0F\uFE20-\uFE2D\uFE33\uFE34\uFE4D-\uFE4F\uFE70-\uFE74\uFE76-\uFEFC\uFF10-\uFF19\uFF21-\uFF3A\uFF3F\uFF41-\uFF5A\uFF66-\uFFBE\uFFC2-\uFFC7\uFFCA-\uFFCF\uFFD2-\uFFD7\uFFDA-\uFFDC]|\uD800[\uDC00-\uDC0B\uDC0D-\uDC26\uDC28-\uDC3A\uDC3C\uDC3D\uDC3F-\uDC4D\uDC50-\uDC5D\uDC80-\uDCFA\uDD40-\uDD74\uDDFD\uDE80-\uDE9C\uDEA0-\uDED0\uDEE0\uDF00-\uDF1F\uDF30-\uDF4A\uDF50-\uDF7A\uDF80-\uDF9D\uDFA0-\uDFC3\uDFC8-\uDFCF\uDFD1-\uDFD5]|\uD801[\uDC00-\uDC9D\uDCA0-\uDCA9\uDD00-\uDD27\uDD30-\uDD63\uDE00-\uDF36\uDF40-\uDF55\uDF60-\uDF67]|\uD802[\uDC00-\uDC05\uDC08\uDC0A-\uDC35\uDC37\uDC38\uDC3C\uDC3F-\uDC55\uDC60-\uDC76\uDC80-\uDC9E\uDD00-\uDD15\uDD20-\uDD39\uDD80-\uDDB7\uDDBE\uDDBF\uDE00-\uDE03\uDE05\uDE06\uDE0C-\uDE13\uDE15-\uDE17\uDE19-\uDE33\uDE38-\uDE3A\uDE3F\uDE60-\uDE7C\uDE80-\uDE9C\uDEC0-\uDEC7\uDEC9-\uDEE6\uDF00-\uDF35\uDF40-\uDF55\uDF60-\uDF72\uDF80-\uDF91]|\uD803[\uDC00-\uDC48]|\uD804[\uDC00-\uDC46\uDC66-\uDC6F\uDC7F-\uDCBA\uDCD0-\uDCE8\uDCF0-\uDCF9\uDD00-\uDD34\uDD36-\uDD3F\uDD50-\uDD73\uDD76\uDD80-\uDDC4\uDDD0-\uDDDA\uDE00-\uDE11\uDE13-\uDE37\uDEB0-\uDEEA\uDEF0-\uDEF9\uDF01-\uDF03\uDF05-\uDF0C\uDF0F\uDF10\uDF13-\uDF28\uDF2A-\uDF30\uDF32\uDF33\uDF35-\uDF39\uDF3C-\uDF44\uDF47\uDF48\uDF4B-\uDF4D\uDF57\uDF5D-\uDF63\uDF66-\uDF6C\uDF70-\uDF74]|\uD805[\uDC80-\uDCC5\uDCC7\uDCD0-\uDCD9\uDD80-\uDDB5\uDDB8-\uDDC0\uDE00-\uDE40\uDE44\uDE50-\uDE59\uDE80-\uDEB7\uDEC0-\uDEC9]|\uD806[\uDCA0-\uDCE9\uDCFF\uDEC0-\uDEF8]|\uD808[\uDC00-\uDF98]|\uD809[\uDC00-\uDC6E]|[\uD80C\uD840-\uD868\uD86A-\uD86C][\uDC00-\uDFFF]|\uD80D[\uDC00-\uDC2E]|\uD81A[\uDC00-\uDE38\uDE40-\uDE5E\uDE60-\uDE69\uDED0-\uDEED\uDEF0-\uDEF4\uDF00-\uDF36\uDF40-\uDF43\uDF50-\uDF59\uDF63-\uDF77\uDF7D-\uDF8F]|\uD81B[\uDF00-\uDF44\uDF50-\uDF7E\uDF8F-\uDF9F]|\uD82C[\uDC00\uDC01]|\uD82F[\uDC00-\uDC6A\uDC70-\uDC7C\uDC80-\uDC88\uDC90-\uDC99\uDC9D\uDC9E]|\uD834[\uDD65-\uDD69\uDD6D-\uDD72\uDD7B-\uDD82\uDD85-\uDD8B\uDDAA-\uDDAD\uDE42-\uDE44]|\uD835[\uDC00-\uDC54\uDC56-\uDC9C\uDC9E\uDC9F\uDCA2\uDCA5\uDCA6\uDCA9-\uDCAC\uDCAE-\uDCB9\uDCBB\uDCBD-\uDCC3\uDCC5-\uDD05\uDD07-\uDD0A\uDD0D-\uDD14\uDD16-\uDD1C\uDD1E-\uDD39\uDD3B-\uDD3E\uDD40-\uDD44\uDD46\uDD4A-\uDD50\uDD52-\uDEA5\uDEA8-\uDEC0\uDEC2-\uDEDA\uDEDC-\uDEFA\uDEFC-\uDF14\uDF16-\uDF34\uDF36-\uDF4E\uDF50-\uDF6E\uDF70-\uDF88\uDF8A-\uDFA8\uDFAA-\uDFC2\uDFC4-\uDFCB\uDFCE-\uDFFF]|\uD83A[\uDC00-\uDCC4\uDCD0-\uDCD6]|\uD83B[\uDE00-\uDE03\uDE05-\uDE1F\uDE21\uDE22\uDE24\uDE27\uDE29-\uDE32\uDE34-\uDE37\uDE39\uDE3B\uDE42\uDE47\uDE49\uDE4B\uDE4D-\uDE4F\uDE51\uDE52\uDE54\uDE57\uDE59\uDE5B\uDE5D\uDE5F\uDE61\uDE62\uDE64\uDE67-\uDE6A\uDE6C-\uDE72\uDE74-\uDE77\uDE79-\uDE7C\uDE7E\uDE80-\uDE89\uDE8B-\uDE9B\uDEA1-\uDEA3\uDEA5-\uDEA9\uDEAB-\uDEBB]|\uD869[\uDC00-\uDED6\uDF00-\uDFFF]|\uD86D[\uDC00-\uDF34\uDF40-\uDFFF]|\uD86E[\uDC00-\uDC1D]|\uD87E[\uDC00-\uDE1D]|\uDB40[\uDD00-\uDDEF]/},$.prototype=_.prototype={processComment:function(){var e,u,t,n,i,r,a=Bt.bottomRightStack,s=a[a.length-1];if(!(this.type===ut.Program&&this.body.length>0)){if(this.type===ut.BlockStatement&&0===this.body.length){for(u=[],i=Bt.leadingComments.length-1;i>=0;--i)r=Bt.leadingComments[i],this.range[1]>=r.range[1]&&(u.unshift(r),Bt.leadingComments.splice(i,1),Bt.trailingComments.splice(i,1));if(u.length)return void(this.innerComments=u)}if(Bt.trailingComments.length>0){for(n=[],i=Bt.trailingComments.length-1;i>=0;--i)r=Bt.trailingComments[i],
-r.range[0]>=this.range[1]&&(n.unshift(r),Bt.trailingComments.splice(i,1));Bt.trailingComments=[]}else s&&s.trailingComments&&s.trailingComments[0].range[0]>=this.range[1]&&(n=s.trailingComments,delete s.trailingComments);for(;s&&s.range[0]>=this.range[0];)e=a.pop(),s=a[a.length-1];if(e){if(e.leadingComments){for(t=[],i=e.leadingComments.length-1;i>=0;--i)r=e.leadingComments[i],r.range[1]<=this.range[0]&&(t.unshift(r),e.leadingComments.splice(i,1));e.leadingComments.length||(e.leadingComments=void 0)}}else if(Bt.leadingComments.length>0)for(t=[],i=Bt.leadingComments.length-1;i>=0;--i)r=Bt.leadingComments[i],r.range[1]<=this.range[0]&&(t.unshift(r),Bt.leadingComments.splice(i,1));t&&t.length>0&&(this.leadingComments=t),n&&n.length>0&&(this.trailingComments=n),a.push(this)}},finish:function(){Bt.range&&(this.range[1]=ct),Bt.loc&&(this.loc.end={line:ft,column:ct-ht},Bt.source&&(this.loc.source=Bt.source)),Bt.attachComment&&this.processComment()},finishArrayExpression:function(e){return this.type=ut.ArrayExpression,this.elements=e,this.finish(),this},finishArrayPattern:function(e){return this.type=ut.ArrayPattern,this.elements=e,this.finish(),this},finishArrowFunctionExpression:function(e,u,t,n){return this.type=ut.ArrowFunctionExpression,this.id=null,this.params=e,this.defaults=u,this.body=t,this.generator=!1,this.expression=n,this.finish(),this},finishAssignmentExpression:function(e,u,t){return this.type=ut.AssignmentExpression,this.operator=e,this.left=u,this.right=t,this.finish(),this},finishAssignmentPattern:function(e,u){return this.type=ut.AssignmentPattern,this.left=e,this.right=u,this.finish(),this},finishBinaryExpression:function(e,u,t){return this.type="||"===e||"&&"===e?ut.LogicalExpression:ut.BinaryExpression,this.operator=e,this.left=u,this.right=t,this.finish(),this},finishBlockStatement:function(e){return this.type=ut.BlockStatement,this.body=e,this.finish(),this},finishBreakStatement:function(e){return this.type=ut.BreakStatement,this.label=e,this.finish(),this},finishCallExpression:function(e,u){return this.type=ut.CallExpression,this.callee=e,this.arguments=u,this.finish(),this},finishCatchClause:function(e,u){return this.type=ut.CatchClause,this.param=e,this.body=u,this.finish(),this},finishClassBody:function(e){return this.type=ut.ClassBody,this.body=e,this.finish(),this},finishClassDeclaration:function(e,u,t){return this.type=ut.ClassDeclaration,this.id=e,this.superClass=u,this.body=t,this.finish(),this},finishClassExpression:function(e,u,t){return this.type=ut.ClassExpression,this.id=e,this.superClass=u,this.body=t,this.finish(),this},finishConditionalExpression:function(e,u,t){return this.type=ut.ConditionalExpression,this.test=e,this.consequent=u,this.alternate=t,this.finish(),this},finishContinueStatement:function(e){return this.type=ut.ContinueStatement,this.label=e,this.finish(),this},finishDebuggerStatement:function(){return this.type=ut.DebuggerStatement,this.finish(),this},finishDoWhileStatement:function(e,u){return this.type=ut.DoWhileStatement,this.body=e,this.test=u,this.finish(),this},finishEmptyStatement:function(){return this.type=ut.EmptyStatement,this.finish(),this},finishExpressionStatement:function(e){return this.type=ut.ExpressionStatement,this.expression=e,this.finish(),this},finishForStatement:function(e,u,t,n){return this.type=ut.ForStatement,this.init=e,this.test=u,this.update=t,this.body=n,this.finish(),this},finishForOfStatement:function(e,u,t){return this.type=ut.ForOfStatement,this.left=e,this.right=u,this.body=t,this.finish(),this},finishForInStatement:function(e,u,t){return this.type=ut.ForInStatement,this.left=e,this.right=u,this.body=t,this.each=!1,this.finish(),this},finishFunctionDeclaration:function(e,u,t,n,i){return this.type=ut.FunctionDeclaration,this.id=e,this.params=u,this.defaults=t,this.body=n,this.generator=i,this.expression=!1,this.finish(),this},finishFunctionExpression:function(e,u,t,n,i){return this.type=ut.FunctionExpression,this.id=e,this.params=u,this.defaults=t,this.body=n,this.generator=i,this.expression=!1,this.finish(),this},finishIdentifier:function(e){return this.type=ut.Identifier,this.name=e,this.finish(),this},finishIfStatement:function(e,u,t){return this.type=ut.IfStatement,this.test=e,this.consequent=u,this.alternate=t,this.finish(),this},finishLabeledStatement:function(e,u){return this.type=ut.LabeledStatement,this.label=e,this.body=u,this.finish(),this},finishLiteral:function(e){return this.type=ut.Literal,this.value=e.value,this.raw=rt.slice(e.start,e.end),e.regex&&(this.regex=e.regex),this.finish(),this},finishMemberExpression:function(e,u,t){return this.type=ut.MemberExpression,this.computed="["===e,this.object=u,this.property=t,this.finish(),this},finishMetaProperty:function(e,u){return this.type=ut.MetaProperty,this.meta=e,this.property=u,this.finish(),this},finishNewExpression:function(e,u){return this.type=ut.NewExpression,this.callee=e,this.arguments=u,this.finish(),this},finishObjectExpression:function(e){return this.type=ut.ObjectExpression,this.properties=e,this.finish(),this},finishObjectPattern:function(e){return this.type=ut.ObjectPattern,this.properties=e,this.finish(),this},finishPostfixExpression:function(e,u){return this.type=ut.UpdateExpression,this.operator=e,this.argument=u,this.prefix=!1,this.finish(),this},finishProgram:function(e,u){return this.type=ut.Program,this.body=e,this.sourceType=u,this.finish(),this},finishProperty:function(e,u,t,n,i,r){return this.type=ut.Property,this.key=u,this.computed=t,this.value=n,this.kind=e,this.method=i,this.shorthand=r,this.finish(),this},finishRestElement:function(e){return this.type=ut.RestElement,this.argument=e,this.finish(),this},finishReturnStatement:function(e){return this.type=ut.ReturnStatement,this.argument=e,this.finish(),this},finishSequenceExpression:function(e){return this.type=ut.SequenceExpression,this.expressions=e,this.finish(),this},finishSpreadElement:function(e){return this.type=ut.SpreadElement,this.argument=e,this.finish(),this},finishSwitchCase:function(e,u){return this.type=ut.SwitchCase,this.test=e,this.consequent=u,this.finish(),this},finishSuper:function(){return this.type=ut.Super,this.finish(),this},finishSwitchStatement:function(e,u){return this.type=ut.SwitchStatement,this.discriminant=e,this.cases=u,this.finish(),this},finishTaggedTemplateExpression:function(e,u){return this.type=ut.TaggedTemplateExpression,this.tag=e,this.quasi=u,this.finish(),this},finishTemplateElement:function(e,u){return this.type=ut.TemplateElement,this.value=e,this.tail=u,this.finish(),this},finishTemplateLiteral:function(e,u){return this.type=ut.TemplateLiteral,this.quasis=e,this.expressions=u,this.finish(),this},finishThisExpression:function(){return this.type=ut.ThisExpression,this.finish(),this},finishThrowStatement:function(e){return this.type=ut.ThrowStatement,this.argument=e,this.finish(),this},finishTryStatement:function(e,u,t){return this.type=ut.TryStatement,this.block=e,this.guardedHandlers=[],this.handlers=u?[u]:[],this.handler=u,this.finalizer=t,this.finish(),this},finishUnaryExpression:function(e,u){return this.type="++"===e||"--"===e?ut.UpdateExpression:ut.UnaryExpression,this.operator=e,this.argument=u,this.prefix=!0,this.finish(),this},finishVariableDeclaration:function(e){return this.type=ut.VariableDeclaration,this.declarations=e,this.kind="var",this.finish(),this},finishLexicalDeclaration:function(e,u){return this.type=ut.VariableDeclaration,this.declarations=e,this.kind=u,this.finish(),this},finishVariableDeclarator:function(e,u){return this.type=ut.VariableDeclarator,this.id=e,this.init=u,this.finish(),this},finishWhileStatement:function(e,u){return this.type=ut.WhileStatement,this.test=e,this.body=u,this.finish(),this},finishWithStatement:function(e,u){return this.type=ut.WithStatement,this.object=e,this.body=u,this.finish(),this},finishExportSpecifier:function(e,u){return this.type=ut.ExportSpecifier,this.exported=u||e,this.local=e,this.finish(),this},finishImportDefaultSpecifier:function(e){return this.type=ut.ImportDefaultSpecifier,this.local=e,this.finish(),this},finishImportNamespaceSpecifier:function(e){return this.type=ut.ImportNamespaceSpecifier,this.local=e,this.finish(),this},finishExportNamedDeclaration:function(e,u,t){return this.type=ut.ExportNamedDeclaration,this.declaration=e,this.specifiers=u,this.source=t,this.finish(),this},finishExportDefaultDeclaration:function(e){return this.type=ut.ExportDefaultDeclaration,this.declaration=e,this.finish(),this},finishExportAllDeclaration:function(e){return this.type=ut.ExportAllDeclaration,this.source=e,this.finish(),this},finishImportSpecifier:function(e,u){return this.type=ut.ImportSpecifier,this.local=e||u,this.imported=u,this.finish(),this},finishImportDeclaration:function(e,u){return this.type=ut.ImportDeclaration,this.specifiers=e,this.source=u,this.finish(),this},finishYieldExpression:function(e,u){return this.type=ut.YieldExpression,this.argument=e,this.delegate=u,this.finish(),this}},e.version="2.7.2",e.tokenize=Xu,e.parse=Ju,e.Syntax=function(){var e,u={};"function"==typeof Object.create&&(u=Object.create(null));for(e in ut)ut.hasOwnProperty(e)&&(u[e]=ut[e]);return"function"==typeof Object.freeze&&Object.freeze(u),u}()})});
-$rmod.main("/char-props@0.1.5","lib/charProps");
-$rmod.dep("/$/marko","char-props","0.1.5");
-$rmod.def("/char-props@0.1.5/lib/charProps",function(n,t,r,i,e){function o(n){this.input=n;for(var t,r,i=n.split("\n"),e=0,o=i.length,u=0,a={length:o};o>e;e++)t=i[e],r=u+t.length+1,a[e]={start:u,end:r},u=r;this.lineMap=a}function u(n){var t=new o(n);return t}o.prototype={lineAt:function(n,t){t=t||{};for(var r,i=this.lineMap,e=t.minLine||0,o=i.length;o>e&&(r=i[e],!(n<r.end));e++);return e},columnAt:function(n){var t,r=this.input,i=n-1;if(0>n)return 0;for(;i>=0&&(t=r.charAt(i),"\n"!==t);i--);var e=n-i-1;return e},indexAt:function(n){var t=n.line,r=n.column,i=this.lineMap,e=i[t],o=e.start,u=o+r;return u},charAt:function(n){var t=this.indexAt(n),r=this.input,i=r.charAt(t);return i}},u.Indexer=o,r.exports=u});
-$rmod.def("/raptor-util@1.0.10/forEachEntry",function(r,o,n,t,a){n.exports=function(r,o,n){for(var t in r)r.hasOwnProperty(t)&&o.call(n,t,r[t])}});
-$rmod.main("/property-handlers@1.0.1","lib/index");
-$rmod.dep("/$/marko","property-handlers","1.0.1");
-$rmod.def("/property-handlers@1.0.1/lib/index",function(r,e,o,n,t){function i(r){return r.replace(/-([a-z])/g,function(r,e){return e.toUpperCase()})}o.exports=function(r,e,o){function n(r,e){if(e){if(e.__propertyHandlers)throw e;r+=". Cause: "+(e.stack||e)}t&&(r="Error while handling properties for "+t+": "+r);var o=new Error(r);throw o.__propertyHandlers=!0,o}var t;null!=o&&(t="string"==typeof o?o:o.path),r||n('"config" argument is required'),"object"!=typeof r&&n("object expected");for(var p in r)if(r.hasOwnProperty(p)){var a=r[p],l=i(p),c=e[l],f=!1;c||(c=e["*"],f=!0),c||n('Invalid option of "'+l+'". Allowed: '+Object.keys(e).join(", "));try{f?c.call(e,p,a)===!1&&n("Invalid option: "+p):c.call(e,a)}catch(d){n('Error while applying option of "'+p+'"',d)}}if(e._end)try{e._end()}catch(d){n("Error after applying properties",d)}}});
-$rmod.main("/try-require@1.2.1","index");
-$rmod.dep("/$/marko","try-require","1.2.1");
-$rmod.def("/try-require@1.2.1/index",function(r,t,e,n,u){"use strict";var o=null,l=function(t,e){var n,u=e||r;try{n=u.resolve(t),o=null}catch(l){o=l}return n?u(n):void 0},c=function(t,e){var n,u=e||r;try{n=u.resolve(t),o=null}catch(l){o=l}return n};l.resolve=c,l.lastError=function(){return o},e.exports=l});
-$rmod.main("/raptor-util@1.0.10","raptor-util");
-$rmod.def("/raptor-util@1.0.10/tryRequire",function(r,t,e,o,i){e.exports=function(r,t){var e;try{e=t.resolve(r)}catch(o){}return e?t(e):void 0}});
-$rmod.def("/raptor-util@1.0.10/makeClass",function(t,e,r,o,n){var i=t("./inherit");r.exports=function(t){var e;if("function"==typeof t)e=t.$super;else{var r=t;t=r.$init||function(){},e=r.$super,delete r.$super,delete r.$init,t.prototype=r}e&&i(t,e);var o=t.prototype;return o.constructor=t,t}});
-$rmod.def("/raptor-util@1.0.10/makeEnum",function(n,t,r,o,e){var a=n("./makeClass"),i=n("./extend"),u=n("./forEachEntry");r.exports=function(n,t){function r(n,r){var o=c++;return i(t[n]=new r,{ordinal:o,compareTo:function(n){return o-n.ordinal},name:n})}function o(){}t=t?a(t):function(){};var e=t.prototype,c=0;return Array.isArray(n)?n.forEach(function(n){r(n,t)}):n&&(o.prototype=e,u(n,function(n,e){t.apply(r(n,o),e||[])})),t.valueOf=function(n){return t[n]},e.toString==Object.prototype.toString&&(e.toString=function(){return this.name}),t}});
-$rmod.def("/raptor-util@1.0.10/forEach",function(o,r,f,c,n){f.exports=function(o,r,f){null!=o&&(o.forEach?o:[o]).forEach(r,f)}});
-$rmod.def("/raptor-util@1.0.10/attrs",function(r,t,a,n,o){var e=r("./attr");a.exports=function(r){var t="";for(var a in r)r.hasOwnProperty(a)&&(t+=e(a,r[a]));return t}});
-$rmod.def("/raptor-util@1.0.10/toArray",function(r,t,l,n,i){var o=[].slice;l.exports=function(r){return null==r||Array.isArray(r)?r:"string"==typeof r?r.split(""):r.length?o.call(r,0):[r]}});
-$rmod.def("/raptor-util@1.0.10/raptor-util",function(r,t,e,a,m){e.exports={tryRequire:r("./tryRequire"),inherit:r("./inherit"),makeClass:r("./makeClass"),makeEnum:r("./makeEnum"),extend:r("./extend"),forEachEntry:r("./forEachEntry"),forEach:r("./forEach"),createError:r("./createError"),arrayFromArguments:r("./arrayFromArguments"),escapeXml:r("./escapeXml"),escapeXmlAttr:r("./escapeXml").attr,attr:r("./attr"),attrs:r("./attrs"),isObjectEmpty:r("./isObjectEmpty"),toArray:r("./toArray")}});
-$rmod.main("/raptor-regexp@1.0.1","lib/raptor-regexp");
-$rmod.dep("/$/marko","raptor-regexp","1.0.1");
-$rmod.def("/raptor-regexp@1.0.1/lib/raptor-regexp",function(e,r,n,p,t){var a={"*":".*?","?":".?"};n.exports={escape:function(e){return e.replace(/[\-\[\]{}()*+?.,\\\^$|#\s]/g,"\\$&")},simple:function(e){var r=this;return new RegExp("^"+e.replace(/[\*\?]|[^\*\?]*/g,function(e){return a[e]||r.escape(e)})+"$")}}});
-$rmod.def("/marko@3.0.0/taglibs/core/marko",{"<assign>":{"code-generator":"./assign-tag"},"<else>":{"node-factory":"./else-tag"},"<else-if>":{"node-factory":"./else-if-tag"},"<for>":{"code-generator":"./for-tag"},"<if>":{"node-factory":"./if-tag"},"<include>":{"code-generator":"./include-tag"},"<include-text>":{"code-generator":"./include-text-tag"},"<invoke>":{"code-generator":"./invoke-tag"},"<macro>":{"code-generator":"./macro-tag"},"<macro-body>":{"code-generator":"./macro-body-tag"},"<pre>":{"preserve-whitespace":!0},"<script>":{"preserve-whitespace":!0,"@marko-init":"boolean","@*":{ignore:!0}},"<style>":{"preserve-whitespace":!0},"<textarea>":{"preserve-whitespace":!0},"<unless>":{"node-factory":"./unless-tag"},"<var>":{"node-factory":"./var-tag"},"<while>":{"code-generator":"./while-tag"},"<*>":{"@if":"argument","@else-if":"argument","@else":"argument","@for":"argument","@while":"argument",transformer:{path:"./core-transformer",priority:0}}});
-$rmod.def("/marko@3.0.0/taglibs/layout/marko",{"<layout-use>":{"@__template":"template","@__data":"template","@*":{"remove-dashes":!0,type:"string"},renderer:"./use-tag","body-function":"getContent(__layoutHelper)",transformer:"./use-tag-transformer.js"},"<layout-put>":{"@into":"string","@value":"string",renderer:"./put-tag","import-var":{layout:"__layoutHelper"}},"<layout-placeholder>":{"@name":"string",renderer:"./placeholder-tag","import-var":{content:"data.layoutContent"}}});
-$rmod.def("/marko@3.0.0/taglibs/html/marko",{"taglib-id":"marko-html","<html-comment>":{renderer:"./html-comment-tag.js"}});
-$rmod.def("/marko@3.0.0/taglibs/async/marko",{"<async-fragment>":{renderer:"./async-fragment-tag","@data-provider":"expression","@arg":{type:"expression","preserve-name":!0},"@arg-*":{pattern:!0,type:"string","preserve-name":!0},"@var":"identifier","@method":"string","@timeout":"integer","@timeout-message":"string","@error-message":"string","@placeholder":"string","@renderTimeout":"function","@renderError":"function","@renderPlaceholder":"function","@name":{type:"string",description:"Name of async fragment"},"@_name":"string","@client-reorder":{type:"boolean",description:"Use JavaScript on client to move async fragment into the proper place."},"@scope":{type:"expression",description:"The value of 'this' when invoking the data provider function (N/A with promises)"},"@show-after":{type:"string"},vars:[{"name-from-attribute":"var"}],transformer:"./async-fragment-tag-transformer"},"<async-fragments>":{renderer:"./async-fragments-tag"},"<async-fragment-placeholder>":{transformer:"./async-fragment-nested-tag-transformer"},"<async-fragment-timeout>":{transformer:"./async-fragment-nested-tag-transformer"},"<async-fragment-error>":{transformer:"./async-fragment-nested-tag-transformer"}});
-$rmod.def("/marko@3.0.0/taglibs/cache/default-cache-manager",function(n,r,e,t,u){function a(){var n={};return{get:function(r,e,t){var u=n[r];if(void 0!==u)return t(null,u);var a=e.builder;a(function(e,u){return e?t(e):(void 0===u&&(u=null),n[r]=u,void t(null,u))})}}}var i={},o={getCache:function(n){return i[n]||(i[n]=a())}};e.exports=o});
-$rmod.def("/marko@3.0.0/taglibs/cache/cached-fragment-tag-transformer",function(a,e,t,r,c){var n=a.resolve("./default-cache-manager");t.exports=function(a,e){if(!a.hasAttribute("cache-manager")){var t=e.getRequirePath(n),r=e.importModule("__defaultCacheManager",t);a.setAttributeValue("cache-manager",r)}}});
-$rmod.def("/marko@3.0.0/taglibs/cache/cached-fragment-tag",function(e,r,c,n,a){"use strict";c.exports={render:function(e,r){var c=e.cacheKey;if(!c)throw new Error("cache-key is required for <cached-fragment>");var n=e.cacheManager,a=n.getCache(e.cacheName||"marko/cached-fragment"),t=r.beginAsync();a.get(c,{builder:function(c){var n=r.captureString(function(){e.renderBody&&e.renderBody(r)});c(null,n)}},function(e,r){return e?t.error(e):void t.end(r)})}}});
-$rmod.def("/marko@3.0.0/taglibs/cache/marko",{"<cached-fragment>":{renderer:"./cached-fragment-tag","@cache-key":"string","@cache-name":"string","@cache-manager":"string",transformer:"./cached-fragment-tag-transformer.js"}});
-$rmod.def("/marko-prettyprint@1.0.3/src/index", function(require, exports, module, __filename, __dirname) { 'use strict';
-
-const SYNTAX_CONCISE = 1;
-const SYNTAX_HTML = 2;
-
-var markoCompiler = require('/$/marko/compiler'/*'marko/compiler'*/);
-
-function rtrim(s) {
-    return s && s.replace(/\s\s*$/,'');
-}
-
-function trimLinesStart(lines) {
-    var firstNonEmptyLine = -1;
-    for (var i=0; i<lines.length; i++) {
-        if (lines[i].trim()) {
-            firstNonEmptyLine = i;
-            break;
-        }
-    }
-
-    if (firstNonEmptyLine > 0) {
-        lines = lines.slice(firstNonEmptyLine);
-    }
-
-    return lines;
-}
-
-function trimLinesEnd(lines) {
-    var firstNonEmptyLine = -1;
-    for (var i=lines.length-1; i>=0; i--) {
-        if (lines[i].trim()) {
-            firstNonEmptyLine = i;
-            break;
-        }
-    }
-
-    if (firstNonEmptyLine < lines.length-1) {
-        lines = lines.slice(0, firstNonEmptyLine + 1);
-    }
-
-    return lines;
-}
-
-function getBodyText(el) {
-    var children = el.body.items;
-    var text = '';
-    for (var i=0; i<children.length; i++) {
-        let child = children[i];
-        if (child.type !== 'Text') {
-            return null;
-        }
-        text += child.argument.value;
-    }
-    return text;
-}
-
-function hasLineBreaks(str) {
-    return /\n/.test(str);
-}
-
-module.exports = function prettyPrint(ast, options) {
-    options = options || {};
-
-    if (typeof ast === 'string') {
-        var filename = options.filename;
-        if (!filename) {
-            throw new Error('The "filename" option is required when String source is provided');
-        }
-        ast = markoCompiler.parseRaw(ast, filename);
-    }
-
-    // console.log(JSON.stringify(ast, null, 4));
-
-    var src = '';
-    var indent = '    ';
-    var currentIndent = '';
-    var syntax = options && options.syntax === 'concise' ?
-        SYNTAX_CONCISE :
-        SYNTAX_HTML;
-
-    var isConciseSyntax = syntax === SYNTAX_CONCISE;
-
-    var bufferedText = '';
-
-    function writeLineIndent() {
-        src += currentIndent;
-    }
-
-    function write(str) {
-        src += str;
-    }
-
-    function incIndent() {
-        currentIndent += indent;
-    }
-
-    function decIndent() {
-        currentIndent = currentIndent.substring(indent.length);
-    }
-
-    function indentLines(lines) {
-        let blockIndentation = null;
-        return lines.map((line) => {
-            if (blockIndentation == null) {
-                blockIndentation = line.match(/^\s*/)[0];
-            }
-
-            if (line.startsWith(blockIndentation)) {
-                line = line.substring(blockIndentation.length);
-                line = currentIndent + rtrim(line);
-            } else {
-                line = currentIndent + line.trim();
-            }
-            return line;
-        });
-    }
-
-    function indentCommentLines(lines) {
-        let blockIndentation = null;
-
-        var indentedLines = [];
-
-        lines.forEach((line, i) => {
-            if (line.trim() === '') {
-                return;
-            }
-
-            if (blockIndentation == null) {
-                blockIndentation = line.match(/^\s*/)[0];
-                if (!blockIndentation) {
-                    blockIndentation = null;
-                }
-            }
-
-            if (line.startsWith(blockIndentation)) {
-                line = line.substring(blockIndentation.length);
-                line = currentIndent + rtrim(line);
-            } else {
-                line = currentIndent + line.trim();
-            }
-            indentedLines.push(line);
-        });
-
-        return indentedLines;
-    }
-
-    function flushLines(lines) {
-        lines = trimLinesStart(lines);
-        lines = trimLinesEnd(lines);
-
-        if (lines.length === 0) {
-            return;
-        }
-
-        if (isConciseSyntax || currentIndent === '') {
-            if (lines.length > 1) {
-                lines = indentLines(lines);
-                write(currentIndent + '---\n' + lines.join('\n') + '\n' + currentIndent + '---');
-            } else {
-                let trimmed = lines[0].trim();
-                if (trimmed.charAt(0) === '<') {
-                    // The line does not need to be prefixed since it starts with an opening angle bracket
-                    write(currentIndent + trimmed);
-                } else {
-                    write(currentIndent + '- ' + trimmed);
-                }
-            }
-        } else {
-            if (lines.length > 1) {
-                lines = indentLines(lines);
-                write(lines.join('\n'));
-            } else {
-                write(currentIndent + lines[0].trim());
-            }
-        }
-
-        write('\n');
-    }
-
-    function flushBufferedText() {
-        // bufferedText = bufferedText.trim();
-
-        if (!bufferedText) {
-            return;
-        }
-
-        var lines = bufferedText.split(/\n|\r\n/);
-
-        var i=0;
-
-        if (isConciseSyntax) {
-            // In concise mode we don't want to bother prefixing lines that start with an opening HTML bracket.
-            // This would be the case for HTML comments, HTML doctype and a declaration
-            while(lines.length && i < lines.length) {
-                var trimmed = lines[i].trim();
-                if (trimmed.charAt(0) === '<') {
-                    if (i > 0) {
-                        flushLines(lines.slice(0, i));
-                    }
-
-                    write(currentIndent + trimmed + '\n');
-
-                    lines = lines.slice(i+1);
-                    i=0;
-                } else {
-                    i++;
-                }
-            }
-        }
-
-        flushLines(lines);
-
-        bufferedText = '';
-    }
-
-    function printHtmlElement(node) {
-        flushBufferedText();
-
-
-        var col = 0;
-
-        writeLineIndent();
-        col += currentIndent.length;
-
-        if (!isConciseSyntax) {
-            write('<');
-            col++;
-        }
-
-        write(node.tagName);
-        col += node.tagName.length;
-
-        if (node.rawShorthandId) {
-            write('#' + node.rawShorthandId);
-            col += node.rawShorthandId.length + 1;
-        }
-
-        if (node.rawShorthandClassNames) {
-            node.rawShorthandClassNames.forEach((className) => {
-                write('.' + className);
-                col += className.length + 1;
-            });
-        }
-
-        if (node.argument) {
-            write('(' + node.argument + ')');
-            col += node.argument.length + 2;
-        }
-
-        col++; // Allow for a space after the tag name
-
-        var multilineAttrs = false;
-
-        var attrs = node.getAttributes();
-        var attrsStr = '';
-
-        attrs.forEach((attr, i) => {
-
-            var attrStr = '';
-
-            if (attr.name) {
-                attrStr += attr.name;
-                var attrValue = attr.value;
-                if (attrValue) {
-                    if (attrValue.isCompoundExpression()) {
-                        attrStr += '=(' + attrValue + ')';
-                    }else {
-                        attrStr += '=' + attrValue;
-                    }
-
-                } else if (attr.argument) {
-                    attrStr += '(' + attr.argument + ')';
-                }
-            } else {
-                attrStr += '${' + attr.value  + '}';
-            }
-
-            if (i !== 0 && col + attrStr.length > 80 && attrStr.length < (80 - currentIndent.length + indent.length)) {
-                attrsStr += '\n' + currentIndent + indent + attrStr;
-                col = currentIndent.length + indent.length + attrStr.length;
-                multilineAttrs = true;
-            } else {
-                if (attrsStr.length) {
-                    attrStr = ' ' + attrStr;
-                }
-                attrsStr += attrStr;
-                col += attrStr.length;
-            }
-        });
-
-        if (attrsStr) {
-            write(' ');
-
-            if (multilineAttrs && isConciseSyntax) {
-                write('[ ');
-                col += 2;
-            }
-
-            write(attrsStr);
-
-            if (multilineAttrs && isConciseSyntax) {
-                write(' ]');
-                col += 2;
-            }
-        }
-
-        var hasBody = node.body && node.body.length;
-        if (!isConciseSyntax) {
-            if (hasBody) {
-                write('>');
-                col += 1;
-            } else {
-                write('/>');
-            }
-        }
-
-        if (hasBody) {
-            let bodyText = getBodyText(node);
-            if (bodyText && !hasLineBreaks(bodyText)) {
-                let endCol = col + bodyText.length;
-                if (!isConciseSyntax) {
-                    endCol += ('</' + node.tagName + '>').length;
-                }
-
-                if (bodyText && !hasLineBreaks(bodyText) && endCol < 80) {
-                    if (isConciseSyntax) {
-                        write(' - ' + bodyText + '\n');
-                    } else {
-                        write(bodyText + '</' + node.tagName + '>\n');
-                    }
-
-                    return;
-                }
-            }
-        }
-
-        write('\n');
-
-        if (hasBody && multilineAttrs) {
-            write('\n'); // Add one more extra spacing line if the element has multiline attributes
-        }
-
-        if (hasBody) {
-            incIndent();
-
-            var bodyText = getBodyText(node);
-            if (bodyText && !hasLineBreaks(bodyText)) {
-
-            }
-
-            node.body.forEach((child) => {
-                printNode(child);
-            });
-
-            flushBufferedText();
-
-            decIndent();
-
-            if (multilineAttrs && syntax !== SYNTAX_CONCISE) {
-                write('\n'); // Keep the spacing symmetrical
-            }
-        }
-
-        if (hasBody && syntax === SYNTAX_HTML) {
-            writeLineIndent();
-            write('</');
-            write(node.tagName);
-            write('>\n');
-        }
-    }
-
-    function printText(node) {
-        bufferedText += node.argument.value;
-    }
-
-    function isInlineComment(node) {
-        if (bufferedText && !bufferedText.endsWith('\n')) {
-            return true;
-        }
-
-        var nextSibling = node.nextSibling;
-        if (!nextSibling) {
-            return false;
-        }
-
-        if (nextSibling.type !== 'Text') {
-            return false;
-        }
-
-        var nextSiblingText = nextSibling.argument.value;
-        if (nextSiblingText.startsWith('\n') || nextSiblingText.startsWith('\r\n')) {
-            return false;
-        } else {
-            return true;
-        }
-    }
-
-    function printHtmlComment(node) {
-        var comment = node.comment.value;
-
-        if (isInlineComment(comment)) {
-            bufferedText += '<!--' + comment + '-->';
-        } else {
-            flushBufferedText();
-            var lines = comment.split(/\n|\r\n/);
-            if (lines.length === 1) {
-                if (isConciseSyntax) {
-                    write(currentIndent + '// ' + comment.trim());
-                } else {
-                    write(currentIndent + '<!-- ' + comment.trim() + '-->');
-                }
-
-            } else {
-                write(currentIndent + '<!--\n' + indentCommentLines(lines).join('\n') + '\n' + currentIndent + '-->');
-            }
-            write('\n');
-        }
-
-    }
-
-    function printDocumentType(node) {
-        flushBufferedText();
-        var doctype = node.documentType.value;
-        write(currentIndent + '<!' + doctype.trim() + '>\n');
-    }
-
-    function printDeclaration(node) {
-        flushBufferedText();
-        var declaration = node.declaration.value;
-        write(currentIndent + '<?' + declaration.trim() + '?>\n');
-    }
-
-    function printNode(node, isRoot) {
-        switch (node.type) {
-            case 'HtmlElement':
-                printHtmlElement(node);
-                break;
-            case 'Text':
-                printText(node);
-                break;
-            case 'HtmlComment':
-                printHtmlComment(node);
-                break;
-            case 'DocumentType':
-                printDocumentType(node);
-                break;
-            case 'Declaration':
-                printDeclaration(node);
-                break;
-            default:
-                throw new Error('Unsupported node: ' + node);
-        }
-    }
-
-    ast.body.forEach((child) => {
-        printNode(child);
+        typesObject[attr.name] = buildWidgetTypeNode(attr.literalValue, codegen.context.dirname, codegen.builder);
     });
 
-    flushBufferedText();
-
-    return src;
+    codegen.addStaticVar('__widgetTypes', builder.literal(typesObject));
 };
 });
+$rmod.def("/marko-widgets@6.0.0/taglib/widgets-transformer",function(e,t,i,r,d){"use strict";var s=e("./TransformHelper");i.exports=function(e,t){var i=new s(e,t);return"widget-types"===e.tagName&&t.setFlag("hasWidgetTypes"),e.hasAttribute("w-el-id")?void i.addError('"w-el-id" attribute is no longer allowed. Use "w-id" instead.'):(e.hasAttribute("w-bind")?(e.setFlag("hasWidgetBind"),e.hasAttribute("w-id")&&i.addError('The "w-id" attribute cannot be used in conjuntion with the "w-bind" attribute.'),i.handleWidgetBind()):e.hasAttribute("w-extend")&&(e.setFlag("hasWidgetExtend"),i.handleWidgetExtend()),(e.hasAttribute("w-preserve")||e.hasAttribute("w-preserve-body")||e.hasAttribute("w-preserve-if")||e.hasAttribute("w-preserve-body-if"))&&i.handleWidgetPreserve(),e.hasAttribute("w-id")?i.assignWidgetId():e.hasAttribute("w-for")&&i.handleWidgetFor(),e.hasAttribute("w-preserve-attrs")&&i.handleWidgetPreserveAttrs(),e.hasAttribute("w-body")&&i.handleWidgetBody(),i.handleWidgetEvents(),void("HtmlElement"!==e.type&&i.getWidgetArgs().compile(i)))}});
+$rmod.def("/marko-widgets@6.0.0/taglib/TransformHelper/assignWidgetId", function(require, exports, module, __filename, __dirname) { /*
+ * Copyright 2011 eBay Software Foundation
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+'use strict';
+
+module.exports = function assignWidgetId(isRepeated) {
+    // First check if we have already assigned an ID to thie element
+    var widgetIdInfo = this.widgetIdInfo;
+
+    if (widgetIdInfo) {
+        return this.widgetIdInfo;
+    }
+
+    var el = this.el;
+    var context = this.context;
+    var builder = this.builder;
+
+    var nestedIdExpression;
+    var idExpression;
+
+    var containingWidgetNode = this.getContainingWidgetNode();
+    if (!containingWidgetNode) {
+        // We are assigning a widget ID to a nested widget in a template that does not have a widget.
+        // That means we do not have access to the parent widget variable as part of a closure. We
+        // need to look it up out of the `out.data` map
+        if (!context.isFlagSet('hasWidgetVar')) {
+            context.setFlag('hasWidgetVar');
+
+            var getCurrentWidgetVar = context.importModule('__getCurrentWidget',
+                this.getMarkoWidgetsRequirePath('marko-widgets/taglib/helpers/getCurrentWidget'));
+
+            context.addVar('widget', builder.functionCall(getCurrentWidgetVar, [builder.identifierOut()]));
+        }
+    }
+
+    // In order to attach a DOM event listener directly we need to make sure
+    // the target HTML element has an ID that we can use to get a reference
+    // to the element during initialization. We generate this unique ID
+    // at compile-time to allow consistent IDs during rendering.
+    // We need to handle the following scenarios:
+    //
+    // 1) The HTML element already has an "id" attribute
+    // 2) The HTML element has a "w-id" attribute (we already converted this
+    //    to an "id" attribute above)
+    // 3) The HTML does not have an "id" or "w-el-id" attribute. We must add
+    //    an "id" attribute with a unique ID.
+
+    var isCustomTag = el.type !== 'HtmlElement';
+
+    if (el.hasAttribute('w-id')) {
+        let widgetId = el.getAttributeValue('w-id');
+
+        el.removeAttribute('w-id');
+
+        idExpression = this.buildWidgetElIdFunctionCall(widgetId);
+
+        nestedIdExpression = widgetId;
+
+
+        if (isCustomTag) {
+            // The element is a custom tag
+            this.getWidgetArgs().setId(nestedIdExpression);
+        } else {
+            if (el.hasAttribute('id')) {
+                this.addError('The "w-id" attribute cannot be used in conjuction with the "id" attribute');
+                return;
+            }
+            el.setAttributeValue('id', idExpression);
+        }
+    } else if (el.hasAttribute('id')) {
+        idExpression = el.getAttributeValue('id');
+
+        if (el.isFlagSet('hasWidgetBind') || el.isFlagSet('hasWidgetExtend')) {
+            // We have to attach a listener to the root element of the widget
+            // We will use an empty string as an indicator that it is the root widget
+            // element.
+            nestedIdExpression = builder.literal('');
+        } else {
+            // Convert the raw String to a JavaScript expression. we need to prefix
+            // with '#' to make it clear this is a fully resolved element ID
+            nestedIdExpression = builder.concat(
+                builder.literal('#'),
+                idExpression);
+        }
+    } else {
+        // Case 3 - We need to add a unique "id" attribute
+        let uniqueElId = this.nextUniqueId();
+
+        nestedIdExpression = isRepeated ? builder.literal(uniqueElId + '[]') : builder.literal(uniqueElId);
+
+        idExpression = this.buildWidgetElIdFunctionCall(nestedIdExpression);
+
+        if (isCustomTag) {
+            this.getWidgetArgs().setId(nestedIdExpression);
+        } else {
+            el.setAttributeValue('id', idExpression);
+        }
+    }
+
+    var transformHelper = this;
+
+    this.widgetIdInfo = {
+        idExpression: idExpression,
+        nestedIdExpression: nestedIdExpression,
+        idVarNode: null,
+        createIdVarNode: function() {
+            if (this.idVarNode) {
+                return this.idVarNode;
+            }
+
+            let uniqueElId = transformHelper.nextUniqueId();
+            let idVarName = '__widgetId' + uniqueElId;
+            let idVar = builder.identifier(idVarName);
+
+            this.idVarNode = builder.vars([
+                {
+                    id: idVarName,
+                    init: idExpression
+                }
+            ]);
+
+            this.idExpression = idExpression = idVar;
+
+            this.nestedIdExpression = nestedIdExpression = builder.concat(
+                builder.literal('#'),
+                idVar);
+
+            if (isCustomTag) {
+                transformHelper.getWidgetArgs().setId(nestedIdExpression);
+            } else {
+
+                el.setAttributeValue('id', idExpression);
+            }
+
+            return this.idVarNode;
+        }
+    };
+
+    return this.widgetIdInfo;
+};
+});
+$rmod.def("/marko-widgets@6.0.0/taglib/TransformHelper/getContainingWidgetNode",function(i,t,n,e,o){function d(){if(void 0!==this.containingWidgetNode)return this.containingWidgetNode;for(var i=this.el;;){if("w-widget"===i.tagName)return this.containingWidgetNode=i,this.containingWidgetNode;if(i.isFlagSet("hasWidgetExtend"))return this.containingWidgetNode=i,this.containingWidgetNode;if(i=i.parentNode,!i)break}return this.containingWidgetNode=null,null}n.exports=d});
+$rmod.def("/marko-widgets@6.0.0/taglib/TransformHelper/handleWidgetBind", function(require, exports, module, __filename, __dirname) { 
+/*
+ * Copyright 2011 eBay Software Foundation
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+'use strict';
+
+module.exports = function handleWidgetBind() {
+    var el = this.el;
+    var context = this.context;
+    var builder = this.builder;
+
+    var bindAttr = el.getAttribute('w-bind');
+    if (bindAttr == null) {
+        return;
+    }
+
+    // A widget is bound to the el...
+
+    // Remove the w-bind attribute since we don't want it showing up in the output DOM
+    el.removeAttribute('w-bind');
+
+    // Read the value for the w-bind attribute. This will be an AST node for the parsed JavaScript
+    var bindAttrValue = bindAttr.value;
+    var modulePath;
+
+    var widgetAttrs = {};
+
+    if (bindAttrValue == null) {
+        modulePath = this.getDefaultWidgetModule();
+    } else if (bindAttr.isLiteralValue()) {
+        modulePath = bindAttr.literalValue; // The value of the literal value
+        if (typeof modulePath !== 'string') {
+            this.addError('The value for the "w-bind" attribute should be a string. Actual: ' + modulePath);
+            return;
+        }
+    } else {
+        // This is a dynamic expression. The <widget-types> should have been found.
+        if (!context.isFlagSet('hasWidgetTypes')) {
+            this.addError('The <widget-types> tag must be used to declare widgets when the value of the "w-bind" attribute is a dynamic expression.');
+            return;
+        }
+
+        widgetAttrs.type = builder.computedMemberExpression(
+            builder.identifier('__widgetTypes'),
+            bindAttrValue);
+    }
+
+    if (modulePath) {
+        let widgetTypeNode = context.addStaticVar('__widgetType', this.buildWidgetTypeNode(modulePath));
+        widgetAttrs.type = widgetTypeNode;
+    }
+
+    var id = el.getAttributeValue('id');
+
+    if (el.hasAttribute('w-config')) {
+        widgetAttrs.config = el.getAttributeValue('w-config');
+        el.removeAttribute('w-config');
+    }
+
+    if (id) {
+        widgetAttrs.id = id;
+    }
+
+    var widgetNode = context.createNodeForEl('w-widget', widgetAttrs);
+    el.wrapWith(widgetNode);
+
+    el.setAttributeValue('id', builder.memberExpression(builder.identifier('widget'), builder.identifier('id')));
+
+    // var _widgetAttrs = __markoWidgets.attrs;
+    var widgetAttrsVar = context.addStaticVar('__widgetAttrs',
+        builder.memberExpression(this.markoWidgetsVar, builder.identifier('attrs')));
+
+    el.addDynamicAttributes(builder.functionCall(widgetAttrsVar, [ builder.identifier('widget') ]));
+
+    this.widgetStack.push({
+        widgetNode: widgetNode,
+        el: el,
+        extend: false
+    });
+};
+});
+$rmod.def("/marko-widgets@6.0.0/taglib/TransformHelper/handleWidgetBody", function(require, exports, module, __filename, __dirname) { /*
+ * Copyright 2011 eBay Software Foundation
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+'use strict';
+
+module.exports = function handleWidgetBody() {
+    let el = this.el;
+
+    if (!el.hasAttribute('w-body')) {
+        return;
+    }
+
+    let context = this.context;
+    let builder = this.builder;
+
+    let widgetTagNode = this.getContainingWidgetNode();
+
+    if (!widgetTagNode) {
+        this.addError('w-body can only be used within the scope of w-bind');
+        return;
+    }
+
+
+    let widgetBodyExpression = el.getAttributeValue('w-body');
+    el.removeAttribute('w-body');
+
+    if (widgetBodyExpression) {
+        var widgetIdInfo = this.assignWidgetId(true /* repeated */);
+        if (!widgetIdInfo.idVarNode) {
+            let idVarNode = widgetIdInfo.createIdVarNode();
+            el.onBeforeGenerateCode((event) => {
+                event.insertCode(idVarNode);
+            });
+        }
+    } else {
+        this.assignWidgetId(false /* not repeated */);
+        widgetBodyExpression = builder.memberExpression(
+            builder.identifier('data'),
+            builder.identifier('widgetBody')
+        );
+
+        widgetTagNode.setAttributeValue('body', this.getNestedIdExpression());
+    }
+
+    let widgetBodyVar = context.importModule('__widgetBody', this.getMarkoWidgetsRequirePath('marko-widgets/taglib/helpers/widgetBody'));
+
+    let widgetBodyFunctionCall = builder.functionCall(widgetBodyVar, [
+        builder.identifierOut(),
+        this.getIdExpression(),
+        widgetBodyExpression,
+        builder.identifier('widget')
+    ]);
+
+    el.appendChild(widgetBodyFunctionCall);
+};
+});
+$rmod.def("/marko-widgets@6.0.0/taglib/TransformHelper/handleWidgetEvents", function(require, exports, module, __filename, __dirname) { /*
+ * Copyright 2011 eBay Software Foundation
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+var bubbleEventsLookup = {};
+
+require('../../lib/bubble').forEach(function(eventType) {
+    bubbleEventsLookup[eventType] = true;
+});
+
+function isBubbleEvent(eventType) {
+    return bubbleEventsLookup.hasOwnProperty(eventType);
+}
+
+function isUpperCase(c) {
+    return c == c.toUpperCase();
+}
+
+function addBubblingEventListener(transformHelper, eventType, targetMethod) {
+    var containingWidgetNode = transformHelper.getContainingWidgetNode();
+    var el = transformHelper.el;
+
+    if (!containingWidgetNode) {
+        transformHelper.addError('Unable to handle event "' + eventType + '". HTML element is not nested within a widget.');
+        return;
+    }
+
+    var builder = transformHelper.builder;
+
+    el.setAttributeValue(
+        'data-w-on' + eventType.value,
+        builder.concat(
+            targetMethod,
+            builder.literal('|'),
+            builder.memberExpression(
+                builder.identifier('widget'),
+                builder.identifier('id'))));
+}
+
+function addDirectEventListener(transformHelper, eventType, targetMethod) {
+    var builder = transformHelper.builder;
+    var el = transformHelper.el;
+
+    var addDomEvent = builder.memberExpression(
+        builder.identifier('widget'),
+        builder.identifier('addDomEvent'));
+
+    var addDomEventFunctionCall = builder.functionCall(
+        addDomEvent,
+        [
+            eventType,
+            targetMethod,
+            transformHelper.getNestedIdExpression()
+        ]);
+
+    el.onBeforeGenerateCode((event) => {
+        event.insertCode(addDomEventFunctionCall);
+    });
+
+    // Also add another DOM element that will be used to
+    var containingWidgetNode = transformHelper.getContainingWidgetNode();
+    containingWidgetNode.setAttributeValue('hasDomEvents', builder.literal(1));
+}
+
+function addCustomEventListener(transformHelper, eventType, targetMethod) {
+    // Make sure the widget has an assigned scope ID so that we can bind the custom event listener
+    var widgetArgs = transformHelper.getWidgetArgs();
+    widgetArgs.addCustomEvent(eventType, targetMethod);
+}
+
+module.exports = function handleWidgetEvents() {
+    var el = this.el;
+    var builder = this.builder;
+    var isCustomTag = el.type !== 'HtmlElement';
+    // We configured the Marko compiler to attach a flag to nodes that
+    // have one or more attributes that match the "w-on*" pattern.
+    // We still need to loop over the properties to find and handle
+    // the properties corresponding to those attributes.
+    var hasWidgetEvents = this.el.isFlagSet('hasWidgetEvents') === true;
+
+    if (hasWidgetEvents) {
+        var attrs = el.getAttributes().concat([]);
+
+        attrs.forEach((attr) => {
+            var attrName = attr.name;
+            if (!attrName || !attrName.startsWith('w-on')) {
+                return;
+            }
+
+            el.removeAttribute(attrName);
+
+            var eventType = attrName.substring(4); // Chop off "w-on"
+            var targetMethod = attr.value;
+
+            if (isCustomTag) {
+                var widgetArgs = this.getWidgetArgs();
+                if (widgetArgs.getId() == null) {
+                    widgetArgs.setId(builder.literal(this.nextUniqueId()));
+                }
+
+                // We are adding an event listener for a custom event (not a DOM event)
+                if (eventType.startsWith('-')) {
+                    // Remove the leading dash.
+                    // Example: w-on-before-show → before-show
+                    eventType = eventType.substring(1);
+                } else if (isUpperCase(eventType.charAt(0))) {
+                    // Convert first character to lower case:
+                    // Example: w-onBeforeShow → beforeShow
+                    eventType = eventType.charAt(0).toLowerCase() + eventType.substring(1);
+                }
+
+                eventType = builder.literal(eventType);
+
+                // Node is for a custom tag
+                addCustomEventListener(this, eventType, targetMethod);
+            } else {
+                // We are adding an event listener for a DOM event (not a custom event)
+                //
+                if (eventType.startsWith('-')) {
+                    // Remove the leading dash.
+                    // Example: w-on-before-show → before-show
+                    eventType = eventType.substring(1);
+                }
+
+                // Normalize DOM event types to be all lower case
+                eventType = eventType.toLowerCase();
+
+                // Node is for an HTML element so treat the event as a DOM event
+                var willBubble = isBubbleEvent(eventType);
+
+                eventType = builder.literal(eventType);
+
+                if (willBubble) {
+                    // The event is white listed for bubbling so we know that
+                    // we have already attached a listener on document.body
+                    // that can be used to handle the event. We will add
+                    // a "data-w-on{eventType}" attribute to the output HTML
+                    // for this element that will be used to map the event
+                    // to a method on the containing widget.
+                    addBubblingEventListener(this, eventType, targetMethod);
+                } else {
+                    // The event does not bubble so we must attach a DOM
+                    // event listener directly to the target element.
+                    addDirectEventListener(this, eventType, targetMethod);
+                }
+            }
+        });
+
+    }
+};
+});
+$rmod.def("/marko-widgets@6.0.0/taglib/TransformHelper/handleWidgetExtend",function(e,t,i,r,d){i.exports=function(){var e=this.el;if(e.hasAttribute("w-extend")){var t,i=e.getAttribute("w-extend"),r=this.getWidgetArgs(),d=this.context,a=this.builder;if(null==i.value){if(t=this.getDefaultWidgetModule(),!t)return void this.addError("Unable to find default widget module when using w-extend without a value")}else{if(!i.isLiteralValue())throw new Error("Not yet implemented");if(t=i.literalValue,"string"!=typeof t)return void this.addError('The value for the "w-extend" attribute should be a string.')}this.widgetStack.push({el:e,extend:!0}),e.addNestedVariable("widget");var n=e.getAttributeValue("w-config");n||(n=a.memberExpression(a.identifier("data"),a.identifier("widgetConfig")));var o=e.getAttributeValue("w-state");o||(o=a.memberExpression(a.identifier("data"),a.identifier("widgetState")));var u=d.addStaticVar("__widgetType",this.buildWidgetTypeNode(t));r.setExtend(u,n,o),e.removeAttribute("w-extend"),e.removeAttribute("w-config"),e.removeAttribute("w-state")}}});
+$rmod.def("/marko-widgets@6.0.0/taglib/TransformHelper/handleWidgetFor",function(t,r,e,i,o){e.exports=function(){var t=this.el;if(t.hasAttribute("w-for")){var r=t.getAttributeValue("w-for");null!=r&&(t.hasAttribute("for")?this.addError('The "w-for" attribute cannot be used in conjuction with the "for" attribute'):t.setAttributeValue("for",this.buildWidgetElIdFunctionCall(r)))}}});
+$rmod.def("/marko-widgets@6.0.0/taglib/TransformHelper/handleWidgetPreserve", function(require, exports, module, __filename, __dirname) { /*
+ * Copyright 2011 eBay Software Foundation
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+function addPreserve(transformHelper, bodyOnly, condition) {
+
+    var el = transformHelper.el;
+    var context = transformHelper.context;
+    var builder = transformHelper.builder;
+
+    var preserveAttrs = {};
+
+    if (bodyOnly) {
+        preserveAttrs['body-only'] = builder.literal(bodyOnly);
+    }
+
+    if (condition) {
+        preserveAttrs['if'] = condition;
+    }
+
+    var widgetIdInfo = transformHelper.assignWidgetId(true /* repeated */);
+    var idVarNode = widgetIdInfo.idVarNode ? null : widgetIdInfo.createIdVarNode();
+
+    preserveAttrs.id = transformHelper.getIdExpression();
+
+    var preserveNode = context.createNodeForEl('w-preserve', preserveAttrs);
+    var idVarNodeTarget;
+
+    if (bodyOnly) {
+        el.moveChildrenTo(preserveNode);
+        el.appendChild(preserveNode);
+        idVarNodeTarget = el;
+    } else {
+        el.wrapWith(preserveNode);
+        idVarNodeTarget = preserveNode;
+    }
+
+    if (idVarNode) {
+        idVarNodeTarget.onBeforeGenerateCode((event) => {
+            event.insertCode(idVarNode);
+        });
+    }
+
+    return preserveNode;
+}
+
+module.exports = function handleWidgetPreserve() {
+    var el = this.el;
+
+    if (el.hasAttribute('w-preserve')) {
+        el.removeAttribute('w-preserve');
+        addPreserve(this, false);
+    } else if (el.hasAttribute('w-preserve-if')) {
+        addPreserve(this, false, el.getAttributeValue('w-preserve-if'));
+        el.removeAttribute('w-preserve-if');
+    } else if (el.hasAttribute('w-preserve-body')) {
+        el.removeAttribute('w-preserve-body');
+        addPreserve(this, true);
+    } else if (el.hasAttribute('w-preserve-body-if')) {
+        addPreserve(this, true, el.getAttributeValue('w-preserve-body-if'));
+        el.removeAttribute('w-preserve-body-if');
+    }
+};
+});
+$rmod.def("/marko-widgets@6.0.0/taglib/TransformHelper/handleWidgetPreserveAttrs",function(e,t,r,s,a){function i(){var e=this.el,t=e.getAttributeValue("w-preserve-attrs");e.removeAttribute("w-preserve-attrs"),e.setAttributeValue("data-w-preserve-attrs",t)}r.exports=i});
+$rmod.def("/marko-widgets@6.0.0/taglib/TransformHelper/WidgetArgs", function(require, exports, module, __filename, __dirname) { /*
+ * Copyright 2011 eBay Software Foundation
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+'use strict';
+
+var getRequirePath = require('../getRequirePath');
+
+class WidgetArgs {
+
+    constructor() {
+        this.id = null;
+        this.customEvents = null;
+        this.extend = null;
+        this.extendConfig = null;
+        this.extendState = null;
+
+        this.empty = true;
+    }
+
+    setId(id) {
+        this.empty = false;
+
+        this.id = id;
+    }
+
+    getId() {
+        return this.id;
+    }
+
+    addCustomEvent(eventType, targetMethod) {
+        this.empty = false;
+
+        if (!this.customEvents) {
+            this.customEvents = [];
+        }
+
+        this.customEvents.push(eventType);
+        this.customEvents.push(targetMethod);
+    }
+
+    setExtend(extendType, extendConfig, extendState) {
+        this.empty = false;
+
+        this.extend = extendType;
+        this.extendConfig = extendConfig;
+        this.extendState = extendState;
+    }
+
+    compile(transformHelper) {
+        if (this.empty) {
+            return;
+        }
+
+        var el = transformHelper.el;
+
+        let widgetArgsFunctionCall = this.buildWidgetArgsFunctionCall(transformHelper);
+        let cleanupWidgetArgsFunctionCall = this.buildCleanupWidgetArgsFunctionCall(transformHelper);
+
+        el.onBeforeGenerateCode((event) => {
+            event.insertCode(widgetArgsFunctionCall);
+        });
+
+        el.onAfterGenerateCode((event) => {
+            event.insertCode(cleanupWidgetArgsFunctionCall);
+        });
+    }
+
+    buildWidgetArgsFunctionCall(transformHelper) {
+        var context = transformHelper.context;
+        var builder = transformHelper.builder;
+
+        var id = this.id;
+        var customEvents = this.customEvents;
+        var extend = this.extend;
+        var extendConfig = this.extendConfig;
+        var extendState = this.extendState;
+
+        // Make sure the nested widget has access to the ID of the containing
+        // widget if it is needed
+        var shouldProvideScope = id || customEvents;
+
+        let widgetArgsVar = context.addStaticVar('__widgetArgs',
+            'require("' + getRequirePath('marko-widgets/taglib/helpers/widgetArgs', context) + '")');
+
+        var functionCallArgs = [
+            builder.identifier('out')
+        ];
+
+        if (shouldProvideScope) {
+            functionCallArgs.push(builder.memberExpression(
+                builder.identifier('widget'),
+                builder.identifier('id')
+            ));
+        } else {
+            functionCallArgs.push(builder.literalNull());
+        }
+
+        if (id != null) {
+            functionCallArgs.push(id);
+        } else {
+            functionCallArgs.push(builder.literalNull());
+        }
+
+        if (customEvents) {
+            functionCallArgs.push(builder.literal(customEvents));
+        }
+
+        if (extend) {
+            if (!customEvents) {
+                functionCallArgs.push(builder.literalNull());
+            }
+
+            functionCallArgs.push(extend);
+            functionCallArgs.push(extendConfig || builder.literalNull());
+            functionCallArgs.push(extendState || builder.literalNull());
+        }
+        return builder.functionCall(widgetArgsVar, functionCallArgs);
+    }
+
+    buildCleanupWidgetArgsFunctionCall(transformHelper) {
+        var context = transformHelper.context;
+        var builder = transformHelper.builder;
+
+        var cleanupWidgetArgsVar = context.addStaticVar('_cleanupWidgetArgs',
+            '__widgetArgs.cleanup');
+
+        return builder.functionCall(cleanupWidgetArgsVar, [builder.identifierOut()]);
+    }
+}
+
+module.exports = WidgetArgs;
+});
+$rmod.remap("/marko-widgets@6.0.0/taglib/getRequirePath","getRequirePath-browser");
+$rmod.def("/marko-widgets@6.0.0/taglib/TransformHelper/index", function(require, exports, module, __filename, __dirname) { /*
+ * Copyright 2011 eBay Software Foundation
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+'use strict';
+
+var tryRequire = require('/$/marko-widgets/$/try-require'/*'try-require'*/);
+var fs = tryRequire('fs', require);
+var nodePath = require('path-browserify'/*'path'*/);
+var WidgetArgs = require('./WidgetArgs');
+var getRequirePath = require('../getRequirePath');
+var buildWidgetTypeNode = require('../util/buildWidgetTypeNode');
+
+class TransformHelper {
+    constructor(el, context) {
+        this.el = el;
+        this.context = context;
+        this.builder = context.builder;
+        this.dirname = context.dirname;
+
+        this.widgetNextElId = 0;
+        this.widgetIdInfo = undefined;
+        this.widgetArgs = undefined;
+        this.containingWidgetNode = undefined;
+        this._markoWidgetsVar = undefined;
+        this.widgetStack = context.data.widgetStack || (context.data.widgetStack = []);
+    }
+
+    addError(message, code) {
+        this.context.addError(this.el, message, code);
+    }
+
+    getWidgetArgs() {
+        return this.widgetArgs || (this.widgetArgs = new WidgetArgs());
+    }
+
+    nextUniqueId() {
+        var widgetNextElId = this.context.data.widgetNextElId;
+        if (widgetNextElId == null) {
+            this.context.data.widgetNextElId = 0;
+        }
+
+        return (this.context.data.widgetNextElId++);
+    }
+
+    getNestedIdExpression() {
+        this.assignWidgetId();
+        return this.getWidgetIdInfo().nestedIdExpression;
+    }
+
+    getIdExpression() {
+        this.assignWidgetId();
+        return this.getWidgetIdInfo().idExpression;
+    }
+
+    getWidgetIdInfo() {
+        return this.widgetIdInfo;
+    }
+
+    getDefaultWidgetModule() {
+        var dirname = this.dirname;
+        if (fs.existsSync(nodePath.join(dirname, 'widget.js'))) {
+            return './widget';
+        } else if (fs.existsSync(nodePath.join(dirname, 'index.js'))) {
+            return './';
+        } else {
+            return null;
+        }
+    }
+
+    getMarkoWidgetsRequirePath(target) {
+        return getRequirePath(target, this.context);
+    }
+
+    get markoWidgetsVar() {
+        if (!this._markoWidgetsVar) {
+            this._markoWidgetsVar = this.context.importModule('__markoWidgets', this.getMarkoWidgetsRequirePath('marko-widgets'));
+        }
+
+        return this._markoWidgetsVar;
+    }
+
+    buildWidgetElIdFunctionCall(id) {
+        var builder = this.builder;
+
+        var widgetElId = builder.memberExpression(
+            builder.identifier('widget'),
+            builder.identifier('elId'));
+
+        return builder.functionCall(widgetElId, arguments.length === 0 ? [] : [ id ]);
+    }
+
+    buildWidgetTypeNode(path) {
+        return buildWidgetTypeNode(path, this.dirname, this.builder);
+    }
+}
+
+TransformHelper.prototype.assignWidgetId = require('./assignWidgetId');
+TransformHelper.prototype.getContainingWidgetNode = require('./getContainingWidgetNode');
+TransformHelper.prototype.handleWidgetEvents = require('./handleWidgetEvents');
+TransformHelper.prototype.handleWidgetPreserve = require('./handleWidgetPreserve');
+TransformHelper.prototype.handleWidgetPreserveAttrs = require('./handleWidgetPreserveAttrs');
+TransformHelper.prototype.handleWidgetBody = require('./handleWidgetBody');
+TransformHelper.prototype.handleWidgetBind = require('./handleWidgetBind');
+TransformHelper.prototype.handleWidgetExtend = require('./handleWidgetExtend');
+TransformHelper.prototype.handleWidgetFor = require('./handleWidgetFor');
+
+module.exports = TransformHelper;
+});
+$rmod.main("/src/components/app-tabs","index");
+$rmod.def("/src/util/dom-util",function(n,t,d,e,i){t.appendHtml=function(n,t){n.insertAdjacentHTML("beforeEnd",t)}});
+$rmod.def("/src/components/app-tabs/template.marko",function(e,t,a,i,d){function n(t){var a={name:"/src/components/app-tabs/index",def:function(){return e("./index")}},i=e("/$/marko-widgets"),d=i.attrs,n=e("/$/marko-widgets/taglib/helpers/widgetBody"),s=(t.s,t.e,t.ne,t.x,t.t),c=s(e("/$/marko-widgets/taglib/widget-tag")),o=t.xa,r=t.a,l=t.as,b=t.fv,w=t.ca;return function(e,t){c({type:a,_cfg:e.widgetConfig,_state:e.widgetState,_props:e.widgetProps,_body:e.widgetBody,renderBody:function(t,a){t.w('<div class="app-tabs '+o(e.theme)+o(e.fullScreen?" full-screen":"")+'"'+r("id",a.id)+l(d(a))+'><ul class="tab-nav">'),b(e.tabs,function(e,i){t.w("<li"+w(["tab",e.isActive&&"active"])+r("id",a.elId("tab"+i.getIndex()))+">");var d=a.elId("0[]");t.w('<a href="#"'+r("data-tab-index",e.index)+r("id",d)+' data-w-onclick="handleTabClick|'+o(a.id)+'">'),n(t,d,e.label,a),t.w("</a></li>")}),t.w('</ul><div style="clear: both"></div><div class="tab-panes">'),b(e.tabs,function(e,i){var d=a.elId("tabPane"+i.getIndex());t.w("<div"+w(["tab-pane",e.isActive&&"active"])+r("id",d)+">"),n(t,d,e.body,a),t.w("</div>")}),t.w("</div></div>")}},t)}}(a.exports=e("/$/marko").c(i)).c(n)});
+$rmod.def("/src/components/app-tabs/index",function(e,t,n,i,a){e("../../util/dom-util");n.exports=e("/$/marko-widgets").defineComponent({template:e.resolve("./template.marko"),getInitialProps:function(e){function t(e){e.active&&(i=n.length),n.push(e)}var n=[],i=-1;return e.tabs&&e.tabs.forEach(t),-1===i&&(i=0),{theme:e.theme||"default",fullScreen:e.fullScreen===!0,activeIndex:i,tabs:n}},getInitialState:function(e){return{activeIndex:e.activeIndex,theme:e.theme,fullScreen:e.fullScreen,tabs:e.tabs.map(function(e){return{visible:e.visible!==!1,id:e.id}})}},getTemplateData:function(e,t){var n=e.activeIndex,i=t?t.tabs:e.tabs;return{theme:e.theme,fullScreen:e.fullScreen,tabs:i.map(function(e,t){return{isActive:n===t,id:e.id,visible:e.visible,label:e.label,body:e.renderBody,index:t}})}},setActiveIndex:function(e){this.setState("activeIndex",e)},handleTabClick:function(e,t){var n=parseInt(t.getAttribute("data-tab-index"),10);this.setActiveIndex(n),e.preventDefault()}})});
+$rmod.dep("","raptor-async","1.1.2");
+$rmod.dep("","raptor-util","1.0.10");
+$rmod.main("/path-browserify@0.0.0","index");
+$rmod.dep("","path-browserify","0.0.0","path");
+$rmod.dep("/$/lasso/$/lasso-require","path-browserify","0.0.0");
+$rmod.def("/path-browserify@0.0.0/index",function(r,t,n,e,i){function s(r,t){for(var n=0,e=r.length-1;e>=0;e--){var i=r[e];"."===i?r.splice(e,1):".."===i?(r.splice(e,1),n++):n&&(r.splice(e,1),n--)}if(t)for(;n--;n)r.unshift("..");return r}function u(r,t){if(r.filter)return r.filter(t);for(var n=[],e=0;e<r.length;e++)t(r[e],e,r)&&n.push(r[e]);return n}var o=r("process"),f=/^(\/?|)([\s\S]*?)((?:\.{1,2}|[^\/]+?|)(\.[^.\/]*|))(?:[\/]*)$/,l=function(r){return f.exec(r).slice(1)};t.resolve=function(){for(var r="",t=!1,n=arguments.length-1;n>=-1&&!t;n--){var e=n>=0?arguments[n]:o.cwd();if("string"!=typeof e)throw new TypeError("Arguments to path.resolve must be strings");e&&(r=e+"/"+r,t="/"===e.charAt(0))}return r=s(u(r.split("/"),function(r){return!!r}),!t).join("/"),(t?"/":"")+r||"."},t.normalize=function(r){var n=t.isAbsolute(r),e="/"===a(r,-1);return r=s(u(r.split("/"),function(r){return!!r}),!n).join("/"),r||n||(r="."),r&&e&&(r+="/"),(n?"/":"")+r},t.isAbsolute=function(r){return"/"===r.charAt(0)},t.join=function(){var r=Array.prototype.slice.call(arguments,0);return t.normalize(u(r,function(r,t){if("string"!=typeof r)throw new TypeError("Arguments to path.join must be strings");return r}).join("/"))},t.relative=function(r,n){function e(r){for(var t=0;t<r.length&&""===r[t];t++);for(var n=r.length-1;n>=0&&""===r[n];n--);return t>n?[]:r.slice(t,n-t+1)}r=t.resolve(r).substr(1),n=t.resolve(n).substr(1);for(var i=e(r.split("/")),s=e(n.split("/")),u=Math.min(i.length,s.length),o=u,f=0;u>f;f++)if(i[f]!==s[f]){o=f;break}for(var l=[],f=o;f<i.length;f++)l.push("..");return l=l.concat(s.slice(o)),l.join("/")},t.sep="/",t.delimiter=":",t.dirname=function(r){var t=l(r),n=t[0],e=t[1];return n||e?(e&&(e=e.substr(0,e.length-1)),n+e):"."},t.basename=function(r,t){var n=l(r)[2];return t&&n.substr(-1*t.length)===t&&(n=n.substr(0,n.length-t.length)),n},t.extname=function(r){return l(r)[3]};var a="b"==="ab".substr(-1)?function(r,t,n){return r.substr(t,n)}:function(r,t,n){return 0>t&&(t=r.length+t),r.substr(t,n)}});
+$rmod.def("/raptor-util@1.0.10/isObjectEmpty",function(r,t,n,e,i){n.exports=function(r){if(!r)return!0;for(var t in r)if(r.hasOwnProperty(t))return!1;return!0}});
+$rmod.main("/marko-widgets@6.0.0/taglib/TransformHelper","index");
 $rmod.main("/raptor-loader@1.0.5","lib/raptor-loader");
 $rmod.dep("","raptor-loader","1.0.5");
-!function(a){a._0={js:["/static/marko-try-online-async-59003230.js"]}}(window.$rloaderMeta||(window.$rloaderMeta={}));
-$rmod.dep("","raptor-util","1.0.10");
+!function(a){a._0={js:["/static/marko-compiler-594134d5.js","/static/marko-widgets-try-online-async-13bc2c48.js"]}}(window.$rloaderMeta||(window.$rloaderMeta={}));
 $rmod.def("/raptor-loader@1.0.5/lib/resource-loader",function(e,n,t,r,o){function a(e,n){var t=document.createElement(e);return n&&u(t,n),t}function c(e){null==i&&(i=document.getElementsByTagName("head")[0]),i.appendChild(e)}var i,u=e("raptor-util/extend");n.js=function(e,n,t){function r(){i===!1&&(i=!0,n())}function o(e){i===!1&&(i=!0,n(e||"unknown error"))}t=t||{};var i=!1;u(t,{type:"text/javascript",src:e,onreadystatechange:function(){("complete"==d.readyState||"loaded"==d.readyState)&&r()},onload:r,onerror:o});var d=a("script",t);if(d.addEventListener)try{d.addEventListener("load",function(){r()})}catch(l){}c(d)},n.css=function(e,n,t){function r(){p.onload=null,p.onreadystatechange=null,p.onerror=null}function o(){for(var n=document.styleSheets,t=0,r=n.length;r>t;t++)if(n[t].href===e)return!0;return!1}function i(){s===!1&&(s=!0,r(),n())}function d(){if(s===!1){if(!o()&&f--)return window.setTimeout(d,10);i()}}function l(e){s===!1&&(s=!0,r(),n(e||"unknown error"))}var f=20,s=!1,p=a("link");u(p,{type:"text/css",rel:"stylesheet",href:e}),t&&u(p,t),"Microsoft Internet Explorer"===navigator.appName?(p.onload=i,p.onreadystatechange=function(){var e=this.readyState;("loaded"===e||"complete"===e)&&i()}):d(),p.onerror=l,c(p)}});
 $rmod.dep("","events","1.1.0");
 $rmod.dep("/$/lasso/$/lasso-require","events","1.1.0");
 $rmod.dep("/$/lasso/$/lasso-require","raptor-loader","1.0.5");
 $rmod.def("/raptor-loader@1.0.5/lib/raptor-loader",function(n,e,o,t,r){function i(n,e){if(!d[e]){d[e]=!0;var o,t=setTimeout(function(){o("Timeout after "+s+"ms")},s);o=function(n){d[e]&&(clearTimeout(t),delete d[e],n?m[e]=n:l[e]=!0,v.emit(e,n,e))},f[n](e,o)}}function a(n,e){function o(){a.length?e("Failed: "+a.join(", ")):e()}function t(n,e){n&&a.push(e+" ("+n+")"),0===--u&&o()}function r(e){var o=n[e];if(o)for(var r=0,f=o.length;f>r;r++){var c=o[r];m[c]?a.push(c+" ("+m[c]+")"):l[c]||(u++,v.once(c,t),i(e,c))}}var a=[],u=0;r("css"),r("js"),0===u&&o()}function u(e,o){var t=window.$rloaderMeta,r=t?t[e]:null;if(!r)throw new Error('Loader metadata missing for "'+e+'"');var i,u=n.runtime;u&&(i=u.pending()),a(r,function(n,e){i&&i.done(n),o(n,e)})}var f=(n("process"),n("./resource-loader")),c=n("events").EventEmitter,s=3e3,d={},l={},m={},v=new c;e.setTimeout=function(n){s=n},e.load=a,e.async=u});
-$rmod.def("/src/components/app-try-marko/layout-default.marko",function(t,o,e,a,n){function l(o){var e=(o.s,o.e,o.ne,o.x,o.t),a=e(t("/$/marko/taglibs/layout/placeholder-tag"));return function(t,o){o.w('<div class="cols-ctr"><div class="mto-col-input"><div class="mto-tile mto-tile-template"><h2>Marko Template '),a({name:"syntax-chooser",content:t.layoutContent},o),o.w("</h2>"),a({name:"template",content:t.layoutContent},o),o.w('</div><div class="mto-tile mto-tile-mto-data"><h2>Data</h2>'),a({name:"data",content:t.layoutContent},o),o.w('</div><div class="mto-tile mto-tile-mto-options"><h2>Options</h2>'),a({name:"options",content:t.layoutContent},o),o.w('</div></div><div class="mto-col-output"><div class="mto-tile mto-tile-output"><h2>HTML Output</h2>'),a({name:"output",content:t.layoutContent},o),o.w('</div><div class="mto-tile mto-tile-compiled"><h2>Compiled Template</h2>'),a({name:"compiled",content:t.layoutContent},o),o.w('</div></div></div><div style="clear: both"></div>')}}(e.exports=t("/$/marko").c(a)).c(l)});
+$rmod.def("/marko@3.0.0/taglibs/layout/put-tag",function(t,a,o,u,n){o.exports=function(t,a){var o=t.layout,u=o.handlePutTag;u(t)}});
+$rmod.def("/marko@3.0.0/taglibs/layout/use-tag-transformer",function(t,e,a,r,u){"use strict";a.exports=function(t,e){var a=t.argument;if(!a)return void e.addError(t,"Invalid <layout-use> tag. Expected: <layout-use(template[, data]) ...>");var r=e.builder,u=r.parseJavaScriptArgs(a),l=u[0];"Literal"===l.type&&(l=e.importTemplate(l.value)),u[1]&&t.setAttributeValue("__data",u[1]),t.argument=null,t.setAttributeValue("__template",l)}});
+$rmod.def("/marko@3.0.0/taglibs/layout/use-tag",function(t,n,a,e,o){a.exports=function(t,n){var a={};t.getContent&&t.getContent({handlePutTag:function(t){a[t.into]=t}});var e=t.__data,o=t["*"]||{};if(e)for(var r in e)e.hasOwnProperty(r)&&!o.hasOwnProperty(r)&&(o[r]=e[r]);o.layoutContent=a,t.__template.render(o,n)}});
+$rmod.def("/marko@3.0.0/taglibs/layout/placeholder-tag",function(e,r,n,o,d){n.exports=function(e,r){var n=e.content,o=n?n[e.name]:null;o?o.value?r.write(o.value):o.renderBody&&o.renderBody(r):e.renderBody&&e.renderBody(r)}});
+$rmod.def("/src/components/app-try-marko-widgets/layout-default.marko",function(t,n,o,e,a){function l(n){var o=(n.s,n.e,n.ne,n.x,n.t),e=o(t("../app-tabs"),0,0,1),a=o(null,"tabs",1),l=o(t("/$/marko/taglibs/layout/placeholder-tag"));return function(t,n){n.w('<div class="cols-ctr"><div class="input-col"><div class="mto-tile mto-tile-javascript">'),e({fullScreen:!0},n,0,function(n,o){a({label:"JavaScript",renderBody:function(n){l({name:"javaScript",content:t.layoutContent},n)}},n,o)}),n.w('</div></div><div class="output-col"><div class="top">'),e({fullScreen:!0},n,0,function(n,o){a({label:"Marko Template",renderBody:function(n){l({name:"template",content:t.layoutContent},n)}},n,o),a({label:"CSS",renderBody:function(n){l({name:"css",content:t.layoutContent},n)}},n,o)}),n.w('</div><div class="middle">'),e({fullScreen:!0},n,0,function(n,o){a({label:"Input Props",renderBody:function(n){l({name:"input",content:t.layoutContent},n)}},n,o)}),n.w('</div><div class="bottom"><h2>Output</h2>'),l({name:"output",content:t.layoutContent},n),n.w('</div></div></div><div style="clear: both"></div>')}}(o.exports=t("/$/marko").c(e)).c(l)});
 $rmod.main("/src/components/app-marko-try-online-errors","index");
 $rmod.def("/src/components/app-marko-try-online-errors/errors-template.marko",function(r,s,e,n,o){function a(r){var s=(r.s,r.e,r.ne,r.x),e=r.f;return function(r,n){n.w('<div class="errors">'),e(r.errors,function(r){n.w('<div class="error"><span class="icon">✘</span><pre class="message">'+s(r.message)+"\n</pre></div>")}),n.w("</div>")}}(e.exports=r("/$/marko").c(n)).c(a)});
-$rmod.def("/src/util/dom-util",function(n,t,d,e,i){t.appendHtml=function(n,t){n.insertAdjacentHTML("beforeEnd",t)}});
 $rmod.def("/src/components/app-marko-try-online-errors/template.marko",function(e,r,t,o,n){function i(r){var t={name:"/src/components/app-marko-try-online-errors/index",def:function(){return e("./index")}},o=e("/$/marko-widgets"),n=o.attrs,i=(r.s,r.e,r.ne,r.x,r.t),a=i(e("/$/marko-widgets/taglib/widget-tag")),d=r.a,s=r.as;return function(e,r){a({type:t,_cfg:e.widgetConfig,_state:e.widgetState,_props:e.widgetProps,_body:e.widgetBody,renderBody:function(e,r){e.w('<div class="errors-container"'+d("id",r.id)+s(n(r))+"></div>")}},r)}}(t.exports=e("/$/marko").c(o)).c(i)});
 $rmod.def("/src/components/app-marko-try-online-errors/index",function(r,e,s,t,o){var n=r("./errors-template.marko"),i=r("/src/util/dom-util").appendHtml,a=r("/$/dom-classes").remove,d=r("/$/dom-classes").add;s.exports=r("/$/marko-widgets").defineComponent({template:r("./template.marko"),getTemplateData:function(){return{}},setErrors:function(r){this.el.innerHTML="",r&&r.length?this.addErrors(r):(this._hasErrors=!1,d(this.el,"hidden"))},clearErrors:function(){this.setErrors(null)},hasErrors:function(){return this._hasErrors},addErrors:function(r){if(r&&r.length){this._hasErrors=!0;var e=n.renderSync({errors:r});i(this.el,e),a(this.el,"hidden")}}})});
-$rmod.def("/src/components/app-try-marko/template.marko",function(t,e,o,a,n){function d(e){var o={name:"/src/components/app-try-marko/index",def:function(){return t("./index")}},a=t("/$/marko-widgets"),n=a.attrs,d=e.l,i=d(t.resolve("./layout-default.marko")),r=t("/$/marko-widgets/taglib/helpers/widgetArgs"),l=r.cleanup,s=(e.s,e.e,e.ne,e.x,e.t),c=s(t("/$/marko-widgets/taglib/widget-tag")),u=e.ca,m=e.a,p=e.as,y=s(t("/$/marko/taglibs/layout/use-tag")),g=s(t("/$/marko/taglibs/layout/put-tag")),h=e.xa,f=s(t("../app-codemirror")),k=s(t("../app-marko-try-online-errors"));return function(t,e){c({type:o,_cfg:t.widgetConfig,_state:t.widgetState,_props:t.widgetProps,_body:t.widgetBody,renderBody:function(e,o){e.w("<div"+u(["app-try-marko-inline",t.inline&&"inline"])+m("id",o.id)+p(n(o))+">"),y({__template:i,getContent:function(a){g({into:"syntax-chooser",layout:a,renderBody:function(e){e.w('<span class="syntax-chooser"><span class="button-group"><button type="button"'+u("html"===t.syntax&&"active")+m("id",o.elId("htmlSyntaxButton"))+' data-w-onclick="handleHtmlSyntxButtonClick|'+h(o.id)+'">HTML Syntax</button><button type="button"'+u("concise"===t.syntax&&"active")+m("id",o.elId("conciseSyntaxButton"))+' data-w-onclick="handleConciseSyntxButtonClick|'+h(o.id)+'">Concise Syntax</button></span></span>')}},e),g({into:"template",layout:a,renderBody:function(e){t.templateNav.renderBody(e),r(e,o.id,"templateEditor",["change","handleTemplateEditorChange"]),f({mode:"Marko",autoResize:!0,theme:"default",code:t.templateCode},e),l(e),r(e,o.id,"templateErrors"),k({},e),l(e)}},e),g({into:"data",layout:a,renderBody:function(e){r(e,o.id,"dataEditor",["change","handleDataEditorChange"]),f({mode:"javascript",theme:"default",autoResize:!0,code:t.dataCode},e),l(e),r(e,o.id,"dataErrors"),k({},e),l(e)}},e),g({into:"options",layout:a,renderBody:function(t){r(t,o.id,"optionsEditor",["change","handleOptionsEditorChange"]),f({mode:"javascript",theme:"default",autoResize:!0},t),l(t),r(t,o.id,"optionsErrors"),k({},t),l(t)}},e),g({into:"output",layout:a,renderBody:function(e){r(e,o.id,"outputEditor"),f({mode:"htmlmixed",autoResize:!0,readOnly:!0,autoFormat:!0,theme:"default",code:t.htmlCode},e),l(e),t.inline||e.w('<div class="mto-html-viewer"'+m("id",o.elId("htmlViewer"))+"></div>")}},e),g({into:"compiled",layout:a,renderBody:function(e){r(e,o.id,"compiledEditor"),f({mode:"javascript",autoResize:!0,readOnly:!0,theme:"default",code:t.compiledCode},e),l(e)}},e)}},e),e.w('<div style="clear: both"></div></div>')}},e)}}(o.exports=t("/$/marko").c(a)).c(d)});
-$rmod.def("/src/components/app-try-marko/index",function(require,exports,module,__filename,__dirname){function loadCompiler(t){compilerAsyncValue||(compilerAsyncValue=new AsyncValue,require("raptor-loader").async("_0",function(){var t=require("/$/marko/compiler");t.registerTaglib(require.resolve("./test-taglib/marko.json")),compilerAsyncValue.resolve(t)})),compilerAsyncValue.done(t)}function compileAndLoadTemplate(templateSrc,path,compileOptions,callback){loadCompiler(function(err,compiler){if(err)throw err;try{compiler.compile(templateSrc,path,compileOptions,function(err,compiledSrc){if(err)return callback(err);var wrappedSource="(function(require, exports, module, __filename, __dirname) { "+compiledSrc+" })",factoryFunc=eval(wrappedSource),templateExports={},templateModule={require:require,exports:templateExports,id:"/template.marko"};factoryFunc(require,templateExports,templateModule,"/template.marko","/"),callback(null,templateModule.exports,compiledSrc)})}catch(e){window.console&&console.error(e),callback(e)}})}var AsyncValue=require("/$/raptor-async/AsyncValue"),compilerAsyncValue=null,removeClass=require("/$/dom-classes").remove,addClass=require("/$/dom-classes").add,markoPrettyprint=require("/$/marko-prettyprint");module.exports=require("/$/marko-widgets").defineComponent({template:require("./template.marko"),getWidgetConfig:function(t){return{inline:t.inline===!0,syntax:t.syntax||"html"}},getTemplateData:function(t,e){var i=e["template-nav"],r=e.dataCode,a=e.templateCode,o=e.compiledCode,n=e.htmlCode,d=e.syntax||"html";return{templateNav:i,dataCode:r,templateCode:a,compiledCode:o,htmlCode:n,inline:e.inline===!0,syntax:d}},init:function(t){this.autoRender=!0,this.compileRequired=!0,this.renderRequired=!0,this.inline=t.inline===!0,this.syntax=t.syntax||"html",this.editorsState={data:null,options:null,dataModified:!0,optionsModified:!0},this.halt=!1},setCode:function(t){var e=t.showOptions===!0;e?this.getWidget("optionsEditor").show():this.getWidget("optionsEditor").hide();var i=t.template,r=t.data,a=t.compilerOptions,o=t.autoFormat===!0,n=t.syntax;n!==this.syntax&&(i=markoPrettyprint(i,{syntax:this.syntax,filename:"template.marko"})),this.getWidget("outputEditor").setAutoFormat(o),this.halt=!0,this.getWidget("dataEditor").setValue(r||"{\n}"),a&&this.getWidget("optionsEditor").setValue(a),this.compilerOptions=a,this.getWidget("templateEditor").setValue(i),this.halt=!1,this.update()},setSyntax:function(t){this.syntax!==t&&(this.syntax=t,removeClass(this.getEl("htmlSyntaxButton"),"active"),removeClass(this.getEl("conciseSyntaxButton"),"active"),"html"===t?addClass(this.getEl("htmlSyntaxButton"),"active"):addClass(this.getEl("conciseSyntaxButton"),"active"));var e=this.getWidget("templateEditor").getValue();e=markoPrettyprint(e,{syntax:this.syntax,filename:"template.marko"}),this.getWidget("templateEditor").setValue(e)},handleEditorException:function(t,e){var i=e.errors;i||(i=[{message:e.toString()}]),t.addErrors(i)},compileTemplate:function(){if(this.compileRequired){this.getWidget("templateErrors").clearErrors();var t=this.getWidget("templateEditor").getValue(),e="/template.marko",i=this.compilerOptions?this.editorsState.optionsData:null,r=this;compileAndLoadTemplate(t,e,i,function(t,e,i){return t?void r.handleEditorException(r.getWidget("templateErrors"),t):(r.loadedTemplate=e,r.getWidget("compiledEditor").setValue(i),void(r.compileRequired=!1))})}},renderTemplate:function(){if(this.renderRequired){var t=this.editorsState.templateData,e=this;try{this.loadedTemplate.render(t,function(t,i){return t?(this.handleEditorException(e.getWidget("templateErrors"),t),void(e.getEl("htmlViewer").innerHTML="")):(e.getWidget("outputEditor").setValue(i),void e.updateHTMLViewer(i))})}catch(i){this.handleEditorException(this.getWidget("templateErrors"),i),this.updateHTMLViewer("")}this.renderRequired=!1}},updateHTMLViewer:function(t){this.inline||(this.getEl("htmlViewer").innerHTML=t)},updateJSON:function(targetProp,modifiedProp,editor,errors){if(this.editorsState[modifiedProp]){this.editorsState[targetProp]=null,errors.clearErrors();var jsonData=editor.getValue(),data;if(""===jsonData.trim())data={};else try{data=eval("("+jsonData+")"),this.editorsState[targetProp]=data}catch(e){this.handleEditorException(errors,e)}this.editorsState[modifiedProp]=!1}},update:function(){if(!this.halt){var t=this;loadCompiler(function(){t.editorsState.dataModified&&t.getWidget("templateErrors").clearErrors(),t.updateJSON("optionsData","optionsModified",t.getWidget("optionsEditor"),t.getWidget("optionsErrors")),t.compileTemplate(),t.updateJSON("templateData","dataModified",t.getWidget("dataEditor"),t.getWidget("dataErrors")),t.renderTemplate()})}},handleTemplateEditorChange:function(){this.compileRequired=!0,this.renderRequired=!0,this.autoRender&&this.update()},handleDataEditorChange:function(){this.editorsState.dataModified=!0,this.renderRequired=!0,this.autoRender&&this.update()},handleOptionsEditorChange:function(){this.editorsState.optionsModified=!0,this.renderRequired=!0,this.compileRequired=!0,this.autoRender&&this.update()},handleHtmlSyntxButtonClick:function(){this.setSyntax("html")},handleConciseSyntxButtonClick:function(){this.setSyntax("concise")}})});
-$rmod.def("/src/components/app-try-marko-app/template.marko",function(t,a,e,i,o){function d(a){var e={name:"/src/components/app-try-marko-app/index",def:function(){return t("./index")}},i=t("/$/marko-widgets"),o=i.attrs,d=t("/$/marko-widgets/taglib/helpers/widgetArgs"),n=d.cleanup,s=(a.s,a.e,a.ne,a.x),r=a.t,c=r(t("/$/marko-widgets/taglib/widget-tag")),l=a.a,m=a.as,p=a.f,g=a.xa,u=r(t("../app-try-marko"),0,0,1),w=r(null,"template-nav",0);return function(t,a){c({type:e,_cfg:t.widgetConfig,_state:t.widgetState,_props:t.widgetProps,_body:t.widgetBody,renderBody:function(a,e){a.w('<div class="mto"'+l("id",e.id)+m(o(e))+'><div class="mto-categories">'),p(t.samples.categories,function(t){a.w('<button type="button" class="mto-btn mto-category-btn"'+l("data-cat-id",t.id)+l("id",e.elId("categoryButton"+t.id))+' data-w-onclick="handleCategoryClick|'+g(e.id)+'">'+s(t.name)+"</button>")}),a.w('<a href="/"><img src="/images/logo.png" width="100" height="100" alt="Marko"></a></div><div class="try-marko-container">'),d(a,e.id,"tryMarko"),u({},a,0,function(a,i){w({renderBody:function(a){a.w('<div class="mto-sample-navs"'+l("id",e.elId("sampleNavs"))+">"),p(t.samples.categories,function(t){a.w('<div class="mto-sample-nav"'+l("data-cat-id",t.id)+l("id",e.elId("categoryNav"+t.id))+">"),p(t.samples,function(t){a.w('<button type="button"'+l("data-sample-id",t.id)+' class="mto-btn mto-sample-btn"'+l("id",e.elId("sampleButton"+t.id))+' data-w-onclick="handleSampleButtonClick|'+g(e.id)+'">'+s(t.name)+"</button>")}),a.w("</div>")}),a.w("</div>")}},a,i)}),n(a),a.w("</div></div>")}},a)}}(e.exports=t("/$/marko").c(i)).c(d)});
-$rmod.def("/src/components/app-try-marko-app/index",function(t,e,a,s,n){function i(t,e){var a=t.name,s=e.name;return(a+"_"+s).replace(/\W+/g,"_")}var o=t("/$/dom-classes").remove,r=t("/$/dom-classes").add,l=t("./samples-loader").load();"undefined"!=typeof window&&(window.testTemplate=t("./include-target.marko"),window.layoutTemplate=t("./layout-use-target.marko")),a.exports=t("/$/marko-widgets").defineComponent({template:t("./template.marko"),getWidgetConfig:function(){return{samples:l}},getTemplateData:function(){var t=null;return{samples:l,theme:t}},init:function(t){this.currentCategoryId=null,this.currentSampleId=null;var e=t.samples,a=this.samplesById={},s=this.categoriesById={},n=this.samplesByName={};if(this.changeHash=!0,e.categories.forEach(function(t){s[t.id]=t,t.samples.forEach(function(e){e.category=t,a[e.id]=e,e.uniqueName=i(t,e),n[e.uniqueName]=e})}),document.location.hash){var o=n[document.location.hash.substring(1)];o?this.showSample(o.id):this.showCategory(e.categories[0].id)}else this.changeHash=!1,this.showCategory(e.categories[0].id),this.changeHash=!0;var r=this;window.addEventListener("hashchange",function(){var t=n[document.location.hash.substring(1)];t&&r.showSample(t.id)},!1)},showCategory:function(t){var e=this.categoriesById[t];e&&0!==e.samples.length&&this.showSample(e.samples[0].id)},showSample:function(t){if(this.currentSampleId!==t){var e=this.samplesById[t];if(e){this.currentSample=e;var a=e.category.id;if(this.currentCategoryId!==a){null!=this.currentCategoryId&&(o(this.getCategoryButtonEl(this.currentCategoryId),"mto-btn-active"),o(this.getCategoryNavEl(this.currentCategoryId),"mto-sample-nav-active")),this.currentCategoryId=a,r(this.getCategoryButtonEl(this.currentCategoryId),"mto-btn-active"),r(this.getCategoryNavEl(this.currentCategoryId),"mto-sample-nav-active");var s=this.categoriesById[a];null==t&&s.samples.length&&(t=s.samples[0].id),1===s.samples.length?r(this.getEl("sampleNavs"),"hidden"):o(this.getEl("sampleNavs"),"hidden")}null!=this.currentSampleId&&o(this.getSampleButtonEl(this.currentSampleId),"mto-btn-active"),this.currentSampleId=t,r(this.getSampleButtonEl(this.currentSampleId),"mto-btn-active");var n=e.options;this.getWidget("tryMarko").setCode({template:e.template,data:e.data,options:e.options,autoFormat:e.autoFormat===!0,compilerOptions:n,syntax:e.syntax}),this.changeHash!==!1&&(document.location.hash=e.uniqueName)}}},getCategoryNavEl:function(t){return this.getEl("categoryNav"+t)},getCategoryButtonEl:function(t){return this.getEl("categoryButton"+t)},getSampleButtonEl:function(t){return this.getEl("sampleButton"+t)},handleCategoryClick:function(t,e){var a=e.getAttribute("data-cat-id");null!=a&&(a=parseInt(a,10),this.showCategory(a))},handleSampleButtonClick:function(t,e){var a=e.getAttribute("data-sample-id");null!=a&&(a=parseInt(a,10),this.showSample(a))}})});
+$rmod.def("/src/components/app-try-marko-widgets/template.marko",function(e,r,t,i,a){function d(r){var t={name:"/src/components/app-try-marko-widgets/index",def:function(){return e("./index")}},i=e("/$/marko-widgets"),a=i.attrs,d=r.l,o=d(e.resolve("./layout-default.marko")),n=e("/$/marko-widgets/taglib/helpers/widgetArgs"),s=n.cleanup,p=(r.s,r.e,r.ne,r.x,r.t),l=p(e("/$/marko-widgets/taglib/widget-tag")),c=r.a,u=r.as,w=p(e("/$/marko/taglibs/layout/use-tag")),m=p(e("/$/marko/taglibs/layout/put-tag")),v=p(e("../app-codemirror")),g=p(e("../app-marko-try-online-errors"));return function(e,r){l({type:t,_cfg:e.widgetConfig,_state:e.widgetState,_props:e.widgetProps,_body:e.widgetBody,renderBody:function(r,t){r.w('<div class="app-try-marko-widgets"'+c("id",t.id)+u(a(t))+">"),w({__template:o,getContent:function(i){m({into:"javaScript",layout:i,renderBody:function(r){r.w('<div class="editor-wrapper"'+c("id",t.elId("javaScriptWrapper"))+">"),n(r,t.id,"javaScriptEditor",["change","handleJavaScriptEditorChange"]),v({mode:"javascript",theme:"default",autoResize:!1,code:e.javaScriptCode,fullscreen:!0},r),s(r),r.w('<div class="errors-wrapper align-bottom">'),n(r,t.id,"javaScriptErrors"),g({},r),s(r),r.w("</div></div>")}},r),m({into:"template",layout:i,renderBody:function(r){r.w('<div class="editor-wrapper"'+c("id",t.elId("templateWrapper"))+">"),n(r,t.id,"templateEditor",["change","handleTemplateEditorChange"]),v({mode:"marko",autoResize:!1,fullscreen:!0,theme:"default",code:e.templateCode},r),s(r),r.w('<div class="errors-wrapper align-below">'),n(r,t.id,"templateErrors"),g({},r),s(r),r.w('<div class="errors-wrapper"></div></div></div>')}},r),m({into:"input",layout:i,renderBody:function(r){r.w('<div class="editor-wrapper"'+c("id",t.elId("inputWrapper"))+">"),n(r,t.id,"inputEditor",["change","handleInputEditorChange"]),v({mode:"javascript",theme:"default",autoResize:!1,fullscreen:!0,code:e.inputCode},r),s(r),r.w('<div class="errors-wrapper align-below">'),n(r,t.id,"inputErrors"),g({},r),s(r),r.w("</div></div>")}},r),m({into:"css",layout:i,renderBody:function(e){e.w("<div>"),n(e,t.id,"cssEditor",["change","handleCssEditorChange"]),v({mode:"css",theme:"default",autoResize:!1,fullscreen:!0},e),s(e),e.w("</div>")}},r),m({into:"output",layout:i,renderBody:function(r){r.w("<div"+c("id",t.elId("outputWrapper"))+">"),e.inline||r.w('<div class="output-ctr hide-if-errors"'+c("id",t.elId("htmlViewer"))+"></div>"),r.w('<div class="errors-wrapper">'),n(r,t.id,"renderErrors"),g({},r),s(r),r.w("</div></div>")}},r)}},r),r.w('<div style="clear: both"></div></div>')}},r)}}(t.exports=e("/$/marko").c(i)).c(d)});
+$rmod.def("/src/components/app-try-marko-widgets/index",function(require,exports,module,__filename,__dirname){function loadCompiler(e){compilerAsyncValue||(compilerAsyncValue=new AsyncValue,require("raptor-loader").async("_0",function(){var e=require("/$/marko/compiler");e.registerTaglib(require.resolve("/$/marko-widgets/marko")),compilerAsyncValue.resolve(e)})),compilerAsyncValue.done(e)}var removeClass=require("/$/dom-classes").remove,addClass=require("/$/dom-classes").add,AsyncValue=require("/$/raptor-async/AsyncValue"),extend=require("/$/raptor-util/extend"),nodePath=require("path-browserify"),markoWidgets=require("/$/marko-widgets"),compilerAsyncValue=null,isObjectEmpty=require("/$/raptor-util/isObjectEmpty"),TransformHelper=require("/$/marko-widgets/taglib/TransformHelper");TransformHelper.prototype.getDefaultWidgetModule=function(){var e=this.dirname;if("/try-online"===this.dirname)return"/try-online/index";try{return require.resolve(nodePath.join(e,"widget")),"./widget"}catch(t){try{return require.resolve(nodePath.join(e,"index")),"./index"}catch(t){return null}}},module.exports=require("/$/marko-widgets").defineComponent({template:require("./template.marko"),getWidgetConfig:function(e){return{}},getTemplateData:function(e,t){var r=t.javaScriptCode,i=t.templateCode,d=t.inputCode,a=t.cssCode;return{javaScriptCode:r,templateCode:i,inputCode:d,cssCode:a}},init:function(e){this.renderRequired=!0,this.loadJavaScriptRequired=!0,this.loadTemplateRequired=!0,this.loadCssRequired=!0,this.loadInputRequired=!0,this.renderRequired=!0,this.destroyRequired=!1,this.newInput=!1,this.loadedTemplate=null,this.loadedComponent=null,this.loadedInput={},this.renderedWidget=null,this.editorsState={data:null,options:null,dataModified:!0,optionsModified:!0},this.halt=!1},setCode:function(e){var t=e.javaScript,r=e.template,i=e.input,d=e.css;this.halt=!0,this.getWidget("javaScriptEditor").setValue(t+"\n\n\n"),this.getWidget("inputEditor").setValue(i||"{\n}"),this.getWidget("templateEditor").setValue(r),this.getWidget("cssEditor").setValue(d||""),this.halt=!1,this.update()},loadModule:function(src,path){function requireProxy(e){return"./template.marko"===e?self.loadedTemplate:"/try-online/index"===e?self.loadedComponent:require(e)}var wrappedSource="(function(require, exports, module, __filename, __dirname) { "+src+" })",factoryFunc=eval(wrappedSource),newExports={},newModule={require:require,exports:newExports,id:path},self=this;return extend(requireProxy,require),factoryFunc(requireProxy,newExports,newModule,path,"/"),newModule.exports},handleEditorException:function(e,t){console.log("Error: ",t.stack||t);var r=t.errors;r||(r=[{message:t.toString()}]),e.addErrors(r)},loadTemplate:function(e){if(!this.loadTemplateRequired)return e();this.loadTemplateRequired=!1,removeClass(this.getEl("templateWrapper"),"has-errors"),this.getWidget("templateErrors").clearErrors();var t=this.getWidget("templateEditor").getValue(),r="/try-online/template.marko",i=this;loadCompiler(function(d,a){if(d)return i.handleEditorException(i.getWidget("templateErrors"),d),e();try{a.compile(t,r,null,function(t,d){if(t)return addClass(i.getEl("templateWrapper"),"has-errors"),void i.handleEditorException(i.getWidget("templateErrors"),t);var a=i.loadModule(d,r);return i.loadedTemplate?extend(i.loadedTemplate,a):i.loadedTemplate=a,i.loadTemplateRequired=!1,e()})}catch(s){return i.handleEditorException(i.getWidget("templateErrors"),s),addClass(i.getEl("templateWrapper"),"has-errors"),e()}})},loadJavaScript:function(){if(this.loadJavaScriptRequired){this.loadJavaScriptRequired=!1,removeClass(this.getEl("javaScriptWrapper"),"has-errors"),this.getWidget("javaScriptErrors").clearErrors();var e=this.getWidget("javaScriptEditor").getValue();try{return this.loadedComponent=this.loadModule(e,"/try-online/index.js"),markoWidgets.registerWidget("/try-online/index",this.loadedComponent),this.loadedComponent}catch(t){return this.handleEditorException(this.getWidget("javaScriptErrors"),t),addClass(this.getEl("javaScriptWrapper"),"has-errors"),null}}},loadInput:function(){if(this.loadInputRequired){this.loadInputRequired=!1,removeClass(this.getEl("inputWrapper"),"has-errors"),this.getWidget("inputErrors").clearErrors();var inputSrc=this.getWidget("inputEditor").getValue().trim()||{};this.loadedInput=null;try{this.loadedInput=eval("("+inputSrc+")")}catch(e){return this.handleEditorException(this.getWidget("inputErrors"),e),addClass(this.getEl("inputWrapper"),"has-errors"),null}}},loadCss:function(){if(this.loadCssRequired){this.loadCssRequired=!1,this.loadedCss?this.loadedCss.innerHTML="":(this.loadedCss=document.createElement("style"),document.body.appendChild(this.loadedCss));var e=this.getWidget("cssEditor").getValue().trim();this.loadedCss.appendChild(document.createTextNode(e))}},update:function(){if(!this.halt){var e=this;this.loadTemplate(function(t,r){e.loadJavaScript(),e.loadInput(),e.loadCss(),e.render()})}},render:function(){if(this.renderRequired&&this.loadedTemplate&&this.loadedComponent&&this.loadedInput){this.getWidget("renderErrors").clearErrors(),this.renderRequired=!1,this.renderedWidget&&this.destroyRequired&&(this.renderedWidget.destroy(),this.renderedWidget=null),this.destroyRequired=!1;var e=this.newInput===!0;this.newInput=!1,removeClass(this.getEl("outputWrapper"),"has-errors");try{this.renderedWidget?e||isObjectEmpty(this.renderedWidget.state)?this.renderedWidget.setProps(this.loadedInput):this.renderedWidget.rerender():this.renderedWidget=this.loadedComponent.render(this.loadedInput).appendTo(this.getEl("htmlViewer")).getWidget()}catch(t){this.renderedWidget&&(this.renderedWidget.destroy(),this.renderedWidget=null),this.getEl("htmlViewer").innerHTML="",addClass(this.getEl("outputWrapper"),"has-errors"),this.handleEditorException(this.getWidget("renderErrors"),t)}}},handleJavaScriptEditorChange:function(){this.destroyRequired=!0,this.renderRequired=!0,this.loadJavaScriptRequired=!0,this.update()},handleTemplateEditorChange:function(){this.renderRequired=!0,this.loadTemplateRequired=!0,this.update()},handleInputEditorChange:function(){this.renderRequired=!0,this.loadInputRequired=!0,this.newInput=!0,this.update()},handleCssEditorChange:function(){this.loadCssRequired=!0,this.update()}})});
+$rmod.dep("/$/marko","async-writer","1.4.1");
+$rmod.dep("/$/marko","events","1.1.0");
+$rmod.dep("/$/marko","raptor-util","1.0.10");
+$rmod.def("/src/components/app-try-marko-widgets-app/template.marko",function(t,a,e,i,d){function o(a){var e={name:"/src/components/app-try-marko-widgets-app/index",def:function(){return t("./index")}},i=t("/$/marko-widgets"),d=i.attrs,o=t("/$/marko-widgets/taglib/helpers/widgetArgs"),s=o.cleanup,n=(a.s,a.e,a.ne,a.x),r=a.t,c=r(t("/$/marko-widgets/taglib/widget-tag")),p=a.a,g=a.as,m=a.f,l=a.xa,w=r(t("../app-try-marko-widgets"),0,0,1);return function(t,a){c({type:e,_cfg:t.widgetConfig,_state:t.widgetState,_props:t.widgetProps,_body:t.widgetBody,renderBody:function(a,e){a.w('<div class="mto"'+p("id",e.id)+g(d(e))+'><div class="mto-categories">'),m(t.samples.categories,function(t){a.w("<div><h2>"+n(t.name)+'</h2><div class="category-samples">'),m(t.samples,function(t){a.w('<button type="button"'+p("data-sample-id",t.id)+' class="mto-btn mto-sample-btn"'+p("id",e.elId("sampleButton"+t.id))+' data-w-onclick="handleSampleButtonClick|'+l(e.id)+'">'+n(t.name)+"</button>")}),a.w("</div></div>")}),a.w('<a href="/"><img src="/images/logo.png" width="100" height="100" alt="Marko"></a></div><div class="right-col"><div class="try-container">'),o(a,e.id,"tryMarkoWidgets"),w({},a,0),s(a),a.w("</div></div></div>")}},a)}}(e.exports=t("/$/marko").c(i)).c(o)});
+$rmod.def("/src/components/app-try-marko-widgets-app/index",function(t,e,a,s,n){function i(t,e){var a=t.name,s=e.name;return(a+"_"+s).replace(/\W+/g,"_")}var o=t("/$/dom-classes").remove,r=t("/$/dom-classes").add,l=t("./samples-loader").load();a.exports=t("/$/marko-widgets").defineComponent({template:t("./template.marko"),getWidgetConfig:function(){return{samples:l}},getTemplateData:function(){var t=null;return{samples:l,theme:t}},init:function(t){this.currentCategoryId=null,this.currentSampleId=null;var e=t.samples,a=this.samplesById={},s=this.categoriesById={},n=this.samplesByName={};if(this.changeHash=!0,e.categories.forEach(function(t){s[t.id]=t,t.samples.forEach(function(e){e.category=t,a[e.id]=e,e.uniqueName=i(t,e),n[e.uniqueName]=e})}),document.location.hash){var o=document.location.hash.substring(1),r=n[o];r?this.showSample(r.id):this.showSample(e.categories[0].samples[0].id)}else this.changeHash=!1,this.showSample(e.categories[0].samples[0].id),this.changeHash=!0;var l=this;window.addEventListener("hashchange",function(){var t=n[document.location.hash.substring(1)];t&&l.showSample(t.id)},!1)},showCategory:function(t){return},showSample:function(t){if(this.currentSampleId!==t){var e=this.samplesById[t];e&&(this.currentSample=e,null!=this.currentSampleId&&o(this.getSampleButtonEl(this.currentSampleId),"active"),this.currentSampleId=t,r(this.getSampleButtonEl(this.currentSampleId),"active"),this.getWidget("tryMarkoWidgets").setCode({javaScript:e.javaScriptCode,template:e.templateCode,input:e.inputCode,css:e.cssCode}),this.changeHash!==!1&&(document.location.hash=e.uniqueName))}},getCategoryNavEl:function(t){return this.getEl("categoryNav"+t)},getCategoryButtonEl:function(t){return this.getEl("categoryButton"+t)},getSampleButtonEl:function(t){return this.getEl("sampleButton"+t)},handleCategoryClick:function(t,e){var a=e.getAttribute("data-cat-id");null!=a&&(a=parseInt(a,10),this.showCategory(a))},handleSampleButtonClick:function(t,e){var a=e.getAttribute("data-sample-id");null!=a&&(a=parseInt(a,10),this.showSample(a))}})});
