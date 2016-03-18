@@ -79,10 +79,10 @@ $rmod.def("/raptor-util@1.0.10/attr",function(r,t,e,n,u){var a=r("./escapeXml").
 $rmod.def("/raptor-util@1.0.10/extend",function(r,n,t,o,e){t.exports=function(r,n){if(r||(r={}),n)for(var t in n)n.hasOwnProperty(t)&&(r[t]=n[t]);return r}});
 $rmod.def("/raptor-util@1.0.10/inherit",function(t,o,r,e,n){function p(t,o,r){var e=t.prototype,n=function(){};return n.prototype=o.prototype,t.prototype=new n,t.$super=o,r!==!1&&u(t.prototype,e),t.prototype.constructor=t,t}function i(t,o){return p(t,o,!0)}var u=t("./extend");r.exports=i,i._inherit=p});
 $rmod.def("/src/components/app-try-marko-app/include-target.marko",function(e,n,o,r,a){function t(e){var n=(e.s,e.e,e.ne,e.x);return function(e,o){o.w("Hello "+n(e.name)+" You have "+n(e.count)+" new messages!")}}(o.exports=e("/$/marko").c(r)).c(t)});
-$rmod.def("/marko@3.0.0/taglibs/layout/put-tag",function(t,a,o,u,n){o.exports=function(t,a){var o=t.layout,u=o.handlePutTag;u(t)}});
-$rmod.def("/marko@3.0.0/taglibs/layout/use-tag-transformer",function(t,e,a,r,u){"use strict";a.exports=function(t,e){var a=t.argument;if(!a)return void e.addError(t,"Invalid <layout-use> tag. Expected: <layout-use(template[, data]) ...>");var r=e.builder,u=r.parseJavaScriptArgs(a),l=u[0];"Literal"===l.type&&(l=e.importTemplate(l.value)),u[1]&&t.setAttributeValue("__data",u[1]),t.argument=null,t.setAttributeValue("__template",l)}});
-$rmod.def("/marko@3.0.0/taglibs/layout/use-tag",function(t,n,a,e,o){a.exports=function(t,n){var a={};t.getContent&&t.getContent({handlePutTag:function(t){a[t.into]=t}});var e=t.__data,o=t["*"]||{};if(e)for(var r in e)e.hasOwnProperty(r)&&!o.hasOwnProperty(r)&&(o[r]=e[r]);o.layoutContent=a,t.__template.render(o,n)}});
-$rmod.def("/marko@3.0.0/taglibs/layout/placeholder-tag",function(e,r,n,o,d){n.exports=function(e,r){var n=e.content,o=n?n[e.name]:null;o?o.value?r.write(o.value):o.renderBody&&o.renderBody(r):e.renderBody&&e.renderBody(r)}});
+$rmod.def("/marko@3.0.2/taglibs/layout/put-tag",function(t,a,o,u,n){o.exports=function(t,a){var o=t.layout,u=o.handlePutTag;u(t)}});
+$rmod.def("/marko@3.0.2/taglibs/layout/use-tag-transformer",function(t,e,a,r,u){"use strict";a.exports=function(t,e){var a=t.argument;if(!a)return void e.addError(t,"Invalid <layout-use> tag. Expected: <layout-use(template[, data]) ...>");var r=e.builder,u=r.parseJavaScriptArgs(a),l=u[0];"Literal"===l.type&&(l=e.importTemplate(l.value)),u[1]&&t.setAttributeValue("__data",u[1]),t.argument=null,t.setAttributeValue("__template",l)}});
+$rmod.def("/marko@3.0.2/taglibs/layout/use-tag",function(t,n,a,e,o){a.exports=function(t,n){var a={};t.getContent&&t.getContent({handlePutTag:function(t){a[t.into]=t}});var e=t.__data,o=t["*"]||{};if(e)for(var r in e)e.hasOwnProperty(r)&&!o.hasOwnProperty(r)&&(o[r]=e[r]);o.layoutContent=a,t.__template.render(o,n)}});
+$rmod.def("/marko@3.0.2/taglibs/layout/placeholder-tag",function(e,r,n,o,d){n.exports=function(e,r){var n=e.content,o=n?n[e.name]:null;o?o.value?r.write(o.value):o.renderBody&&o.renderBody(r):e.renderBody&&e.renderBody(r)}});
 $rmod.def("/src/components/app-try-marko-app/layout-use-target.marko",function(t,n,o,e,a){function r(n){var o=(n.s,n.e,n.ne,n.x,n.t),e=o(t("/$/marko/taglibs/layout/placeholder-tag"));return function(t,n){n.w('<div class="notification"><h1>'),e({name:"title",content:t.layoutContent,renderBody:function(t){t.w("DEFAULT TITLE")}},n),n.w("</h1><div>"),e({name:"body",content:t.layoutContent,renderBody:function(t){t.w("DEFAULT BODY")}},n),n.w("</div></div>")}}(o.exports=t("/$/marko").c(e)).c(r)});
 $rmod.main("/raptor-pubsub@1.0.5","lib/index");
 $rmod.dep("/$/marko-widgets","raptor-pubsub","1.0.5");
@@ -212,9 +212,9 @@ $rmod.def("/src/components/app-try-marko/test-taglib/tabs-renderer",function(a,r
 $rmod.dep("","raptor-async","1.1.2");
 $rmod.main("/marko-prettyprint@1.0.3","src/index");
 $rmod.dep("","marko-prettyprint","1.0.3");
-$rmod.def("/marko@3.0.0/taglibs/async/async-fragment-nested-tag-transformer",function(e,r,a,t,n){"use strict";a.exports=function(e,r){var a=e.parentNode;if("async-fragment"!==a.tagName)return void r.addError(e,"The <"+e.tagName+"> should be nested within an <async-fragment> tag.");var t;"async-fragment-error"===e.tagName?t="renderError":"async-fragment-timeout"===e.tagName?t="renderTimeout":"async-fragment-placeholder"===e.tagName&&(t="renderPlaceholder");var n=r.builder;a.setAttributeValue(t,n.renderBodyFunction(e.body)),e.detach()}});
+$rmod.def("/marko@3.0.2/taglibs/async/async-fragment-nested-tag-transformer",function(e,r,a,t,n){"use strict";a.exports=function(e,r){var a=e.parentNode;if("async-fragment"!==a.tagName)return void r.addError(e,"The <"+e.tagName+"> should be nested within an <async-fragment> tag.");var t;"async-fragment-error"===e.tagName?t="renderError":"async-fragment-timeout"===e.tagName?t="renderTimeout":"async-fragment-placeholder"===e.tagName&&(t="renderPlaceholder");var n=r.builder;a.setAttributeValue(t,n.renderBodyFunction(e.body)),e.detach()}});
 $rmod.def("/raptor-util@1.0.10/isObjectEmpty",function(r,t,n,e,i){n.exports=function(r){if(!r)return!0;for(var t in r)if(r.hasOwnProperty(t))return!1;return!0}});
-$rmod.def("/marko@3.0.0/taglibs/async/async-fragment-tag-transformer", function(require, exports, module, __filename, __dirname) { 'use strict';
+$rmod.def("/marko@3.0.2/taglibs/async/async-fragment-tag-transformer", function(require, exports, module, __filename, __dirname) { 'use strict';
 
 var isObjectEmpty = require('/$/marko/$/raptor-util/isObjectEmpty'/*'raptor-util/isObjectEmpty'*/);
 
@@ -324,12 +324,12 @@ $rmod.dep("/$/marko","raptor-polyfill","1.0.2");
 $rmod.dep("/$/marko/$/raptor-logging","raptor-stacktraces","1.0.1");
 $rmod.dep("/$/marko","raptor-async","1.1.2");
 $rmod.remap("/marko@3.0.2/taglibs/async/client-reorder","client-reorder-browser");
-$rmod.def("/marko@3.0.0/taglibs/async/client-reorder-browser",function(r,e,o,d,i){e.isSupported=!1});
-$rmod.def("/marko@3.0.0/taglibs/async/async-fragment-tag",function(e,n,r,t,o){"use strict";function a(e){return e&&"function"==typeof e.then}function l(e,n,r){if(n){var t=e.then(function(e){n(null,e)});"function"==typeof e["catch"]?t=t["catch"](function(e){n(e)}):"function"==typeof e.fail&&(t=t.fail(function(e){n(e)})),t.done&&t.done()}return e}function i(e,n,r,t){if(a(e))return void l(e,r);if("function"==typeof e){var o=1===e.length?e.call(t,r):e.call(t,n,r);void 0!==o&&(a(o)?l(o,r):r(null,o))}else r(null,e)}var u=e("/$/marko/$/raptor-logging").logger(r),c=e("/$/marko/$/async-writer"),f=e("/$/marko/$/raptor-async/AsyncValue"),s=e("./client-reorder").isSupported;r.exports=function(e,n){function r(r,t,o){g&&(clearTimeout(g),g=null),d=!0;var i=a||n;l.emit("asyncFragmentBeforeRender",{clientReorder:m,out:i,name:y}),r?e.renderError?(console.error("Async fragment ("+y+") failed. Error:",r.stack||r),e.renderError(i)):i.error(r):o?o(a):e.renderBody&&e.renderBody(i,t),m||l.emit("asyncFragmentFinish",{clientReorder:!1,out:i}),a&&(a.end(),m||n.flush())}var t=e.dataProvider,o=e.arg||{};o.out=n;var a,l=n.global.events,m=s&&e.clientReorder===!0,d=!1,g=null,y=e.name||e._name,p=e.scope||this,v=e.method;if(v&&(t=t[v].bind(t)),i(t,o,r,p),!d){var h=e.timeout,b=e.renderTimeout;if(null==h?h=1e4:0>=h&&(h=null),null!=h&&(g=setTimeout(function(){var e="Async fragment ("+y+") timed out after "+h+"ms";b?(u.error(e),r(null,null,b)):r(new Error(e))},h)),m){var $=n.global.__asyncFragments||($=n.global.__asyncFragments={fragments:[],nextId:0}),F=e.name||$.nextId++;n.write('<span id="afph'+F+'">'+(e.placeholder||"")+"</span>");var k=new f;a=c.create(null,{global:n.global}),a.on("finish",function(){k.resolve(a.getOutput())}).on("error",function(e){k.reject(e)});var w={id:F,asyncValue:k,out:a,after:e.showAfter};$.fragments?$.fragments.push(w):l.emit("asyncFragmentBegin",w)}else n.flush(),a=n.beginAsync({timeout:0,name:y})}}});
-$rmod.def("/marko@3.0.0/taglibs/async/async-fragments-tag",function(e,t,n,r,a){var i=e("./client-reorder");n.exports=function(e,t){var n=t.global,r=n.events;t.flush();var a=t.beginAsync({last:!0,timeout:-1});t.onLast(function(e){function s(s){s.asyncValue.done(function(f,d){if(!c){if(f)return c=!0,a.error(f);n._afRuntime||(a.write(i.getCode()),n._afRuntime=!0),a.write('<div id="af'+s.id+'" style="display:none">'+d+'</div><script type="text/javascript">$af('+("number"==typeof s.id?s.id:'"'+s.id+'"')+(s.after?',"'+s.after+'"':"")+")</script>"),s.out.writer=a.writer,r.emit("asyncFragmentFinish",{clientReorder:!0,out:s.out}),t.flush(),0===--o&&(c=!0,a.end(),e())}})}var f=n.__asyncFragments;if(!f||!f.fragments.length)return a.end(),void e();var o=f.fragments.length,c=!1;f.fragments.forEach(s),r.on("asyncFragmentBegin",function(e){o++,s(e)}),delete f.fragments})}});
-$rmod.def("/marko@3.0.0/taglibs/async/client-reorder-runtime",function(r,e,n,i,o){});
-$rmod.def("/marko@3.0.0/taglibs/async/client-reorder-runtime.min",function(n,r,e,i,m){});
-$rmod.def("/marko@3.0.0/taglibs/core/assign-tag", function(require, exports, module, __filename, __dirname) { module.exports = function codeGenerator(elNode, generator) {
+$rmod.def("/marko@3.0.2/taglibs/async/client-reorder-browser",function(r,e,o,d,i){e.isSupported=!1});
+$rmod.def("/marko@3.0.2/taglibs/async/async-fragment-tag",function(e,n,r,t,o){"use strict";function a(e){return e&&"function"==typeof e.then}function l(e,n,r){if(n){var t=e.then(function(e){n(null,e)});"function"==typeof e["catch"]?t=t["catch"](function(e){n(e)}):"function"==typeof e.fail&&(t=t.fail(function(e){n(e)})),t.done&&t.done()}return e}function i(e,n,r,t){if(a(e))return void l(e,r);if("function"==typeof e){var o=1===e.length?e.call(t,r):e.call(t,n,r);void 0!==o&&(a(o)?l(o,r):r(null,o))}else r(null,e)}var u=e("/$/marko/$/raptor-logging").logger(r),c=e("/$/marko/$/async-writer"),f=e("/$/marko/$/raptor-async/AsyncValue"),s=e("./client-reorder").isSupported;r.exports=function(e,n){function r(r,t,o){g&&(clearTimeout(g),g=null),d=!0;var i=a||n;l.emit("asyncFragmentBeforeRender",{clientReorder:m,out:i,name:y}),r?e.renderError?(console.error("Async fragment ("+y+") failed. Error:",r.stack||r),e.renderError(i)):i.error(r):o?o(a):e.renderBody&&e.renderBody(i,t),m||l.emit("asyncFragmentFinish",{clientReorder:!1,out:i}),a&&(a.end(),m||n.flush())}var t=e.dataProvider,o=e.arg||{};o.out=n;var a,l=n.global.events,m=s&&e.clientReorder===!0,d=!1,g=null,y=e.name||e._name,p=e.scope||this,v=e.method;if(v&&(t=t[v].bind(t)),i(t,o,r,p),!d){var h=e.timeout,b=e.renderTimeout;if(null==h?h=1e4:0>=h&&(h=null),null!=h&&(g=setTimeout(function(){var e="Async fragment ("+y+") timed out after "+h+"ms";b?(u.error(e),r(null,null,b)):r(new Error(e))},h)),m){var $=n.global.__asyncFragments||($=n.global.__asyncFragments={fragments:[],nextId:0}),F=e.name||$.nextId++;n.write('<span id="afph'+F+'">'+(e.placeholder||"")+"</span>");var k=new f;a=c.create(null,{global:n.global}),a.on("finish",function(){k.resolve(a.getOutput())}).on("error",function(e){k.reject(e)});var w={id:F,asyncValue:k,out:a,after:e.showAfter};$.fragments?$.fragments.push(w):l.emit("asyncFragmentBegin",w)}else n.flush(),a=n.beginAsync({timeout:0,name:y})}}});
+$rmod.def("/marko@3.0.2/taglibs/async/async-fragments-tag",function(e,t,n,r,a){var i=e("./client-reorder");n.exports=function(e,t){var n=t.global,r=n.events;t.flush();var a=t.beginAsync({last:!0,timeout:-1});t.onLast(function(e){function s(s){s.asyncValue.done(function(f,d){if(!c){if(f)return c=!0,a.error(f);n._afRuntime||(a.write(i.getCode()),n._afRuntime=!0),a.write('<div id="af'+s.id+'" style="display:none">'+d+'</div><script type="text/javascript">$af('+("number"==typeof s.id?s.id:'"'+s.id+'"')+(s.after?',"'+s.after+'"':"")+")</script>"),s.out.writer=a.writer,r.emit("asyncFragmentFinish",{clientReorder:!0,out:s.out}),t.flush(),0===--o&&(c=!0,a.end(),e())}})}var f=n.__asyncFragments;if(!f||!f.fragments.length)return a.end(),void e();var o=f.fragments.length,c=!1;f.fragments.forEach(s),r.on("asyncFragmentBegin",function(e){o++,s(e)}),delete f.fragments})}});
+$rmod.def("/marko@3.0.2/taglibs/async/client-reorder-runtime",function(r,e,n,i,o){});
+$rmod.def("/marko@3.0.2/taglibs/async/client-reorder-runtime.min",function(n,r,e,i,m){});
+$rmod.def("/marko@3.0.2/taglibs/core/assign-tag", function(require, exports, module, __filename, __dirname) { module.exports = function codeGenerator(elNode, generator) {
     var attributes = elNode.attributes;
 
     if (!attributes) {
@@ -344,7 +344,7 @@ $rmod.def("/marko@3.0.0/taglibs/core/assign-tag", function(require, exports, mod
     });
 };
 });
-$rmod.def("/marko@3.0.0/compiler/util/removeComments", function(require, exports, module, __filename, __dirname) { 'use strict';
+$rmod.def("/marko@3.0.2/compiler/util/removeComments", function(require, exports, module, __filename, __dirname) { 'use strict';
 var tokenizer = require('./tokenizer').create([
     {
         name: 'stringDouble',
@@ -398,7 +398,7 @@ module.exports = function removeComments(str) {
     return str;
 };
 });
-$rmod.def("/marko@3.0.0/compiler/util/tokenizer", function(require, exports, module, __filename, __dirname) { 'use strict';
+$rmod.def("/marko@3.0.2/compiler/util/tokenizer", function(require, exports, module, __filename, __dirname) { 'use strict';
 
 function create(tokens) {
     function getToken(matches) {
@@ -436,7 +436,7 @@ function create(tokens) {
 
 exports.create = create;
 });
-$rmod.def("/marko@3.0.0/taglibs/core/util/parseFor", function(require, exports, module, __filename, __dirname) { 'use strict';
+$rmod.def("/marko@3.0.2/taglibs/core/util/parseFor", function(require, exports, module, __filename, __dirname) { 'use strict';
 var removeComments = require('../../../compiler/util/removeComments');
 var compiler = require('../../../compiler');
 
@@ -796,8 +796,8 @@ module.exports = function(str) {
     }
 };
 });
-$rmod.def("/marko@3.0.0/taglibs/core/util/createLoopNode",function(o,r,e,p,t){function a(o,r,e){var p=n(o);if(p.body=r,"ForEach"===p.loopType)return e.forEach(p);if("ForRange"===p.loopType)return e.forRange(p);if("ForEachProp"===p.loopType)return e.forEachProp(p);if("For"===p.loopType)return e.forStatement(p);throw new Error("Unsupported loop type: "+p.loopType)}var n=o("./parseFor");e.exports=a});
-$rmod.def("/marko@3.0.0/taglibs/core/core-transformer", function(require, exports, module, __filename, __dirname) { 'use strict';
+$rmod.def("/marko@3.0.2/taglibs/core/util/createLoopNode",function(o,r,e,p,t){function a(o,r,e){var p=n(o);if(p.body=r,"ForEach"===p.loopType)return e.forEach(p);if("ForRange"===p.loopType)return e.forRange(p);if("ForEachProp"===p.loopType)return e.forEachProp(p);if("For"===p.loopType)return e.forStatement(p);throw new Error("Unsupported loop type: "+p.loopType)}var n=o("./parseFor");e.exports=a});
+$rmod.def("/marko@3.0.2/taglibs/core/core-transformer", function(require, exports, module, __filename, __dirname) { 'use strict';
 
 var createLoopNode = require('./util/createLoopNode');
 
@@ -1005,8 +1005,8 @@ module.exports = function transform(el, context) {
     });
 };
 });
-$rmod.def("/marko@3.0.0/taglibs/core/else-if-tag",function(e,r,t,a,i){t.exports=function(e,r){var t=e.argument,a=e.attributes;if(!t)return r.addError(e,"Invalid <else-if> tag. Argument is missing. Example; <if(foo === true)>"),e;if(a.length)return r.addError(e,"Invalid <else-if> tag. Attributes not allowed."),e;var i;try{i=r.builder.parseExpression(t)}catch(s){i=r.builder.literalFalse(),r.addError(e,"Invalid expression for else-if statement:\n"+s.message)}var n=r.builder.elseIfStatement(i);return n}});
-$rmod.def("/marko@3.0.0/taglibs/core/else-tag", function(require, exports, module, __filename, __dirname) { 'use strict';
+$rmod.def("/marko@3.0.2/taglibs/core/else-if-tag",function(e,r,t,a,i){t.exports=function(e,r){var t=e.argument,a=e.attributes;if(!t)return r.addError(e,"Invalid <else-if> tag. Argument is missing. Example; <if(foo === true)>"),e;if(a.length)return r.addError(e,"Invalid <else-if> tag. Attributes not allowed."),e;var i;try{i=r.builder.parseExpression(t)}catch(s){i=r.builder.literalFalse(),r.addError(e,"Invalid expression for else-if statement:\n"+s.message)}var n=r.builder.elseIfStatement(i);return n}});
+$rmod.def("/marko@3.0.2/taglibs/core/else-tag", function(require, exports, module, __filename, __dirname) { 'use strict';
 
 module.exports = function nodeFactory(el, context) {
 
@@ -1043,9 +1043,9 @@ module.exports = function nodeFactory(el, context) {
     return elseStatement;
 };
 });
-$rmod.def("/marko@3.0.0/taglibs/core/for-tag",function(r,o,a,e,t){var i=r("./util/createLoopNode");a.exports=function(r,o){var a=r.argument;if(!a)return o.addError("Invalid <for> tag. Argument is missing. Example: <for(color in colors)>"),r;var e=o.builder;try{var t=i(a,r.body,e);return t}catch(d){if("INVALID_FOR"!==d.code)throw d;o.addError(d.message)}}});
-$rmod.def("/marko@3.0.0/taglibs/core/if-tag",function(r,t,e,i,a){e.exports=function(r,t){var e=r.argument;if(!e)return t.addError(r,"Invalid <if> tag. Argument is missing. Example; <if(foo === true)>"),r;var i=r.attributes;if(i.length)return void t.addError(r,"Invalid <if> tag. Attributes not allowed.");var a;try{a=t.builder.parseExpression(e)}catch(n){a=t.builder.literalFalse(),t.addError(r,"Invalid expression for if statement:\n"+n.message)}return t.builder.ifStatement(a)}});
-$rmod.def("/marko@3.0.0/taglibs/core/include-tag", function(require, exports, module, __filename, __dirname) { 'use strict';
+$rmod.def("/marko@3.0.2/taglibs/core/for-tag",function(r,o,a,e,t){var i=r("./util/createLoopNode");a.exports=function(r,o){var a=r.argument;if(!a)return o.addError("Invalid <for> tag. Argument is missing. Example: <for(color in colors)>"),r;var e=o.builder;try{var t=i(a,r.body,e);return t}catch(d){if("INVALID_FOR"!==d.code)throw d;o.addError(d.message)}}});
+$rmod.def("/marko@3.0.2/taglibs/core/if-tag",function(r,t,e,i,a){e.exports=function(r,t){var e=r.argument;if(!e)return t.addError(r,"Invalid <if> tag. Argument is missing. Example; <if(foo === true)>"),r;var i=r.attributes;if(i.length)return void t.addError(r,"Invalid <if> tag. Attributes not allowed.");var a;try{a=t.builder.parseExpression(e)}catch(n){a=t.builder.literalFalse(),t.addError(r,"Invalid expression for if statement:\n"+n.message)}return t.builder.ifStatement(a)}});
+$rmod.def("/marko@3.0.2/taglibs/core/include-tag", function(require, exports, module, __filename, __dirname) { 'use strict';
 
 module.exports = function codeGenerator(el, codegen) {
     let argument = el.argument;
@@ -1102,7 +1102,7 @@ module.exports = function codeGenerator(el, codegen) {
     return renderFunctionCall;
 };
 });
-$rmod.def("/marko@3.0.0/taglibs/core/include-text-tag-browser", function(require, exports, module, __filename, __dirname) { 'use strict';
+$rmod.def("/marko@3.0.2/taglibs/core/include-text-tag-browser", function(require, exports, module, __filename, __dirname) { 'use strict';
 module.exports = function codeGenerator(el, codegen) {
     let argument = el.argument;
     if (!argument) {
@@ -1120,11 +1120,11 @@ module.exports = function codeGenerator(el, codegen) {
     return builder.text(builder.literal('<include-text> cannot be compiled in the browser (path="' + path + '")'));
 };
 });
-$rmod.def("/marko@3.0.0/taglibs/core/invoke-tag",function(o,r,e,n,i){e.exports=function(o,r){var e=o.attributes[0];if(!e)return void r.addError('Invalid <invoke> tag. Missing function attribute. Expected: <invoke console.log("Hello World")');var n=e.argument;if(void 0===n)return void r.addError('Invalid <invoke> tag. Missing function arguments. Expected: <invoke console.log("Hello World")');var i=e.name,t=i+"("+n+")";return r.builder.parseExpression(t)}});
-$rmod.def("/marko@3.0.0/taglibs/core/macro-body-tag",function(r,e,o,t,n){o.exports=function(r,e){var o=e.builder;return o.ifStatement(o.identifier("renderBody"),[o.functionCall("renderBody",["out"])])}});
-$rmod.def("/marko@3.0.0/taglibs/core/macro-tag",function(r,a,t,e,n){t.exports=function(r,a){var t=r.attributes;if(t.length){var e=t[0];if(null!=e.argument){var n,o=r.body,i=e.name,u=e.argument;n=u?u.split(/\s*,\s*/):[];var m=a.builder;return m.macro(i,n,o)}}}});
-$rmod.def("/marko@3.0.0/taglibs/core/unless-tag",function(e,r,t,a,n){t.exports=function(e,r){var t=e.argument;if(!t)return r.addError(e,"Invalid <unless> tag. Argument is missing. Example; <unless(foo === true)>"),e;var a=e.attributes;if(a.length)return void r.addError(e,"Invalid <unless> tag. Attributes not allowed.");var n,s=r.builder;try{n=s.parseExpression(t)}catch(i){n=s.literalFalse(),r.addError(e,"Invalid expression for unless statement:\n"+i.message)}return r.builder.ifStatement(s.negate(n))}});
-$rmod.def("/marko@3.0.0/taglibs/core/var-tag", function(require, exports, module, __filename, __dirname) { var isValidJavaScriptVarName = require('../../compiler/util/isValidJavaScriptVarName');
+$rmod.def("/marko@3.0.2/taglibs/core/invoke-tag",function(o,r,e,n,i){e.exports=function(o,r){var e=o.attributes[0];if(!e)return void r.addError('Invalid <invoke> tag. Missing function attribute. Expected: <invoke console.log("Hello World")');var n=e.argument;if(void 0===n)return void r.addError('Invalid <invoke> tag. Missing function arguments. Expected: <invoke console.log("Hello World")');var i=e.name,t=i+"("+n+")";return r.builder.parseExpression(t)}});
+$rmod.def("/marko@3.0.2/taglibs/core/macro-body-tag",function(r,e,o,t,n){o.exports=function(r,e){var o=e.builder;return o.ifStatement(o.identifier("renderBody"),[o.functionCall("renderBody",["out"])])}});
+$rmod.def("/marko@3.0.2/taglibs/core/macro-tag",function(r,a,t,e,n){t.exports=function(r,a){var t=r.attributes;if(t.length){var e=t[0];if(null!=e.argument){var n,o=r.body,i=e.name,u=e.argument;n=u?u.split(/\s*,\s*/):[];var m=a.builder;return m.macro(i,n,o)}}}});
+$rmod.def("/marko@3.0.2/taglibs/core/unless-tag",function(e,r,t,a,n){t.exports=function(e,r){var t=e.argument;if(!t)return r.addError(e,"Invalid <unless> tag. Argument is missing. Example; <unless(foo === true)>"),e;var a=e.attributes;if(a.length)return void r.addError(e,"Invalid <unless> tag. Attributes not allowed.");var n,s=r.builder;try{n=s.parseExpression(t)}catch(i){n=s.literalFalse(),r.addError(e,"Invalid expression for unless statement:\n"+i.message)}return r.builder.ifStatement(s.negate(n))}});
+$rmod.def("/marko@3.0.2/taglibs/core/var-tag", function(require, exports, module, __filename, __dirname) { var isValidJavaScriptVarName = require('../../compiler/util/isValidJavaScriptVarName');
 
 module.exports = function nodeFactory(el, context) {
     var builder = context.builder;
@@ -1155,8 +1155,8 @@ module.exports = function nodeFactory(el, context) {
     return context.builder.vars(declarations);
 };
 });
-$rmod.def("/marko@3.0.0/taglibs/core/while-tag",function(r,e,i,t,a){i.exports=function(r,e){var i=r.argument;if(!i)return e.addError("Invalid <while> tag. Argument is missing. Example: <while(i < 4)>"),r;var t=e.builder;return t.whileStatement(t.parseExpression(i),r.body)}});
-$rmod.def("/marko@3.0.0/taglibs/html/html-comment-tag",function(t,e,r,o,n){"use strict";r.exports=function(t,e){e.write("<!--"),t.renderBody&&t.renderBody(e),e.write("-->")}});
+$rmod.def("/marko@3.0.2/taglibs/core/while-tag",function(r,e,i,t,a){i.exports=function(r,e){var i=r.argument;if(!i)return e.addError("Invalid <while> tag. Argument is missing. Example: <while(i < 4)>"),r;var t=e.builder;return t.whileStatement(t.parseExpression(i),r.body)}});
+$rmod.def("/marko@3.0.2/taglibs/html/html-comment-tag",function(t,e,r,o,n){"use strict";r.exports=function(t,e){e.write("<!--"),t.renderBody&&t.renderBody(e),e.write("-->")}});
 $rmod.main("/assert@1.3.0","assert");
 $rmod.dep("","assert","1.3.0");
 $rmod.main("/util@0.10.3","util");
@@ -4129,14 +4129,14 @@ $rmod.def("/raptor-util@1.0.10/raptor-util",function(r,t,e,a,m){e.exports={tryRe
 $rmod.main("/raptor-regexp@1.0.1","lib/raptor-regexp");
 $rmod.dep("/$/marko","raptor-regexp","1.0.1");
 $rmod.def("/raptor-regexp@1.0.1/lib/raptor-regexp",function(e,r,n,p,t){var a={"*":".*?","?":".?"};n.exports={escape:function(e){return e.replace(/[\-\[\]{}()*+?.,\\\^$|#\s]/g,"\\$&")},simple:function(e){var r=this;return new RegExp("^"+e.replace(/[\*\?]|[^\*\?]*/g,function(e){return a[e]||r.escape(e)})+"$")}}});
-$rmod.def("/marko@3.0.0/taglibs/core/marko",{"<assign>":{"code-generator":"./assign-tag"},"<else>":{"node-factory":"./else-tag"},"<else-if>":{"node-factory":"./else-if-tag"},"<for>":{"code-generator":"./for-tag"},"<if>":{"node-factory":"./if-tag"},"<include>":{"code-generator":"./include-tag"},"<include-text>":{"code-generator":"./include-text-tag"},"<invoke>":{"code-generator":"./invoke-tag"},"<macro>":{"code-generator":"./macro-tag"},"<macro-body>":{"code-generator":"./macro-body-tag"},"<pre>":{"preserve-whitespace":!0},"<script>":{"preserve-whitespace":!0,"@marko-init":"boolean","@*":{ignore:!0}},"<style>":{"preserve-whitespace":!0},"<textarea>":{"preserve-whitespace":!0},"<unless>":{"node-factory":"./unless-tag"},"<var>":{"node-factory":"./var-tag"},"<while>":{"code-generator":"./while-tag"},"<*>":{"@if":"argument","@else-if":"argument","@else":"argument","@for":"argument","@while":"argument",transformer:{path:"./core-transformer",priority:0}}});
-$rmod.def("/marko@3.0.0/taglibs/layout/marko",{"<layout-use>":{"@__template":"template","@__data":"template","@*":{"remove-dashes":!0,type:"string"},renderer:"./use-tag","body-function":"getContent(__layoutHelper)",transformer:"./use-tag-transformer.js"},"<layout-put>":{"@into":"string","@value":"string",renderer:"./put-tag","import-var":{layout:"__layoutHelper"}},"<layout-placeholder>":{"@name":"string",renderer:"./placeholder-tag","import-var":{content:"data.layoutContent"}}});
-$rmod.def("/marko@3.0.0/taglibs/html/marko",{"taglib-id":"marko-html","<html-comment>":{renderer:"./html-comment-tag.js"}});
-$rmod.def("/marko@3.0.0/taglibs/async/marko",{"<async-fragment>":{renderer:"./async-fragment-tag","@data-provider":"expression","@arg":{type:"expression","preserve-name":!0},"@arg-*":{pattern:!0,type:"string","preserve-name":!0},"@var":"identifier","@method":"string","@timeout":"integer","@timeout-message":"string","@error-message":"string","@placeholder":"string","@renderTimeout":"function","@renderError":"function","@renderPlaceholder":"function","@name":{type:"string",description:"Name of async fragment"},"@_name":"string","@client-reorder":{type:"boolean",description:"Use JavaScript on client to move async fragment into the proper place."},"@scope":{type:"expression",description:"The value of 'this' when invoking the data provider function (N/A with promises)"},"@show-after":{type:"string"},vars:[{"name-from-attribute":"var"}],transformer:"./async-fragment-tag-transformer"},"<async-fragments>":{renderer:"./async-fragments-tag"},"<async-fragment-placeholder>":{transformer:"./async-fragment-nested-tag-transformer"},"<async-fragment-timeout>":{transformer:"./async-fragment-nested-tag-transformer"},"<async-fragment-error>":{transformer:"./async-fragment-nested-tag-transformer"}});
-$rmod.def("/marko@3.0.0/taglibs/cache/default-cache-manager",function(n,r,e,t,u){function a(){var n={};return{get:function(r,e,t){var u=n[r];if(void 0!==u)return t(null,u);var a=e.builder;a(function(e,u){return e?t(e):(void 0===u&&(u=null),n[r]=u,void t(null,u))})}}}var i={},o={getCache:function(n){return i[n]||(i[n]=a())}};e.exports=o});
-$rmod.def("/marko@3.0.0/taglibs/cache/cached-fragment-tag-transformer",function(a,e,t,r,c){var n=a.resolve("./default-cache-manager");t.exports=function(a,e){if(!a.hasAttribute("cache-manager")){var t=e.getRequirePath(n),r=e.importModule("__defaultCacheManager",t);a.setAttributeValue("cache-manager",r)}}});
-$rmod.def("/marko@3.0.0/taglibs/cache/cached-fragment-tag",function(e,r,c,n,a){"use strict";c.exports={render:function(e,r){var c=e.cacheKey;if(!c)throw new Error("cache-key is required for <cached-fragment>");var n=e.cacheManager,a=n.getCache(e.cacheName||"marko/cached-fragment"),t=r.beginAsync();a.get(c,{builder:function(c){var n=r.captureString(function(){e.renderBody&&e.renderBody(r)});c(null,n)}},function(e,r){return e?t.error(e):void t.end(r)})}}});
-$rmod.def("/marko@3.0.0/taglibs/cache/marko",{"<cached-fragment>":{renderer:"./cached-fragment-tag","@cache-key":"string","@cache-name":"string","@cache-manager":"string",transformer:"./cached-fragment-tag-transformer.js"}});
+$rmod.def("/marko@3.0.2/taglibs/core/marko",{"<assign>":{"code-generator":"./assign-tag"},"<else>":{"node-factory":"./else-tag"},"<else-if>":{"node-factory":"./else-if-tag"},"<for>":{"code-generator":"./for-tag"},"<if>":{"node-factory":"./if-tag"},"<include>":{"code-generator":"./include-tag"},"<include-text>":{"code-generator":"./include-text-tag"},"<invoke>":{"code-generator":"./invoke-tag"},"<macro>":{"code-generator":"./macro-tag"},"<macro-body>":{"code-generator":"./macro-body-tag"},"<pre>":{"preserve-whitespace":!0},"<script>":{"preserve-whitespace":!0,"@marko-init":"boolean","@*":{ignore:!0}},"<style>":{"preserve-whitespace":!0},"<textarea>":{"preserve-whitespace":!0},"<unless>":{"node-factory":"./unless-tag"},"<var>":{"node-factory":"./var-tag"},"<while>":{"code-generator":"./while-tag"},"<*>":{"@if":"argument","@else-if":"argument","@else":"argument","@for":"argument","@while":"argument",transformer:{path:"./core-transformer",priority:0}}});
+$rmod.def("/marko@3.0.2/taglibs/layout/marko",{"<layout-use>":{"@__template":"template","@__data":"template","@*":{"remove-dashes":!0,type:"string"},renderer:"./use-tag","body-function":"getContent(__layoutHelper)",transformer:"./use-tag-transformer.js"},"<layout-put>":{"@into":"string","@value":"string",renderer:"./put-tag","import-var":{layout:"__layoutHelper"}},"<layout-placeholder>":{"@name":"string",renderer:"./placeholder-tag","import-var":{content:"data.layoutContent"}}});
+$rmod.def("/marko@3.0.2/taglibs/html/marko",{"taglib-id":"marko-html","<html-comment>":{renderer:"./html-comment-tag.js"}});
+$rmod.def("/marko@3.0.2/taglibs/async/marko",{"<async-fragment>":{renderer:"./async-fragment-tag","@data-provider":"expression","@arg":{type:"expression","preserve-name":!0},"@arg-*":{pattern:!0,type:"string","preserve-name":!0},"@var":"identifier","@method":"string","@timeout":"integer","@timeout-message":"string","@error-message":"string","@placeholder":"string","@renderTimeout":"function","@renderError":"function","@renderPlaceholder":"function","@name":{type:"string",description:"Name of async fragment"},"@_name":"string","@client-reorder":{type:"boolean",description:"Use JavaScript on client to move async fragment into the proper place."},"@scope":{type:"expression",description:"The value of 'this' when invoking the data provider function (N/A with promises)"},"@show-after":{type:"string"},vars:[{"name-from-attribute":"var"}],transformer:"./async-fragment-tag-transformer"},"<async-fragments>":{renderer:"./async-fragments-tag"},"<async-fragment-placeholder>":{transformer:"./async-fragment-nested-tag-transformer"},"<async-fragment-timeout>":{transformer:"./async-fragment-nested-tag-transformer"},"<async-fragment-error>":{transformer:"./async-fragment-nested-tag-transformer"}});
+$rmod.def("/marko@3.0.2/taglibs/cache/default-cache-manager",function(n,r,e,t,u){function a(){var n={};return{get:function(r,e,t){var u=n[r];if(void 0!==u)return t(null,u);var a=e.builder;a(function(e,u){return e?t(e):(void 0===u&&(u=null),n[r]=u,void t(null,u))})}}}var i={},o={getCache:function(n){return i[n]||(i[n]=a())}};e.exports=o});
+$rmod.def("/marko@3.0.2/taglibs/cache/cached-fragment-tag-transformer",function(a,e,t,r,c){var n=a.resolve("./default-cache-manager");t.exports=function(a,e){if(!a.hasAttribute("cache-manager")){var t=e.getRequirePath(n),r=e.importModule("__defaultCacheManager",t);a.setAttributeValue("cache-manager",r)}}});
+$rmod.def("/marko@3.0.2/taglibs/cache/cached-fragment-tag",function(e,r,c,n,a){"use strict";c.exports={render:function(e,r){var c=e.cacheKey;if(!c)throw new Error("cache-key is required for <cached-fragment>");var n=e.cacheManager,a=n.getCache(e.cacheName||"marko/cached-fragment"),t=r.beginAsync();a.get(c,{builder:function(c){var n=r.captureString(function(){e.renderBody&&e.renderBody(r)});c(null,n)}},function(e,r){return e?t.error(e):void t.end(r)})}}});
+$rmod.def("/marko@3.0.2/taglibs/cache/marko",{"<cached-fragment>":{renderer:"./cached-fragment-tag","@cache-key":"string","@cache-name":"string","@cache-manager":"string",transformer:"./cached-fragment-tag-transformer.js"}});
 $rmod.def("/marko-prettyprint@1.0.3/src/index", function(require, exports, module, __filename, __dirname) { 'use strict';
 
 const SYNTAX_CONCISE = 1;

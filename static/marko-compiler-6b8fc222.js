@@ -1,5 +1,5 @@
 $rmod.main("/marko@3.0.2/compiler","index");
-$rmod.def("/marko@3.0.0/compiler/ast/ArrayContainer", function(require, exports, module, __filename, __dirname) { 'use strict';
+$rmod.def("/marko@3.0.2/compiler/ast/ArrayContainer", function(require, exports, module, __filename, __dirname) { 'use strict';
 
 var ok = require('assert'/*'assert'*/).ok;
 var isArray = Array.isArray;
@@ -197,7 +197,7 @@ class ArrayContainer extends Container {
 
 module.exports = ArrayContainer;
 });
-$rmod.def("/marko@3.0.0/compiler/ast/Node", function(require, exports, module, __filename, __dirname) { 'use strict';
+$rmod.def("/marko@3.0.2/compiler/ast/Node", function(require, exports, module, __filename, __dirname) { 'use strict';
 var Container = require('./Container');
 var ArrayContainer = require('./ArrayContainer');
 var ok = require('assert'/*'assert'*/).ok;
@@ -466,7 +466,7 @@ class Node {
 
 module.exports = Node;
 });
-$rmod.def("/marko@3.0.0/compiler/ast/Literal", function(require, exports, module, __filename, __dirname) { 'use strict';
+$rmod.def("/marko@3.0.2/compiler/ast/Literal", function(require, exports, module, __filename, __dirname) { 'use strict';
 
 var Node = require('./Node');
 var isArray = Array.isArray;
@@ -531,7 +531,7 @@ class Literal extends Node {
 
 module.exports = Literal;
 });
-$rmod.def("/marko@3.0.0/compiler/ast/Identifier", function(require, exports, module, __filename, __dirname) { 'use strict';
+$rmod.def("/marko@3.0.2/compiler/ast/Identifier", function(require, exports, module, __filename, __dirname) { 'use strict';
 
 var Node = require('./Node');
 
@@ -553,7 +553,7 @@ class Identifier extends Node {
 
 module.exports = Identifier;
 });
-$rmod.def("/marko@3.0.0/compiler/ast/Container", function(require, exports, module, __filename, __dirname) { 'use strict';
+$rmod.def("/marko@3.0.2/compiler/ast/Container", function(require, exports, module, __filename, __dirname) { 'use strict';
 
 class Container {
     constructor(node) {
@@ -567,9 +567,9 @@ class Container {
 
 module.exports = Container;
 });
-$rmod.def("/marko@3.0.0/compiler/util/javaScriptReservedWords",function(e,t,o,r,a){o.exports={"abstract":!0,arguments:!0,"boolean":!0,"break":!0,"byte":!0,"case":!0,"catch":!0,"char":!0,"class":!0,"const":!0,"continue":!0,"debugger":!0,"default":!0,"delete":!0,"do":!0,"double":!0,"else":!0,"enum*":!0,eval:!0,"export":!0,"extends":!0,"false":!0,"final":!0,"finally":!0,"float":!0,"for":!0,"function":!0,"goto":!0,"if":!0,"implements":!0,"import":!0,"in":!0,"instanceof":!0,"int":!0,"interface":!0,let:!0,"long":!0,"native":!0,"new":!0,"null":!0,"package":!0,"private":!0,"protected":!0,"public":!0,"return":!0,"short":!0,"static":!0,"super":!0,"switch":!0,"synchronized":!0,"this":!0,"throw":!0,"throws":!0,"transient":!0,"true":!0,"try":!0,"typeof":!0,"var":!0,"void":!0,"volatile":!0,"while":!0,"with":!0,"yield":!0}});
-$rmod.def("/marko@3.0.0/compiler/util/isValidJavaScriptVarName",function(r,a,e,i,t){var o=r("./javaScriptReservedWords"),c=/^[$A-Z_][0-9A-Z_$]*$/i;e.exports=function(r){return o[r]?!1:c.test(r)}});
-$rmod.def("/marko@3.0.0/compiler/CodeGenerator", function(require, exports, module, __filename, __dirname) { 'use strict';
+$rmod.def("/marko@3.0.2/compiler/util/javaScriptReservedWords",function(e,t,o,r,a){o.exports={"abstract":!0,arguments:!0,"boolean":!0,"break":!0,"byte":!0,"case":!0,"catch":!0,"char":!0,"class":!0,"const":!0,"continue":!0,"debugger":!0,"default":!0,"delete":!0,"do":!0,"double":!0,"else":!0,"enum*":!0,eval:!0,"export":!0,"extends":!0,"false":!0,"final":!0,"finally":!0,"float":!0,"for":!0,"function":!0,"goto":!0,"if":!0,"implements":!0,"import":!0,"in":!0,"instanceof":!0,"int":!0,"interface":!0,let:!0,"long":!0,"native":!0,"new":!0,"null":!0,"package":!0,"private":!0,"protected":!0,"public":!0,"return":!0,"short":!0,"static":!0,"super":!0,"switch":!0,"synchronized":!0,"this":!0,"throw":!0,"throws":!0,"transient":!0,"true":!0,"try":!0,"typeof":!0,"var":!0,"void":!0,"volatile":!0,"while":!0,"with":!0,"yield":!0}});
+$rmod.def("/marko@3.0.2/compiler/util/isValidJavaScriptVarName",function(r,a,e,i,t){var o=r("./javaScriptReservedWords"),c=/^[$A-Z_][0-9A-Z_$]*$/i;e.exports=function(r){return o[r]?!1:c.test(r)}});
+$rmod.def("/marko@3.0.2/compiler/CodeGenerator", function(require, exports, module, __filename, __dirname) { 'use strict';
 
 const isArray = Array.isArray;
 const Node = require('./ast/Node');
@@ -1202,7 +1202,7 @@ class Generator {
 
 module.exports = Generator;
 });
-$rmod.def("/marko@3.0.0/compiler/Compiler", function(require, exports, module, __filename, __dirname) { 'use strict';
+$rmod.def("/marko@3.0.2/compiler/Compiler", function(require, exports, module, __filename, __dirname) { 'use strict';
 var ok = require('assert'/*'assert'*/).ok;
 var CodeGenerator = require('./CodeGenerator');
 var CompileContext = require('./CompileContext');
@@ -1322,7 +1322,7 @@ class Compiler {
 
 module.exports = Compiler;
 });
-$rmod.def("/marko@3.0.0/compiler/Walker", function(require, exports, module, __filename, __dirname) { 'use strict';
+$rmod.def("/marko@3.0.2/compiler/Walker", function(require, exports, module, __filename, __dirname) { 'use strict';
 var isArray = Array.isArray;
 var Container = require('./ast/Container');
 
@@ -1470,7 +1470,7 @@ module.exports = Walker;
 
 
 });
-$rmod.def("/marko@3.0.0/compiler/ast/AttributePlaceholder", function(require, exports, module, __filename, __dirname) { 'use strict';
+$rmod.def("/marko@3.0.2/compiler/ast/AttributePlaceholder", function(require, exports, module, __filename, __dirname) { 'use strict';
 
 var Node = require('./Node');
 
@@ -1897,7 +1897,7 @@ class Parser {
 
 module.exports = Parser;
 });
-$rmod.def("/marko@3.0.0/compiler/HtmlJsParser", function(require, exports, module, __filename, __dirname) { 'use strict';
+$rmod.def("/marko@3.0.2/compiler/HtmlJsParser", function(require, exports, module, __filename, __dirname) { 'use strict';
 var htmljs = require('/$/marko/$/htmljs-parser'/*'htmljs-parser'*/);
 
 class HtmlJsParser {
@@ -1991,7 +1991,7 @@ class HtmlJsParser {
 
 module.exports = HtmlJsParser;
 });
-$rmod.def("/marko@3.0.0/compiler/ast/Program", function(require, exports, module, __filename, __dirname) { 'use strict';
+$rmod.def("/marko@3.0.2/compiler/ast/Program", function(require, exports, module, __filename, __dirname) { 'use strict';
 var Node = require('./Node');
 
 class Program extends Node {
@@ -2016,7 +2016,7 @@ class Program extends Node {
 
 module.exports = Program;
 });
-$rmod.def("/marko@3.0.0/compiler/ast/TemplateRoot", function(require, exports, module, __filename, __dirname) { 'use strict';
+$rmod.def("/marko@3.0.2/compiler/ast/TemplateRoot", function(require, exports, module, __filename, __dirname) { 'use strict';
 var Node = require('./Node');
 
 function createVarsArray(vars) {
@@ -2099,7 +2099,7 @@ class TemplateRoot extends Node {
 
 module.exports = TemplateRoot;
 });
-$rmod.def("/marko@3.0.0/compiler/ast/FunctionDeclaration", function(require, exports, module, __filename, __dirname) { 'use strict';
+$rmod.def("/marko@3.0.2/compiler/ast/FunctionDeclaration", function(require, exports, module, __filename, __dirname) { 'use strict';
 
 var Node = require('./Node');
 var ok = require('assert'/*'assert'*/).ok;
@@ -2172,7 +2172,7 @@ class FunctionDeclaration extends Node {
 
 module.exports = FunctionDeclaration;
 });
-$rmod.def("/marko@3.0.0/compiler/ast/FunctionCall", function(require, exports, module, __filename, __dirname) { 'use strict';
+$rmod.def("/marko@3.0.2/compiler/ast/FunctionCall", function(require, exports, module, __filename, __dirname) { 'use strict';
 var ok = require('assert'/*'assert'*/).ok;
 
 var Node = require('./Node');
@@ -2257,7 +2257,7 @@ class FunctionCall extends Node {
 
 module.exports = FunctionCall;
 });
-$rmod.def("/marko@3.0.0/compiler/ast/If", function(require, exports, module, __filename, __dirname) { 'use strict';
+$rmod.def("/marko@3.0.2/compiler/ast/If", function(require, exports, module, __filename, __dirname) { 'use strict';
 
 var Node = require('./Node');
 
@@ -2346,7 +2346,7 @@ class If extends Node {
 
 module.exports = If;
 });
-$rmod.def("/marko@3.0.0/compiler/ast/ElseIf", function(require, exports, module, __filename, __dirname) { 'use strict';
+$rmod.def("/marko@3.0.2/compiler/ast/ElseIf", function(require, exports, module, __filename, __dirname) { 'use strict';
 
 var Node = require('./Node');
 
@@ -2379,7 +2379,7 @@ class ElseIf extends Node {
 
 module.exports = ElseIf;
 });
-$rmod.def("/marko@3.0.0/compiler/ast/Else", function(require, exports, module, __filename, __dirname) { 'use strict';
+$rmod.def("/marko@3.0.2/compiler/ast/Else", function(require, exports, module, __filename, __dirname) { 'use strict';
 
 var Node = require('./Node');
 
@@ -2409,7 +2409,7 @@ class Else extends Node {
 
 module.exports = Else;
 });
-$rmod.def("/marko@3.0.0/compiler/ast/Assignment", function(require, exports, module, __filename, __dirname) { 'use strict';
+$rmod.def("/marko@3.0.2/compiler/ast/Assignment", function(require, exports, module, __filename, __dirname) { 'use strict';
 
 var Node = require('./Node');
 
@@ -2483,8 +2483,8 @@ class Assignment extends Node {
 
 module.exports = Assignment;
 });
-$rmod.def("/marko@3.0.0/compiler/util/isCompoundExpression",function(o,n,i,r,s){function e(o){return"string"==typeof o?!0:o.isCompoundExpression()}i.exports=e});
-$rmod.def("/marko@3.0.0/compiler/ast/BinaryExpression", function(require, exports, module, __filename, __dirname) { 'use strict';
+$rmod.def("/marko@3.0.2/compiler/util/isCompoundExpression",function(o,n,i,r,s){function e(o){return"string"==typeof o?!0:o.isCompoundExpression()}i.exports=e});
+$rmod.def("/marko@3.0.2/compiler/ast/BinaryExpression", function(require, exports, module, __filename, __dirname) { 'use strict';
 
 var Node = require('./Node');
 var isCompoundExpression = require('../util/isCompoundExpression');
@@ -2590,7 +2590,7 @@ class BinaryExpression extends Node {
 
 module.exports = BinaryExpression;
 });
-$rmod.def("/marko@3.0.0/compiler/ast/LogicalExpression", function(require, exports, module, __filename, __dirname) { 'use strict';
+$rmod.def("/marko@3.0.2/compiler/ast/LogicalExpression", function(require, exports, module, __filename, __dirname) { 'use strict';
 
 var Node = require('./Node');
 var isCompoundExpression = require('../util/isCompoundExpression');
@@ -2684,7 +2684,7 @@ class LogicalExpression extends Node {
 
 module.exports = LogicalExpression;
 });
-$rmod.def("/marko@3.0.0/compiler/ast/Vars", function(require, exports, module, __filename, __dirname) { 'use strict';
+$rmod.def("/marko@3.0.2/compiler/ast/Vars", function(require, exports, module, __filename, __dirname) { 'use strict';
 
 var Node = require('./Node');
 
@@ -2759,7 +2759,7 @@ class Vars extends Node {
 
 module.exports = Vars;
 });
-$rmod.def("/marko@3.0.0/compiler/ast/Return", function(require, exports, module, __filename, __dirname) { 'use strict';
+$rmod.def("/marko@3.0.2/compiler/ast/Return", function(require, exports, module, __filename, __dirname) { 'use strict';
 
 var Node = require('./Node');
 
@@ -2791,7 +2791,7 @@ class Return extends Node {
 
 module.exports = Return;
 });
-$rmod.def("/marko@3.0.0/compiler/ast/HtmlAttribute", function(require, exports, module, __filename, __dirname) { 'use strict';
+$rmod.def("/marko@3.0.2/compiler/ast/HtmlAttribute", function(require, exports, module, __filename, __dirname) { 'use strict';
 var Node = require('./Node');
 var Literal = require('./Literal');
 var ok = require('assert'/*'assert'*/).ok;
@@ -2993,7 +2993,7 @@ HtmlAttribute.isHtmlAttribute = function(attr) {
 
 module.exports = HtmlAttribute;
 });
-$rmod.def("/marko@3.0.0/compiler/ast/HtmlAttributeCollection", function(require, exports, module, __filename, __dirname) { 'use strict';
+$rmod.def("/marko@3.0.2/compiler/ast/HtmlAttributeCollection", function(require, exports, module, __filename, __dirname) { 'use strict';
 
 var ok = require('assert'/*'assert'*/).ok;
 
@@ -3147,7 +3147,7 @@ class HtmlAttributeCollection {
 
 module.exports = HtmlAttributeCollection;
 });
-$rmod.def("/marko@3.0.0/compiler/ast/HtmlElement", function(require, exports, module, __filename, __dirname) { 'use strict';
+$rmod.def("/marko@3.0.2/compiler/ast/HtmlElement", function(require, exports, module, __filename, __dirname) { 'use strict';
 
 var Node = require('./Node');
 var Literal = require('./Literal');
@@ -3418,7 +3418,7 @@ class HtmlElement extends Node {
 
 module.exports = HtmlElement;
 });
-$rmod.def("/marko@3.0.0/compiler/ast/Html", function(require, exports, module, __filename, __dirname) { 'use strict';
+$rmod.def("/marko@3.0.2/compiler/ast/Html", function(require, exports, module, __filename, __dirname) { 'use strict';
 
 var Node = require('./Node');
 
@@ -3444,7 +3444,7 @@ class Html extends Node {
 
 module.exports = Html;
 });
-$rmod.def("/marko@3.0.0/compiler/ast/Text", function(require, exports, module, __filename, __dirname) { 'use strict';
+$rmod.def("/marko@3.0.2/compiler/ast/Text", function(require, exports, module, __filename, __dirname) { 'use strict';
 
 var ok = require('assert'/*'assert'*/).ok;
 var Node = require('./Node');
@@ -3613,7 +3613,7 @@ class Text extends Node {
 
 module.exports = Text;
 });
-$rmod.def("/marko@3.0.0/compiler/ast/ForEach", function(require, exports, module, __filename, __dirname) { 'use strict';
+$rmod.def("/marko@3.0.2/compiler/ast/ForEach", function(require, exports, module, __filename, __dirname) { 'use strict';
 var ok = require('assert'/*'assert'*/).ok;
 var Node = require('./Node');
 
@@ -3700,7 +3700,7 @@ class ForEach extends Node {
 
 module.exports = ForEach;
 });
-$rmod.def("/marko@3.0.0/compiler/ast/ForEachProp", function(require, exports, module, __filename, __dirname) { 'use strict';
+$rmod.def("/marko@3.0.2/compiler/ast/ForEachProp", function(require, exports, module, __filename, __dirname) { 'use strict';
 var ok = require('assert'/*'assert'*/).ok;
 var Node = require('./Node');
 
@@ -3744,7 +3744,7 @@ class ForEachProp extends Node {
 
 module.exports = ForEachProp;
 });
-$rmod.def("/marko@3.0.0/compiler/ast/ForRange", function(require, exports, module, __filename, __dirname) { 'use strict';
+$rmod.def("/marko@3.0.2/compiler/ast/ForRange", function(require, exports, module, __filename, __dirname) { 'use strict';
 var ok = require('assert'/*'assert'*/).ok;
 var Node = require('./Node');
 var Literal = require('./Literal');
@@ -3849,7 +3849,7 @@ class ForRange extends Node {
 
 module.exports = ForRange;
 });
-$rmod.def("/marko@3.0.0/compiler/ast/Slot", function(require, exports, module, __filename, __dirname) { 'use strict';
+$rmod.def("/marko@3.0.2/compiler/ast/Slot", function(require, exports, module, __filename, __dirname) { 'use strict';
 
 var Node = require('./Node');
 
@@ -3886,7 +3886,7 @@ class Slot extends Node {
 
 module.exports = Slot;
 });
-$rmod.def("/marko@3.0.0/compiler/ast/HtmlComment", function(require, exports, module, __filename, __dirname) { 'use strict';
+$rmod.def("/marko@3.0.2/compiler/ast/HtmlComment", function(require, exports, module, __filename, __dirname) { 'use strict';
 
 var Node = require('./Node');
 
@@ -3912,7 +3912,7 @@ class HtmlComment extends Node {
 
 module.exports = HtmlComment;
 });
-$rmod.def("/marko@3.0.0/compiler/ast/SelfInvokingFunction", function(require, exports, module, __filename, __dirname) { 'use strict';
+$rmod.def("/marko@3.0.2/compiler/ast/SelfInvokingFunction", function(require, exports, module, __filename, __dirname) { 'use strict';
 
 var Node = require('./Node');
 
@@ -3946,7 +3946,7 @@ class SelfInvokingFunction extends Node {
 
 module.exports = SelfInvokingFunction;
 });
-$rmod.def("/marko@3.0.0/compiler/ast/ForStatement", function(require, exports, module, __filename, __dirname) { 'use strict';
+$rmod.def("/marko@3.0.2/compiler/ast/ForStatement", function(require, exports, module, __filename, __dirname) { 'use strict';
 
 var Node = require('./Node');
 
@@ -4000,7 +4000,7 @@ class ForStatement extends Node {
 
 module.exports = ForStatement;
 });
-$rmod.def("/marko@3.0.0/compiler/ast/UpdateExpression", function(require, exports, module, __filename, __dirname) { 'use strict';
+$rmod.def("/marko@3.0.2/compiler/ast/UpdateExpression", function(require, exports, module, __filename, __dirname) { 'use strict';
 
 var Node = require('./Node');
 var isCompoundExpression = require('../util/isCompoundExpression');
@@ -4089,7 +4089,7 @@ class UpdateExpression extends Node {
 
 module.exports = UpdateExpression;
 });
-$rmod.def("/marko@3.0.0/compiler/ast/UnaryExpression", function(require, exports, module, __filename, __dirname) { 'use strict';
+$rmod.def("/marko@3.0.2/compiler/ast/UnaryExpression", function(require, exports, module, __filename, __dirname) { 'use strict';
 
 var Node = require('./Node');
 var isCompoundExpression = require('../util/isCompoundExpression');
@@ -4186,7 +4186,7 @@ class UnaryExpression extends Node {
 
 module.exports = UnaryExpression;
 });
-$rmod.def("/marko@3.0.0/compiler/ast/MemberExpression", function(require, exports, module, __filename, __dirname) { 'use strict';
+$rmod.def("/marko@3.0.2/compiler/ast/MemberExpression", function(require, exports, module, __filename, __dirname) { 'use strict';
 
 var Node = require('./Node');
 
@@ -4248,7 +4248,7 @@ class MemberExpression extends Node {
 
 module.exports = MemberExpression;
 });
-$rmod.def("/marko@3.0.0/compiler/util/adjustIndent", function(require, exports, module, __filename, __dirname) { var splitLinesRegExp = /\r?\n/;
+$rmod.def("/marko@3.0.2/compiler/util/adjustIndent", function(require, exports, module, __filename, __dirname) { var splitLinesRegExp = /\r?\n/;
 var initialIndentationRegExp = /^\s+/;
 
 function removeInitialEmptyLines(lines) {
@@ -4319,7 +4319,7 @@ function adjustIndent(str, newIndentation) {
 
 module.exports = adjustIndent;
 });
-$rmod.def("/marko@3.0.0/compiler/ast/Code", function(require, exports, module, __filename, __dirname) { 'use strict';
+$rmod.def("/marko@3.0.2/compiler/ast/Code", function(require, exports, module, __filename, __dirname) { 'use strict';
 
 var Node = require('./Node');
 var adjustIndent = require('../util/adjustIndent');
@@ -4345,7 +4345,7 @@ class Code extends Node {
 
 module.exports = Code;
 });
-$rmod.def("/marko@3.0.0/compiler/ast/InvokeMacro", function(require, exports, module, __filename, __dirname) { 'use strict';
+$rmod.def("/marko@3.0.2/compiler/ast/InvokeMacro", function(require, exports, module, __filename, __dirname) { 'use strict';
 
 var Node = require('./Node');
 var ok = require('assert'/*'assert'*/).ok;
@@ -4467,7 +4467,7 @@ class InvokeMacro extends Node {
 
 module.exports = InvokeMacro;
 });
-$rmod.def("/marko@3.0.0/compiler/ast/Macro", function(require, exports, module, __filename, __dirname) { 'use strict';
+$rmod.def("/marko@3.0.2/compiler/ast/Macro", function(require, exports, module, __filename, __dirname) { 'use strict';
 
 var Node = require('./Node');
 var ok = require('assert'/*'assert'*/).ok;
@@ -4506,7 +4506,7 @@ class Macro extends Node {
 
 module.exports = Macro;
 });
-$rmod.def("/marko@3.0.0/compiler/ast/ConditionalExpression", function(require, exports, module, __filename, __dirname) { 'use strict';
+$rmod.def("/marko@3.0.2/compiler/ast/ConditionalExpression", function(require, exports, module, __filename, __dirname) { 'use strict';
 
 var Node = require('./Node');
 
@@ -4560,7 +4560,7 @@ class ConditionalExpression extends Node {
 
 module.exports = ConditionalExpression;
 });
-$rmod.def("/marko@3.0.0/compiler/ast/NewExpression", function(require, exports, module, __filename, __dirname) { 'use strict';
+$rmod.def("/marko@3.0.2/compiler/ast/NewExpression", function(require, exports, module, __filename, __dirname) { 'use strict';
 
 var Node = require('./Node');
 var isCompoundExpression = require('../util/isCompoundExpression');
@@ -4666,7 +4666,7 @@ class NewExpression extends Node {
 
 module.exports = NewExpression;
 });
-$rmod.def("/marko@3.0.0/compiler/ast/ObjectExpression", function(require, exports, module, __filename, __dirname) { 'use strict';
+$rmod.def("/marko@3.0.2/compiler/ast/ObjectExpression", function(require, exports, module, __filename, __dirname) { 'use strict';
 
 var Node = require('./Node');
 
@@ -4737,7 +4737,7 @@ class ObjectExpression extends Node {
 
 module.exports = ObjectExpression;
 });
-$rmod.def("/marko@3.0.0/compiler/ast/ArrayExpression", function(require, exports, module, __filename, __dirname) { 'use strict';
+$rmod.def("/marko@3.0.2/compiler/ast/ArrayExpression", function(require, exports, module, __filename, __dirname) { 'use strict';
 
 var Node = require('./Node');
 
@@ -4805,7 +4805,7 @@ class ArrayExpression extends Node {
 
 module.exports = ArrayExpression;
 });
-$rmod.def("/marko@3.0.0/compiler/ast/Property", function(require, exports, module, __filename, __dirname) { 'use strict';
+$rmod.def("/marko@3.0.2/compiler/ast/Property", function(require, exports, module, __filename, __dirname) { 'use strict';
 const isValidJavaScriptIdentifier = require('../util/isValidJavaScriptIdentifier');
 const Node = require('./Node');
 
@@ -4862,7 +4862,7 @@ class Property extends Node {
 
 module.exports = Property;
 });
-$rmod.def("/marko@3.0.0/compiler/ast/VariableDeclarator", function(require, exports, module, __filename, __dirname) { 'use strict';
+$rmod.def("/marko@3.0.2/compiler/ast/VariableDeclarator", function(require, exports, module, __filename, __dirname) { 'use strict';
 
 var Node = require('./Node');
 var Identifier = require('./Identifier');
@@ -4910,7 +4910,7 @@ class VariableDeclarator extends Node {
 
 module.exports = VariableDeclarator;
 });
-$rmod.def("/marko@3.0.0/compiler/ast/ThisExpression", function(require, exports, module, __filename, __dirname) { 'use strict';
+$rmod.def("/marko@3.0.2/compiler/ast/ThisExpression", function(require, exports, module, __filename, __dirname) { 'use strict';
 
 var Node = require('./Node');
 
@@ -4930,7 +4930,7 @@ class ThisExpression extends Node {
 
 module.exports = ThisExpression;
 });
-$rmod.def("/marko@3.0.0/compiler/ast/Expression", function(require, exports, module, __filename, __dirname) { 'use strict';
+$rmod.def("/marko@3.0.2/compiler/ast/Expression", function(require, exports, module, __filename, __dirname) { 'use strict';
 
 var Node = require('./Node');
 var ok = require('assert'/*'assert'*/).ok;
@@ -4957,7 +4957,7 @@ class Expression extends Node {
 
 module.exports = Expression;
 });
-$rmod.def("/marko@3.0.0/compiler/ast/Scriptlet", function(require, exports, module, __filename, __dirname) { 'use strict';
+$rmod.def("/marko@3.0.2/compiler/ast/Scriptlet", function(require, exports, module, __filename, __dirname) { 'use strict';
 
 var Node = require('./Node');
 var adjustIndent = require('../util/adjustIndent');
@@ -4984,7 +4984,7 @@ class Scriptlet extends Node {
 
 module.exports = Scriptlet;
 });
-$rmod.def("/marko@3.0.0/compiler/ast/ContainerNode", function(require, exports, module, __filename, __dirname) { 'use strict';
+$rmod.def("/marko@3.0.2/compiler/ast/ContainerNode", function(require, exports, module, __filename, __dirname) { 'use strict';
 
 var Node = require('./Node');
 
@@ -5001,7 +5001,7 @@ class ContainerNode extends Node {
 
 module.exports = ContainerNode;
 });
-$rmod.def("/marko@3.0.0/compiler/ast/WhileStatement", function(require, exports, module, __filename, __dirname) { 'use strict';
+$rmod.def("/marko@3.0.2/compiler/ast/WhileStatement", function(require, exports, module, __filename, __dirname) { 'use strict';
 
 var Node = require('./Node');
 
@@ -5033,7 +5033,7 @@ class WhileStatement extends Node {
 
 module.exports = WhileStatement;
 });
-$rmod.def("/marko@3.0.0/compiler/ast/DocumentType", function(require, exports, module, __filename, __dirname) { 'use strict';
+$rmod.def("/marko@3.0.2/compiler/ast/DocumentType", function(require, exports, module, __filename, __dirname) { 'use strict';
 var Node = require('./Node');
 
 class DocumentType extends Node {
@@ -5061,7 +5061,7 @@ class DocumentType extends Node {
 
 module.exports = DocumentType;
 });
-$rmod.def("/marko@3.0.0/compiler/ast/Declaration", function(require, exports, module, __filename, __dirname) { 'use strict';
+$rmod.def("/marko@3.0.2/compiler/ast/Declaration", function(require, exports, module, __filename, __dirname) { 'use strict';
 var Node = require('./Node');
 
 class Declaration extends Node {
@@ -5089,7 +5089,7 @@ class Declaration extends Node {
 
 module.exports = Declaration;
 });
-$rmod.def("/marko@3.0.0/compiler/util/parseJavaScript", function(require, exports, module, __filename, __dirname) { 'use strict';
+$rmod.def("/marko@3.0.2/compiler/util/parseJavaScript", function(require, exports, module, __filename, __dirname) { 'use strict';
 var ok = require('assert'/*'assert'*/).ok;
 
 const esprima = require('/$/marko/$/esprima'/*'esprima'*/);
@@ -5335,11 +5335,11 @@ function parseExpression(src, builder, isExpression) {
 module.exports = parseExpression;
 
 });
-$rmod.def("/marko@3.0.0/compiler/util/parseExpression",function(r,e,o,a,i){var n=r("./parseJavaScript");o.exports=function(r,e){return n(r,e,!0)}});
-$rmod.def("/marko@3.0.0/compiler/util/parseStatement",function(r,t,e,a,n){var o=r("./parseJavaScript");e.exports=function(r,t){return o(r,t,!1)}});
-$rmod.def("/marko@3.0.0/compiler/util/parseJavaScriptArgs",function(r,e,s,t,i){"use strict";function a(r,e){o("string"==typeof r,'"args" should be a string'),o(e,'"builder" is required');var s=e.parseExpression("["+r+"]");return s.elements}var o=r("assert").ok;s.exports=a});
-$rmod.def("/marko@3.0.0/compiler/util/isValidJavaScriptIdentifier",function(i,r,t,e,n){var o=/^[$A-Z_][0-9A-Z_$]*$/i;t.exports=function(i){return o.test(i)}});
-$rmod.def("/marko@3.0.0/compiler/Builder", function(require, exports, module, __filename, __dirname) { 'use strict';
+$rmod.def("/marko@3.0.2/compiler/util/parseExpression",function(r,e,o,a,i){var n=r("./parseJavaScript");o.exports=function(r,e){return n(r,e,!0)}});
+$rmod.def("/marko@3.0.2/compiler/util/parseStatement",function(r,t,e,a,n){var o=r("./parseJavaScript");e.exports=function(r,t){return o(r,t,!1)}});
+$rmod.def("/marko@3.0.2/compiler/util/parseJavaScriptArgs",function(r,e,s,t,i){"use strict";function a(r,e){o("string"==typeof r,'"args" should be a string'),o(e,'"builder" is required');var s=e.parseExpression("["+r+"]");return s.elements}var o=r("assert").ok;s.exports=a});
+$rmod.def("/marko@3.0.2/compiler/util/isValidJavaScriptIdentifier",function(i,r,t,e,n){var o=/^[$A-Z_][0-9A-Z_$]*$/i;t.exports=function(i){return o.test(i)}});
+$rmod.def("/marko@3.0.2/compiler/Builder", function(require, exports, module, __filename, __dirname) { 'use strict';
 var isArray = Array.isArray;
 var ok = require('assert'/*'assert'*/).ok;
 
@@ -5935,9 +5935,9 @@ module.exports = Builder;
 
 });
 $rmod.remap("/marko@3.0.2/compiler/util/deresolve","deresolve-browser");
-$rmod.def("/marko@3.0.0/compiler/util/deresolve-browser",function(r,e,o,n,t){o.exports=function(r,e){return r}});
-$rmod.def("/marko@3.0.0/compiler/util/safeVarName",function(e,r,n,t,a){function o(e){var r=e.split(/[\\/]/);return r.length>=2&&(e=r.slice(-2).join("_")),e.replace(/[^A-Za-z0-9_]/g,"_").replace(/^[0-9]+/,function(e){for(var r="",n=0;n<e.length;n++)r+="_";return r})}n.exports=o});
-$rmod.def("/marko@3.0.0/compiler/util/UniqueVars", function(require, exports, module, __filename, __dirname) { 'use strict';
+$rmod.def("/marko@3.0.2/compiler/util/deresolve-browser",function(r,e,o,n,t){o.exports=function(r,e){return r}});
+$rmod.def("/marko@3.0.2/compiler/util/safeVarName",function(e,r,n,t,a){function o(e){var r=e.split(/[\\/]/);return r.length>=2&&(e=r.slice(-2).join("_")),e.replace(/[^A-Za-z0-9_]/g,"_").replace(/^[0-9]+/,function(e){for(var r="",n=0;n<e.length;n++)r+="_";return r})}n.exports=o});
+$rmod.def("/marko@3.0.2/compiler/util/UniqueVars", function(require, exports, module, __filename, __dirname) { 'use strict';
 
 var safeVarName = require('./safeVarName');
 
@@ -5990,7 +5990,7 @@ class UniqueVars {
 
 module.exports = UniqueVars;
 });
-$rmod.def("/marko@3.0.0/compiler/util/PosInfo", function(require, exports, module, __filename, __dirname) { 'use strict';var process=require("process"); 
+$rmod.def("/marko@3.0.2/compiler/util/PosInfo", function(require, exports, module, __filename, __dirname) { 'use strict';var process=require("process"); 
 
 var path = require('path-browserify'/*'path'*/);
 
@@ -6017,7 +6017,7 @@ class PosInfo {
 
 module.exports = PosInfo;
 });
-$rmod.def("/marko@3.0.0/compiler/CompileError", function(require, exports, module, __filename, __dirname) { 'use strict';
+$rmod.def("/marko@3.0.2/compiler/CompileError", function(require, exports, module, __filename, __dirname) { 'use strict';
 
 class CompileError {
     constructor(errorInfo, context) {
@@ -6066,7 +6066,7 @@ class CompileError {
 
 module.exports = CompileError;
 });
-$rmod.def("/marko@3.0.0/compiler/util/macros", function(require, exports, module, __filename, __dirname) { 'use strict';
+$rmod.def("/marko@3.0.2/compiler/util/macros", function(require, exports, module, __filename, __dirname) { 'use strict';
 
 var safeVarName = require('./safeVarName');
 var ok = require('assert'/*'assert'*/).ok;
@@ -6155,7 +6155,7 @@ function createMacrosContext() {
 
 exports.createMacrosContext = createMacrosContext;
 });
-$rmod.def("/marko@3.0.0/compiler/CompileContext", function(require, exports, module, __filename, __dirname) { 'use strict';var process=require("process"); 
+$rmod.def("/marko@3.0.2/compiler/CompileContext", function(require, exports, module, __filename, __dirname) { 'use strict';var process=require("process"); 
 
 var ok = require('assert'/*'assert'*/).ok;
 var path = require('path-browserify'/*'path'*/);
@@ -6574,8 +6574,8 @@ module.exports = CompileContext;
 });
 $rmod.main("/marko@3.0.2/compiler/taglib-lookup","index");
 $rmod.main("/marko@3.0.2/compiler/taglib-loader/Taglib","index");
-$rmod.def("/marko@3.0.0/compiler/util/removeDashes",function(e,r,o,n,t){o.exports=function(e){return e.replace(/-([a-z])/g,function(e,r){return r.toUpperCase()})}});
-$rmod.def("/marko@3.0.0/compiler/ast/CustomTag", function(require, exports, module, __filename, __dirname) { 'use strict';
+$rmod.def("/marko@3.0.2/compiler/util/removeDashes",function(e,r,o,n,t){o.exports=function(e){return e.replace(/-([a-z])/g,function(e,r){return r.toUpperCase()})}});
+$rmod.def("/marko@3.0.2/compiler/ast/CustomTag", function(require, exports, module, __filename, __dirname) { 'use strict';
 
 var HtmlElement = require('./HtmlElement');
 var removeDashes = require('../util/removeDashes');
@@ -6911,7 +6911,7 @@ class CustomTag extends HtmlElement {
 
 module.exports = CustomTag;
 });
-$rmod.def("/marko@3.0.0/compiler/taglib-loader/Taglib/Tag", function(require, exports, module, __filename, __dirname) { /*
+$rmod.def("/marko@3.0.2/compiler/taglib-loader/Taglib/Tag", function(require, exports, module, __filename, __dirname) { /*
 * Copyright 2011 eBay Software Foundation
 *
 * Licensed under the Apache License, Version 2.0 (the "License");
@@ -7148,7 +7148,7 @@ class Tag{
 
 module.exports = Tag;
 });
-$rmod.def("/marko@3.0.0/compiler/taglib-loader/Taglib/Attribute", function(require, exports, module, __filename, __dirname) { /*
+$rmod.def("/marko@3.0.2/compiler/taglib-loader/Taglib/Attribute", function(require, exports, module, __filename, __dirname) { /*
 * Copyright 2011 eBay Software Foundation
 *
 * Licensed under the Apache License, Version 2.0 (the "License");
@@ -7180,7 +7180,7 @@ class Attribute {
 
 module.exports = Attribute;
 });
-$rmod.def("/marko@3.0.0/compiler/taglib-loader/Taglib/Property", function(require, exports, module, __filename, __dirname) { /*
+$rmod.def("/marko@3.0.2/compiler/taglib-loader/Taglib/Property", function(require, exports, module, __filename, __dirname) { /*
 * Copyright 2011 eBay Software Foundation
 *
 * Licensed under the Apache License, Version 2.0 (the "License");
@@ -7207,7 +7207,7 @@ class Property {
 
 module.exports = Property;
 });
-$rmod.def("/marko@3.0.0/compiler/taglib-loader/Taglib/NestedVariable", function(require, exports, module, __filename, __dirname) { /*
+$rmod.def("/marko@3.0.2/compiler/taglib-loader/Taglib/NestedVariable", function(require, exports, module, __filename, __dirname) { /*
 * Copyright 2011 eBay Software Foundation
 *
 * Licensed under the Apache License, Version 2.0 (the "License");
@@ -7232,7 +7232,7 @@ class NestedVariable {
 
 module.exports = NestedVariable;
 });
-$rmod.def("/marko@3.0.0/compiler/taglib-loader/Taglib/ImportedVariable", function(require, exports, module, __filename, __dirname) { /*
+$rmod.def("/marko@3.0.2/compiler/taglib-loader/Taglib/ImportedVariable", function(require, exports, module, __filename, __dirname) { /*
 * Copyright 2011 eBay Software Foundation
 *
 * Licensed under the Apache License, Version 2.0 (the "License");
@@ -7259,7 +7259,7 @@ class ImportedVariable {
 
 module.exports = ImportedVariable;
 });
-$rmod.def("/marko@3.0.0/compiler/taglib-loader/Taglib/Transformer", function(require, exports, module, __filename, __dirname) { /*
+$rmod.def("/marko@3.0.2/compiler/taglib-loader/Taglib/Transformer", function(require, exports, module, __filename, __dirname) { /*
 * Copyright 2011 eBay Software Foundation
 *
 * Licensed under the Apache License, Version 2.0 (the "License");
@@ -7318,7 +7318,7 @@ class Transformer {
 
 module.exports = Transformer;
 });
-$rmod.def("/marko@3.0.0/compiler/taglib-loader/Taglib/Taglib", function(require, exports, module, __filename, __dirname) { /*
+$rmod.def("/marko@3.0.2/compiler/taglib-loader/Taglib/Taglib", function(require, exports, module, __filename, __dirname) { /*
  * Copyright 2011 eBay Software Foundation
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -7452,8 +7452,8 @@ module.exports = Taglib;
 
 taglibLoader = require('../');
 });
-$rmod.def("/marko@3.0.0/compiler/taglib-loader/Taglib/index",function(i,o,a,e,l){a.exports=i("./Taglib")});
-$rmod.def("/marko@3.0.0/compiler/taglib-lookup/TaglibLookup", function(require, exports, module, __filename, __dirname) { /*
+$rmod.def("/marko@3.0.2/compiler/taglib-loader/Taglib/index",function(i,o,a,e,l){a.exports=i("./Taglib")});
+$rmod.def("/marko@3.0.2/compiler/taglib-lookup/TaglibLookup", function(require, exports, module, __filename, __dirname) { /*
 * Copyright 2011 eBay Software Foundation
 *
 * Licensed under the Apache License, Version 2.0 (the "License");
@@ -7763,24 +7763,24 @@ class TaglibLookup {
 
 module.exports = TaglibLookup;
 });
-$rmod.def("/marko@3.0.0/compiler/taglib-lookup/index",function(i,r,a,e,o){"use strict";function t(i,r){if(r.imports)for(var a=0;a<r.imports.length;a++){var e=r.imports[a];i.hasTaglib(e)||i.addTaglib(e)}}function n(i){var a=s.find(i,r.registeredTaglibs),e=a.map(function(i){return i.id}).join(","),o=u[e];if(void 0===o){o=new f;for(var n=0;n<a.length;n++){var l=a[n];o.addTaglib(l),t(o,l)}u[e]=o}return o}function l(i){"string"==typeof i&&(i=d.load(i)),r.registeredTaglibs.push(i)}function g(){u={}}r.registerTaglib=l,r.buildLookup=n,r.clearCache=g;var d=i("../taglib-loader"),s=i("../taglib-finder"),f=i("./TaglibLookup");r.registeredTaglibs=[];var u={}});
+$rmod.def("/marko@3.0.2/compiler/taglib-lookup/index",function(i,r,a,e,o){"use strict";function t(i,r){if(r.imports)for(var a=0;a<r.imports.length;a++){var e=r.imports[a];i.hasTaglib(e)||i.addTaglib(e)}}function n(i){var a=s.find(i,r.registeredTaglibs),e=a.map(function(i){return i.id}).join(","),o=u[e];if(void 0===o){o=new f;for(var n=0;n<a.length;n++){var l=a[n];o.addTaglib(l),t(o,l)}u[e]=o}return o}function l(i){"string"==typeof i&&(i=d.load(i)),r.registeredTaglibs.push(i)}function g(){u={}}r.registerTaglib=l,r.buildLookup=n,r.clearCache=g;var d=i("../taglib-loader"),s=i("../taglib-finder"),f=i("./TaglibLookup");r.registeredTaglibs=[];var u={}});
 $rmod.main("/marko@3.0.2/compiler/taglib-loader","index");
-$rmod.def("/marko@3.0.0/compiler/taglib-loader/handleAttributes",function(t,r,a,o,e){var i=t("assert").ok,d=t("/$/marko/$/raptor-util/forEachEntry"),u=t("./loader");a.exports=function(t,r,a){i(r),d(t,function(t,o){var e=u.attributeLoader.loadAttribute(t,o,'"'+t+'" attribute as part of '+a);r.addAttribute(e)})}});
+$rmod.def("/marko@3.0.2/compiler/taglib-loader/handleAttributes",function(t,r,a,o,e){var i=t("assert").ok,d=t("/$/marko/$/raptor-util/forEachEntry"),u=t("./loader");a.exports=function(t,r,a){i(r),d(t,function(t,o){var e=u.attributeLoader.loadAttribute(t,o,'"'+t+'" attribute as part of '+a);r.addAttribute(e)})}});
 $rmod.remap("/marko@3.0.2/compiler/taglib-loader/scanTagsDir","scanTagsDir-browser");
-$rmod.def("/marko@3.0.0/compiler/taglib-loader/scanTagsDir-browser",function(o,r,a,e,i){a.exports=function(){}});
+$rmod.def("/marko@3.0.2/compiler/taglib-loader/scanTagsDir-browser",function(o,r,a,e,i){a.exports=function(){}});
 $rmod.remap("/marko@3.0.2/compiler/util/resolve","resolve-browser");
-$rmod.def("/marko@3.0.0/compiler/util/resolve-browser",function(r,o,e,i,n){var t=r("path-browserify");e.exports=function(r,o){return t.join(o,r)}});
+$rmod.def("/marko@3.0.2/compiler/util/resolve-browser",function(r,o,e,i,n){var t=r("path-browserify");e.exports=function(r,o){return t.join(o,r)}});
 $rmod.remap("/marko@3.0.2/compiler/taglib-loader/taglib-reader","taglib-reader-browser");
-$rmod.def("/marko@3.0.0/compiler/taglib-loader/taglib-reader-browser",function(r,a,t,e,o){a.readTaglib=function(a){var t;try{t=r(a)}catch(e){throw new Error('Unable to parse taglib JSON at path "'+a+'". Exception: '+e)}return t}});
-$rmod.def("/marko@3.0.0/compiler/taglib-loader/loader-taglib",function(t,a,r,i,e){function n(a){try{return t.resolve(a),!0}catch(r){return!1}}function o(a,r,i){var e=a.taglib,o=a.dirname;d(i,'Invalid tag definition for "'+r+'"');var s,f;if("string"==typeof i){if(i=h.resolve(o,i),e.addInputFile(i),f=h.dirname(i),!n(i))throw new Error('Tag at path "'+i+'" does not exist. Taglib: '+e.path);try{s=t(i)}catch(l){throw new Error('Unable to parse tag JSON for tag at path "'+i+'"')}}else f=o,s=i,i="<"+r+"> tag in "+e.path;var g=b.tagLoader.loadTag(s,i,e,f);void 0===g.name&&(g.name=r),e.addTag(g)}function s(t,a){d(t),d(a),this.taglib=t,this.path=a,this.dirname=h.dirname(a)}var d=t("assert").ok,h=t("path-browserify"),f=t("./handleAttributes"),l=t("./scanTagsDir"),g=t("../util/resolve"),p=t("/$/marko/$/property-handlers"),u=t("./Taglib"),v=t("./taglib-reader"),b=t("./loader"),c=t("/$/marko/$/try-require"),m=c("resolve-from",t);s.prototype={attributes:function(t){var a=this.taglib,r=this.path;f(t,a,r)},tags:function(t){for(var a in t)t.hasOwnProperty(a)&&o(this,a,t[a])},tagsDir:function(t){var a=this.taglib,r=this.path,i=this.dirname;if(Array.isArray(t))for(var e=0;e<t.length;e++)l(r,i,t[e],a);else l(r,i,t,a)},taglibImports:function(a){if(m){var r,i=this.taglib,e=this.dirname;if(a&&Array.isArray(a))for(var n=0;n<a.length;n++){var o=a[n];if("string"==typeof o){var s=h.basename(o);if("package.json"===s){var d=g(o,e),f=t(d),l=f.dependencies;if(l)for(var p=Object.keys(l),u=0;u<p.length;u++){var v=p[u];try{r=m(e,v+"/marko.json")}catch(b){}r&&i.addImport(r)}}else r=m(e,o),i.addImport(r)}}}},textTransformer:function(t){var a=this.taglib,r=this.path,i=this.dirname,e=new u.Transformer;"string"==typeof t&&(t={path:t}),p(t,{path:function(t){var a=g(t,i);e.path=a}},"text-transformer in "+r),d(e.path,'"path" is required for transformer'),a.addInputFile(e.path),a.addTextTransformer(e)},taglibId:function(t){var a=this.taglib;a.id=t}},a.loadTaglib=function(a,r){var i=v.readTaglib(a);r=r||new u(a),r.addInputFile(a);var e=new s(r,a);if(e["*"]=function(t,a){var r=this.taglib,i=this.path;if(t.startsWith("<"))o(this,t.slice(1,-1),a);else{if(!t.startsWith("@"))return!1;var e=t.substring(1),n=b.attributeLoader.loadAttribute(e,a,'"'+e+'" attribute as part of '+i);r.addAttribute(n)}},p(i,e,a),r.path=a,!r.id){var n=h.dirname(a),d=h.join(n,"package.json");try{var f=t(d);r.id=f.name}catch(l){}r.id||(r.id=a)}return r}});
-$rmod.def("/marko@3.0.0/compiler/taglib-loader/loader-tag",function(t,r,e,a,i){function n(r){try{return t.resolve(r),!0}catch(e){return!1}}function o(t){return t.replace(/-([a-z])/g,function(t,r){return r.toUpperCase()})}function s(t,r,e){var a;if("string"==typeof r)a={name:r};else if(a={},l(r,{name:function(t){a.name=t},nameFromAttribute:function(t){a.nameFromAttribute=t}},e),!a.name&&!a.nameFromAttribute)throw new Error('The "name" or "name-from-attribute" attribute is required for a nested variable');t.addNestedVariable(a)}function p(t,r,e,a){if(this.tag=t,this.dirname=r,this.path=e,this.taglib=a,!a)throw new Error("taglib expected")}function f(t){if(null!=t.attributes)return!0;for(var r in t)if(t.hasOwnProperty(r)&&r.startsWith("@"))return!0;return!1}function u(t,r,e,a){h(t),h("string"==typeof r),h(e),h("string"==typeof a);var i=new d.Tag(e);f(t)||(t.attributes={"*":{type:"string",targetProperty:null}});var n=new p(i,a,r,e);return n["*"]=function(t,n){var s,p,f=t.split(/\s+|\s+[,]\s+/),h=!1,d=!1,l=null;for(s=0;s<f.length;s++)if(p=f[s],p.startsWith("@"))d=!0,0===s&&(l=p.substring(1));else{if(!p.startsWith("<"))return!1;h=!0}var g,m={},y={};if(null!=n&&"object"==typeof n){for(g in n)if(n.hasOwnProperty(g))if(g.startsWith("@")||g.startsWith("<"))y[g]=n[g],delete n[g];else{var v=o(g);E.tagLoader.isSupportedProperty(v)&&E.attributeLoader.isSupportedProperty(v)?(y[g]=n[g],m[g]=n[g],delete n[g]):E.tagLoader.isSupportedProperty(v)?(y[g]=n[g],delete n[g]):E.attributeLoader.isSupportedProperty(v)&&(m[g]=n[g],delete n[g])}if(!c(n))throw new Error("Unsupported properties of ["+Object.keys(n).join(", ")+'] for "'+t+'" in "'+r+'"');var b=m.type;!b&&d&&h&&(m.type="expression")}else"string"==typeof n&&(h&&d?y=m={type:n}:h?y={type:n}:m={type:n});for(s=0;s<f.length;s++)if(p=f[s],p.startsWith("@")){var w=p.substring(1),P=E.attributeLoader.loadAttribute(w,m,'"'+w+'" attribute as part of '+r);i.addAttribute(P)}else{if(!p.startsWith("<"))return!1;var $=u(y,t+" of "+r,e,a),T=!1;p.endsWith("[]")&&(T=!0,p=p.slice(0,-2));var x=p.substring(1,p.length-1);$.name=x,$.isRepeated=T,$.targetProperty=m.targetProperty||l,i.addNestedTag($)}},l(t,n,r),i}t("/$/marko/$/raptor-polyfill/string/startsWith");var h=t("assert").ok,d=t("./Taglib"),l=t("/$/marko/$/property-handlers"),c=t("/$/marko/$/raptor-util/isObjectEmpty"),g=t("path-browserify"),m=t("../util/resolve"),h=t("assert").ok,y=/^([A-Za-z_$][A-Za-z0-9_]*)(?:\(([^)]*)\))?$/,v=/^[A-Za-z_$][A-Za-z0-9_]*$/,b=t("./handleAttributes"),d=t("./Taglib"),l=t("/$/marko/$/property-handlers"),w=t("/$/marko/$/raptor-util").forEachEntry,E=t("./loader"),P=t("../");p.prototype={name:function(t){var r=this.tag;r.name=t},renderer:function(t){var r=this.tag,e=this.dirname,a=m(t,e);this.taglib.addInputFile(a),r.renderer=a},template:function(t){var r=this.tag,e=this.dirname,a=g.resolve(e,t);if(!n(a))throw new Error('Template at path "'+a+'" does not exist.');this.taglib.addInputFile(a),r.template=a},attributes:function(t){var r=this.tag,e=this.path;b(t,r,e)},codeGenerator:function(t){var r=this.tag,e=this.dirname,a=m(t,e);r.codeGeneratorModulePath=a,this.taglib.addInputFile(a)},nodeFactory:function(t){var r=this.tag,e=this.dirname,a=m(t,e);r.nodeFactoryPath=a,this.taglib.addInputFile(a)},preserveWhitespace:function(t){var r=this.tag;r.preserveWhitespace=!!t},transformer:function(t){var r=this.tag,e=this.dirname,a=this.path,i=this.taglib,n=new d.Transformer;"string"==typeof t&&(t={path:t}),l(t,{path:function(t){var r=m(t,e);n.path=r,i.addInputFile(r)},priority:function(t){n.priority=t},name:function(t){n.name=t},properties:function(t){var r=n.properties||(n.properties={});for(var e in t)t.hasOwnProperty(e)&&(r[e]=t[e])}},"transformer in "+a),h(n.path,'"path" is required for transformer'),r.addTransformer(n)},"var":function(t){s(this.tag,t,'"var" in tag '+this.path)},vars:function(t){var r=this.tag,e=this;t&&t.forEach(function(t,a){s(r,t,'"vars"['+a+"] in tag "+e.path)})},bodyFunction:function(t){var r=this.tag,e=y.exec(t);if(!e)throw new Error('Invalid value of "'+t+'" for "body-function". Expected value to be of the following form: <function-name>([param1, param2, ...])');var a=e[1],i=e[2];if(i){i=i.trim().split(/\s*,\s*/);for(var n=0;n<i.length;n++){if(0===i[n].length)throw new Error('Invalid parameters for body-function with value of "'+t+'"');if(!v.test(i[n]))throw new Error('Invalid parameter name of "'+i[n]+'" for body-function with value of "'+t+'"')}}else i=[];r.setBodyFunction(a,i)},importVar:function(r){var e=this.tag;w(r,function(r,a){var i={targetProperty:r},n=a;if(n?"object"==typeof n&&(n=n.expression):n=r,!n)throw new Error('Invalid "import-var": '+t("util").inspect(a));i.expression=P.builder.parseExpression(n),e.addImportedVariable(i)})},type:function(t){var r=this.tag;r.type=t},nestedTags:function(t){var r=this.path,e=this.taglib,a=this.dirname,i=this.tag;w(t,function(t,n){var o=u(n,t+" of "+r,e,a);o.name=t,i.addNestedTag(o)})},escapeXmlBody:function(t){t===!1&&(this.tag.escapeXmlBody=!1)},body:function(t){if("static-text"!==t&&"parsed-text"!==t&&"html"!==t)throw new Error('Invalid value for "body". Allowed: "static-text", "parsed-text" or "html"');this.tag.body=t},openTagOnly:function(t){this.tag.openTagOnly=t}},r.isSupportedProperty=function(t){return p.prototype.hasOwnProperty(t)},r.loadTag=u});
-$rmod.def("/marko@3.0.0/compiler/taglib-loader/loader-attribute",function(t,r,e,a,n){function o(t){i.ok(t),i.equal(typeof t,"object"),this.attr=t}var i=t("assert"),s=t("/$/marko/$/raptor-regexp"),p=t("/$/marko/$/property-handlers"),u=t("./Taglib");o.prototype={type:function(t){var r=this.attr;r.type=t},targetProperty:function(t){var r=this.attr;r.targetProperty=t},defaultValue:function(t){var r=this.attr;r.defaultValue=t},pattern:function(t){var r=this.attr;if(t===!0){var e=s.simple(r.name);r.pattern=e}},allowExpressions:function(t){var r=this.attr;r.allowExpressions=t},preserveName:function(t){var r=this.attr;r.preserveName=t},required:function(t){var r=this.attr;r.required=t===!0},removeDashes:function(t){var r=this.attr;r.removeDashes=t===!0},description:function(){},setFlag:function(t){var r=this.attr;r.setFlag=t},ignore:function(t){var r=this.attr;t===!0&&(r.ignore=!0)}},r.isSupportedProperty=function(t){return o.prototype.hasOwnProperty(t)},r.loadAttribute=function(t,r,e){var a=new u.Attribute(t);null==r?r={type:"string"}:"string"==typeof r&&(r={type:r});var n=new o(a);return p(r,n,e),a}});
-$rmod.def("/marko@3.0.0/compiler/taglib-loader/loader",function(a,r,e,o,t){r.taglibLoader=a("./loader-taglib"),r.tagLoader=a("./loader-tag"),r.attributeLoader=a("./loader-attribute")});
-$rmod.def("/marko@3.0.0/compiler/taglib-loader/index",function(a,r,e,o,i){function l(a){if(t[a])return t[a];var r=t[a]=new d(a);return n.taglibLoader.loadTaglib(a,r),t[a]=r,r}var n=a("./loader"),d=a("./Taglib"),t={};r.clearCache=function(){t={}},r.load=l});
+$rmod.def("/marko@3.0.2/compiler/taglib-loader/taglib-reader-browser",function(r,a,t,e,o){a.readTaglib=function(a){var t;try{t=r(a)}catch(e){throw new Error('Unable to parse taglib JSON at path "'+a+'". Exception: '+e)}return t}});
+$rmod.def("/marko@3.0.2/compiler/taglib-loader/loader-taglib",function(t,a,r,i,e){function n(a){try{return t.resolve(a),!0}catch(r){return!1}}function o(a,r,i){var e=a.taglib,o=a.dirname;d(i,'Invalid tag definition for "'+r+'"');var s,f;if("string"==typeof i){if(i=h.resolve(o,i),e.addInputFile(i),f=h.dirname(i),!n(i))throw new Error('Tag at path "'+i+'" does not exist. Taglib: '+e.path);try{s=t(i)}catch(l){throw new Error('Unable to parse tag JSON for tag at path "'+i+'"')}}else f=o,s=i,i="<"+r+"> tag in "+e.path;var g=b.tagLoader.loadTag(s,i,e,f);void 0===g.name&&(g.name=r),e.addTag(g)}function s(t,a){d(t),d(a),this.taglib=t,this.path=a,this.dirname=h.dirname(a)}var d=t("assert").ok,h=t("path-browserify"),f=t("./handleAttributes"),l=t("./scanTagsDir"),g=t("../util/resolve"),p=t("/$/marko/$/property-handlers"),u=t("./Taglib"),v=t("./taglib-reader"),b=t("./loader"),c=t("/$/marko/$/try-require"),m=c("resolve-from",t);s.prototype={attributes:function(t){var a=this.taglib,r=this.path;f(t,a,r)},tags:function(t){for(var a in t)t.hasOwnProperty(a)&&o(this,a,t[a])},tagsDir:function(t){var a=this.taglib,r=this.path,i=this.dirname;if(Array.isArray(t))for(var e=0;e<t.length;e++)l(r,i,t[e],a);else l(r,i,t,a)},taglibImports:function(a){if(m){var r,i=this.taglib,e=this.dirname;if(a&&Array.isArray(a))for(var n=0;n<a.length;n++){var o=a[n];if("string"==typeof o){var s=h.basename(o);if("package.json"===s){var d=g(o,e),f=t(d),l=f.dependencies;if(l)for(var p=Object.keys(l),u=0;u<p.length;u++){var v=p[u];try{r=m(e,v+"/marko.json")}catch(b){}r&&i.addImport(r)}}else r=m(e,o),i.addImport(r)}}}},textTransformer:function(t){var a=this.taglib,r=this.path,i=this.dirname,e=new u.Transformer;"string"==typeof t&&(t={path:t}),p(t,{path:function(t){var a=g(t,i);e.path=a}},"text-transformer in "+r),d(e.path,'"path" is required for transformer'),a.addInputFile(e.path),a.addTextTransformer(e)},taglibId:function(t){var a=this.taglib;a.id=t}},a.loadTaglib=function(a,r){var i=v.readTaglib(a);r=r||new u(a),r.addInputFile(a);var e=new s(r,a);if(e["*"]=function(t,a){var r=this.taglib,i=this.path;if(t.startsWith("<"))o(this,t.slice(1,-1),a);else{if(!t.startsWith("@"))return!1;var e=t.substring(1),n=b.attributeLoader.loadAttribute(e,a,'"'+e+'" attribute as part of '+i);r.addAttribute(n)}},p(i,e,a),r.path=a,!r.id){var n=h.dirname(a),d=h.join(n,"package.json");try{var f=t(d);r.id=f.name}catch(l){}r.id||(r.id=a)}return r}});
+$rmod.def("/marko@3.0.2/compiler/taglib-loader/loader-tag",function(t,r,e,a,i){function n(r){try{return t.resolve(r),!0}catch(e){return!1}}function o(t){return t.replace(/-([a-z])/g,function(t,r){return r.toUpperCase()})}function s(t,r,e){var a;if("string"==typeof r)a={name:r};else if(a={},l(r,{name:function(t){a.name=t},nameFromAttribute:function(t){a.nameFromAttribute=t}},e),!a.name&&!a.nameFromAttribute)throw new Error('The "name" or "name-from-attribute" attribute is required for a nested variable');t.addNestedVariable(a)}function p(t,r,e,a){if(this.tag=t,this.dirname=r,this.path=e,this.taglib=a,!a)throw new Error("taglib expected")}function f(t){if(null!=t.attributes)return!0;for(var r in t)if(t.hasOwnProperty(r)&&r.startsWith("@"))return!0;return!1}function u(t,r,e,a){h(t),h("string"==typeof r),h(e),h("string"==typeof a);var i=new d.Tag(e);f(t)||(t.attributes={"*":{type:"string",targetProperty:null}});var n=new p(i,a,r,e);return n["*"]=function(t,n){var s,p,f=t.split(/\s+|\s+[,]\s+/),h=!1,d=!1,l=null;for(s=0;s<f.length;s++)if(p=f[s],p.startsWith("@"))d=!0,0===s&&(l=p.substring(1));else{if(!p.startsWith("<"))return!1;h=!0}var g,m={},y={};if(null!=n&&"object"==typeof n){for(g in n)if(n.hasOwnProperty(g))if(g.startsWith("@")||g.startsWith("<"))y[g]=n[g],delete n[g];else{var v=o(g);E.tagLoader.isSupportedProperty(v)&&E.attributeLoader.isSupportedProperty(v)?(y[g]=n[g],m[g]=n[g],delete n[g]):E.tagLoader.isSupportedProperty(v)?(y[g]=n[g],delete n[g]):E.attributeLoader.isSupportedProperty(v)&&(m[g]=n[g],delete n[g])}if(!c(n))throw new Error("Unsupported properties of ["+Object.keys(n).join(", ")+'] for "'+t+'" in "'+r+'"');var b=m.type;!b&&d&&h&&(m.type="expression")}else"string"==typeof n&&(h&&d?y=m={type:n}:h?y={type:n}:m={type:n});for(s=0;s<f.length;s++)if(p=f[s],p.startsWith("@")){var w=p.substring(1),P=E.attributeLoader.loadAttribute(w,m,'"'+w+'" attribute as part of '+r);i.addAttribute(P)}else{if(!p.startsWith("<"))return!1;var $=u(y,t+" of "+r,e,a),T=!1;p.endsWith("[]")&&(T=!0,p=p.slice(0,-2));var x=p.substring(1,p.length-1);$.name=x,$.isRepeated=T,$.targetProperty=m.targetProperty||l,i.addNestedTag($)}},l(t,n,r),i}t("/$/marko/$/raptor-polyfill/string/startsWith");var h=t("assert").ok,d=t("./Taglib"),l=t("/$/marko/$/property-handlers"),c=t("/$/marko/$/raptor-util/isObjectEmpty"),g=t("path-browserify"),m=t("../util/resolve"),h=t("assert").ok,y=/^([A-Za-z_$][A-Za-z0-9_]*)(?:\(([^)]*)\))?$/,v=/^[A-Za-z_$][A-Za-z0-9_]*$/,b=t("./handleAttributes"),d=t("./Taglib"),l=t("/$/marko/$/property-handlers"),w=t("/$/marko/$/raptor-util").forEachEntry,E=t("./loader"),P=t("../");p.prototype={name:function(t){var r=this.tag;r.name=t},renderer:function(t){var r=this.tag,e=this.dirname,a=m(t,e);this.taglib.addInputFile(a),r.renderer=a},template:function(t){var r=this.tag,e=this.dirname,a=g.resolve(e,t);if(!n(a))throw new Error('Template at path "'+a+'" does not exist.');this.taglib.addInputFile(a),r.template=a},attributes:function(t){var r=this.tag,e=this.path;b(t,r,e)},codeGenerator:function(t){var r=this.tag,e=this.dirname,a=m(t,e);r.codeGeneratorModulePath=a,this.taglib.addInputFile(a)},nodeFactory:function(t){var r=this.tag,e=this.dirname,a=m(t,e);r.nodeFactoryPath=a,this.taglib.addInputFile(a)},preserveWhitespace:function(t){var r=this.tag;r.preserveWhitespace=!!t},transformer:function(t){var r=this.tag,e=this.dirname,a=this.path,i=this.taglib,n=new d.Transformer;"string"==typeof t&&(t={path:t}),l(t,{path:function(t){var r=m(t,e);n.path=r,i.addInputFile(r)},priority:function(t){n.priority=t},name:function(t){n.name=t},properties:function(t){var r=n.properties||(n.properties={});for(var e in t)t.hasOwnProperty(e)&&(r[e]=t[e])}},"transformer in "+a),h(n.path,'"path" is required for transformer'),r.addTransformer(n)},"var":function(t){s(this.tag,t,'"var" in tag '+this.path)},vars:function(t){var r=this.tag,e=this;t&&t.forEach(function(t,a){s(r,t,'"vars"['+a+"] in tag "+e.path)})},bodyFunction:function(t){var r=this.tag,e=y.exec(t);if(!e)throw new Error('Invalid value of "'+t+'" for "body-function". Expected value to be of the following form: <function-name>([param1, param2, ...])');var a=e[1],i=e[2];if(i){i=i.trim().split(/\s*,\s*/);for(var n=0;n<i.length;n++){if(0===i[n].length)throw new Error('Invalid parameters for body-function with value of "'+t+'"');if(!v.test(i[n]))throw new Error('Invalid parameter name of "'+i[n]+'" for body-function with value of "'+t+'"')}}else i=[];r.setBodyFunction(a,i)},importVar:function(r){var e=this.tag;w(r,function(r,a){var i={targetProperty:r},n=a;if(n?"object"==typeof n&&(n=n.expression):n=r,!n)throw new Error('Invalid "import-var": '+t("util").inspect(a));i.expression=P.builder.parseExpression(n),e.addImportedVariable(i)})},type:function(t){var r=this.tag;r.type=t},nestedTags:function(t){var r=this.path,e=this.taglib,a=this.dirname,i=this.tag;w(t,function(t,n){var o=u(n,t+" of "+r,e,a);o.name=t,i.addNestedTag(o)})},escapeXmlBody:function(t){t===!1&&(this.tag.escapeXmlBody=!1)},body:function(t){if("static-text"!==t&&"parsed-text"!==t&&"html"!==t)throw new Error('Invalid value for "body". Allowed: "static-text", "parsed-text" or "html"');this.tag.body=t},openTagOnly:function(t){this.tag.openTagOnly=t}},r.isSupportedProperty=function(t){return p.prototype.hasOwnProperty(t)},r.loadTag=u});
+$rmod.def("/marko@3.0.2/compiler/taglib-loader/loader-attribute",function(t,r,e,a,n){function o(t){i.ok(t),i.equal(typeof t,"object"),this.attr=t}var i=t("assert"),s=t("/$/marko/$/raptor-regexp"),p=t("/$/marko/$/property-handlers"),u=t("./Taglib");o.prototype={type:function(t){var r=this.attr;r.type=t},targetProperty:function(t){var r=this.attr;r.targetProperty=t},defaultValue:function(t){var r=this.attr;r.defaultValue=t},pattern:function(t){var r=this.attr;if(t===!0){var e=s.simple(r.name);r.pattern=e}},allowExpressions:function(t){var r=this.attr;r.allowExpressions=t},preserveName:function(t){var r=this.attr;r.preserveName=t},required:function(t){var r=this.attr;r.required=t===!0},removeDashes:function(t){var r=this.attr;r.removeDashes=t===!0},description:function(){},setFlag:function(t){var r=this.attr;r.setFlag=t},ignore:function(t){var r=this.attr;t===!0&&(r.ignore=!0)}},r.isSupportedProperty=function(t){return o.prototype.hasOwnProperty(t)},r.loadAttribute=function(t,r,e){var a=new u.Attribute(t);null==r?r={type:"string"}:"string"==typeof r&&(r={type:r});var n=new o(a);return p(r,n,e),a}});
+$rmod.def("/marko@3.0.2/compiler/taglib-loader/loader",function(a,r,e,o,t){r.taglibLoader=a("./loader-taglib"),r.tagLoader=a("./loader-tag"),r.attributeLoader=a("./loader-attribute")});
+$rmod.def("/marko@3.0.2/compiler/taglib-loader/index",function(a,r,e,o,i){function l(a){if(t[a])return t[a];var r=t[a]=new d(a);return n.taglibLoader.loadTaglib(a,r),t[a]=r,r}var n=a("./loader"),d=a("./Taglib"),t={};r.clearCache=function(){t={}},r.load=l});
 $rmod.main("/marko@3.0.2/compiler/taglib-finder","index");
 $rmod.remap("/marko@3.0.2/compiler/taglib-finder/index","index-browser");
-$rmod.def("/marko@3.0.0/compiler/taglib-finder/index-browser",function(n,e,i,r,c){function o(n,e){return e||[]}function f(n){}function d(){}e.find=o,e.excludeDir=f,e.clearCache=d});
-$rmod.def("/marko@3.0.0/compiler/index", function(require, exports, module, __filename, __dirname) { 'use strict';var process=require("process"); 
+$rmod.def("/marko@3.0.2/compiler/taglib-finder/index-browser",function(n,e,i,r,c){function o(n,e){return e||[]}function f(n){}function d(){}e.find=o,e.excludeDir=f,e.clearCache=d});
+$rmod.def("/marko@3.0.2/compiler/index", function(require, exports, module, __filename, __dirname) { 'use strict';var process=require("process"); 
 
 var Compiler = require('./Compiler');
 var Walker = require('./Walker');
