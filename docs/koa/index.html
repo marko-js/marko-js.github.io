@@ -16,14 +16,14 @@
 npm install marko --save
 </pre><h2 id=usage><a name=usage class=anchor href=#usage><span class=header-link></span></a>Usage</h2><pre class=highlighted style=color:#E0E0E0;background-color:#282C34><span style=color:#66D9EF>require</span>(<span style=color:#E6DB74>"marko/node-require"</span>);
 
-<span style=color:#66D9EF;font-style:italic>const</span> Koa <span style=color:#F92672>=</span> <span style=color:#66D9EF>require</span>(<span style=color:#E6DB74>"koa"</span>);
-<span style=color:#66D9EF;font-style:italic>const</span> app <span style=color:#F92672>=</span> <span style=color:#F92672>new</span> Koa();
+<span style=color:#66D9EF;font-style:italic>const</span> Koa <span style=color:#FFFFFF>=</span> <span style=color:#66D9EF>require</span>(<span style=color:#E6DB74>"koa"</span>);
+<span style=color:#66D9EF;font-style:italic>const</span> app <span style=color:#FFFFFF>=</span> <span style=color:#F92672>new</span> Koa();
 
-<span style=color:#66D9EF;font-style:italic>const</span> template <span style=color:#F92672>=</span> <span style=color:#66D9EF>require</span>(<span style=color:#E6DB74>"./index.marko"</span>);
+<span style=color:#66D9EF;font-style:italic>const</span> template <span style=color:#FFFFFF>=</span> <span style=color:#66D9EF>require</span>(<span style=color:#E6DB74>"./index.marko"</span>);
 
 app.<span style=color:#A6E22E>use</span>((<span style=color:#FD971F;font-style:italic>ctx</span>, <span style=color:#FD971F;font-style:italic>next</span>) <span style=color:#66D9EF;font-style:italic>=></span> {
-  ctx.type <span style=color:#F92672>=</span> <span style=color:#E6DB74>"html"</span>;
-  ctx.body <span style=color:#F92672>=</span> template.<span style=color:#A6E22E>stream</span>({
+  ctx.type <span style=color:#FFFFFF>=</span> <span style=color:#E6DB74>"html"</span>;
+  ctx.body <span style=color:#FFFFFF>=</span> template.<span style=color:#A6E22E>stream</span>({
     name: <span style=color:#E6DB74>"Frank"</span>,
     count: <span style=color:#AE81FF>30</span>,
     colors: [<span style=color:#E6DB74>"red"</span>, <span style=color:#E6DB74>"green"</span>, <span style=color:#E6DB74>"blue"</span>]
@@ -32,16 +32,16 @@ app.<span style=color:#A6E22E>use</span>((<span style=color:#FD971F;font-style:i
 
 app.<span style=color:#A6E22E>listen</span>(<span style=color:#AE81FF>8080</span>);
 </pre><p>You may also easily add <code>gzip</code> streaming support without additional dependencies:</p><pre class=highlighted style=color:#E0E0E0;background-color:#282C34><span style=color:#66D9EF>require</span>(<span style=color:#E6DB74>"marko/node-require"</span>);
-<span style=color:#66D9EF;font-style:italic>const</span> { createGzip } <span style=color:#F92672>=</span> <span style=color:#66D9EF>require</span>(<span style=color:#E6DB74>"zlib"</span>);
+<span style=color:#66D9EF;font-style:italic>const</span> { createGzip } <span style=color:#FFFFFF>=</span> <span style=color:#66D9EF>require</span>(<span style=color:#E6DB74>"zlib"</span>);
 
-<span style=color:#66D9EF;font-style:italic>const</span> Koa <span style=color:#F92672>=</span> <span style=color:#66D9EF>require</span>(<span style=color:#E6DB74>"koa"</span>);
-<span style=color:#66D9EF;font-style:italic>const</span> app <span style=color:#F92672>=</span> <span style=color:#F92672>new</span> Koa();
+<span style=color:#66D9EF;font-style:italic>const</span> Koa <span style=color:#FFFFFF>=</span> <span style=color:#66D9EF>require</span>(<span style=color:#E6DB74>"koa"</span>);
+<span style=color:#66D9EF;font-style:italic>const</span> app <span style=color:#FFFFFF>=</span> <span style=color:#F92672>new</span> Koa();
 
-<span style=color:#66D9EF;font-style:italic>const</span> template <span style=color:#F92672>=</span> <span style=color:#66D9EF>require</span>(<span style=color:#E6DB74>"./index.marko"</span>);
+<span style=color:#66D9EF;font-style:italic>const</span> template <span style=color:#FFFFFF>=</span> <span style=color:#66D9EF>require</span>(<span style=color:#E6DB74>"./index.marko"</span>);
 
 app.<span style=color:#A6E22E>use</span>((<span style=color:#FD971F;font-style:italic>ctx</span>, <span style=color:#FD971F;font-style:italic>next</span>) <span style=color:#66D9EF;font-style:italic>=></span> {
-  ctx.type <span style=color:#F92672>=</span> <span style=color:#E6DB74>"html"</span>;
-  ctx.body <span style=color:#F92672>=</span> template.<span style=color:#A6E22E>stream</span>({
+  ctx.type <span style=color:#FFFFFF>=</span> <span style=color:#E6DB74>"html"</span>;
+  ctx.body <span style=color:#FFFFFF>=</span> template.<span style=color:#A6E22E>stream</span>({
     name: <span style=color:#E6DB74>"Frank"</span>,
     count: <span style=color:#AE81FF>30</span>,
     colors: [<span style=color:#E6DB74>"red"</span>, <span style=color:#E6DB74>"green"</span>, <span style=color:#E6DB74>"blue"</span>]
@@ -50,7 +50,7 @@ app.<span style=color:#A6E22E>use</span>((<span style=color:#FD971F;font-style:i
   ctx.<span style=color:#A6E22E>vary</span>(<span style=color:#E6DB74>"Accept-Encoding"</span>);
   <span style=color:#F92672>if</span> (ctx.<span style=color:#A6E22E>acceptsEncodings</span>(<span style=color:#E6DB74>"gzip"</span>)) {
     ctx.<span style=color:#66D9EF>set</span>(<span style=color:#E6DB74>"Content-Encoding"</span>, <span style=color:#E6DB74>"gzip"</span>);
-    ctx.body <span style=color:#F92672>=</span> ctx.body.<span style=color:#A6E22E>pipe</span>(<span style=color:#A6E22E>createGzip</span>());
+    ctx.body <span style=color:#FFFFFF>=</span> ctx.body.<span style=color:#A6E22E>pipe</span>(<span style=color:#A6E22E>createGzip</span>());
   }
 });
 
