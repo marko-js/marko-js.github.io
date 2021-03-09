@@ -641,7 +641,7 @@ _marko_template._ = renderer_default()(function (input, out, _component, compone
   getAssets(entry) {
     return this.build[entry];
   },
-  build: {":name_z0HT":{"css":["c4742120.css"],"js":["666.a812c9a8.js","509.7ed47c9c.js","616.048b7ce0.js"]},"code-block-marko_UUum":{"css":["c1911498.css"],"js":["666.a812c9a8.js","509.7ed47c9c.js","598.4115462f.js"]},"dir-index_C1oC":{"css":["233f4f6c.css"],"js":["666.a812c9a8.js","450.87ae36a4.js"]},"index_WEBG":{"css":["2eef411a.css"],"js":["666.a812c9a8.js","509.7ed47c9c.js","117.c8d04c01.js"]},"try-online_gkPN":{"css":["3dc0d470.css"],"js":["666.a812c9a8.js","509.7ed47c9c.js","748.53b9f2bd.js"]}}
+  build: {":name_z0HT":{"css":["c4742120.css"],"js":["666.f294bd87.js","509.7ed47c9c.js","616.048b7ce0.js"]},"code-block-marko_UUum":{"css":["c1911498.css"],"js":["666.f294bd87.js","509.7ed47c9c.js","598.4115462f.js"]},"dir-index_C1oC":{"css":["233f4f6c.css"],"js":["666.f294bd87.js","450.87ae36a4.js"]},"index_WEBG":{"css":["2eef411a.css"],"js":["666.f294bd87.js","509.7ed47c9c.js","117.bd84f82e.js"]},"try-online_gkPN":{"css":["3dc0d470.css"],"js":["666.f294bd87.js","509.7ed47c9c.js","748.0c020604.js"]}}
 });
 ;// CONCATENATED MODULE: ../../node_modules/@marko/build/dist/files/dir-index.marko?server-entry
 const dir_index_marko_server_entry_marko_template = (0,html_namespaceObject.t)();
