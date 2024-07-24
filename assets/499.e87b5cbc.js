@@ -1,2 +1,0 @@
-"use strict";(globalThis.webpackChunk=globalThis.webpackChunk||[]).push([[499],{"../components/app-layout/components/layout-search/doc-search.js":(a,e,s)=>{s.d(e,{init:()=>n});var o=s("../../node_modules/@docsearch/js/dist/esm/index.js");function n(a){(0,o.Z)({container:a,indexName:"markojs",appId:"GB0QQV5RQM",apiKey:"82f1b630f11e1afa4767f051af953a28"})}}}]);
-//# sourceMappingURL=499.e87b5cbc.js.map
